@@ -1,3 +1,5 @@
+// Test Git change
+
 package storyboard;
 
 import java.awt.BorderLayout;
@@ -165,14 +167,7 @@ public class PlayField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
-				if (i > 2 && i < 5 && j > 2 && j < 5) {
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/F_pressed.png")));
-				} else {
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/F.png")));
-				}
-				if (i == 3 && j == 3) {
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/F.png")));
-				}
+				tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/F.png")));
 				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				boardPanel.add(tileArray[i][j]);
 			}
