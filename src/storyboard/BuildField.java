@@ -26,6 +26,9 @@ import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class BuildField extends JFrame {
 
@@ -61,6 +64,27 @@ public class BuildField extends JFrame {
 		setTitle("LetterCraze Builder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenuItem mntmNew = new JMenuItem("New");
+		mnFile.add(mntmNew);
+		
+		JMenuBar menuBar_1 = new JMenuBar();
+		mnFile.add(menuBar_1);
+		
+		JMenuItem mntmSave = new JMenuItem("Save");
+		mnFile.add(mntmSave);
+		
+		JMenuItem mntmOpen = new JMenuItem("Open");
+		mnFile.add(mntmOpen);
+		
+		JMenuItem mntmTeamChromium = new JMenuItem("Team Chromium");
+		mnFile.add(mntmTeamChromium);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
