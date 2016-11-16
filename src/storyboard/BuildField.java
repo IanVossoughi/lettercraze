@@ -30,6 +30,8 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BuildField extends JFrame {
 
@@ -133,6 +135,15 @@ public class BuildField extends JFrame {
 		JButton generateButton = new JButton("Generate");
 		generateButton.setEnabled(false);
 		starPanel.add(generateButton);
+		
+		JButton btnStarThresholds = new JButton("Star Thresholds");
+		btnStarThresholds.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				StarThresholdWindow thresholdWindow = new StarThresholdWindow();
+				thresholdWindow.setVisible(true);
+			}
+		});
+		starPanel.add(btnStarThresholds);
 		
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
