@@ -68,14 +68,14 @@ public class PlayField extends JFrame {
 		contentPane.add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
 		
-		JButton backToMenuButton = new JButton("Menu");
+		JButton backToMenuButton = new JButton("Exit Level");
 		menuPanel.add(backToMenuButton);
 		
 		JPanel levelStarPanel = new JPanel();
 		menuPanel.add(levelStarPanel);
 		levelStarPanel.setLayout(new BorderLayout(0, 0));
 		
-		JLabel levelNameLabel = new JLabel("Level Name");
+		JLabel levelNameLabel = new JLabel("Level Name/Theme");
 		levelNameLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		levelNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		levelStarPanel.add(levelNameLabel, BorderLayout.NORTH);
