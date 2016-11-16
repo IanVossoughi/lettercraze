@@ -30,6 +30,11 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class BuildField extends JFrame {
 
@@ -91,6 +96,7 @@ public class BuildField extends JFrame {
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmExitBuilder);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -149,6 +155,17 @@ public class BuildField extends JFrame {
 		
 		JButton resetButton = new JButton("Reset");
 		bottomBarPanel.add(resetButton);
+		
+		JButton btnStarThresholds = new JButton("Star Thresholds");
+		btnStarThresholds.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				StarThresholdWindow thresholdWindow = new StarThresholdWindow();
+				thresholdWindow.setVisible(true);
+			}
+		});
+		// Star Threshold window open:
+		
+		bottomBarPanel.add(btnStarThresholds);
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
 		contentPane.add(sidebarPanel, BorderLayout.EAST);
