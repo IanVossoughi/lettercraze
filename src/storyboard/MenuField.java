@@ -88,14 +88,16 @@ public class MenuField extends JFrame {
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
 		
+		JButton playButton = new JButton("Play");
+		bottomBarPanel.add(playButton);
+		
 		JButton exitButton = new JButton("Exit");
 		bottomBarPanel.add(exitButton);
 		
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.CENTER);
-		JButton[][] tileArray = new JButton[6][6];
-			boardPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		boardPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			
 			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			boardPanel.add(tabbedPane);

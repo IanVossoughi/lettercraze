@@ -1,5 +1,3 @@
-// Test Git change
-
 package storyboard;
 
 import java.awt.BorderLayout;
@@ -27,6 +25,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import java.awt.FlowLayout;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class PlayField extends JFrame {
 
@@ -68,7 +68,7 @@ public class PlayField extends JFrame {
 		contentPane.add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
 		
-		JButton backToMenuButton = new JButton("Return");
+		JButton backToMenuButton = new JButton("Menu");
 		menuPanel.add(backToMenuButton);
 		
 		JPanel levelStarPanel = new JPanel();
@@ -109,30 +109,42 @@ public class PlayField extends JFrame {
 		bottomBarPanel.setLayout(new BoxLayout(bottomBarPanel, BoxLayout.X_AXIS));
 		
 		JPanel submissionPanel = new JPanel();
+		submissionPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		bottomBarPanel.add(submissionPanel);
-		submissionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		submissionPanel.setLayout(new BoxLayout(submissionPanel, BoxLayout.Y_AXIS));
 		
-		JLabel wordLabel = new JLabel("WORD: F F F");
+		JPanel wordPanel = new JPanel();
+		submissionPanel.add(wordPanel);
+		
+		JLabel wordLabel = new JLabel("WORD: _");
+		wordPanel.add(wordLabel);
 		wordLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		submissionPanel.add(wordLabel);
+		
+		JPanel submitWordPanel = new JPanel();
+		submissionPanel.add(submitWordPanel);
 		
 		JButton submitButton = new JButton("Submit");
-		submissionPanel.add(submitButton);
+		submitWordPanel.add(submitButton);
 		submitButton.setHorizontalAlignment(SwingConstants.LEADING);
 		
-		JPanel taskPanel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) taskPanel.getLayout();
-		flowLayout.setAlignment(FlowLayout.RIGHT);
-		bottomBarPanel.add(taskPanel);
+		JButton btnDeselectWord = new JButton("Deselect");
+		submitWordPanel.add(btnDeselectWord);
 		
-		JButton undoButton = new JButton("Undo");
-		taskPanel.add(undoButton);
+		JPanel taskPanel = new JPanel();
+		taskPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		FlowLayout flowLayout = (FlowLayout) taskPanel.getLayout();
+		flowLayout.setAlignOnBaseline(true);
+		flowLayout.setVgap(15);
+		bottomBarPanel.add(taskPanel);
 		
 		JLabel timeLabel = new JLabel("Time:");
 		taskPanel.add(timeLabel);
 		
 		JLabel timerLabel = new JLabel("99");
 		taskPanel.add(timerLabel);
+		
+		JButton undoButton = new JButton("Undo");
+		taskPanel.add(undoButton);
 		
 		JButton resetButton = new JButton("Reset");
 		taskPanel.add(resetButton);

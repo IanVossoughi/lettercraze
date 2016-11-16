@@ -24,6 +24,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 
 public class BuildField extends JFrame {
 
@@ -59,6 +65,32 @@ public class BuildField extends JFrame {
 		setTitle("LetterCraze Builder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("File");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmNewresetLevel = new JMenuItem("New/Reset Level");
+		mntmNewresetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmNewresetLevel);
+		
+		JMenuItem mntmOpenLevel = new JMenuItem("Open Level");
+		mntmOpenLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmOpenLevel);
+		
+		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
+		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmSaveLevel);
+		
+		JMenuItem mntmResetLevel = new JMenuItem("Delete Level");
+		mntmResetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmResetLevel);
+		
+		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
+		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmExitBuilder);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -68,16 +100,6 @@ public class BuildField extends JFrame {
 		contentPane.add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
 		
-		JPanel closePanel = new JPanel();
-		menuPanel.add(closePanel);
-		closePanel.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		JButton saveButton = new JButton("Save");
-		closePanel.add(saveButton);
-		
-		JButton exitButton = new JButton("Exit");
-		closePanel.add(exitButton);
-		
 		JPanel levelStarPanel = new JPanel();
 		menuPanel.add(levelStarPanel);
 		levelStarPanel.setLayout(new BorderLayout(0, 0));
@@ -86,7 +108,7 @@ public class BuildField extends JFrame {
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		levelStarPanel.add(panel, BorderLayout.CENTER);
 		
-		JLabel levelNameLabel = new JLabel("Level Name:");
+		JLabel levelNameLabel = new JLabel("Level Name/Description:");
 		levelNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		levelNameLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		panel.add(levelNameLabel);
