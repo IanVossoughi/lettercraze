@@ -24,6 +24,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BuildField extends JFrame {
 
@@ -127,6 +129,17 @@ public class BuildField extends JFrame {
 		
 		JButton resetButton = new JButton("Reset");
 		bottomBarPanel.add(resetButton);
+		
+		JButton btnStarThresholds = new JButton("Star Thresholds");
+		btnStarThresholds.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				StarThresholdWindow thresholdWindow = new StarThresholdWindow();
+				thresholdWindow.setVisible(true);
+			}
+		});
+		// Star Threshold window open:
+		
+		bottomBarPanel.add(btnStarThresholds);
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
 		contentPane.add(sidebarPanel, BorderLayout.EAST);

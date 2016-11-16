@@ -1,0 +1,103 @@
+package storyboard;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.BoxLayout;
+
+public class StarThresholdWindow extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					StarThresholdWindow frame = new StarThresholdWindow();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public StarThresholdWindow() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		
+		JLabel lblEnterStarThresholds = new JLabel("Enter Star Thresholds:");
+		panel.add(lblEnterStarThresholds);
+		
+		JPanel panel_1 = new JPanel();
+		contentPane.add(panel_1, BorderLayout.CENTER);
+		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
+		
+		JPanel panel_5 = new JPanel();
+		panel_1.add(panel_5);
+		
+		JLabel label_1 = new JLabel("Star 1:");
+		panel_5.add(label_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		panel_5.add(textField_2);
+		
+		JPanel panel_3 = new JPanel();
+		panel_1.add(panel_3);
+		
+		JLabel lblStar = new JLabel("Star 2:");
+		panel_3.add(lblStar);
+		
+		textField = new JTextField();
+		panel_3.add(textField);
+		textField.setColumns(10);
+		
+		JPanel panel_4 = new JPanel();
+		panel_1.add(panel_4);
+		
+		JLabel label = new JLabel("Star 3:");
+		panel_4.add(label);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		panel_4.add(textField_1);
+		
+		JPanel panel_2 = new JPanel();
+		contentPane.add(panel_2, BorderLayout.SOUTH);
+		
+		JButton btnDone = new JButton("Done");
+		btnDone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				dispose();
+			}
+		});
+		panel_2.add(btnDone);
+	}
+
+}
