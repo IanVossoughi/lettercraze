@@ -88,14 +88,16 @@ public class MenuField extends JFrame {
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
 		
+		JButton playButton = new JButton("Play");
+		bottomBarPanel.add(playButton);
+		
 		JButton exitButton = new JButton("Exit");
 		bottomBarPanel.add(exitButton);
 		
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.CENTER);
-		JButton[][] tileArray = new JButton[6][6];
-			boardPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		boardPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			
 			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			boardPanel.add(tabbedPane);
@@ -119,7 +121,7 @@ public class MenuField extends JFrame {
 			JPanel levelNamePanel = new JPanel();
 			levelListPanel.add(levelNamePanel);
 
-			JLabel lblLevelName = new JLabel("Level Name");
+			JLabel lblLevelName = new JLabel("Name");
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 			
@@ -144,7 +146,7 @@ public class MenuField extends JFrame {
 			JLabel highScoreLabel = new JLabel("High Score - ");
 			scorePanel.add(highScoreLabel);
 
-			JLabel highScoreNumLabel = new JLabel("999999");
+			JLabel highScoreNumLabel = new JLabel("999");
 			scorePanel.add(highScoreNumLabel);
 
 			JLabel star1Label = new JLabel("");

@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class StarThresholdWindow extends JFrame {
 
@@ -50,7 +52,7 @@ public class StarThresholdWindow extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
-		JLabel lblEnterStarThresholds = new JLabel("Enter Star Thresholds:");
+		JLabel lblEnterStarThresholds = new JLabel("Enter the points required for each star:");
 		panel.add(lblEnterStarThresholds);
 		
 		JPanel panel_1 = new JPanel();
@@ -61,6 +63,7 @@ public class StarThresholdWindow extends JFrame {
 		panel_1.add(panel_5);
 		
 		JLabel label_1 = new JLabel("Star 1:");
+		label_1.setIcon(new ImageIcon(StarThresholdWindow.class.getResource("/storyboard/star.png")));
 		panel_5.add(label_1);
 		
 		textField_2 = new JTextField();
@@ -71,6 +74,7 @@ public class StarThresholdWindow extends JFrame {
 		panel_1.add(panel_3);
 		
 		JLabel lblStar = new JLabel("Star 2:");
+		lblStar.setIcon(new ImageIcon(StarThresholdWindow.class.getResource("/storyboard/star.png")));
 		panel_3.add(lblStar);
 		
 		textField = new JTextField();
@@ -81,6 +85,7 @@ public class StarThresholdWindow extends JFrame {
 		panel_1.add(panel_4);
 		
 		JLabel label = new JLabel("Star 3:");
+		label.setIcon(new ImageIcon(StarThresholdWindow.class.getResource("/storyboard/star.png")));
 		panel_4.add(label);
 		
 		textField_1 = new JTextField();
