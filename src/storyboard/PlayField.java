@@ -17,6 +17,7 @@ import javax.swing.ListSelectionModel;
 import java.awt.GridLayout;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
@@ -25,6 +26,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import java.awt.FlowLayout;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class PlayField extends JFrame {
 
@@ -66,14 +69,14 @@ public class PlayField extends JFrame {
 		contentPane.add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
 		
-		JButton backToMenuButton = new JButton("Return");
+		JButton backToMenuButton = new JButton("Exit Level");
 		menuPanel.add(backToMenuButton);
 		
 		JPanel levelStarPanel = new JPanel();
 		menuPanel.add(levelStarPanel);
 		levelStarPanel.setLayout(new BorderLayout(0, 0));
 		
-		JLabel levelNameLabel = new JLabel("Level Name");
+		JLabel levelNameLabel = new JLabel("Level Name/Theme");
 		levelNameLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		levelNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		levelStarPanel.add(levelNameLabel, BorderLayout.NORTH);
@@ -107,30 +110,42 @@ public class PlayField extends JFrame {
 		bottomBarPanel.setLayout(new BoxLayout(bottomBarPanel, BoxLayout.X_AXIS));
 		
 		JPanel submissionPanel = new JPanel();
+		submissionPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		bottomBarPanel.add(submissionPanel);
-		submissionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		submissionPanel.setLayout(new BoxLayout(submissionPanel, BoxLayout.Y_AXIS));
 		
-		JLabel wordLabel = new JLabel("WORD: F F F");
+		JPanel wordPanel = new JPanel();
+		submissionPanel.add(wordPanel);
+		
+		JLabel wordLabel = new JLabel("WORD: _");
+		wordPanel.add(wordLabel);
 		wordLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		submissionPanel.add(wordLabel);
+		
+		JPanel submitWordPanel = new JPanel();
+		submissionPanel.add(submitWordPanel);
 		
 		JButton submitButton = new JButton("Submit");
-		submissionPanel.add(submitButton);
+		submitWordPanel.add(submitButton);
 		submitButton.setHorizontalAlignment(SwingConstants.LEADING);
 		
-		JPanel taskPanel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) taskPanel.getLayout();
-		flowLayout.setAlignment(FlowLayout.RIGHT);
-		bottomBarPanel.add(taskPanel);
+		JButton btnDeselectWord = new JButton("Deselect");
+		submitWordPanel.add(btnDeselectWord);
 		
-		JButton undoButton = new JButton("Undo");
-		taskPanel.add(undoButton);
+		JPanel taskPanel = new JPanel();
+		taskPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		FlowLayout flowLayout = (FlowLayout) taskPanel.getLayout();
+		flowLayout.setAlignOnBaseline(true);
+		flowLayout.setVgap(15);
+		bottomBarPanel.add(taskPanel);
 		
 		JLabel timeLabel = new JLabel("Time:");
 		taskPanel.add(timeLabel);
 		
 		JLabel timerLabel = new JLabel("99");
 		taskPanel.add(timerLabel);
+		
+		JButton undoButton = new JButton("Undo");
+		taskPanel.add(undoButton);
 		
 		JButton resetButton = new JButton("Reset");
 		taskPanel.add(resetButton);
@@ -156,8 +171,9 @@ public class PlayField extends JFrame {
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.CENTER);
 		JButton[][] tileArray = new JButton[6][6];
-		//boolean[][] selectedArray = new boolean[6][6];
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
+		Random rng = new Random();
+		String word = new String();
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				tileArray[i][j] = new JButton("");
@@ -165,17 +181,17 @@ public class PlayField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
-				if (i > 2 && i < 5 && j > 2 && j < 5) {
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/F_pressed.png")));
-				} else {
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/F.png")));
-				}
-				if (i == 3 && j == 3) {
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/F.png")));
+				char letter = (char) (rng.nextInt(26) + 65);
+				System.out.println(letter);
+				tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+				if (i == 3 && j > 2) {
+					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/pressedTiles/" + letter + ".png")));
+					word = word.concat(Character.toString(letter));
 				}
 				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				boardPanel.add(tileArray[i][j]);
 			}
 		}
+		wordLabel.setText("WORD: " + word);
 	}
 }

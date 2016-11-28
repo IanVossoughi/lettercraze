@@ -21,9 +21,20 @@ import java.awt.Dimension;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
+import javax.swing.ListModel;
+
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Random;
+import java.awt.event.InputEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
@@ -68,23 +79,29 @@ public class BuildField extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnFile = new JMenu("File");
-		menuBar.add(mnFile);
+		JMenu mnNewMenu = new JMenu("File");
+		menuBar.add(mnNewMenu);
 		
-		JMenuItem mntmNew = new JMenuItem("New");
-		mnFile.add(mntmNew);
+		JMenuItem mntmNewresetLevel = new JMenuItem("New/Reset Level");
+		mntmNewresetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmNewresetLevel);
 		
-		JMenuBar menuBar_1 = new JMenuBar();
-		mnFile.add(menuBar_1);
+		JMenuItem mntmOpenLevel = new JMenuItem("Open Level");
+		mntmOpenLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmOpenLevel);
 		
-		JMenuItem mntmSave = new JMenuItem("Save");
-		mnFile.add(mntmSave);
+		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
+		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmSaveLevel);
 		
-		JMenuItem mntmOpen = new JMenuItem("Open");
-		mnFile.add(mntmOpen);
+		JMenuItem mntmResetLevel = new JMenuItem("Delete Level");
+		mntmResetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmResetLevel);
 		
-		JMenuItem mntmTeamChromium = new JMenuItem("Team Chromium");
-		mnFile.add(mntmTeamChromium);
+		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
+		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmExitBuilder);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -94,16 +111,6 @@ public class BuildField extends JFrame {
 		contentPane.add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
 		
-		JPanel closePanel = new JPanel();
-		menuPanel.add(closePanel);
-		closePanel.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		JButton saveButton = new JButton("Save");
-		closePanel.add(saveButton);
-		
-		JButton exitButton = new JButton("Exit");
-		closePanel.add(exitButton);
-		
 		JPanel levelStarPanel = new JPanel();
 		menuPanel.add(levelStarPanel);
 		levelStarPanel.setLayout(new BorderLayout(0, 0));
@@ -112,7 +119,7 @@ public class BuildField extends JFrame {
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		levelStarPanel.add(panel, BorderLayout.CENTER);
 		
-		JLabel levelNameLabel = new JLabel("Level Name:");
+		JLabel levelNameLabel = new JLabel("Level Name/Description:");
 		levelNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		levelNameLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		panel.add(levelNameLabel);
@@ -132,11 +139,20 @@ public class BuildField extends JFrame {
 		
 		JComboBox<String> levelTypeCombo = new JComboBox<String>();
 		levelTypeCombo.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
+		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);
 		
 		JButton generateButton = new JButton("Generate");
-		generateButton.setEnabled(false);
 		starPanel.add(generateButton);
+		
+		JButton starThresholdButton = new JButton("Set Star Points");
+		starPanel.add(starThresholdButton);
+		starThresholdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				StarThresholdWindow thresholdWindow = new StarThresholdWindow();
+				thresholdWindow.setVisible(true);
+			}
+		});
 		
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
@@ -148,24 +164,15 @@ public class BuildField extends JFrame {
 		bottomBarPanel.add(timeLabel);
 		
 		timeField = new JTextField();
+		timeField.setEnabled(false);
 		bottomBarPanel.add(timeField);
 		timeField.setColumns(5);
 		
 		JButton resetButton = new JButton("Reset");
 		bottomBarPanel.add(resetButton);
-		
-		JButton btnStarThresholds = new JButton("Star Thresholds");
-		btnStarThresholds.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				StarThresholdWindow thresholdWindow = new StarThresholdWindow();
-				thresholdWindow.setVisible(true);
-			}
-		});
-		// Star Threshold window open:
-		
-		bottomBarPanel.add(btnStarThresholds);
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
+		
 		contentPane.add(sidebarPanel, BorderLayout.EAST);
 		sidebarPanel.setLayout(new BorderLayout(0, 0));
 		
@@ -173,7 +180,9 @@ public class BuildField extends JFrame {
 		sidebarPanel.add(wordListPanel, BorderLayout.CENTER);
 		
 		JList<String> wordList = new JList<String>();
-		wordList.setEnabled(false);
+		DefaultListModel<String> listModel = new DefaultListModel<String>();
+		listModel.addElement("KNIFE");
+		wordList.setModel(listModel);
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		wordListPanel.setViewportView(wordList);
@@ -186,22 +195,22 @@ public class BuildField extends JFrame {
 		sidebarPanel.add(addRemoveWordPanel, BorderLayout.SOUTH);
 		
 		JButton enterWordButton = new JButton("Add");
-		enterWordButton.setEnabled(false);
 		addRemoveWordPanel.add(enterWordButton);
 		
 		wordEntryField = new JTextField();
-		wordEntryField.setEnabled(false);
 		addRemoveWordPanel.add(wordEntryField);
 		wordEntryField.setColumns(10);
 		
 		JButton removeWordButton = new JButton("Remove");
-		removeWordButton.setEnabled(false);
 		addRemoveWordPanel.add(removeWordButton);
+		
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		contentPane.add(boardPanel, BorderLayout.CENTER);
+		contentPane.add(boardPanel, BorderLayout.WEST);
 		JButton[][] tileArray = new JButton[6][6];
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
+		Random rng = new Random();
+		String word = new String();
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				tileArray[i][j] = new JButton("");
@@ -209,11 +218,32 @@ public class BuildField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
-				if ((5-i) == j) {
-					tileArray[i][j].setIcon(new ImageIcon(BuildField.class.getResource("/storyboard/square_32.png")));
+				char letter = (char) (rng.nextInt(26) + 65);
+				System.out.println(letter);
+				tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+				if (i == 5) {
+					switch (j) {
+					case 0:
+						letter = 'K';
+						break;
+					case 1:
+						letter = 'N';
+						break;
+					case 2:
+						letter = 'I';
+						break;
+					case 3:
+						letter = 'F';
+						break;
+					case 4:
+						letter = 'E';
+						break;
+					}
+					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+					word = word.concat(Character.toString(letter));
 				}
-				else {
-					tileArray[i][j].setIcon(new ImageIcon(BuildField.class.getResource("/storyboard/green-square.png")));					
+				if (i == j) {
+					tileArray[i][j].setIcon(new ImageIcon(BuildField.class.getResource("/storyboard/square_32.png")));
 				}
 				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				boardPanel.add(tileArray[i][j]);
