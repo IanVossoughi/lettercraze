@@ -35,5 +35,7 @@ public class Main extends JFrame{
 		
 		JLabel teamName = new JLabel("LetterCraze - Team Chromium");
 		contentPane.add(teamName);
+		
+		//JButton open
 	}
 }

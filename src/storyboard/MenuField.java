@@ -149,16 +149,17 @@ public class MenuField extends JFrame {
 			JLabel highScoreNumLabel = new JLabel("999");
 			scorePanel.add(highScoreNumLabel);
 
+			ImageIcon star = new ImageIcon(MenuField.class.getResource("/storyboard/star.png"));
 			JLabel star1Label = new JLabel("");
 			scorePanel.add(star1Label);
-			star1Label.setIcon(new ImageIcon(MenuField.class.getResource("/storyboard/star.png")));
+			star1Label.setIcon(star);
 
 			JLabel star2Label = new JLabel("");
 			scorePanel.add(star2Label);
-			star2Label.setIcon(new ImageIcon(MenuField.class.getResource("/storyboard/star.png")));
+			star2Label.setIcon(star);
 
 			JLabel star3Label = new JLabel("");
-			star3Label.setIcon(new ImageIcon(MenuField.class.getResource("/storyboard/star.png")));
+			star3Label.setIcon(star);
 			scorePanel.add(star3Label);
 			}
 
