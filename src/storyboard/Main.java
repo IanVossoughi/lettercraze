@@ -38,12 +38,12 @@ public class Main extends JFrame{
 		setContentPane(contentPane);
 		
 		JLabel teamName = new JLabel("LetterCraze - Team Chromium");
-		teamName.setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/chromium-periodic-table.png")));
+		//teamName.setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/chromium-periodic-table.png")));
 		contentPane.add(teamName);
 		
-		/*JLabel chromiumIcon = new JLabel("");
+		JLabel chromiumIcon = new JLabel("");
 		chromiumIcon.setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/chromium-periodic-table.png")));
-		contentPane.add(chromiumIcon);*/
+		contentPane.add(chromiumIcon);
 		
 		JButton openLevelSelect = new JButton("Continue");
 		openLevelSelect.addActionListener(new ActionListener() {
