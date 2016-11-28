@@ -17,6 +17,8 @@ import javax.swing.ListSelectionModel;
 import java.awt.GridLayout;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
@@ -90,6 +92,14 @@ public class MenuField extends JFrame {
 		
 		JButton playButton = new JButton("Play");
 		bottomBarPanel.add(playButton);
+		playButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new PlayField().setVisible(true);
+				setVisible(false);
+				dispose();
+			}
+		});
+		
 		
 		JButton exitButton = new JButton("Exit");
 		bottomBarPanel.add(exitButton);
