@@ -17,7 +17,7 @@ public class Main extends JFrame{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				// Did this work? - Gab 
+				// Did this work yet? - Gab 
 			}
 		});
 	}
