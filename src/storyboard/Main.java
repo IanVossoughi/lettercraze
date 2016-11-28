@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -38,6 +39,10 @@ public class Main extends JFrame{
 		
 		JLabel teamName = new JLabel("LetterCraze - Team Chromium");
 		contentPane.add(teamName);
+		
+		JLabel chromiumIcon = new JLabel("");
+		chromiumIcon.setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/chromium-periodic-table.png")));
+		contentPane.add(chromiumIcon);
 		
 		JButton openLevelSelect = new JButton("Continue");
 		openLevelSelect.addActionListener(new ActionListener() {
