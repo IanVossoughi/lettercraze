@@ -103,6 +103,12 @@ public class MenuField extends JFrame {
 		
 		JButton exitButton = new JButton("Exit");
 		bottomBarPanel.add(exitButton);
+		exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				dispose();
+			}
+		});
 		
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
