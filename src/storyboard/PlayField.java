@@ -15,6 +15,8 @@ import java.awt.Font;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
 import java.util.Random;
@@ -71,6 +73,13 @@ public class PlayField extends JFrame {
 		
 		JButton backToMenuButton = new JButton("Exit Level");
 		menuPanel.add(backToMenuButton);
+		backToMenuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new MenuField().setVisible(true);
+				setVisible(false);
+				dispose();
+			}
+		});
 		
 		JPanel levelStarPanel = new JPanel();
 		menuPanel.add(levelStarPanel);
