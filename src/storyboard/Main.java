@@ -4,9 +4,8 @@ package storyboard;
 //Hello
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-//is this working? - Batu
+
 public class Main extends JFrame{
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -17,7 +16,6 @@ public class Main extends JFrame{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				// Did this work yet? - Gab 
 			}
 		});
 	}
