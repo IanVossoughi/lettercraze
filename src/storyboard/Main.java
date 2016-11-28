@@ -1,8 +1,5 @@
 package storyboard;
 
-//Test commit by Andrew
-//Hello
-
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
