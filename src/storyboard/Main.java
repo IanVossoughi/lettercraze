@@ -2,8 +2,11 @@ package storyboard;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -36,6 +39,15 @@ public class Main extends JFrame{
 		JLabel teamName = new JLabel("LetterCraze - Team Chromium");
 		contentPane.add(teamName);
 		
-		//JButton open
+		JButton openLevelSelect = new JButton("Continue");
+		openLevelSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new MenuField().setVisible(true);
+				setVisible(false);
+				dispose();
+			}
+		});
+		
+		contentPane.add(openLevelSelect);
 	}
 }
