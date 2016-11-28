@@ -29,6 +29,7 @@ import java.awt.FlowLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.ListModel;
 
@@ -76,76 +77,97 @@ public class BuildField extends JFrame {
 		setTitle("LetterCraze Builder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		JMenu mnNewMenu = new JMenu("File");
 		menuBar.add(mnNewMenu);
-		
+
 		JMenuItem mntmNewresetLevel = new JMenuItem("New/Reset Level");
 		mntmNewresetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmNewresetLevel);
-		
+
 		JMenuItem mntmOpenLevel = new JMenuItem("Open Level");
 		mntmOpenLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmOpenLevel);
-		
+
 		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
 		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmSaveLevel);
-		
+
 		JMenuItem mntmResetLevel = new JMenuItem("Delete Level");
 		mntmResetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmResetLevel);
-		
+
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmExitBuilder);
-		
+		mntmExitBuilder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Object[] options = {"Yes, please",
+						"No, thanks"};
+				int n = JOptionPane.showOptionDialog(new JFrame(),
+						"Do you wanna save?",
+								"save or nah",
+								JOptionPane.YES_NO_OPTION,
+								JOptionPane.WARNING_MESSAGE,
+								null,
+								options,
+								options[0]);
+				if(n == 0){
+					JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
+					/* INSERT ACTUALLY SAVING LEVEL CODE */
+				}				
+				setVisible(false);
+				dispose();
+
+				}
+		});
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
+
 		JPanel menuPanel = new JPanel();
 		contentPane.add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
-		
+
 		JPanel levelStarPanel = new JPanel();
 		menuPanel.add(levelStarPanel);
 		levelStarPanel.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		levelStarPanel.add(panel, BorderLayout.CENTER);
-		
+
 		JLabel levelNameLabel = new JLabel("Level Name/Description:");
 		levelNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		levelNameLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		panel.add(levelNameLabel);
-		
+
 		levelNameField = new JTextField();
 		panel.add(levelNameField);
 		levelNameField.setColumns(10);
-		
+
 		JPanel starPanel = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) starPanel.getLayout();
 		levelStarPanel.add(starPanel, BorderLayout.SOUTH);
-		
+
 		JLabel levelTypeLabel = new JLabel("Level Type:");
 		levelTypeLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		levelTypeLabel.setIcon(null);
 		starPanel.add(levelTypeLabel);
-		
+
 		JComboBox<String> levelTypeCombo = new JComboBox<String>();
 		levelTypeCombo.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);
-		
+
 		JButton generateButton = new JButton("Generate");
 		starPanel.add(generateButton);
-		
+
 		JButton starThresholdButton = new JButton("Set Star Points");
 		starPanel.add(starThresholdButton);
 		starThresholdButton.addActionListener(new ActionListener() {
@@ -154,32 +176,32 @@ public class BuildField extends JFrame {
 				thresholdWindow.setVisible(true);
 			}
 		});
-		
+
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
-		
+
 		JButton undoButton = new JButton("Undo");
 		bottomBarPanel.add(undoButton);
-		
+
 		JLabel timeLabel = new JLabel("Time:");
 		bottomBarPanel.add(timeLabel);
-		
+
 		timeField = new JTextField();
 		timeField.setEnabled(false);
 		bottomBarPanel.add(timeField);
 		timeField.setColumns(5);
-		
+
 		JButton resetButton = new JButton("Reset");
 		bottomBarPanel.add(resetButton);
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
-		
+
 		contentPane.add(sidebarPanel, BorderLayout.EAST);
 		sidebarPanel.setLayout(new BorderLayout(0, 0));
-		
+
 		JScrollPane wordListPanel = new JScrollPane();
 		sidebarPanel.add(wordListPanel, BorderLayout.CENTER);
-		
+
 		JList<String> wordList = new JList<String>();
 		DefaultListModel<String> listModel = new DefaultListModel<String>();
 		listModel.addElement("KNIFE");
@@ -187,24 +209,24 @@ public class BuildField extends JFrame {
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		wordListPanel.setViewportView(wordList);
-		
+
 		JLabel wordListLabel = new JLabel("Word List");
 		wordListLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		wordListPanel.setColumnHeaderView(wordListLabel);
-		
+
 		JPanel addRemoveWordPanel = new JPanel();
 		sidebarPanel.add(addRemoveWordPanel, BorderLayout.SOUTH);
-		
+
 		JButton enterWordButton = new JButton("Add");
 		addRemoveWordPanel.add(enterWordButton);
-		
+
 		wordEntryField = new JTextField();
 		addRemoveWordPanel.add(wordEntryField);
 		wordEntryField.setColumns(10);
-		
+
 		JButton removeWordButton = new JButton("Remove");
 		addRemoveWordPanel.add(removeWordButton);
-		
+
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.WEST);
