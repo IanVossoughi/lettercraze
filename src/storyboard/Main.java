@@ -31,7 +31,7 @@ public class Main extends JFrame{
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		setBounds(100, 100, 950, 600);
+		setBounds(100, 100, 700, 600);
 	
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -39,7 +39,6 @@ public class Main extends JFrame{
 		setContentPane(contentPane);
 		
 		JLabel teamName = new JLabel("LetterCraze - Team Chromium");
-		//teamName.setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/chromium-periodic-table.png")));
 		contentPane.add(teamName);
 		
 		JLabel chromiumIcon = new JLabel("");
