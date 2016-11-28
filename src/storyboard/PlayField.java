@@ -17,6 +17,7 @@ import javax.swing.ListSelectionModel;
 import java.awt.GridLayout;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
@@ -170,8 +171,9 @@ public class PlayField extends JFrame {
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.CENTER);
 		JButton[][] tileArray = new JButton[6][6];
-		//boolean[][] selectedArray = new boolean[6][6];
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
+		Random rng = new Random();
+		String word = new String();
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				tileArray[i][j] = new JButton("");
@@ -179,10 +181,17 @@ public class PlayField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
-				tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/F.png")));
+				char letter = (char) (rng.nextInt(26) + 65);
+				System.out.println(letter);
+				tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+				if (i == 3 && j > 2) {
+					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/pressedTiles/" + letter + ".png")));
+					word = word.concat(Character.toString(letter));
+				}
 				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				boardPanel.add(tileArray[i][j]);
 			}
 		}
+		wordLabel.setText("WORD: " + word);
 	}
 }

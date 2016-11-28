@@ -121,7 +121,7 @@ public class MenuField extends JFrame {
 			JPanel levelNamePanel = new JPanel();
 			levelListPanel.add(levelNamePanel);
 
-			JLabel lblLevelName = new JLabel("Level Name");
+			JLabel lblLevelName = new JLabel("Name");
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 			
@@ -146,7 +146,7 @@ public class MenuField extends JFrame {
 			JLabel highScoreLabel = new JLabel("High Score - ");
 			scorePanel.add(highScoreLabel);
 
-			JLabel highScoreNumLabel = new JLabel("999999");
+			JLabel highScoreNumLabel = new JLabel("999");
 			scorePanel.add(highScoreNumLabel);
 
 			JLabel star1Label = new JLabel("");
