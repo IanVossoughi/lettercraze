@@ -2,7 +2,10 @@ package storyboard;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -27,7 +30,10 @@ public class Main extends JFrame{
 		
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		setContentPane(contentPane);
+		
+		JLabel teamName = new JLabel("LetterCraze - Team Chromium");
+		contentPane.add(teamName);
 	}
 }
