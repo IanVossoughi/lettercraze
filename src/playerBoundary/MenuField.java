@@ -27,8 +27,11 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import controllers.ExitButtonController;
+import controllers.LevelSelectMenuTabPaneController;
 import controllers.PlayButtonController;
 
 import java.awt.Color;
@@ -115,12 +118,13 @@ public class MenuField extends JFrame {
 			
 			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			boardPanel.add(tabbedPane);
-			
+			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked));
 
 			int i;
 			for (i = 1; i < 16; i++) {
 			JPanel levelListPanel = new JPanel();
 			tabbedPane.addTab(Integer.toString(i), null, levelListPanel, null);
+			
 			levelListPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 			levelListPanel.setLayout(new BoxLayout(levelListPanel, BoxLayout.Y_AXIS));
 

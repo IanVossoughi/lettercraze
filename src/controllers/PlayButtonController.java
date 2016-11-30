@@ -9,9 +9,11 @@ import playerBoundary.PlayField;
 public class PlayButtonController implements ActionListener{
 
 	private MenuField menuField;
+	//private int unlocked;
 
 	public PlayButtonController(MenuField menuField) {
 		this.menuField = menuField;
+		//this.unlocked = unlocked;
 	}
 
 	@Override
