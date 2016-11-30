@@ -48,7 +48,7 @@ public class BuildMain extends JFrame{
 		JButton openLevelSelect = new JButton("Continue");
 		openLevelSelect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new MenuField().setVisible(true);
+				new BuildField().setVisible(true);
 				setVisible(false);
 				dispose();
 			}
