@@ -185,6 +185,7 @@ public class BuildField extends JFrame {
 		timeField.setColumns(5);
 
 		JButton resetButton = new JButton("Reset");
+		resetButton.addActionListener(new ResetBuilderController(this));
 		bottomBarPanel.add(resetButton);
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
