@@ -132,7 +132,7 @@ public class MenuField extends JFrame {
 			levelNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			// only add padlock if it is unlocked
-			if(i < unlocked) levelNumPanel.add(levelNumLabel);
+			if(i <= unlocked) levelNumPanel.add(levelNumLabel);
 
 			JPanel levelNamePanel = new JPanel();
 			levelListPanel.add(levelNamePanel);
