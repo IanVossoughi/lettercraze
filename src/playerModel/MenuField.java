@@ -1,4 +1,4 @@
-package storyboard;
+package playerModel;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

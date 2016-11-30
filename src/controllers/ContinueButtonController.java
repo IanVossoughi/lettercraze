@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import storyboard.Main;
-import storyboard.MenuField;
+import playerModel.MenuField;
 
 public class ContinueButtonController implements ActionListener{
 

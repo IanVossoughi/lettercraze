@@ -1,4 +1,4 @@
-package storyboard;
+package playerModel;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -13,9 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import controllers.ContinueButtonController;
-import playerModel.PlayField;
 
 public class Main extends JFrame{
 	public static void main(String[] args) {
@@ -50,8 +47,13 @@ public class Main extends JFrame{
 		contentPane.add(chromiumIcon);
 		
 		JButton openLevelSelect = new JButton("Continue");
-		openLevelSelect.addActionListener(new ContinueButtonController(this));
-		
+		openLevelSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new MenuField().setVisible(true);
+				setVisible(false);
+				dispose();
+			}
+		});
 		
 		contentPane.add(openLevelSelect);
 	}

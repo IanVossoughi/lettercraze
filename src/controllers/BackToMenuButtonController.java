@@ -3,8 +3,8 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import storyboard.MenuField;
-import storyboard.PlayField;
+import playerModel.MenuField;
+import playerModel.PlayField;
 
 public class BackToMenuButtonController implements ActionListener {
 
