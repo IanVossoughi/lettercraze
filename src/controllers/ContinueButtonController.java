@@ -3,8 +3,8 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import playerModel.Main;
-import playerModel.MenuField;
+import playerBoundary.Main;
+import playerBoundary.MenuField;
 
 public class ContinueButtonController implements ActionListener{
 

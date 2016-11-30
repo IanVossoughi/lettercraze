@@ -1,4 +1,4 @@
-package playerModel;
+package playerBoundary;
 
 import java.io.File;
 import java.io.FileInputStream;

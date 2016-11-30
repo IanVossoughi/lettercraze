@@ -1,4 +1,4 @@
-package playerModel;
+package playerBoundary;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -62,10 +62,6 @@ public class MenuField extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuField() {
-		
-		int levelsUnlocked = new ProgressIO().loadUnlockedNum();
-		System.out.println("Levels unlocked: " + levelsUnlocked);
-		
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
@@ -128,13 +124,9 @@ public class MenuField extends JFrame {
 			levelListPanel.add(levelNumPanel);
 
 			JLabel levelNumLabel = new JLabel(Integer.toString(i));
-			levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock.png")));
+			levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/storyboard/padlock.png")));
 			levelNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			if(i <= levelsUnlocked){
-				levelNumPanel.add(levelNumLabel);
-			} else {
-				// Unlock padlock image
-			}
+			levelNumPanel.add(levelNumLabel);
 
 			JPanel levelNamePanel = new JPanel();
 			levelListPanel.add(levelNamePanel);
