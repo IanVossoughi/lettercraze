@@ -20,6 +20,9 @@ import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
+
+import controllers.mntmExitBuilderController;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -103,27 +106,8 @@ public class BuildField extends JFrame {
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmExitBuilder);
-		mntmExitBuilder.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Object[] options = {"Yes, please",
-						"No, thanks"};
-				int n = JOptionPane.showOptionDialog(new JFrame(),
-						"Do you wanna save?",
-								"save or nah",
-								JOptionPane.YES_NO_OPTION,
-								JOptionPane.WARNING_MESSAGE,
-								null,
-								options,
-								options[0]);
-				if(n == 0){
-					JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
-					/* TODO INSERT ACTUALLY SAVING LEVEL CODE */
-				}				
-				setVisible(false);
-				dispose();
-
-				}
-		});
+		mntmExitBuilder.addActionListener(new mntmExitBuilderController(this));
+		
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -232,8 +216,8 @@ public class BuildField extends JFrame {
 		contentPane.add(boardPanel, BorderLayout.WEST);
 		JButton[][] tileArray = new JButton[6][6];
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
-		Random rng = new Random();
-		String word = new String();
+		ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
+		ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				tileArray[i][j] = new JButton("");
@@ -241,33 +225,36 @@ public class BuildField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
-				char letter = (char) (rng.nextInt(26) + 65);
-				System.out.println(letter);
-				tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
-				if (i == 5) {
-					switch (j) {
-					case 0:
-						letter = 'K';
-						break;
-					case 1:
-						letter = 'N';
-						break;
-					case 2:
-						letter = 'I';
-						break;
-					case 3:
-						letter = 'F';
-						break;
-					case 4:
-						letter = 'E';
-						break;
+				int row = i;
+				int col = j;
+				tileArray[i][j].setIcon(greenIcon);
+				tileArray[i][j].addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						if (tileArray[row][col].getIcon().equals(greenIcon))
+							tileArray[row][col].setIcon(whiteIcon);
+						else
+							tileArray[row][col].setIcon(greenIcon);
 					}
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
-					word = word.concat(Character.toString(letter));
-				}
-				if (i == j) {
-					tileArray[i][j].setIcon(new ImageIcon(BuildField.class.getResource("/storyboard/square_32.png")));
-				}
+				});
+//				if (i == 5) {
+//					switch (j) {
+//					case 0:
+//						letter = 'K';
+//						break;
+//					case 1:
+//						letter = 'N';
+//						break;
+//					case 2:
+//						letter = 'I';
+//						break;
+//					case 3:
+//						letter = 'F';
+//						break;
+//					case 4:
+//						letter = 'E';
+//						break;
+//					}
+//				}
 				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				boardPanel.add(tileArray[i][j]);
 			}

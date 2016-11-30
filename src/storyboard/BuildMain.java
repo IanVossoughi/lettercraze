@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -14,12 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Main extends JFrame{
+public class BuildMain extends JFrame{
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame = new Main();
+					BuildMain frame = new BuildMain();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,8 +27,8 @@ public class Main extends JFrame{
 		});
 	}
 	
-	public Main(){
-		setTitle("LetterCraze Game");
+	public BuildMain(){
+		setTitle("LetterCraze LevelBuilder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setBounds(100, 100, 700, 600);
@@ -39,17 +38,17 @@ public class Main extends JFrame{
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		setContentPane(contentPane);
 		
-		JLabel teamName = new JLabel("LetterCraze - Team Chromium");
+		JLabel teamName = new JLabel("LevelBuilder - Team Chromium");
 		contentPane.add(teamName);
 		
 		JLabel chromiumIcon = new JLabel("");
-		chromiumIcon.setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/LCSplashScreen.png")));
+		chromiumIcon.setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/LBSplashScreen.png")));
 		contentPane.add(chromiumIcon);
 		
 		JButton openLevelSelect = new JButton("Continue");
 		openLevelSelect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new MenuField().setVisible(true);
+				new BuildField().setVisible(true);
 				setVisible(false);
 				dispose();
 			}

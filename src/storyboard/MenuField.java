@@ -27,6 +27,10 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
+
+import controllers.ExitButtonController;
+import controllers.PlayButtonController;
+
 import java.awt.Color;
 import javax.swing.JTabbedPane;
 
@@ -92,23 +96,13 @@ public class MenuField extends JFrame {
 		
 		JButton playButton = new JButton("Play");
 		bottomBarPanel.add(playButton);
-		playButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new PlayField().setVisible(true);
-				setVisible(false);
-				dispose();
-			}
-		});
+		playButton.addActionListener(new PlayButtonController(this));
 		
 		
 		JButton exitButton = new JButton("Exit");
 		bottomBarPanel.add(exitButton);
-		exitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				dispose();
-			}
-		});
+		exitButton.addActionListener(new ExitButtonController(this));
+		
 		
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));

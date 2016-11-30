@@ -29,6 +29,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
+
+import controllers.BackToMenuButtonController;
+
 import java.awt.Color;
 
 public class PlayField extends JFrame {
@@ -73,13 +76,8 @@ public class PlayField extends JFrame {
 		
 		JButton backToMenuButton = new JButton("Exit Level");
 		menuPanel.add(backToMenuButton);
-		backToMenuButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new MenuField().setVisible(true);
-				setVisible(false);
-				dispose();
-			}
-		});
+		backToMenuButton.addActionListener(new BackToMenuButtonController(this));
+		
 		
 		JPanel levelStarPanel = new JPanel();
 		menuPanel.add(levelStarPanel);
