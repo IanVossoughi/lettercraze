@@ -80,7 +80,7 @@ public class BuildField extends JFrame {
 	public BuildField() {
 		setTitle("LetterCraze Builder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setBounds(100, 100, 550, 400);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -88,9 +88,13 @@ public class BuildField extends JFrame {
 		JMenu mnNewMenu = new JMenu("File");
 		menuBar.add(mnNewMenu);
 
-		JMenuItem mntmNewresetLevel = new JMenuItem("New/Reset Level");
-		mntmNewresetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
-		mnNewMenu.add(mntmNewresetLevel);
+		JMenuItem mntmNewLevel = new JMenuItem("New Level");
+		mntmNewLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmNewLevel);
+		
+		JMenuItem mntmResetLevel = new JMenuItem("Reset Level");
+		mntmResetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmResetLevel);
 
 		JMenuItem mntmOpenLevel = new JMenuItem("Open Level");
 		mntmOpenLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
@@ -100,9 +104,9 @@ public class BuildField extends JFrame {
 		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmSaveLevel);
 
-		JMenuItem mntmResetLevel = new JMenuItem("Delete Level");
-		mntmResetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
-		mnNewMenu.add(mntmResetLevel);
+		JMenuItem mntmDeleteLevel = new JMenuItem("Delete Level");
+		mntmDeleteLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmDeleteLevel);
 
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
@@ -237,25 +241,7 @@ public class BuildField extends JFrame {
 							tileArray[row][col].setIcon(greenIcon);
 					}
 				});
-//				if (i == 5) {
-//					switch (j) {
-//					case 0:
-//						letter = 'K';
-//						break;
-//					case 1:
-//						letter = 'N';
-//						break;
-//					case 2:
-//						letter = 'I';
-//						break;
-//					case 3:
-//						letter = 'F';
-//						break;
-//					case 4:
-//						letter = 'E';
-//						break;
-//					}
-//				}
+
 				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				boardPanel.add(tileArray[i][j]);
 			}
