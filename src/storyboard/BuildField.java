@@ -20,6 +20,9 @@ import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
+
+import controllers.mntmExitBuilderController;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -103,27 +106,8 @@ public class BuildField extends JFrame {
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmExitBuilder);
-		mntmExitBuilder.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Object[] options = {"Yes, please",
-						"No, thanks"};
-				int n = JOptionPane.showOptionDialog(new JFrame(),
-						"Do you wanna save?",
-								"save or nah",
-								JOptionPane.YES_NO_OPTION,
-								JOptionPane.WARNING_MESSAGE,
-								null,
-								options,
-								options[0]);
-				if(n == 0){
-					JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
-					/* TODO INSERT ACTUALLY SAVING LEVEL CODE */
-				}				
-				setVisible(false);
-				dispose();
-
-				}
-		});
+		mntmExitBuilder.addActionListener(new mntmExitBuilderController(this));
+		
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
