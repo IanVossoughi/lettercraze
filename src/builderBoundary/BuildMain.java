@@ -44,7 +44,7 @@ public class BuildMain extends JFrame{
 		contentPane.add(teamName);
 		
 		JLabel chromiumIcon = new JLabel("");
-		chromiumIcon.setIcon(new ImageIcon(PlayField.class.getResource("/storyboard/LBSplashScreen.png")));
+		chromiumIcon.setIcon(new ImageIcon(PlayField.class.getResource("/general/LBSplashScreen.png")));
 		contentPane.add(chromiumIcon);
 		
 		JButton openLevelSelect = new JButton("Continue");
