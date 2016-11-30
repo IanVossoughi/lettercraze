@@ -22,6 +22,7 @@ import java.awt.Dimension;
 import javax.swing.border.EtchedBorder;
 
 import controllers.ExitBuilderController;
+import controllers.NewLevelBuilderController;
 import playerBoundary.PlayField;
 
 import javax.swing.JComboBox;
@@ -91,6 +92,7 @@ public class BuildField extends JFrame {
 		JMenuItem mntmNewLevel = new JMenuItem("New Level");
 		mntmNewLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmNewLevel);
+		mntmNewLevel.addActionListener(new NewLevelBuilderController(this));
 		
 		JMenuItem mntmResetLevel = new JMenuItem("Reset Level");
 		mntmResetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));
