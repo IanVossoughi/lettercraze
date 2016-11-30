@@ -185,6 +185,7 @@ public class BuildField extends JFrame {
 		timeField.setColumns(5);
 
 		JButton resetButton = new JButton("Reset");
+		resetButton.addActionListener(new ResetBuilderController(this));
 		bottomBarPanel.add(resetButton);
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
@@ -194,7 +195,7 @@ public class BuildField extends JFrame {
 
 		JScrollPane wordListPanel = new JScrollPane();
 		sidebarPanel.add(wordListPanel, BorderLayout.CENTER);
-
+ 
 		JList<String> wordList = new JList<String>();
 		DefaultListModel<String> listModel = new DefaultListModel<String>();
 		listModel.addElement("WORDY");
