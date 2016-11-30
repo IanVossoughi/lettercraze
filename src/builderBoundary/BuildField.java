@@ -195,7 +195,7 @@ public class BuildField extends JFrame {
 
 		JList<String> wordList = new JList<String>();
 		DefaultListModel<String> listModel = new DefaultListModel<String>();
-		listModel.addElement("KNIFE");
+		listModel.addElement("WORDY");
 		wordList.setModel(listModel);
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
