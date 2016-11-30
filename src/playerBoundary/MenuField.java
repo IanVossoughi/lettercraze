@@ -62,6 +62,10 @@ public class MenuField extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuField() {
+		
+		int unlocked = new ProgressIO().loadUnlockedNum();
+		System.out.println("Unlocked: " + unlocked);
+		
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
@@ -124,9 +128,11 @@ public class MenuField extends JFrame {
 			levelListPanel.add(levelNumPanel);
 
 			JLabel levelNumLabel = new JLabel(Integer.toString(i));
-			levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/storyboard/padlock.png")));
+			levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock.png")));
 			levelNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			levelNumPanel.add(levelNumLabel);
+			
+			// only add padlock if it is unlocked
+			if(i < unlocked) levelNumPanel.add(levelNumLabel);
 
 			JPanel levelNamePanel = new JPanel();
 			levelListPanel.add(levelNamePanel);
@@ -159,7 +165,7 @@ public class MenuField extends JFrame {
 			JLabel highScoreNumLabel = new JLabel("999");
 			scorePanel.add(highScoreNumLabel);
 
-			ImageIcon star = new ImageIcon(MenuField.class.getResource("/storyboard/star.png"));
+			ImageIcon star = new ImageIcon(MenuField.class.getResource("/general/star.png"));
 			JLabel star1Label = new JLabel("");
 			scorePanel.add(star1Label);
 			star1Label.setIcon(star);
