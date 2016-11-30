@@ -1,4 +1,4 @@
-package storyboard;
+package playerModel;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -19,7 +19,6 @@ import java.awt.GridLayout;
 //import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
@@ -61,7 +60,6 @@ public class MenuField extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @throws  
 	 */
 	public MenuField() {
 		setTitle("LetterCraze Game");

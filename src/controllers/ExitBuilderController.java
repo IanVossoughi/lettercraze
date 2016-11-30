@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import storyboard.BuildField;
+import builderModel.BuildField;
 
 public class ExitBuilderController implements ActionListener {
 
