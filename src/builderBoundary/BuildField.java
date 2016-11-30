@@ -1,5 +1,5 @@
 // Ian Test 11/28 2:30 PM
-package builderModel;
+package builderBoundary;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -22,7 +22,7 @@ import java.awt.Dimension;
 import javax.swing.border.EtchedBorder;
 
 import controllers.ExitBuilderController;
-import playerModel.PlayField;
+import playerBoundary.PlayField;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;

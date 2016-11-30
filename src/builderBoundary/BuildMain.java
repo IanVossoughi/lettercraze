@@ -1,4 +1,4 @@
-package builderModel;
+package builderBoundary;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import playerModel.PlayField;
+import playerBoundary.PlayField;
 
 public class BuildMain extends JFrame{
 	public static void main(String[] args) {
