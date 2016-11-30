@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controllers.ContinueButtonController;
+
 public class Main extends JFrame{
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -47,13 +49,8 @@ public class Main extends JFrame{
 		contentPane.add(chromiumIcon);
 		
 		JButton openLevelSelect = new JButton("Continue");
-		openLevelSelect.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new MenuField().setVisible(true);
-				setVisible(false);
-				dispose();
-			}
-		});
+		openLevelSelect.addActionListener(new ContinueButtonController(this));
+		
 		
 		contentPane.add(openLevelSelect);
 	}
