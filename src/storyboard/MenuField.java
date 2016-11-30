@@ -19,6 +19,7 @@ import java.awt.GridLayout;
 //import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
@@ -60,8 +61,13 @@ public class MenuField extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws  
 	 */
 	public MenuField() {
+		
+		//int levelsUnlocked = new ProgressIO().loadUnlockedNum();
+		
+		
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
