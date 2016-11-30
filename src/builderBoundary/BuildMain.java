@@ -53,7 +53,6 @@ public class BuildMain extends JFrame{
 				new BuildField().setVisible(true);
 				setVisible(false);
 				dispose();
-				new BuildField().setVisible(true);
 			}
 		});
 		
