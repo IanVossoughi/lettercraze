@@ -3,7 +3,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import storyboard.Main;
+import playerModel.Main;
 import playerModel.MenuField;
 
 public class ContinueButtonController implements ActionListener{
