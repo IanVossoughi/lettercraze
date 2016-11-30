@@ -195,7 +195,7 @@ public class BuildField extends JFrame {
 
 		JScrollPane wordListPanel = new JScrollPane();
 		sidebarPanel.add(wordListPanel, BorderLayout.CENTER);
- 
+
 		JList<String> wordList = new JList<String>();
 		DefaultListModel<String> listModel = new DefaultListModel<String>();
 		listModel.addElement("WORDY");
