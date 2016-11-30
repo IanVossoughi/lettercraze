@@ -21,7 +21,8 @@ import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
 
-import controllers.mntmExitBuilderController;
+import controllers.ExitBuilderController;
+
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -106,7 +107,7 @@ public class BuildField extends JFrame {
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmExitBuilder);
-		mntmExitBuilder.addActionListener(new mntmExitBuilderController(this));
+		mntmExitBuilder.addActionListener(new ExitBuilderController(this));
 		
 
 		contentPane = new JPanel();

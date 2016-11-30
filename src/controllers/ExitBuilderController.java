@@ -8,11 +8,11 @@ import javax.swing.JOptionPane;
 
 import storyboard.BuildField;
 
-public class mntmExitBuilderController implements ActionListener {
+public class ExitBuilderController implements ActionListener {
 
 	private BuildField buildField;
 
-	public mntmExitBuilderController(BuildField buildField) {
+	public ExitBuilderController(BuildField buildField) {
 		this.buildField = buildField;
 	}
 
