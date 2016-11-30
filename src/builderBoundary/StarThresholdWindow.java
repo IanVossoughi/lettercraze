@@ -85,7 +85,7 @@ public class StarThresholdWindow extends JFrame {
 		panel_1.add(panel_4);
 		
 		JLabel label = new JLabel("Star 3:");
-		label.setIcon(new ImageIcon(StarThresholdWindow.class.getResource("/storyboard/star.png")));
+		label.setIcon(new ImageIcon(StarThresholdWindow.class.getResource("/general/star.png")));
 		panel_4.add(label);
 		
 		textField_1 = new JTextField();
