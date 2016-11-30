@@ -10,19 +10,33 @@ public class ProgressIO {
 	
 	public ProgressIO(){}
 	
-	public void saveUnlockedNum(int num) throws IOException{
+	public void saveUnlockedNum(int num){
+		try{
 		File outFile = new File("progress.txt");
 		outFile.createNewFile();
 		FileOutputStream out = new FileOutputStream(outFile, false);
-		System.out.print("Test TEst");
 		out.write(num);
 		out.close();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
 	}
 	
-	public int loadUnlockedNum() throws IOException{
-		FileInputStream in = new FileInputStream("progress.txt");
-		int num = (int)in.read();
-		in.close();
+	public int loadUnlockedNum(){
+		FileInputStream in;
+		int num = -1; // Error if this returns
+		try {
+			in = new FileInputStream("progress.txt");
+			num = (int)in.read();
+			in.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return num;
 	}
 }
