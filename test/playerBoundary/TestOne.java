@@ -7,7 +7,6 @@ public class TestOne extends TestCase {
 	@Override
 	protected void setUp() {
 		something = new Main();
-		something.initialize(); 
 	}
 	@Override
 	protected void tearDown() {
