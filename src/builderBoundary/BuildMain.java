@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controllers.ContinueBuilderController;
 import playerBoundary.PlayField;
 
 public class BuildMain extends JFrame{
@@ -48,13 +49,8 @@ public class BuildMain extends JFrame{
 		contentPane.add(chromiumIcon);
 		
 		JButton openLevelSelect = new JButton("Continue");
-		openLevelSelect.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new BuildField().setVisible(true);
-				setVisible(false);
-				dispose();
-			}
-		});
+		openLevelSelect.addActionListener(new ContinueBuilderController(this));
+		
 		
 		contentPane.add(openLevelSelect);
 	}
