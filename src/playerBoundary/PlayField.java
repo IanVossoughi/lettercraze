@@ -31,6 +31,11 @@ import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
 
 import controllers.BackToMenuButtonController;
+import controllers.DeselectButtonController;
+import controllers.ExitBuilderController;
+import controllers.ResetButtonController;
+import controllers.SubmitButtonController;
+import controllers.UndoButtonController;
 
 import java.awt.Color;
 
@@ -134,9 +139,13 @@ public class PlayField extends JFrame {
 		JButton submitButton = new JButton("Submit");
 		submitWordPanel.add(submitButton);
 		submitButton.setHorizontalAlignment(SwingConstants.LEADING);
-		
+		/*TODO: change constructor to SubmitButtonController if needed*/
+		submitButton.addActionListener(new SubmitButtonController());
+
 		JButton btnDeselectWord = new JButton("Deselect");
 		submitWordPanel.add(btnDeselectWord);
+		/*TODO: change constructor to SubmitButtonController if needed*/
+		btnDeselectWord.addActionListener(new DeselectButtonController());
 		
 		JPanel taskPanel = new JPanel();
 		taskPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -153,10 +162,14 @@ public class PlayField extends JFrame {
 		
 		JButton undoButton = new JButton("Undo");
 		taskPanel.add(undoButton);
+		/* TODO add constructor to UndoButtonController if needed*/
+		undoButton.addActionListener(new UndoButtonController());
 		
 		JButton resetButton = new JButton("Reset");
 		taskPanel.add(resetButton);
-		
+		/* TODO add constructor to ResetButtonController if needed*/
+		resetButton.addActionListener(new ResetButtonController());
+
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
 		contentPane.add(sidebarPanel, BorderLayout.EAST);
