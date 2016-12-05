@@ -29,11 +29,11 @@ public class ResetBuilderController implements ActionListener {
 				options,
 				options[0]);
 		if(n == 0){
-			JOptionPane.showMessageDialog(new JFrame(),"Level reset.");
 			/* TODO INSERT ACTUAL RESET CODE */
 			buildField.setVisible(false);
 			buildField.dispose();
 			new BuildField().setVisible(true);
+			JOptionPane.showMessageDialog(new JFrame(),"Level reset.");
 		}
 
 	}
