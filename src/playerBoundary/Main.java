@@ -28,7 +28,7 @@ public class Main extends JFrame{
 		});
 	}
 	
-	public void initialize(){
+	public Main(){
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
