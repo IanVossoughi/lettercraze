@@ -19,7 +19,7 @@ public class Main extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame = new Main();
+					Main frame = new Main();	
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
