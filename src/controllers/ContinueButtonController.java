@@ -19,5 +19,5 @@ public class ContinueButtonController implements ActionListener{
 		main.setVisible(false);
 		main.dispose();
 	}
-
+	
 }
