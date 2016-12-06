@@ -23,7 +23,10 @@ import javax.swing.border.EtchedBorder;
 
 import controllers.BuilderClickTileController;
 import controllers.ExitBuilderController;
+import controllers.FilePicker;
+import controllers.SaveLevelButtonController;
 import controllers.NewLevelBuilderController;
+import controllers.OpenLevelButtonController;
 import controllers.ResetBuilderController;
 import entities.Model;
 import playerBoundary.PlayField;
@@ -113,10 +116,12 @@ public class BuildField extends JFrame {
 		JMenuItem mntmOpenLevel = new JMenuItem("Open Level");
 		mntmOpenLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmOpenLevel);
+		mntmOpenLevel.addActionListener(new OpenLevelButtonController(contentPane));
 
 		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
 		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmSaveLevel);
+		mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
 
 		JMenuItem mntmDeleteLevel = new JMenuItem("Delete Level");
 		mntmDeleteLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
