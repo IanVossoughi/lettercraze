@@ -20,6 +20,7 @@ import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
 
+import controllers.AddButtonController;
 import controllers.BuilderClickTileController;
 import controllers.ExitBuilderController;
 import controllers.FilePicker;
@@ -27,6 +28,7 @@ import controllers.LevelNameListener;
 import controllers.SaveLevelButtonController;
 import controllers.NewLevelBuilderController;
 import controllers.OpenLevelButtonController;
+import controllers.OpenStarWindowController;
 import controllers.ResetBuilderController;
 import entities.Model;
 import playerBoundary.PlayField;
@@ -180,12 +182,14 @@ public class BuildField extends JFrame {
 
 		JButton starThresholdButton = new JButton("Set Star Points");
 		starPanel.add(starThresholdButton);
-		starThresholdButton.addActionListener(new ActionListener() {
+		starThresholdButton.addActionListener(new OpenStarWindowController(m));
+				
+				/*new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				StarThresholdWindow thresholdWindow = new StarThresholdWindow();
+				StarThresholdWindow thresholdWindow = new StarThresholdWindow(m);
 				thresholdWindow.setVisible(true);
 			}
-		});
+		});*/
 
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
@@ -214,9 +218,8 @@ public class BuildField extends JFrame {
 		sidebarPanel.add(wordListPanel, BorderLayout.CENTER);
 
 		JList<String> wordList = new JList<String>();
-		DefaultListModel<String> listModel = new DefaultListModel<String>();
-		listModel.addElement("WORDY");
-		wordList.setModel(listModel);
+		wordList.setModel(m.getWordListModel());
+
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		wordListPanel.setViewportView(wordList);
@@ -229,6 +232,7 @@ public class BuildField extends JFrame {
 		sidebarPanel.add(addRemoveWordPanel, BorderLayout.SOUTH);
 
 		JButton enterWordButton = new JButton("Add");
+		enterWordButton.addActionListener(new AddButtonController(this, m));
 		addRemoveWordPanel.add(enterWordButton);
 
 		wordEntryField = new JTextField();
@@ -284,6 +288,14 @@ public class BuildField extends JFrame {
 			}
 		}
 		
+	}
+	
+	public String getWordEntryField() {
+		return this.wordEntryField.getText();
+	}
+	
+	public void setWordEntryField(String entry) {
+		this.wordEntryField.setText(entry);
 	}
 
 }
