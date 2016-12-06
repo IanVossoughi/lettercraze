@@ -113,6 +113,12 @@ public class StarThresholdWindow extends JFrame {
 			}
 		});*/
 		panel_2.add(btnDone);
+		
+		if(m.getScore() != null){
+			textField.setText("" + m.getScore().starScores[0]);
+			textField_1.setText("" + m.getScore().starScores[1]);
+			textField_2.setText("" + m.getScore().starScores[2]);
+		}
 	}
 
 }
