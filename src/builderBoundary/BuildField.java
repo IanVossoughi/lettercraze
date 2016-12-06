@@ -28,6 +28,7 @@ import controllers.LevelNameListener;
 import controllers.SaveLevelButtonController;
 import controllers.NewLevelBuilderController;
 import controllers.OpenLevelButtonController;
+import controllers.OpenStarWindowController;
 import controllers.ResetBuilderController;
 import entities.Model;
 import playerBoundary.PlayField;
@@ -181,12 +182,14 @@ public class BuildField extends JFrame {
 
 		JButton starThresholdButton = new JButton("Set Star Points");
 		starPanel.add(starThresholdButton);
-		starThresholdButton.addActionListener(new ActionListener() {
+		starThresholdButton.addActionListener(new OpenStarWindowController(m));
+				
+				/*new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				StarThresholdWindow thresholdWindow = new StarThresholdWindow();
+				StarThresholdWindow thresholdWindow = new StarThresholdWindow(m);
 				thresholdWindow.setVisible(true);
 			}
-		});
+		});*/
 
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);

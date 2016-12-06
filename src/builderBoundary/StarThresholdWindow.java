@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controllers.StarScoreController;
+import entities.Model;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -21,11 +25,12 @@ public class StarThresholdWindow extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	protected Model m;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -36,12 +41,14 @@ public class StarThresholdWindow extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public StarThresholdWindow() {
+	public StarThresholdWindow(Model m) {
+		this.m = m;
+		
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
 		contentPane = new JPanel();
@@ -96,12 +103,15 @@ public class StarThresholdWindow extends JFrame {
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 		
 		JButton btnDone = new JButton("Done");
-		btnDone.addActionListener(new ActionListener() {
+		btnDone.addActionListener(new StarScoreController(m, textField, textField_1, textField_2, this));
+				
+				
+				/*new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
-		});
+		});*/
 		panel_2.add(btnDone);
 	}
 

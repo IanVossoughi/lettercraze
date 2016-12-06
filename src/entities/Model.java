@@ -38,4 +38,12 @@ public class Model {
 	public void addWordListModel(String word) {
 		wordListModel.addElement(word);
 	}
+	
+	public Score getScore(){
+		return this.score;
+	}
+
+	public void setScore(Score score) {
+		this.score = score;
+	}
 }
