@@ -25,7 +25,7 @@ public class BuilderClickTileController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		//System.out.println(x + " " + y);
-		Tile clickedTile = this.m.board.getTile(x, y);
+		Tile clickedTile = this.m.getBoard().getTile(x, y);
 		clickedTile.toggleEnabled();
 		b.refreshBoard();
 		
