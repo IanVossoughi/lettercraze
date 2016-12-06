@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.File;
+
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
@@ -11,18 +13,18 @@ public class FilePicker {
 		this.panel = panel;
 	}
 	
-	public String open(){
+	public File open(){
 		JFileChooser chooser = new JFileChooser();
 		if(chooser.showOpenDialog(panel) == JFileChooser.APPROVE_OPTION){
-			return chooser.getSelectedFile().getName();
+			return chooser.getSelectedFile();
 		}
 		return null;
 	}
 	
-	public String save(){
+	public File save(){
 		JFileChooser chooser = new JFileChooser();
 		if(chooser.showSaveDialog(panel) == JFileChooser.APPROVE_OPTION){
-			return chooser.getSelectedFile().getName();
+			return chooser.getSelectedFile();
 		}
 		return null;
 	}

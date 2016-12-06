@@ -23,7 +23,7 @@ public class SaveLevelButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		String filename = new FilePicker(contentPane).save();
+		String filename = new FilePicker(contentPane).save().getAbsolutePath();
 		this.saveLevel(filename);	
 	}
 	
