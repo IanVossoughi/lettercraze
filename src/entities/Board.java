@@ -2,6 +2,7 @@ package entities;
 
 public class Board {
 	public Tile[][] tiles;
+	Coordinate currentTile;
 	
 	public Board() {
 		this.tiles = new Tile[6][6];
