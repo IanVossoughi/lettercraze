@@ -30,4 +30,12 @@ public class Model {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public DefaultListModel<String> getWordListModel() {
+		return wordListModel;
+	}
+	
+	public void addWordListModel(String word) {
+		wordListModel.addElement(word);
+	}
 }

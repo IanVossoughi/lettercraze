@@ -20,6 +20,7 @@ import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
 
+import controllers.AddButtonController;
 import controllers.BuilderClickTileController;
 import controllers.ExitBuilderController;
 import controllers.FilePicker;
@@ -214,6 +215,7 @@ public class BuildField extends JFrame {
 		sidebarPanel.add(wordListPanel, BorderLayout.CENTER);
 
 		JList<String> wordList = new JList<String>();
+		wordList.setModel(m.getWordListModel());
 
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -227,6 +229,7 @@ public class BuildField extends JFrame {
 		sidebarPanel.add(addRemoveWordPanel, BorderLayout.SOUTH);
 
 		JButton enterWordButton = new JButton("Add");
+		enterWordButton.addActionListener(new AddButtonController(this, m));
 		addRemoveWordPanel.add(enterWordButton);
 
 		wordEntryField = new JTextField();
@@ -282,6 +285,14 @@ public class BuildField extends JFrame {
 			}
 		}
 		
+	}
+	
+	public String getWordEntryField() {
+		return this.wordEntryField.getText();
+	}
+	
+	public void setWordEntryField(String entry) {
+		this.wordEntryField.setText(entry);
 	}
 
 }
