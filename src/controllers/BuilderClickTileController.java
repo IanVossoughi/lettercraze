@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import builderBoundary.BuildField;
+import entities.Board;
 import entities.Model;
+import entities.Tile;
 
 public class BuilderClickTileController implements ActionListener {
 
@@ -17,11 +19,15 @@ public class BuilderClickTileController implements ActionListener {
 		this.x = x;
 		this.y = y;
 		this.b = b;
+		this.m = m;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		// TODO Auto-generated method stub
+		//System.out.println(x + " " + y);
+		Tile clickedTile = this.m.board.getTile(x, y);
+		clickedTile.toggleEnabled();
+		b.refreshBoard();
 		
 	}
 }

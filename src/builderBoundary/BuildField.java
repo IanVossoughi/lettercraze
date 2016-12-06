@@ -62,6 +62,10 @@ public class BuildField extends JFrame {
 	private JTextField levelNameField;
 	private JTextField wordEntryField;
 	private Model m;
+	private JButton[][] tileArray;
+	
+	private ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
+ 	private ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
 
 	/**
 	 * Launch the application.
@@ -230,10 +234,9 @@ public class BuildField extends JFrame {
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.WEST);
-		JButton[][] tileArray = new JButton[6][6];
+		tileArray = new JButton[6][6];
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
-		ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
-		ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
+		
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				tileArray[i][j] = new JButton("");
@@ -260,6 +263,20 @@ public class BuildField extends JFrame {
 				boardPanel.add(tileArray[i][j]);
 			}
 		}
+	}
+	
+	public void refreshBoard(){
+		for(int x = 0; x < 6; x++){
+			for(int y = 0; y < 6; y++){
+				JButton tile = tileArray[x][y];
+				if(m.board.tiles[x][y].isEnabled()){
+					tile.setIcon(greenIcon);
+				} else {
+					tile.setIcon(whiteIcon);
+				}
+			}
+		}
+		
 	}
 
 }
