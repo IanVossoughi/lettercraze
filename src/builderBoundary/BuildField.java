@@ -190,8 +190,8 @@ public class BuildField extends JFrame {
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
 
-		JButton undoButton = new JButton("Undo");
-		bottomBarPanel.add(undoButton);
+		/*JButton undoButton = new JButton("Undo");
+		bottomBarPanel.add(undoButton);*/
 
 		JLabel timeLabel = new JLabel("Time:");
 		bottomBarPanel.add(timeLabel);
