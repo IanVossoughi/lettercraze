@@ -1,4 +1,3 @@
-// Ian Test 11/28 2:30 PM
 package builderBoundary;
 
 import java.awt.BorderLayout;
@@ -116,7 +115,7 @@ public class BuildField extends JFrame {
 		JMenuItem mntmOpenLevel = new JMenuItem("Open Level");
 		mntmOpenLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmOpenLevel);
-		mntmOpenLevel.addActionListener(new OpenLevelButtonController(contentPane));
+		mntmOpenLevel.addActionListener(new OpenLevelButtonController(m, contentPane, this));
 
 		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
 		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));

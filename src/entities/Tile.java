@@ -6,7 +6,7 @@ public class Tile {
 	char letter; // Even though Q is Qu, just set this to Q - it can show Qu in the display
 	//int points; Shouldn't we evaluate points somewhere else?
 	
-	Tile(char letter) {
+	public Tile(char letter) {
 		this.enabled = false;
 		this.selected = false;
 		this.letter = letter;

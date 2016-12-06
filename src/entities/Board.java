@@ -3,7 +3,7 @@ package entities;
 public class Board {
 	public Tile[][] tiles;
 	
-	Board() {
+	public Board() {
 		this.tiles = new Tile[6][6];
 		this.fillBoard();
 	}
