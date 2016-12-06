@@ -214,9 +214,7 @@ public class BuildField extends JFrame {
 		sidebarPanel.add(wordListPanel, BorderLayout.CENTER);
 
 		JList<String> wordList = new JList<String>();
-		DefaultListModel<String> listModel = new DefaultListModel<String>();
-		listModel.addElement("WORDY");
-		wordList.setModel(listModel);
+
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		wordListPanel.setViewportView(wordList);
