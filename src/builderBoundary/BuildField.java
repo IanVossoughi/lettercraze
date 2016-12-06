@@ -273,7 +273,7 @@ public class BuildField extends JFrame {
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				JButton tile = tileArray[x][y];
-				if(m.board.tiles[x][y].isEnabled()){
+				if(m.getBoard().tiles[x][y].isEnabled()){
 					tile.setIcon(greenIcon);
 				} else {
 					tile.setIcon(whiteIcon);

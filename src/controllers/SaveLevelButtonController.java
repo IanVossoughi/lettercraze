@@ -37,7 +37,7 @@ public class SaveLevelButtonController implements ActionListener {
 		FileOutputStream out;
 		try {
 			out = new FileOutputStream(filename);
-			out.write(m.board.serialize().getBytes());
+			out.write(m.getBoard().serialize().getBytes());
 			out.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

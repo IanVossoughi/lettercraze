@@ -39,7 +39,7 @@ public class OpenLevelButtonController implements ActionListener {
 	private void loadLevel(String filename) {
 		//Board newBoard = new Board();
 		//Model m = new Model();
-		m.board = new Board();
+		m.setBoard(new Board());
 		try {
 			FileInputStream in = new FileInputStream(filename);
 			for(int x = 0; x < 6; x++){
@@ -53,7 +53,7 @@ public class OpenLevelButtonController implements ActionListener {
 					}
 					System.out.print(nextChar);
 					//newBoard.tiles[x][y] = newTile;
-					m.board.tiles[x][y] = newTile;
+					m.getBoard().tiles[x][y] = newTile;
 				}
 				System.out.print("\n");
 			}
