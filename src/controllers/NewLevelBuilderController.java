@@ -1,15 +1,7 @@
 package controllers;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.JFrame;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
+import java.awt.event.*;
+import javax.swing.*;
 
 import builderBoundary.BuildField;
 import entities.Model;
@@ -39,7 +31,10 @@ public class NewLevelBuilderController implements ActionListener {
 				options,
 				options[0]);
 		if(n == 0){
+			JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
+			mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
 			JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
+
 		}				
 		buildField.setVisible(false);
 		buildField.dispose();

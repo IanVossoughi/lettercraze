@@ -46,7 +46,6 @@ public class SaveLevelButtonController implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
 }
