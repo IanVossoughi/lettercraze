@@ -23,6 +23,7 @@ import javax.swing.border.EtchedBorder;
 import controllers.BuilderClickTileController;
 import controllers.ExitBuilderController;
 import controllers.FilePicker;
+import controllers.LevelNameListener;
 import controllers.SaveLevelButtonController;
 import controllers.NewLevelBuilderController;
 import controllers.OpenLevelButtonController;
@@ -157,6 +158,8 @@ public class BuildField extends JFrame {
 		levelNameField = new JTextField();
 		panel.add(levelNameField);
 		levelNameField.setColumns(10);
+		//levelNameField.addActionListener(new LevelNameListener(levelNameField, m));
+		levelNameField.addKeyListener(new LevelNameListener(levelNameField, m));
 
 		JPanel starPanel = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) starPanel.getLayout();

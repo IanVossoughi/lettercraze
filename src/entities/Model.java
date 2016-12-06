@@ -23,4 +23,8 @@ public class Model {
 		// TODO Auto-generated method stub
 		this.board = board2;
 	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 }
