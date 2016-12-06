@@ -27,4 +27,12 @@ public class Model {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public Score getScore(){
+		return this.score;
+	}
+
+	public void setScore(Score score) {
+		this.score = score;
+	}
 }
