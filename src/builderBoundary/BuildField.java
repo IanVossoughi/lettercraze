@@ -21,9 +21,11 @@ import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
 
+import controllers.BuilderClickTileController;
 import controllers.ExitBuilderController;
 import controllers.NewLevelBuilderController;
 import controllers.ResetBuilderController;
+import entities.Model;
 import playerBoundary.PlayField;
 
 import javax.swing.JComboBox;
@@ -59,6 +61,7 @@ public class BuildField extends JFrame {
 	private JTextField timeField;
 	private JTextField levelNameField;
 	private JTextField wordEntryField;
+	private Model m;
 
 	/**
 	 * Launch the application.
@@ -80,6 +83,9 @@ public class BuildField extends JFrame {
 	 * Create the frame.
 	 */
 	public BuildField() {
+		// Initialize Model
+		this.m = new Model();
+		
 		setTitle("LetterCraze Builder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
@@ -238,14 +244,17 @@ public class BuildField extends JFrame {
 				int row = i;
 				int col = j;
 				tileArray[i][j].setIcon(greenIcon);
-				tileArray[i][j].addActionListener(new ActionListener() {
+				tileArray[i][j].addActionListener(new BuilderClickTileController(m, this, i, j));
+						
+						
+						/*new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						if (tileArray[row][col].getIcon().equals(greenIcon))
 							tileArray[row][col].setIcon(whiteIcon);
 						else
 							tileArray[row][col].setIcon(greenIcon);
 					}
-				});
+				}*/
 
 				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				boardPanel.add(tileArray[i][j]);

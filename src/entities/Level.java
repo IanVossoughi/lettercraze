@@ -11,7 +11,7 @@ public class Level {
 	ArrayList<Word> wordList;
 	Word selectedWord;
 	
-	Level(String title) {
-		this.title = title;
+	Level() {
+		
 	}
 }
