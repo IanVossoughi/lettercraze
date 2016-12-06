@@ -16,8 +16,10 @@ public class Tile {
 	public Tile toggleEnabled(){
 		if(enabled){
 			enabled = false;
+			this.letter = '!'; // Sentinel value;
 		} else {
 			enabled = true;
+			this.letter = 'q';
 		}
 		return this;
 	}

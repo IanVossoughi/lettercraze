@@ -2,6 +2,9 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 
@@ -24,8 +27,25 @@ public class SaveLevelButtonController implements ActionListener {
 		this.saveLevel(filename);	
 	}
 	
+	/*
+	 * Saves a textual representation of the game's board.
+	 * If a tile is active, it will store the tile's character.
+	 * If a tile is inactive, it will store the sentinel value '!'.
+	 */
 	public void saveLevel(String filename){
 		System.out.println("Saving file: " + filename);
+		FileOutputStream out;
+		try {
+			out = new FileOutputStream(filename);
+			out.write(m.board.serialize().getBytes());
+			out.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
