@@ -106,7 +106,7 @@ public class BuildField extends JFrame {
 		JMenuItem mntmNewLevel = new JMenuItem("New Level");
 		mntmNewLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmNewLevel);
-		mntmNewLevel.addActionListener(new NewLevelBuilderController(this));
+		mntmNewLevel.addActionListener(new NewLevelBuilderController(this, m, contentPane));
 		
 		JMenuItem mntmResetLevel = new JMenuItem("Reset Level");
 		mntmResetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));

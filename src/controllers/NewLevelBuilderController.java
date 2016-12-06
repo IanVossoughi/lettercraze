@@ -2,18 +2,28 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 import builderBoundary.BuildField;
+import entities.Model;
 
 public class NewLevelBuilderController implements ActionListener {
 
 	private BuildField buildField;
+	private Model m;
+	private JPanel contentPane;
 
-	public NewLevelBuilderController(BuildField buildField) {
+	public NewLevelBuilderController(BuildField buildField, Model m, JPanel contentPane) {
 		this.buildField = buildField;
+		this.m = m;
+		this.contentPane = contentPane;
 	}
 
 	@Override
@@ -30,7 +40,6 @@ public class NewLevelBuilderController implements ActionListener {
 				options[0]);
 		if(n == 0){
 			JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
-			/* TODO INSERT ACTUALLY SAVING LEVEL CODE */
 		}				
 		buildField.setVisible(false);
 		buildField.dispose();
