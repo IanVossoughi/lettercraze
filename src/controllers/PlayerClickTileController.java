@@ -28,9 +28,9 @@ public class PlayerClickTileController implements ActionListener {
 		//System.out.println(x + " " + y);
 		Tile clickedTile = this.m.getBoard().getTile(x, y);
 		clickedTile.toggleSelected();
-		p.refreshBoard();
 		if (clickedTile.isSelected()) {
 			m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + clickedTile.getLetter());
 		}
+		p.refreshBoard();
 	}
 }
