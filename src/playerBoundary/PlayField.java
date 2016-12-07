@@ -27,6 +27,7 @@ import java.awt.FlowLayout;
 
 import controllers.BackToMenuButtonController;
 import controllers.DeselectButtonController;
+import controllers.PlayerClickTileController;
 import controllers.ResetButtonController;
 import controllers.SubmitButtonController;
 import controllers.UndoButtonController;
@@ -191,7 +192,7 @@ public class PlayField extends JFrame {
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.CENTER);
-		JButton[][] tileArray = new JButton[6][6];
+		tileArray = new JButton[6][6];
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
 		Random rng = new Random();
 		String word = new String();
@@ -202,6 +203,7 @@ public class PlayField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
+				tileArray[i][j].addActionListener(new PlayerClickTileController(m, this, i, j));
 				char letter = m.getBoard().getTile(i,j).getLetter();
 				//char letter = (char) (rng.nextInt(26) + 65);
 				System.out.println(letter);

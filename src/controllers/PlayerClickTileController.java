@@ -28,13 +28,14 @@ public class PlayerClickTileController implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		//System.out.println(x + " " + y);
 		Tile clickedTile = this.m.getBoard().getTile(x, y);
-		clickedTile.toggleSelected();
+
 		Coordinate currentTile = m.getBoard().getSelectedTileCoords();
 		boolean firstTile = false;
 		if (currentTile.x < 0) {
 			firstTile = true;
 		}
-		if(firstTile || (Math.abs(x - currentTile.x) < 2) && (Math.abs(y - currentTile.y) < 2) && (!clickedTile.isSelected())) {
+		if(firstTile || ((Math.abs(x - currentTile.x) < 2) && (Math.abs(y - currentTile.y) < 2) && (!clickedTile.isSelected()))) {
+			clickedTile.toggleSelected();
 			if (clickedTile.isSelected()) {
 				m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + clickedTile.getLetter());
 				m.getBoard().setSelectedTileCoords(new Coordinate(x,y));

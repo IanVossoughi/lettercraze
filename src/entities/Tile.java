@@ -11,7 +11,7 @@ public class Tile {
 	public Tile(char letter) {
 		this.enabled = false;
 		this.selected = false;
-		this.letter = letter;
+		this.letter = randomLetter();
 		//this.points = points;
 	}
 	
