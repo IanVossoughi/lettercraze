@@ -350,4 +350,9 @@ public class BuildField extends JFrame {
 		return levelTypeCombo;
 	}
 
+	public JTextField getlevelNameField() {
+		// TODO Auto-generated method stub
+		return this.levelNameField;
+	}
+
 }
