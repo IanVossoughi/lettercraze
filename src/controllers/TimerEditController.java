@@ -34,8 +34,8 @@ public class TimerEditController implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// Update the model's title field.\
-		int time = Integer.parseInt(time.getText());
-		m.setTime(time);
+		int timeLeft = Integer.parseInt(timer.getText());
+		m.setTime(timeLeft);
 		//System.out.println("Level name updated: " + title);
 		
 	}
