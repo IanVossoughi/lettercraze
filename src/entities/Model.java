@@ -20,6 +20,7 @@ public class Model {
 		int[] defScore = {0, 0, 0};
 		this.score = new Score(defScore);
 		this.selectedWord = new Word("", 0);
+		this.time = 0;
 	}
 	
 	public Board getBoard(){

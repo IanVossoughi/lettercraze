@@ -20,6 +20,7 @@ import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.text.JTextComponent;
 
 import controllers.AddButtonController;
 import controllers.BuilderClickTileController;

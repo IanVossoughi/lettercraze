@@ -87,7 +87,12 @@ public class OpenLevelButtonController implements ActionListener {
 			//System.out.println(nextField(in)); // level type
 			int levelIndex = Integer.parseInt(nextField(in));
 			b.getlevelTypeCombo().setSelectedIndex(levelIndex);
+			
 			//System.out.println(nextField(in)); // Timer amount
+			int timeLeft = Integer.parseInt(nextField(in));
+			m.setTime(timeLeft);
+			b.getTimeField().setText(timeLeft + "");
+			
 			
 			in.close();
 		} catch (FileNotFoundException e) {
