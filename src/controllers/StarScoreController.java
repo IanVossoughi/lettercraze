@@ -18,11 +18,11 @@ public class StarScoreController implements ActionListener {
 	protected StarThresholdWindow s;
 	
 	
-	public StarScoreController(Model m, JTextField textField, JTextField textField_1, JTextField textField_2, StarThresholdWindow s) {
+	public StarScoreController(Model m, StarThresholdWindow s) {
 		this.m = m;
-		this.field1 = textField;
-		this.field2 = textField_1;
-		this.field3 = textField_2;
+		this.field1 = s.getStarField1();
+		this.field2 = s.getStarField2();
+		this.field3 = s.getStarField3();
 		this.s = s;
 	}
 
