@@ -32,7 +32,13 @@ public class NewLevelBuilderController implements ActionListener {
 				options[0]);
 		if(n == 0){
 			JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
+			mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 			mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
+			
+			for(ActionListener a: mntmSaveLevel.getActionListeners()){
+				a.actionPerformed(new ActionEvent (this, ActionEvent.ACTION_PERFORMED, null));
+			}
+			
 			JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
 
 		}				
