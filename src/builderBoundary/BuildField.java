@@ -73,6 +73,7 @@ public class BuildField extends JFrame {
 	private JButton removeWordButton;
 	private Model m;
 	private JButton[][] tileArray;
+	public JComboBox<String> levelTypeCombo;
 	
 	private ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
  	private ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
@@ -180,7 +181,7 @@ public class BuildField extends JFrame {
 		levelTypeLabel.setIcon(null);
 		starPanel.add(levelTypeLabel);
 
-		JComboBox<String> levelTypeCombo = new JComboBox<String>();
+		levelTypeCombo = new JComboBox<String>();
 		levelTypeCombo.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);

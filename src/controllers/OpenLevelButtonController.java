@@ -67,7 +67,8 @@ public class OpenLevelButtonController implements ActionListener {
 			in.read();
 			
 			//System.out.println(nextField(in)); // Star points
-			String[] d = nextField(in).split(" ");
+			String[] d = nextField(in).trim().split(" ");
+			//for(String k : d) System.out.println(k + "|");
 			int[] loadedScores = {Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2])};
 			m.setScore(new Score(loadedScores));
 			
@@ -79,11 +80,13 @@ public class OpenLevelButtonController implements ActionListener {
 			//System.out.println(nextField(in)); // Title
 			String title = nextField(in);
 			//System.out.println(title);
-			m.setTitle(nextField(in));
+			m.setTitle(title);
 			b.levelNameField.setText(title);
 			
 			
-			System.out.println(nextField(in)); // level type
+			//System.out.println(nextField(in)); // level type
+			int levelIndex = Integer.parseInt(nextField(in));
+			b.levelTypeCombo.setSelectedIndex(levelIndex);
 			//System.out.println(nextField(in)); // Timer amount
 			
 			in.close();
