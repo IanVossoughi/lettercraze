@@ -3,6 +3,7 @@ package controllers;
 
 import javax.swing.JButton;
 
+import entities.Model;
 import junit.framework.TestCase;
 import playerBoundary.PlayField;
 
@@ -10,7 +11,8 @@ public class TestBackToMenuButtonController extends TestCase {
 	PlayField pf;
 	@Override
 	protected void setUp() {
-		pf = new PlayField();
+		Model m = new Model();
+		pf = new PlayField(m);
 		pf.setVisible(true);
 
 	}

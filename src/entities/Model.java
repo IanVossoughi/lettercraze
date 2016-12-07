@@ -11,14 +11,22 @@ public class Model {
 	Score score;
 	DefaultListModel<String> wordListModel;
 	Word selectedWord;
+	int timeLeft;
 	
 	public Model() {
 		this.board = new Board();
 		this.wordListModel = new DefaultListModel<String>();
+		this.title = "";
+		int[] defScore = {0, 0, 0};
+		this.score = new Score(defScore);
 	}
 	
 	public Board getBoard(){
 		return this.board;
+	}
+	
+	public String getType(){
+		return this.type;
 	}
 
 	public void setBoard(Board board2) {
@@ -36,6 +44,10 @@ public class Model {
 	
 	public void addWordListModel(String word) {
 		wordListModel.addElement(word);
+	}
+	
+	public String getTitle(){
+		return this.title;
 	}
 	
 	public int removeWordListModel(int index) {

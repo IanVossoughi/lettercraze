@@ -22,6 +22,7 @@ import javax.swing.border.LineBorder;
 import controllers.ExitButtonController;
 import controllers.LevelSelectMenuTabPaneController;
 import controllers.PlayButtonController;
+import entities.Model;
 
 import java.awt.Color;
 import javax.swing.JTabbedPane;
@@ -32,6 +33,7 @@ public class MenuField extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private Model m;
 	private JPanel contentPane;
 
 	/**
@@ -54,6 +56,7 @@ public class MenuField extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuField() {
+		this.m = new Model();
 		
 		int unlocked = new ProgressIO().loadUnlockedNum();
 		System.out.println("Unlocked: " + unlocked);
@@ -92,7 +95,7 @@ public class MenuField extends JFrame {
 		
 		JButton playButton = new JButton("Play");
 		bottomBarPanel.add(playButton);
-		playButton.addActionListener(new PlayButtonController(this));
+		playButton.addActionListener(new PlayButtonController(this, m));
 		
 		
 		JButton exitButton = new JButton("Exit");

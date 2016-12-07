@@ -26,6 +26,7 @@ public class BuilderLevelTypeController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 		int index = lt.getSelectedIndex();
 		if (index == 0){
 			JPanel bottomBarPanel = new JPanel();
@@ -38,4 +39,8 @@ public class BuilderLevelTypeController implements ActionListener {
 			
 	}
 		
+=======
+	}
+>>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze
 }
+
