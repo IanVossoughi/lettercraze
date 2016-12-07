@@ -67,7 +67,7 @@ public class BuildField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField timeField;
-	public JTextField levelNameField;
+	private JTextField levelNameField;
 	private JTextField wordEntryField;
 	private JList<String> wordList;
 	private JButton removeWordButton;
@@ -95,7 +95,6 @@ public class BuildField extends JFrame {
 			}
 		});
 	}
-	
 
 	/**
 	 * Create the frame.
@@ -301,7 +300,6 @@ public class BuildField extends JFrame {
 		
 	}
 	
-	//Returns string (AKA single word)
 	public String getWordEntryField() {
 		return this.wordEntryField.getText();
 	}
@@ -336,15 +334,6 @@ public class BuildField extends JFrame {
 	
 	public void setTimeField (JTextField TimeField) {
 		this.timeField = TimeField;
-	}
-	
-	public JTextField getWordEntry() {
-		return this.wordEntryField;
-	}
-	
-	//Returns field
-	public void setWordEntry(JTextField wordEntryField) {
-		this.wordEntryField = wordEntryField;
 	}
 
 	public JComboBox<String> getlevelTypeCombo() {
