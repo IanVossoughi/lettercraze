@@ -183,7 +183,7 @@ public class BuildField extends JFrame {
 		levelTypeCombo.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);
-		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m));
+		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m, levelTypeCombo));
 
 		JButton generateButton = new JButton("Generate");
 		starPanel.add(generateButton);
@@ -325,6 +325,14 @@ public class BuildField extends JFrame {
 	
 	public void setRemoveButton(JButton RemoveButton) {
 		this.removeWordButton = RemoveButton;
+	}
+	
+	public JTextField getTimeField() {
+		return this.timeField;
+	}
+	
+	public void setTimeField (JTextField TimeField) {
+		this.timeField = TimeField;
 	}
 
 }
