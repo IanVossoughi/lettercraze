@@ -12,10 +12,11 @@ public class NewLevelBuilderController implements ActionListener {
 	private Model m;
 	private JPanel contentPane;
 
-	public NewLevelBuilderController(BuildField buildField, Model m, JPanel contentPane) {
+
+	public NewLevelBuilderController(BuildField buildField, Model m) {
 		this.buildField = buildField;
 		this.m = m;
-		this.contentPane = contentPane;
+		this.contentPane = buildField.getContentPane();
 	}
 
 	@Override
@@ -30,22 +31,36 @@ public class NewLevelBuilderController implements ActionListener {
 				null,
 				options,
 				options[0]);
-		if(n == 0){
-			JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
-			mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
-			mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
-			
-			for(ActionListener a: mntmSaveLevel.getActionListeners()){
-				a.actionPerformed(new ActionEvent (this, ActionEvent.ACTION_PERFORMED, null));
-			}
-			
+		if(n == 0) {
+			userSelectsSave();
 			JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
 
-		}				
+		} else {				
+			closingLogic();
+		}
+	}
+
+	/** This can be tested. */
+	void userSelectsSave() {
+		new SaveLevelButtonController(m, contentPane).actionPerformed(null);
+//		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
+//		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+//		mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
+//
+//		for(ActionListener a: mntmSaveLevel.getActionListeners()){
+//			a.actionPerformed(new ActionEvent (this, ActionEvent.ACTION_PERFORMED, null));
+//		} 
+
+		
+		closingLogic();
+	}
+	
+	void closingLogic() {
 		buildField.setVisible(false);
 		buildField.dispose();
 		new BuildField().setVisible(true);
-
 	}
+
+	
 
 }
