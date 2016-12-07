@@ -20,6 +20,10 @@ public class Model {
 	public Board getBoard(){
 		return this.board;
 	}
+	
+	public String getType(){
+		return this.type;
+	}
 
 	public void setBoard(Board board2) {
 		// TODO Auto-generated method stub
@@ -36,6 +40,10 @@ public class Model {
 	
 	public void addWordListModel(String word) {
 		wordListModel.addElement(word);
+	}
+	
+	public String getTitle(){
+		return this.title;
 	}
 	
 	public int removeWordListModel(int index) {

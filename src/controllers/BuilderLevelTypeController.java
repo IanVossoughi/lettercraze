@@ -20,7 +20,7 @@ public class BuilderLevelTypeController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		buildField.getSelectedIndex();
+		//buildField.getSelectedIndex();
 	}
 		
 }

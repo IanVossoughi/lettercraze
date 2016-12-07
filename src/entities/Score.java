@@ -7,6 +7,10 @@ public class Score {
 	public Score(int starScores[]) {
 		this.starScores = starScores;
 	}
+
+	public String serialize() {
+		return "" + starScores[0] + " " + starScores[1] + " " + starScores[2];
+	}
 	
 
 	/*public void setScores(int a, int b, int c){
