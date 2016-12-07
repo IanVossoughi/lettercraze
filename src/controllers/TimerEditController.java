@@ -32,12 +32,15 @@ public class TimerEditController implements KeyListener {
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// Update the model's title field.\
-		int timeLeft = Integer.parseInt(timer.getText());
-		m.setTime(timeLeft);
-		System.out.println(timeLeft);
-		
+	public void keyReleased(KeyEvent e) {
+		if(("1234567890".indexOf(e.getKeyChar()) != -1)){
+			// Update the model's title field.\
+			int timeLeft = Integer.parseInt(timer.getText());
+			m.setTime(timeLeft);
+			//System.out.println(timeLeft);
+		} else {
+			timer.setText("");
+		}
 	}
 
 	@Override
