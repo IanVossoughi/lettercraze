@@ -181,7 +181,7 @@ public class BuildField extends JFrame {
 		levelTypeCombo.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);
-		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m));
+		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m, levelTypeCombo));
 
 		JButton generateButton = new JButton("Generate");
 		starPanel.add(generateButton);
