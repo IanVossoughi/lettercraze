@@ -72,7 +72,17 @@ public class OpenLevelButtonController implements ActionListener {
 			m.setScore(new Score(loadedScores));
 			
 			//System.out.println(nextField(in)); // Word list 
+			for(String word : nextField(in).split(" ")){
+				m.addWordListModel(word);
+			}
+			
 			//System.out.println(nextField(in)); // Title
+			String title = nextField(in);
+			System.out.println(title);
+			m.setTitle(nextField(in));
+			b.levelNameField.setText(title);
+			
+			
 			//System.out.println(nextField(in)); // level type
 			//System.out.println(nextField(in)); // Timer amount
 			
