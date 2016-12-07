@@ -16,23 +16,26 @@ public class BuilderLevelTypeController implements ActionListener {
 	private BuildField buildField;
 	private Model m;
 	private JComboBox<String> lt;
-	//private
+	private JPanel ct;
 
-	public BuilderLevelTypeController(BuildField buildField, Model m, JComboBox<String> lt) {
+	public BuilderLevelTypeController(BuildField buildField, Model m, JComboBox<String> lt, JPanel ct) {
 		this.buildField = buildField;
 		this.m = m;
 		this.lt = lt;
+		this.ct = ct;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int index = lt.getSelectedIndex();
-		if (index == 0){
-			JPanel bottomBarPanel = new JPanel();
-			JTextField tempField = new JTextField();
+		if ((index == 0) || (index == 2)){
+			JTextField tempField = buildField.getTimeField();
 			tempField.setEnabled(false);
-			//buildField.bottomBarPanel.add(tempField);
-			tempField.setColumns(5);
+			buildField.setTimeField(tempField);
+		}
+		else {
+			JTextField tempField = buildField.getTimeField();
+			tempField.setEnabled(true);
 			buildField.setTimeField(tempField);
 		}
 	}
