@@ -324,5 +324,13 @@ public class BuildField extends JFrame {
 	public void setRemoveButton(JButton RemoveButton) {
 		this.removeWordButton = RemoveButton;
 	}
+	
+	public JTextField getTimeField() {
+		return this.timeField;
+	}
+	
+	public void setTimeField (JTextField TimeField) {
+		this.timeField = TimeField;
+	}
 
 }
