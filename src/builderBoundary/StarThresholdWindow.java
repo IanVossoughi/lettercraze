@@ -27,6 +27,11 @@ public class StarThresholdWindow extends JFrame {
 	private JTextField textField_2;
 	protected Model m;
 
+	public JTextField getStarField1() { return textField; }
+	public JTextField getStarField2() { return textField_1; }
+	public JTextField getStarField3() { return textField_2; }
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -103,7 +108,7 @@ public class StarThresholdWindow extends JFrame {
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 		
 		JButton btnDone = new JButton("Done");
-		btnDone.addActionListener(new StarScoreController(m, textField, textField_1, textField_2, this));
+		btnDone.addActionListener(new StarScoreController(m, this));
 				
 				
 				/*new ActionListener() {
