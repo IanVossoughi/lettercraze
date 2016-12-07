@@ -42,11 +42,9 @@ public class PlayField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Model m;
-<<<<<<< HEAD
-=======
+
 	private JButton[][] tileArray;
 	private JLabel wordLabel;
->>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
 
 	/**
 	 * Launch the application.
@@ -211,9 +209,7 @@ public class PlayField extends JFrame {
 				boardPanel.add(tileArray[i][j]);
 			}
 		}
-<<<<<<< HEAD
 		wordLabel.setText("WORD: " + word);
-=======
 		wordLabel.setText("WORD: " + m.getSelectedWord());
 	}
 
@@ -234,6 +230,5 @@ public class PlayField extends JFrame {
 			}
 		}
 		
->>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
 	}
 }
