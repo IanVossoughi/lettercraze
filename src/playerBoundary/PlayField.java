@@ -147,7 +147,7 @@ public class PlayField extends JFrame {
 		JButton btnDeselectWord = new JButton("Deselect");
 		submitWordPanel.add(btnDeselectWord);
 		/*TODO: change constructor to SubmitButtonController if needed*/
-		btnDeselectWord.addActionListener(new DeselectButtonController());
+		btnDeselectWord.addActionListener(new DeselectButtonController(m,this));
 		
 		JPanel taskPanel = new JPanel();
 		taskPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));

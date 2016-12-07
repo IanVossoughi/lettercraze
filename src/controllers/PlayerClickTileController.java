@@ -35,7 +35,7 @@ public class PlayerClickTileController implements ActionListener {
 			firstTile = true;
 		}
 		if(firstTile || ((Math.abs(x - currentTile.x) < 2) && (Math.abs(y - currentTile.y) < 2) && (!clickedTile.isSelected()))) {
-			clickedTile.toggleSelected();
+			clickedTile.setSelection(true);
 			if (clickedTile.isSelected()) {
 				m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + clickedTile.getLetter());
 				m.getBoard().setSelectedTileCoords(new Coordinate(x,y));

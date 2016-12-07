@@ -56,4 +56,8 @@ public class Tile {
 	public boolean isSelected() {
 		return this.selected;
 	}
+	
+	public void setSelection(boolean selection) {
+		this.selected = selection;
+	}
 }
