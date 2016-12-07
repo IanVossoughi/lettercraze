@@ -41,18 +41,30 @@ public class SaveLevelButtonController implements ActionListener {
 		FileOutputStream out;
 		try {
 			out = new FileOutputStream(filename);
-			out.write(m.getTitle().getBytes());
-			out.write("\n".getBytes());
+			
+			
 			out.write(m.getBoard().serialize().getBytes());
-			out.write("\n".getBytes());
-			//out.write(m.getType().getBytes());
+			out.write('\n');
+			
+			
+		
 			out.write(m.getScore().serialize().getBytes());
-			out.write("\n".getBytes());
+			out.write('\n');
+			
 			for(Object w : m.getWordListModel().toArray()){
 				String s = (String)w;
 				out.write((s+" ").getBytes());
 			}
-			out.write("\n".getBytes());
+			out.write('\n');
+			
+			out.write(m.getTitle().getBytes());
+			out.write('\n');
+			
+			//out.write(m.getType().getBytes());
+			out.write('\n');
+			
+			out.write('\n');
+			
 			out.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

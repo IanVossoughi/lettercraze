@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import builderBoundary.BuildField;
 import entities.Board;
 import entities.Model;
+import entities.Score;
 import entities.Tile;
 
 public class OpenLevelButtonController implements ActionListener {
@@ -60,8 +61,22 @@ public class OpenLevelButtonController implements ActionListener {
 					m.getBoard().tiles[x][y] = newTile;
 				}
 				System.out.print("\n");
-				in.close();
 			}
+			
+			// Next get the title;
+			in.read();
+			
+			//System.out.println(nextField(in)); // Star points
+			String[] d = nextField(in).split(" ");
+			int[] loadedScores = {Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2])};
+			m.setScore(new Score(loadedScores));
+			
+			//System.out.println(nextField(in)); // Word list 
+			//System.out.println(nextField(in)); // Title
+			//System.out.println(nextField(in)); // level type
+			//System.out.println(nextField(in)); // Timer amount
+			
+			in.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,6 +86,16 @@ public class OpenLevelButtonController implements ActionListener {
 		}
 		
 		//m.board = newBoard;
+	}
+	
+	// Returns the string in the file up until we see a '\n'
+	protected String nextField(FileInputStream in) throws IOException{
+		char c = 0;
+		String curr = "";
+		while((c = (char) in.read()) != '\n'){
+			curr = curr + c;
+		}
+		return curr;
 	}
 
 }
