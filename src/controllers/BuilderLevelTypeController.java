@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -25,6 +27,7 @@ public class BuilderLevelTypeController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Handles timefield
 		int index = lt.getSelectedIndex();
 		if ((index == 0) || (index == 2)){
 			JTextField tempField = buildField.getTimeField();
@@ -36,10 +39,19 @@ public class BuilderLevelTypeController implements ActionListener {
 			tempField.setEnabled(true);
 			buildField.setTimeField(tempField);
 		}
+		
+		//Handles worldlist
 		if(index != 2) {
 			JTextField tempWordField = buildField.getWordEntryField();
 			tempWordField.setEnabled(false);
 			buildField.setWordEntryField(tempWordField);
+			int size = m.getWordListModel().getSize();
+			//Clears list
+			for (int i = 0; i < size; i++) {
+			m.removeWordListModel(0); }
+			JButton tempButton = buildField.getRemoveButton();
+			tempButton.setEnabled(false);
+	        buildField.setRemoveButton(tempButton);
 		}
 		else {
 			JTextField tempWordField = buildField.getWordEntryField();
