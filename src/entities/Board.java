@@ -7,6 +7,7 @@ public class Board {
 	public Board() {
 		this.tiles = new Tile[6][6];
 		this.fillBoard();
+		this.currentTile = new Coordinate(-1, -1);
 	}
 	
 	public void setTiles(Tile[][] tiles){
