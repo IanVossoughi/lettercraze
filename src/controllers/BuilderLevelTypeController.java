@@ -37,6 +37,10 @@ public class BuilderLevelTypeController implements ActionListener {
 			buildField.setTimeField(tempField);
 		}
 		
+		if(index != 2) {
+			//JTextField tempWordField = buildField.getWordEntryField();
+		}
+		
 		// Update the model
 		// 0 - puzzle, 1 - lightning, 2 -theme
 		m.setType(index);

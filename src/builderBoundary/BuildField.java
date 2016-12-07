@@ -300,6 +300,7 @@ public class BuildField extends JFrame {
 		
 	}
 	
+	//Returns string (AKA single word)
 	public String getWordEntryField() {
 		return this.wordEntryField.getText();
 	}
@@ -334,6 +335,15 @@ public class BuildField extends JFrame {
 	
 	public void setTimeField (JTextField TimeField) {
 		this.timeField = TimeField;
+	}
+	
+	public JTextField getWordEntry() {
+		return this.wordEntryField;
+	}
+	
+	//Returns field
+	public void setWordEntry(JTextField wordEntryField) {
+		this.wordEntryField = wordEntryField;
 	}
 
 }
