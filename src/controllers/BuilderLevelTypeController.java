@@ -37,14 +37,14 @@ public class BuilderLevelTypeController implements ActionListener {
 			buildField.setTimeField(tempField);
 		}
 		if(index != 2) {
-			JTextField tempWordField = buildField.getWordEntry();
+			JTextField tempWordField = buildField.getWordEntryField();
 			tempWordField.setEnabled(false);
-			buildField.setWordEntry(tempWordField);
+			buildField.setWordEntryField(tempWordField);
 		}
 		else {
-			JTextField tempWordField = buildField.getWordEntry();
+			JTextField tempWordField = buildField.getWordEntryField();
 			tempWordField.setEnabled(true);
-			buildField.setWordEntry(tempWordField);
+			buildField.setWordEntryField(tempWordField);
 		}
 		
 		// Update the model

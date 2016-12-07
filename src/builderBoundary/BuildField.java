@@ -300,13 +300,22 @@ public class BuildField extends JFrame {
 		
 	}
 	
-	public String getWordEntryField() {
+	public String getWordEntry() {
 		return this.wordEntryField.getText();
 	}
 	
-	public void setWordEntryField(String entry) {
+	public void setWordEntry(String entry) {
 		this.wordEntryField.setText(entry);
 	}
+	
+	public JTextField getWordEntryField() {
+		return this.wordEntryField;
+	}
+	
+	public void setWordEntryField(JTextField entryField) {
+		this.wordEntryField = entryField;
+	}
+	
 	
 	public void setWordListSelected(int index) {
 		this.wordList.setSelectedIndex(index);

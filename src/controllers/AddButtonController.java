@@ -22,8 +22,8 @@ public class AddButtonController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		model.addWordListModel(buildField.getWordEntryField());
-		buildField.setWordEntryField("");
+		model.addWordListModel(buildField.getWordEntry());
+		buildField.setWordEntry("");
 		JButton tempButton = buildField.getRemoveButton();
 		tempButton.setEnabled(true);
 		buildField.setRemoveButton(tempButton);
