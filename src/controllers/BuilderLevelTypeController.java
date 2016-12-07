@@ -44,7 +44,7 @@ public class BuilderLevelTypeController implements ActionListener {
 		// Update the model
 		// 0 - puzzle, 1 - lightning, 2 -theme
 		m.setType(index);
-		System.out.println(index);
+		//System.out.println(index);
 	}
 }
 

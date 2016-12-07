@@ -86,7 +86,7 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			//System.out.println(nextField(in)); // level type
 			int levelIndex = Integer.parseInt(nextField(in));
-			b.levelTypeCombo.setSelectedIndex(levelIndex);
+			b.getlevelTypeCombo().setSelectedIndex(levelIndex);
 			//System.out.println(nextField(in)); // Timer amount
 			
 			in.close();

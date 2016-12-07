@@ -73,7 +73,7 @@ public class BuildField extends JFrame {
 	private JButton removeWordButton;
 	private Model m;
 	private JButton[][] tileArray;
-	public JComboBox<String> levelTypeCombo;
+	private JComboBox<String> levelTypeCombo;
 	
 	private ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
  	private ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
@@ -345,6 +345,11 @@ public class BuildField extends JFrame {
 	//Returns field
 	public void setWordEntry(JTextField wordEntryField) {
 		this.wordEntryField = wordEntryField;
+	}
+
+	public JComboBox<String> getlevelTypeCombo() {
+		// TODO Auto-generated method stub
+		return levelTypeCombo;
 	}
 
 }
