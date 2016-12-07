@@ -210,12 +210,12 @@ public class PlayField extends JFrame {
 				boardPanel.add(tileArray[i][j]);
 			}
 		}
-		wordLabel.setText("WORD: " + m.getSelectedWord());
+		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
 	}
 
 	public void refreshBoard() {
 		// TODO Auto-generated method stub
-		wordLabel.setText("WORD: " + m.getSelectedWord());
+		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				if (m.getBoard().getTile(x, y).isEnabled()) {
