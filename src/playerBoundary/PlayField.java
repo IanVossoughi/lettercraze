@@ -15,10 +15,6 @@ import java.awt.Font;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.border.BevelBorder;
@@ -28,16 +24,12 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import java.awt.FlowLayout;
-import javax.swing.border.LineBorder;
 
 import controllers.BackToMenuButtonController;
 import controllers.DeselectButtonController;
-import controllers.ExitBuilderController;
 import controllers.ResetButtonController;
 import controllers.SubmitButtonController;
 import controllers.UndoButtonController;
-
-import java.awt.Color;
 
 public class PlayField extends JFrame {
 

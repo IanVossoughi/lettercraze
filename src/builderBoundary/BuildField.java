@@ -264,8 +264,6 @@ public class BuildField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
-				int row = i;
-				int col = j;
 				tileArray[i][j].setIcon(greenIcon);
 				tileArray[i][j].addActionListener(new BuilderClickTileController(m, this, i, j));
 						

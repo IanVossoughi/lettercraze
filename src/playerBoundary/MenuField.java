@@ -12,23 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import java.awt.Font;
-import javax.swing.JList;
-import javax.swing.ListSelectionModel; 
-import java.awt.GridLayout; 
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.border.BevelBorder;
-import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
-import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import controllers.ExitButtonController;
 import controllers.LevelSelectMenuTabPaneController;

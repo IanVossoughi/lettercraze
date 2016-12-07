@@ -1,10 +1,6 @@
 package playerBoundary;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -17,6 +13,11 @@ import javax.swing.border.EmptyBorder;
 import controllers.ContinueButtonController;
 
 public class Main extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

@@ -2,13 +2,12 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.swing.JPanel;
-
-import builderBoundary.BuildField;
 import entities.Model;
 
 public class SaveLevelButtonController implements ActionListener {
@@ -23,8 +22,11 @@ public class SaveLevelButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		String filename = new FilePicker(contentPane).save().getAbsolutePath();
-		this.saveLevel(filename);	
+		File saveFile = new FilePicker(contentPane).save();
+		if (saveFile != null) {
+			String filename = saveFile.getAbsolutePath();
+			this.saveLevel(filename);
+		}
 	}
 	
 	/*
