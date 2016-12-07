@@ -56,11 +56,11 @@ public class OpenLevelButtonController implements ActionListener {
 					} else {
 						newTile.toggleEnabled();
 					}
-					System.out.print(nextChar);
+					//System.out.print(nextChar);
 					//newBoard.tiles[x][y] = newTile;
 					m.getBoard().tiles[x][y] = newTile;
 				}
-				System.out.print("\n");
+				//System.out.print("\n");
 			}
 			
 			// Next get the title;
@@ -78,12 +78,12 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			//System.out.println(nextField(in)); // Title
 			String title = nextField(in);
-			System.out.println(title);
+			//System.out.println(title);
 			m.setTitle(nextField(in));
 			b.levelNameField.setText(title);
 			
 			
-			//System.out.println(nextField(in)); // level type
+			System.out.println(nextField(in)); // level type
 			//System.out.println(nextField(in)); // Timer amount
 			
 			in.close();
