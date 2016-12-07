@@ -77,6 +77,8 @@ public class BuildField extends JFrame {
 	private ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
  	private ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
 
+	public JPanel getContentPane() { return contentPane; }
+
 	/**
 	 * Launch the application.
 	 */
@@ -113,7 +115,7 @@ public class BuildField extends JFrame {
 		JMenuItem mntmNewLevel = new JMenuItem("New Level");
 		mntmNewLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmNewLevel);
-		mntmNewLevel.addActionListener(new NewLevelBuilderController(this, m, contentPane));
+		mntmNewLevel.addActionListener(new NewLevelBuilderController(this, m));
 		
 		JMenuItem mntmResetLevel = new JMenuItem("Reset Level");
 		mntmResetLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));
@@ -181,7 +183,7 @@ public class BuildField extends JFrame {
 		levelTypeCombo.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);
-		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m));
+		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m, levelTypeCombo));
 
 		JButton generateButton = new JButton("Generate");
 		starPanel.add(generateButton);
@@ -323,6 +325,14 @@ public class BuildField extends JFrame {
 	
 	public void setRemoveButton(JButton RemoveButton) {
 		this.removeWordButton = RemoveButton;
+	}
+	
+	public JTextField getTimeField() {
+		return this.timeField;
+	}
+	
+	public void setTimeField (JTextField TimeField) {
+		this.timeField = TimeField;
 	}
 
 }
