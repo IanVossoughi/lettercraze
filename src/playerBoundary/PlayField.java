@@ -42,6 +42,11 @@ public class PlayField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Model m;
+<<<<<<< HEAD
+=======
+	private JButton[][] tileArray;
+	private JLabel wordLabel;
+>>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
 
 	/**
 	 * Launch the application.
@@ -127,7 +132,7 @@ public class PlayField extends JFrame {
 		JPanel wordPanel = new JPanel();
 		submissionPanel.add(wordPanel);
 		
-		JLabel wordLabel = new JLabel("WORD: _");
+		wordLabel = new JLabel("WORD: _");
 		wordPanel.add(wordLabel);
 		wordLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
@@ -203,13 +208,32 @@ public class PlayField extends JFrame {
 				//char letter = (char) (rng.nextInt(26) + 65);
 				System.out.println(letter);
 				tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
-				if (i == 3 && j > 2) {
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/pressedTiles/" + letter + ".png")));
-					word = word.concat(Character.toString(letter));
-				}
 				boardPanel.add(tileArray[i][j]);
 			}
 		}
+<<<<<<< HEAD
 		wordLabel.setText("WORD: " + word);
+=======
+		wordLabel.setText("WORD: " + m.getSelectedWord());
+	}
+
+	public void refreshBoard() {
+		// TODO Auto-generated method stub
+		wordLabel.setText("WORD: " + m.getSelectedWord());
+		for(int x = 0; x < 6; x++){
+			for(int y = 0; y < 6; y++){
+				if (m.getBoard().getTile(x, y).isEnabled()) {
+					char letter = m.getBoard().getTile(x, y).getLetter();
+					if (!m.getBoard().getTile(x, y).isSelected()) {
+						tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+					}
+					else {
+						tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/pressedTiles/" + letter + ".png")));
+					}
+				}
+			}
+		}
+		
+>>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
 	}
 }

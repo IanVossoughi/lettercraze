@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import builderBoundary.BuildField;
 import entities.Model;
 import entities.Tile;
+import entities.Word;
 import playerBoundary.PlayField;
 
 public class PlayerClickTileController implements ActionListener {
@@ -28,6 +29,8 @@ public class PlayerClickTileController implements ActionListener {
 		Tile clickedTile = this.m.getBoard().getTile(x, y);
 		clickedTile.toggleSelected();
 		p.refreshBoard();
-		
+		if (clickedTile.isSelected()) {
+			m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + clickedTile.getLetter());
+		}
 	}
 }

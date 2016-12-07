@@ -67,7 +67,7 @@ public class BuildField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField timeField;
-	private JTextField levelNameField;
+	public JTextField levelNameField;
 	private JTextField wordEntryField;
 	private JList<String> wordList;
 	private JButton removeWordButton;
@@ -94,6 +94,7 @@ public class BuildField extends JFrame {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the frame.
