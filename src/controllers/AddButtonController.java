@@ -3,6 +3,8 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
 import builderBoundary.BuildField;
 import entities.Model;
 import playerBoundary.MenuField;
@@ -23,6 +25,9 @@ public class AddButtonController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		model.addWordListModel(buildField.getWordEntryField());
 		buildField.setWordEntryField("");
+		JButton tempButton = buildField.getRemoveButton();
+		tempButton.setEnabled(true);
+		buildField.setRemoveButton(tempButton);
 	}
 
 }

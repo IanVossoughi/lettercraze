@@ -19,6 +19,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
+import javax.swing.event.ListSelectionListener;
 
 import controllers.AddButtonController;
 import controllers.BuilderClickTileController;
@@ -29,6 +30,7 @@ import controllers.SaveLevelButtonController;
 import controllers.NewLevelBuilderController;
 import controllers.OpenLevelButtonController;
 import controllers.OpenStarWindowController;
+import controllers.RemoveButtonController;
 import controllers.ResetBuilderController;
 import entities.Model;
 import playerBoundary.PlayField;
@@ -66,6 +68,8 @@ public class BuildField extends JFrame {
 	private JTextField timeField;
 	private JTextField levelNameField;
 	private JTextField wordEntryField;
+	private JList<String> wordList;
+	private JButton removeWordButton;
 	private Model m;
 	private JButton[][] tileArray;
 	
@@ -217,11 +221,12 @@ public class BuildField extends JFrame {
 		JScrollPane wordListPanel = new JScrollPane();
 		sidebarPanel.add(wordListPanel, BorderLayout.CENTER);
 
-		JList<String> wordList = new JList<String>();
+		wordList = new JList<String>();
 		wordList.setModel(m.getWordListModel());
 
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+
 		wordListPanel.setViewportView(wordList);
 
 		JLabel wordListLabel = new JLabel("Word List");
@@ -239,7 +244,9 @@ public class BuildField extends JFrame {
 		addRemoveWordPanel.add(wordEntryField);
 		wordEntryField.setColumns(10);
 
-		JButton removeWordButton = new JButton("Remove");
+		removeWordButton = new JButton("Remove");
+		removeWordButton.setEnabled(false);
+		removeWordButton.addActionListener(new RemoveButtonController(this, m));
 		addRemoveWordPanel.add(removeWordButton);
 
 		JPanel boardPanel = new JPanel();
@@ -296,6 +303,26 @@ public class BuildField extends JFrame {
 	
 	public void setWordEntryField(String entry) {
 		this.wordEntryField.setText(entry);
+	}
+	
+	public void setWordListSelected(int index) {
+		this.wordList.setSelectedIndex(index);
+	}
+	
+	public JList<String> getWordList() {
+		return this.wordList;
+	}
+	
+	public void setWordList(JList<String> theWordList) {
+		this.wordList = theWordList;
+	}
+	
+	public JButton getRemoveButton() {
+		return this.removeWordButton;
+	}
+	
+	public void setRemoveButton(JButton RemoveButton) {
+		this.removeWordButton = RemoveButton;
 	}
 
 }

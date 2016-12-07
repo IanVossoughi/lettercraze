@@ -39,6 +39,21 @@ public class Model {
 		wordListModel.addElement(word);
 	}
 	
+	public int removeWordListModel(int index) {
+		wordListModel.remove(index);
+		int size = wordListModel.getSize();
+
+	    if (size == 0) {
+	        return -1;
+
+	    } else {
+	        if (index == wordListModel.getSize()) {
+	            index--;
+	        }
+	    }
+	    return index;
+	}
+	
 	public Score getScore(){
 		return this.score;
 	}
