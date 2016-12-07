@@ -61,6 +61,4 @@ public class NewLevelBuilderController implements ActionListener {
 		new BuildField().setVisible(true);
 	}
 
-	
-
 }
