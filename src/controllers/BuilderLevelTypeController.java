@@ -35,8 +35,6 @@ public class BuilderLevelTypeController implements ActionListener {
 			tempField.setColumns(5);
 			buildField.setTimeField(tempField);
 		}
-			
 	}
-		
 }
 
