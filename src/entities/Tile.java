@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Random;
+
 public class Tile {
 	boolean enabled;
 	boolean selected;
@@ -19,7 +21,22 @@ public class Tile {
 			this.letter = '!'; // Sentinel value;
 		} else {
 			enabled = true;
-			this.letter = 'q';
+			this.letter = randomLetter();
+		}
+		return this;
+	}
+	
+	private char randomLetter() {
+		//TODO: Get Random letters according to scoring frequency
+		char letter = (char) (new Random().nextInt(26) + 65);
+		return letter;
+	}
+
+	public Tile toggleSelected(){
+		if(selected){
+			selected = false;
+		} else {
+			selected = true;
 		}
 		return this;
 	}
@@ -34,5 +51,9 @@ public class Tile {
 	
 	public void setLetter(char c) {
 		this.letter = c;
+	}
+
+	public boolean isSelected() {
+		return this.selected;
 	}
 }
