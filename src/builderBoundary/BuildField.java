@@ -29,6 +29,7 @@ import controllers.ExitBuilderController;
 import controllers.FilePicker;
 import controllers.LevelNameListener;
 import controllers.SaveLevelButtonController;
+import controllers.TimerEditController;
 import controllers.NewLevelBuilderController;
 import controllers.OpenLevelButtonController;
 import controllers.OpenStarWindowController;
@@ -214,6 +215,7 @@ public class BuildField extends JFrame {
 		timeField.setEnabled(false);
 		bottomBarPanel.add(timeField);
 		timeField.setColumns(5);
+		timeField.addKeyListener(new TimerEditController(timeField, m));
 
 		JButton resetButton = new JButton("Reset");
 		resetButton.addActionListener(new ResetBuilderController(this));

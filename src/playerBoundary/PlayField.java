@@ -142,7 +142,7 @@ public class PlayField extends JFrame {
 		submitWordPanel.add(submitButton);
 		submitButton.setHorizontalAlignment(SwingConstants.LEADING);
 		/*TODO: change constructor to SubmitButtonController if needed*/
-		submitButton.addActionListener(new SubmitButtonController());
+		submitButton.addActionListener(new SubmitButtonController(m));
 
 		JButton btnDeselectWord = new JButton("Deselect");
 		submitWordPanel.add(btnDeselectWord);
