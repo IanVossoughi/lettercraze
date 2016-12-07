@@ -81,7 +81,7 @@ public class OpenLevelButtonController implements ActionListener {
 			String title = nextField(in);
 			//System.out.println(title);
 			m.setTitle(title);
-			b.levelNameField.setText(title);
+			b.getlevelNameField().setText(title);
 			
 			
 			//System.out.println(nextField(in)); // level type
