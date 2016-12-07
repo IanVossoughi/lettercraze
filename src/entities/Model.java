@@ -6,7 +6,7 @@ import javax.swing.DefaultListModel;
 public class Model {
 
 	String title;
-	String type;
+	int type; // 0 - puzzle, 1 - lightining, 2 - theme
 	Board board;
 	Score score;
 	DefaultListModel<String> wordListModel;
@@ -26,7 +26,7 @@ public class Model {
 		return this.board;
 	}
 	
-	public String getType(){
+	public int getType(){
 		return this.type;
 	}
 
@@ -80,5 +80,9 @@ public class Model {
 	
 	public void setSelectedWord(Word selectedWord) {
 		this.selectedWord = selectedWord;
+	}
+
+	public void setType(int index) {
+		this.type = index;
 	}
 }

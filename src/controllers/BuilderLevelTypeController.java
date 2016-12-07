@@ -16,13 +16,11 @@ public class BuilderLevelTypeController implements ActionListener {
 	private BuildField buildField;
 	private Model m;
 	private JComboBox<String> lt;
-	private JPanel ct;
 
-	public BuilderLevelTypeController(BuildField buildField, Model m, JComboBox<String> lt, JPanel ct) {
+	public BuilderLevelTypeController(BuildField buildField, Model m, JComboBox<String> lt) {
 		this.buildField = buildField;
 		this.m = m;
 		this.lt = lt;
-		this.ct = ct;
 	}
 
 	@Override
@@ -38,6 +36,10 @@ public class BuilderLevelTypeController implements ActionListener {
 			tempField.setEnabled(true);
 			buildField.setTimeField(tempField);
 		}
+		
+		// Update the model
+		// 0 - puzzle, 1 - lightning, 2 -theme
+		m.setType(index);
 	}
 }
 
