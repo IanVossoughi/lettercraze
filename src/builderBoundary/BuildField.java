@@ -67,12 +67,13 @@ public class BuildField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField timeField;
-	public JTextField levelNameField;
+	private JTextField levelNameField;
 	private JTextField wordEntryField;
 	private JList<String> wordList;
 	private JButton removeWordButton;
 	private Model m;
 	private JButton[][] tileArray;
+	private JComboBox<String> levelTypeCombo;
 	
 	private ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
  	private ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
@@ -94,7 +95,6 @@ public class BuildField extends JFrame {
 			}
 		});
 	}
-	
 
 	/**
 	 * Create the frame.
@@ -180,7 +180,7 @@ public class BuildField extends JFrame {
 		levelTypeLabel.setIcon(null);
 		starPanel.add(levelTypeLabel);
 
-		JComboBox<String> levelTypeCombo = new JComboBox<String>();
+		levelTypeCombo = new JComboBox<String>();
 		levelTypeCombo.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);
@@ -334,6 +334,11 @@ public class BuildField extends JFrame {
 	
 	public void setTimeField (JTextField TimeField) {
 		this.timeField = TimeField;
+	}
+
+	public JComboBox<String> getlevelTypeCombo() {
+		// TODO Auto-generated method stub
+		return levelTypeCombo;
 	}
 
 }

@@ -11,7 +11,7 @@ public class Model {
 	Score score;
 	DefaultListModel<String> wordListModel;
 	Word selectedWord;
-	int timeLeft;
+	int time;
 	
 	public Model() {
 		this.board = new Board();
@@ -84,5 +84,10 @@ public class Model {
 
 	public void setType(int index) {
 		this.type = index;
+	}
+
+	public void setTime(int time) {
+		// TODO Auto-generated method stub
+		this.time = time;
 	}
 }
