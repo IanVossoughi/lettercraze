@@ -1,10 +1,14 @@
 package entities;
 
 public class Score {
-	public int[] starScores;
+	public int[] starScores = {0, 0, 0};
 	int score;
 	
 	public Score(int starScores[]) {
+		this.starScores = starScores;
+	}
+	
+	public void setScore(int starScores[]){
 		this.starScores = starScores;
 	}
 
