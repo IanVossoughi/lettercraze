@@ -27,6 +27,7 @@ public class Tile {
 	}
 	
 	private char randomLetter() {
+		//TODO: Get Random letters according to scoring frequency
 		char letter = (char) (new Random().nextInt(26) + 65);
 		return letter;
 	}
