@@ -24,6 +24,15 @@ public class Tile {
 		return this;
 	}
 	
+	public Tile toggleSelected(){
+		if(selected){
+			selected = false;
+		} else {
+			selected = true;
+		}
+		return this;
+	}
+	
 	public boolean isEnabled(){
 		return this.enabled;
 	}
@@ -34,5 +43,9 @@ public class Tile {
 	
 	public void setLetter(char c) {
 		this.letter = c;
+	}
+
+	public boolean isSelected() {
+		return this.selected;
 	}
 }

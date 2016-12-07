@@ -27,6 +27,7 @@ import java.awt.FlowLayout;
 
 import controllers.BackToMenuButtonController;
 import controllers.DeselectButtonController;
+import controllers.PlayerClickTileController;
 import controllers.ResetButtonController;
 import controllers.SubmitButtonController;
 import controllers.UndoButtonController;
@@ -42,6 +43,7 @@ public class PlayField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Model m;
+	private JButton[][] tileArray;
 
 	/**
 	 * Launch the application.
@@ -188,7 +190,7 @@ public class PlayField extends JFrame {
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.CENTER);
-		JButton[][] tileArray = new JButton[6][6];
+		tileArray = new JButton[6][6];
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
 		Random rng = new Random();
 		String word = new String();
@@ -199,6 +201,7 @@ public class PlayField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
+				tileArray[i][j].addActionListener(new PlayerClickTileController(m, this, i, j));
 				char letter = m.getBoard().getTile(i,j).getLetter();
 				//char letter = (char) (rng.nextInt(26) + 65);
 				System.out.println(letter);
@@ -211,5 +214,23 @@ public class PlayField extends JFrame {
 			}
 		}
 		wordLabel.setText("WORD: " + word);
+	}
+
+	public void refreshBoard() {
+		// TODO Auto-generated method stub
+		for(int x = 0; x < 6; x++){
+			for(int y = 0; y < 6; y++){
+				if (m.getBoard().getTile(x, y).isEnabled()) {
+					char letter = m.getBoard().getTile(x, y).getLetter();
+					if (!m.getBoard().getTile(x, y).isSelected()) {
+						tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+					}
+					else {
+						tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/pressedTiles/" + letter + ".png")));
+					}
+				}
+			}
+		}
+		
 	}
 }
