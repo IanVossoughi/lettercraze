@@ -19,7 +19,7 @@ public class TestAddButtonController extends TestCase {
 	public void testAddButton() {
 		AddButtonController abc = new AddButtonController(buildField, model);
 		abc.actionPerformed(null);
-		String eF = buildField.getWordEntryField();
+		String eF = buildField.getWordEntry();
 		assertEquals("",eF);	
 	}
 	
