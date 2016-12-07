@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import builderBoundary.BuildField;
@@ -20,7 +21,6 @@ public class BuilderLevelTypeController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//buildField.getSelectedIndex();
 	}
-		
 }
+
