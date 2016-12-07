@@ -12,27 +12,17 @@ import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import java.awt.Font;
-import javax.swing.JList;
-import javax.swing.ListSelectionModel; 
-import java.awt.GridLayout; 
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.border.BevelBorder;
-import java.awt.Dimension;
 
 import javax.swing.border.EtchedBorder;
-import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import controllers.ExitButtonController;
 import controllers.LevelSelectMenuTabPaneController;
 import controllers.PlayButtonController;
+import entities.Model;
 
 import java.awt.Color;
 import javax.swing.JTabbedPane;
@@ -43,6 +33,7 @@ public class MenuField extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private Model m;
 	private JPanel contentPane;
 
 	/**
@@ -65,6 +56,7 @@ public class MenuField extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuField() {
+		this.m = new Model();
 		
 		int unlocked = new ProgressIO().loadUnlockedNum();
 		System.out.println("Unlocked: " + unlocked);
@@ -103,7 +95,7 @@ public class MenuField extends JFrame {
 		
 		JButton playButton = new JButton("Play");
 		bottomBarPanel.add(playButton);
-		playButton.addActionListener(new PlayButtonController(this));
+		playButton.addActionListener(new PlayButtonController(this, m));
 		
 		
 		JButton exitButton = new JButton("Exit");

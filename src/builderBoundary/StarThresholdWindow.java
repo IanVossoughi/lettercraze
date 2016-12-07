@@ -1,7 +1,6 @@
 package builderBoundary;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,15 +11,16 @@ import entities.Model;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 
 public class StarThresholdWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;

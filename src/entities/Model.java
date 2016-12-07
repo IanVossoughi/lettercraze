@@ -1,6 +1,5 @@
 package entities;
 
-import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 

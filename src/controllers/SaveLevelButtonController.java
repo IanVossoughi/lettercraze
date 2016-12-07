@@ -8,8 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.swing.JPanel;
-
-import builderBoundary.BuildField;
 import entities.Model;
 
 public class SaveLevelButtonController implements ActionListener {

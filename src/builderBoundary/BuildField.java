@@ -23,6 +23,7 @@ import javax.swing.event.ListSelectionListener;
 
 import controllers.AddButtonController;
 import controllers.BuilderClickTileController;
+import controllers.BuilderLevelTypeController;
 import controllers.ExitBuilderController;
 import controllers.FilePicker;
 import controllers.LevelNameListener;
@@ -182,6 +183,7 @@ public class BuildField extends JFrame {
 		levelTypeCombo.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);
+		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m));
 
 		JButton generateButton = new JButton("Generate");
 		starPanel.add(generateButton);
@@ -264,8 +266,6 @@ public class BuildField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
-				int row = i;
-				int col = j;
 				tileArray[i][j].setIcon(greenIcon);
 				tileArray[i][j].addActionListener(new BuilderClickTileController(m, this, i, j));
 						

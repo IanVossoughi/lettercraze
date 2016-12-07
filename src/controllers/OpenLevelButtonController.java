@@ -60,6 +60,7 @@ public class OpenLevelButtonController implements ActionListener {
 					m.getBoard().tiles[x][y] = newTile;
 				}
 				System.out.print("\n");
+				in.close();
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
