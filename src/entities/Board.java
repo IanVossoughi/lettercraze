@@ -25,6 +25,14 @@ public class Board {
 		return tiles[x][y];
 	}
 	
+	public Coordinate getSelectedTileCoords() {
+		return this.currentTile;
+	}
+	
+	public void setSelectedTileCoords(Coordinate coord) {
+		this.currentTile = coord;
+	}
+	
 	/*
 	 * Used for saving the board state. Returns a string representation of the board state.
 	 */
