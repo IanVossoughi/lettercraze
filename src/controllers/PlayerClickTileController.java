@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import builderBoundary.BuildField;
+import entities.Coordinate;
 import entities.Model;
 import entities.Tile;
 import entities.Word;
@@ -28,8 +29,16 @@ public class PlayerClickTileController implements ActionListener {
 		//System.out.println(x + " " + y);
 		Tile clickedTile = this.m.getBoard().getTile(x, y);
 		clickedTile.toggleSelected();
-		if (clickedTile.isSelected()) {
-			m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + clickedTile.getLetter());
+		Coordinate currentTile = m.getBoard().getSelectedTileCoords();
+		boolean firstTile = false;
+		if (currentTile.x < 0) {
+			firstTile = true;
+		}
+		if(firstTile || (Math.abs(x - currentTile.x) < 2) && (Math.abs(y - currentTile.y) < 2) && (!clickedTile.isSelected())) {
+			if (clickedTile.isSelected()) {
+				m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + clickedTile.getLetter());
+				m.getBoard().setSelectedTileCoords(new Coordinate(x,y));
+			}
 		}
 		p.refreshBoard();
 	}
