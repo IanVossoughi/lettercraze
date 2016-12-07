@@ -19,6 +19,7 @@ public class Model {
 		this.title = "";
 		int[] defScore = {0, 0, 0};
 		this.score = new Score(defScore);
+		this.selectedWord = new Word("", 0);
 	}
 	
 	public Board getBoard(){
@@ -71,5 +72,13 @@ public class Model {
 
 	public void setScore(Score score) {
 		this.score = score;
+	}
+	
+	public Word getSelectedWord() {
+		return this.selectedWord;
+	}
+	
+	public void setSelectedWord(Word selectedWord) {
+		this.selectedWord = selectedWord;
 	}
 }
