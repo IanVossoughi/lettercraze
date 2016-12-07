@@ -64,7 +64,7 @@ public class StarThresholdWindow extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
-		JLabel lblEnterStarThresholds = new JLabel("Enter the points required for each star:");
+		JLabel lblEnterStarThresholds = new JLabel("Enter the value required for each star:");
 		panel.add(lblEnterStarThresholds);
 		
 		JPanel panel_1 = new JPanel();
