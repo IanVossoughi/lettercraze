@@ -30,14 +30,18 @@ import controllers.DeselectButtonController;
 import controllers.ResetButtonController;
 import controllers.SubmitButtonController;
 import controllers.UndoButtonController;
+import entities.Model;
 
 public class PlayField extends JFrame {
+	
+	
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private Model m;
 
 	/**
 	 * Launch the application.
@@ -46,7 +50,8 @@ public class PlayField extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PlayField frame = new PlayField();
+					Model model = new Model();
+					PlayField frame = new PlayField(model);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +63,8 @@ public class PlayField extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PlayField() {
+	public PlayField(Model m) {
+		this.m = m;
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
@@ -189,18 +195,18 @@ public class PlayField extends JFrame {
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				tileArray[i][j] = new JButton("");
-				tileArray[i][j].setPreferredSize(new Dimension(20, 20));
+				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
-				char letter = (char) (rng.nextInt(26) + 65);
+				char letter = m.getBoard().getTile(i,j).getLetter();
+				//char letter = (char) (rng.nextInt(26) + 65);
 				System.out.println(letter);
 				tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
 				if (i == 3 && j > 2) {
 					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/pressedTiles/" + letter + ".png")));
 					word = word.concat(Character.toString(letter));
 				}
-				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				boardPanel.add(tileArray[i][j]);
 			}
 		}

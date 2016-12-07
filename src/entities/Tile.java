@@ -27,4 +27,12 @@ public class Tile {
 	public boolean isEnabled(){
 		return this.enabled;
 	}
+	
+	public char getLetter(){
+		return this.letter;
+	}
+	
+	public void setLetter(char c) {
+		this.letter = c;
+	}
 }
