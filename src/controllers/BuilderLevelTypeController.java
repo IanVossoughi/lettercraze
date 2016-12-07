@@ -21,11 +21,7 @@ public class BuilderLevelTypeController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/*
-		String s = buildField.getTitle();
-		if (s == "Puzzle"){
-			buildField.
-		*/
+
 	}	
 }
 
