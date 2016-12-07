@@ -2,6 +2,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,10 +28,13 @@ public class OpenLevelButtonController implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String name = new FilePicker(contentPane).open().getAbsolutePath();
-		System.out.println("Opening level " + name);
-		loadLevel(name);
-		b.refreshBoard();
+		File openFile = new FilePicker(contentPane).open();
+		if (openFile != null) {
+			String name = openFile.getAbsolutePath();
+			System.out.println("Opening level " + name);
+			loadLevel(name);
+			b.refreshBoard();
+		}
 	}
 	
 	/*
