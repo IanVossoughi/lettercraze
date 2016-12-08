@@ -231,6 +231,8 @@ public class PlayField extends JFrame {
 		wordList.setModel(m.getWordListModel());
 		
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
+		//System.out.println(m.getSelectedWord().getWordString());
+		m.setSelectedWord(m.getSelectedWord());
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				if (m.getBoard().getTile(x, y).isEnabled()) {

@@ -25,6 +25,8 @@ public class SubmitWordMove {
 	public boolean doMove(){
 		if(isValid()){
 			wordList.addElement(selectedWord.getWordString());
+			System.out.println("Word is" + selectedWord.getWordString()); //Andrew, checking
+			selectedWord.addScore(); //Andrew, gets score
 			for (int x = 0; x < 6; x++) {
 				for (int y = 0; y < 6; y++) {
 					if (model.getBoard().getTile(x, y).isSelected()) {
@@ -35,10 +37,12 @@ public class SubmitWordMove {
 			}
 			new DeselectButtonController(model, play).actionPerformed(null);
 			play.refreshBoard();
-			selectedWord.addScore(); //Andrew
+			System.out.println("Word is" + selectedWord.getWordString());
 			model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
 			int score = selectedWord.getScore();
 			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
+			selectedWord.setScore(0); //Andrew, resets word
+			selectedWord.setWordString(""); //Andrew
 			return true;
 		}
 		return false;
