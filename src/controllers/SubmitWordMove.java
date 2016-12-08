@@ -28,11 +28,11 @@ public class SubmitWordMove {
 	}
 	public boolean isValid(){
 		//TODO: Check the Dictionary 
-		if(wordList.contains(selectedWord.getWordString())){
-			return false;
+		if(selectedWord.getWordString().length() >2){
+			return true;
 		}
 		else{
-			return true;
+			return false;
 		}
 	}
 
