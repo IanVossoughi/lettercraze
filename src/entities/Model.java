@@ -91,4 +91,8 @@ public class Model {
 		// TODO Auto-generated method stub
 		this.time = time;
 	}
+
+	public int getTime() {
+		return this.time;
+	}
 }

@@ -73,6 +73,7 @@ public class BuildField extends JFrame {
 	private JTextField wordEntryField;
 	private JList<String> wordList;
 	private JButton removeWordButton;
+	private JButton generateButton;
 	private Model m;
 	private JButton[][] tileArray;
 	private JComboBox<String> levelTypeCombo;
@@ -188,7 +189,7 @@ public class BuildField extends JFrame {
 		starPanel.add(levelTypeCombo);
 		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m, levelTypeCombo));
 
-		JButton generateButton = new JButton("Generate");
+		generateButton = new JButton("Generate");
 		starPanel.add(generateButton);
 
 		JButton starThresholdButton = new JButton("Set Star Points");
@@ -356,6 +357,14 @@ public class BuildField extends JFrame {
 	public JTextField getlevelNameField() {
 		// TODO Auto-generated method stub
 		return this.levelNameField;
+	}
+	
+	public JButton getGenerateButton() {
+		return this.generateButton;
+	}
+	
+	public void setGenerateButton (JButton genButt) {
+		this.generateButton = genButt;
 	}
 
 }
