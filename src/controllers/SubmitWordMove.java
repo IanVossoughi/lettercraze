@@ -2,9 +2,9 @@ package controllers;
 
 import javax.swing.DefaultListModel;
 
-
-
+import entities.Board;
 import entities.Model;
+import entities.Tile;
 import entities.Word;
 import general.WordTable;
 import playerBoundary.PlayField;
@@ -27,14 +27,8 @@ public class SubmitWordMove {
 			wordList.addElement(selectedWord.getWordString());
 			System.out.println("Word is" + selectedWord.getWordString()); //Andrew, checking
 			selectedWord.addScore(); //Andrew, gets score
-			for (int x = 0; x < 6; x++) {
-				for (int y = 0; y < 6; y++) {
-					if (model.getBoard().getTile(x, y).isSelected()) {
-						model.getBoard().getTile(x, y).setSelection(false);
-						model.getBoard().getTile(x, y).toggleEnabled();
-					}
-				}
-			}
+			tilesGoAway();
+			model.getBoard().moveTilesUp(); // TODO: doesn't work, if you want play without things getting messed up, comment out. 
 			new DeselectButtonController(model, play).actionPerformed(null);
 			play.refreshBoard();
 			System.out.println("Word is" + selectedWord.getWordString());
@@ -56,5 +50,14 @@ public class SubmitWordMove {
 			return false;
 		}
 	}
-
+	public void tilesGoAway(){
+		for (int x = 0; x < 6; x++) {
+			for (int y = 0; y < 6; y++) {
+				if (model.getBoard().getTile(x, y).isSelected()) {
+					model.getBoard().getTile(x, y).setSelection(false);
+					model.getBoard().getTile(x, y).toggleEnabled();
+				}
+			}
+		}
+	}
 }
