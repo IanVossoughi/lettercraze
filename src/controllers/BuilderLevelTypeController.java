@@ -52,11 +52,22 @@ public class BuilderLevelTypeController implements ActionListener {
 			JButton tempButton = buildField.getRemoveButton();
 			tempButton.setEnabled(false);
 	        buildField.setRemoveButton(tempButton);
+	        
+	        //Take out generate for non-Theme levels
+	        JButton tempGen = buildField.getGenerateButton();
+	        tempGen.setEnabled(false);
+	        buildField.setGenerateButton(tempGen);
+	        
 		}
 		else {
 			JTextField tempWordField = buildField.getWordEntryField();
 			tempWordField.setEnabled(true);
 			buildField.setWordEntryField(tempWordField);
+			
+			//Enable generate button for theme level
+	        JButton tempGen = buildField.getGenerateButton();
+	        tempGen.setEnabled(true);
+	        buildField.setGenerateButton(tempGen);
 		}
 		
 		// Update the model
