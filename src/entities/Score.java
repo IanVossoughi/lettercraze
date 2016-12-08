@@ -8,6 +8,14 @@ public class Score {
 		this.starScores = starScores;
 	}
 	
+	public int getScoreValue() {
+		return this.score;
+	}
+	
+	public void setScoreValue(int score) {
+		this.score = score;
+	}
+	
 	public void setScore(int starScores[]){
 		this.starScores = starScores;
 	}
