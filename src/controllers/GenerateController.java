@@ -19,6 +19,7 @@ public class GenerateController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println("Generating level with words:" + m.getWordListModel().toString());
 
 	}
 

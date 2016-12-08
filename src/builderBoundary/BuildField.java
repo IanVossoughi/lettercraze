@@ -254,6 +254,7 @@ public class BuildField extends JFrame {
 
 		wordEntryField = new JTextField();
 		addRemoveWordPanel.add(wordEntryField);
+		addRemoveWordPanel.getRootPane().setDefaultButton(enterWordButton);
 		wordEntryField.setColumns(10);
 
 		removeWordButton = new JButton("Remove");
