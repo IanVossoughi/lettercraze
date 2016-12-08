@@ -35,8 +35,9 @@ public class SubmitWordMove {
 			}
 			new DeselectButtonController(model, play).actionPerformed(null);
 			play.refreshBoard();
+			model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
 			int score = selectedWord.getScore();
-			play.getScoreLabel().setText(play.getScoreLabel().getText() + Integer.toString(score));
+			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			return true;
 		}
 		return false;

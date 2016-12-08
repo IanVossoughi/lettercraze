@@ -70,9 +70,13 @@ public class Model {
 	public Score getScore(){
 		return this.score;
 	}
-
+	
 	public void setScore(Score score) {
 		this.score = score;
+	}
+
+	public void setScoreValue(int score) {
+		this.score.setScoreValue(score);
 	}
 	
 	public Word getSelectedWord() {
