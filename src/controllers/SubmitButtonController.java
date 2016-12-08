@@ -18,8 +18,11 @@ public class SubmitButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Word selectedWord = model.getSelectedWord();
-		//new SubmitWordMove(model);
+		SubmitWordMove move = new SubmitWordMove(model);
+		move.doMove();
+		System.out.print(model.getWordListModel().getSize());
+		//TODO: reach tile and deselect tiles - refreshBoard
+		//model.getBoard().getTile(0, 0);
 
 	}
 
