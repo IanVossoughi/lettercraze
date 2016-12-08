@@ -13,7 +13,6 @@ public class AddButtonController implements ActionListener{
 
 	private BuildField buildField;
 	private Model model;
-	//private int unlocked;
 
 	public AddButtonController(BuildField buildField, Model model) {
 		this.buildField = buildField;
@@ -22,11 +21,13 @@ public class AddButtonController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		model.addWordListModel(buildField.getWordEntry());
-		buildField.setWordEntry("");
-		JButton tempButton = buildField.getRemoveButton();
-		tempButton.setEnabled(true);
-		buildField.setRemoveButton(tempButton);
+		//Checks that a word is there
+		if (!buildField.getWordEntry().isEmpty()) {
+			model.addWordListModel(buildField.getWordEntry());
+			buildField.setWordEntry("");
+			JButton tempButton = buildField.getRemoveButton();
+			tempButton.setEnabled(true);
+			buildField.setRemoveButton(tempButton);
+		}
 	}
-
 }
