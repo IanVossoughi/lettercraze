@@ -1,6 +1,8 @@
 package controllers;
 
 
+
+
 import javax.swing.DefaultListModel;
 import entities.Model;
 import entities.Word;
@@ -29,14 +31,11 @@ public class SubmitWordMove {
 		return false;
 	}
 	public boolean isValid(){
+		//wordtable.loadWordTable();
 		//TODO: Check the Dictionary 
-		if(selectedWord.getWordString().length() >2){
-			if(WordTable.isWord(selectedWord.getWordString())){
-				return true;
-			}
-			return false;
-		}
-		else{
+		if(selectedWord.getWordString().length() >2 && wordtable.isWord(selectedWord.getWordString())){
+		return true;
+		}else{
 			return false;
 		}
 	}
