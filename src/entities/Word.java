@@ -17,4 +17,5 @@ public class Word {
 	public void setWordString(String chars) {
 		this.chars = chars;
 	}
+	public int getScore(){return score;}
 }
