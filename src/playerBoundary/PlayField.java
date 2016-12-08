@@ -184,6 +184,7 @@ public class PlayField extends JFrame {
 		wordList = new JList<String>();
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		wordList.setPrototypeCellValue("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDE");
 		wordListScrollPane.setViewportView(wordList);
 		
 		
@@ -221,6 +222,7 @@ public class PlayField extends JFrame {
 	public void refreshBoard() {
 		// TODO Auto-generated method stub
 		wordList.setModel(m.getWordListModel());
+		
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
