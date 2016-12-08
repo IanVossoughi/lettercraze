@@ -46,8 +46,10 @@ public class PlayField extends JFrame {
 
 	private JButton[][] tileArray;
 	private JLabel wordLabel;
+	private JLabel scoreLabel;
 	private JList<String> wordList;
 
+	public JLabel getScoreLabel(){return scoreLabel;}
 	/**
 	 * Launch the application.
 	 */
@@ -102,8 +104,8 @@ public class PlayField extends JFrame {
 		JLabel scoreHeaderLabel = new JLabel("Score:");
 		starPanel.add(scoreHeaderLabel);
 		
-		JLabel label = new JLabel("150");
-		starPanel.add(label);
+		scoreLabel = new JLabel("0");
+		starPanel.add(scoreLabel);
 		
 		JSeparator separator = new JSeparator();
 		starPanel.add(separator);
@@ -184,6 +186,7 @@ public class PlayField extends JFrame {
 		wordList = new JList<String>();
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		wordList.setPrototypeCellValue("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDE");
 		wordListScrollPane.setViewportView(wordList);
 		
 		
@@ -210,7 +213,12 @@ public class PlayField extends JFrame {
 				char letter = m.getBoard().getTile(i,j).getLetter();
 				//char letter = (char) (rng.nextInt(26) + 65);
 				System.out.println(letter);
-				tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+				if (m.getBoard().getTile(i, j).isEnabled()) {
+					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+				}
+				else {
+					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/white-square.png")));
+				}
 				boardPanel.add(tileArray[i][j]);
 			}
 		}
@@ -221,11 +229,13 @@ public class PlayField extends JFrame {
 	public void refreshBoard() {
 		// TODO Auto-generated method stub
 		wordList.setModel(m.getWordListModel());
+		
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				if (m.getBoard().getTile(x, y).isEnabled()) {
 					char letter = m.getBoard().getTile(x, y).getLetter();
+
 					if (!m.getBoard().getTile(x, y).isSelected()) {
 						tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
 					}
@@ -233,6 +243,10 @@ public class PlayField extends JFrame {
 						tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/pressedTiles/" + letter + ".png")));
 					}
 				}
+				else {
+					tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/white-square.png")));
+				}
+				tileArray[x][y].setEnabled(m.getBoard().getTile(x, y).isEnabled());
 			}
 		}
 		

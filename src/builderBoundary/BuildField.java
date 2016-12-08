@@ -137,10 +137,6 @@ public class BuildField extends JFrame {
 		mnNewMenu.add(mntmSaveLevel);
 		mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
 
-		JMenuItem mntmDeleteLevel = new JMenuItem("Delete Level");
-		mntmDeleteLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
-		mnNewMenu.add(mntmDeleteLevel);
-
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmExitBuilder);
