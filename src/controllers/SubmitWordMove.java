@@ -35,6 +35,7 @@ public class SubmitWordMove {
 			}
 			new DeselectButtonController(model, play).actionPerformed(null);
 			play.refreshBoard();
+			
 			return true;
 		}
 		return false;

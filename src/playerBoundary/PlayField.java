@@ -46,8 +46,10 @@ public class PlayField extends JFrame {
 
 	private JButton[][] tileArray;
 	private JLabel wordLabel;
+	private JLabel scoreLabel;
 	private JList<String> wordList;
 
+	public JLabel getScoreLabel(){return scoreLabel;}
 	/**
 	 * Launch the application.
 	 */
@@ -102,8 +104,8 @@ public class PlayField extends JFrame {
 		JLabel scoreHeaderLabel = new JLabel("Score:");
 		starPanel.add(scoreHeaderLabel);
 		
-		JLabel label = new JLabel("150");
-		starPanel.add(label);
+		scoreLabel = new JLabel("0");
+		starPanel.add(scoreLabel);
 		
 		JSeparator separator = new JSeparator();
 		starPanel.add(separator);
