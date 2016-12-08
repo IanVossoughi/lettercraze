@@ -46,6 +46,7 @@ public class PlayField extends JFrame {
 
 	private JButton[][] tileArray;
 	private JLabel wordLabel;
+	private JList<String> wordList;
 
 	/**
 	 * Launch the application.
@@ -142,7 +143,7 @@ public class PlayField extends JFrame {
 		submitWordPanel.add(submitButton);
 		submitButton.setHorizontalAlignment(SwingConstants.LEADING);
 		/*TODO: change constructor to SubmitButtonController if needed*/
-		submitButton.addActionListener(new SubmitButtonController(m));
+		submitButton.addActionListener(new SubmitButtonController(m, this));
 
 		JButton btnDeselectWord = new JButton("Deselect");
 		submitWordPanel.add(btnDeselectWord);
@@ -180,7 +181,7 @@ public class PlayField extends JFrame {
 		JScrollPane wordListScrollPane = new JScrollPane();
 		sidebarPanel.add(wordListScrollPane, BorderLayout.CENTER);
 		
-		JList<String> wordList = new JList<String>();
+		wordList = new JList<String>();
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		wordListScrollPane.setViewportView(wordList);
@@ -219,6 +220,7 @@ public class PlayField extends JFrame {
 
 	public void refreshBoard() {
 		// TODO Auto-generated method stub
+		wordList.setModel(m.getWordListModel());
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
