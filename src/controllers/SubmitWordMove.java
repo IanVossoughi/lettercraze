@@ -6,6 +6,7 @@ import javax.swing.DefaultListModel;
 
 import entities.Model;
 import entities.Word;
+import general.WordTable;
 import playerBoundary.PlayField;
 
 public class SubmitWordMove {
@@ -13,6 +14,7 @@ public class SubmitWordMove {
 	private DefaultListModel<String> wordList;
 	private Model model;
 	private PlayField play;
+	private WordTable wordTable = new WordTable();
 	
 	public SubmitWordMove(Model model, PlayField play) {
 		this.selectedWord = model.getSelectedWord();
@@ -38,9 +40,8 @@ public class SubmitWordMove {
 		return false;
 	}
 	public boolean isValid(){
-		//wordtable.loadWordTable();
-		//TODO: Check the Dictionary 
-		if(selectedWord.getWordString().length() >2){
+		
+		if(selectedWord.getWordString().length() >2 && wordTable.isWord(selectedWord.getWordString())){
 			return true;
 		}
 		else{
