@@ -185,6 +185,8 @@ public class PlayField extends JFrame {
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		wordListScrollPane.setViewportView(wordList);
 		
+		
+		
 		JLabel wordListLabel = new JLabel("Word List");
 		wordListLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		wordListScrollPane.setColumnHeaderView(wordListLabel);
