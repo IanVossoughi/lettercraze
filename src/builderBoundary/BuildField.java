@@ -27,6 +27,7 @@ import controllers.BuilderClickTileController;
 import controllers.BuilderLevelTypeController;
 import controllers.ExitBuilderController;
 import controllers.FilePicker;
+import controllers.GenerateController;
 import controllers.LevelNameListener;
 import controllers.SaveLevelButtonController;
 import controllers.TimerEditController;
@@ -190,7 +191,9 @@ public class BuildField extends JFrame {
 		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m, levelTypeCombo));
 
 		generateButton = new JButton("Generate");
+		generateButton.addActionListener(new GenerateController(m, this));
 		starPanel.add(generateButton);
+		
 
 		JButton starThresholdButton = new JButton("Set Star Points");
 		starPanel.add(starThresholdButton);
