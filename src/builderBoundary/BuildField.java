@@ -37,6 +37,7 @@ import controllers.OpenStarWindowController;
 import controllers.RemoveButtonController;
 import controllers.ResetBuilderController;
 import entities.Model;
+import entities.Tile;
 import playerBoundary.PlayField;
 
 import javax.swing.JComboBox;
@@ -78,6 +79,7 @@ public class BuildField extends JFrame {
 	private Model m;
 	private JButton[][] tileArray;
 	private JComboBox<String> levelTypeCombo;
+	private JPanel boardPanel;
 	
 	private ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
  	private ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
@@ -187,7 +189,7 @@ public class BuildField extends JFrame {
 		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m, levelTypeCombo));
 
 		generateButton = new JButton("Generate");
-		generateButton.addActionListener(new GenerateController(m, this));
+		generateButton.addActionListener(new GenerateController(m, this, tileArray));
 		starPanel.add(generateButton);
 		
 
@@ -258,12 +260,17 @@ public class BuildField extends JFrame {
 		removeWordButton.addActionListener(new RemoveButtonController(this, m));
 		addRemoveWordPanel.add(removeWordButton);
 
-		JPanel boardPanel = new JPanel();
+		boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.WEST);
 		tileArray = new JButton[6][6];
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
 		
+		m.getBoard().fillBoard();
+		populateBoardPanel();
+	}
+	
+	private void populateBoardPanel() {
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				tileArray[i][j] = new JButton("");
@@ -271,7 +278,13 @@ public class BuildField extends JFrame {
 				tileArray[i][j].setOpaque(false);
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
-				tileArray[i][j].setIcon(greenIcon);
+				Tile tile = m.getBoard().tiles[i][j];
+				tile.setLetter('q');
+				if(tile.isEnabled()){
+					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + tile.getLetter() + ".png")));
+				} else {
+					tileArray[i][j].setIcon(greenIcon);
+				}
 				tileArray[i][j].addActionListener(new BuilderClickTileController(m, this, i, j));
 						
 						
@@ -289,13 +302,13 @@ public class BuildField extends JFrame {
 			}
 		}
 	}
-	
+
 	public void refreshBoard(){
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				JButton tile = tileArray[x][y];
 				if(m.getBoard().tiles[x][y].isEnabled()){
-					tile.setIcon(greenIcon);
+					tile.setIcon(new ImageIcon(PlayField.class.getResource("/images/" + m.getBoard().tiles[x][y].getLetter() + ".png")));
 				} else {
 					tile.setIcon(whiteIcon);
 				}
