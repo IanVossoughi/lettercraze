@@ -168,7 +168,7 @@ public class PlayField extends JFrame {
 		JButton undoButton = new JButton("Undo");
 		taskPanel.add(undoButton);
 		/* TODO add constructor to UndoButtonController if needed*/
-		undoButton.addActionListener(new UndoButtonController());
+		undoButton.addActionListener(new UndoButtonController(m, this));
 		
 		JButton resetButton = new JButton("Reset");
 		taskPanel.add(resetButton);
