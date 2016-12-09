@@ -71,4 +71,26 @@ public class Board {
 		}
 		return false;
 	}
+	
+	public void floatUpTiles(){
+		for (int x = 0; x < 6; x++) {
+			for (int y = 0; y < 6; y++) {
+				int i = x + 1;
+				while(this.getTile(x,y).isEnabled() && this.getTile(x, y).getReplacement()) {
+					if (i >= 6) {
+						this.getTile(x, y).setLetter(this.getTile(x,y).randomLetter());
+						this.getTile(x, y).setReplacement(false);
+						break;
+					}
+					if (this.getTile(i, y).isEnabled() && !this.getTile(i, y).getReplacement()) {
+						this.getTile(x,y).setLetter(this.getTile(i, y).getLetter());
+						this.getTile(x, y).setReplacement(false);
+						this.getTile(i, y).setReplacement(true);
+						break;
+					}
+					i++;
+				}
+			}
+		}
+	}
 }
