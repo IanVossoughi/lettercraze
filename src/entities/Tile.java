@@ -70,4 +70,9 @@ public class Tile {
 	public void setSelection(boolean selection) {
 		this.selected = selection;
 	}
+
+	public void setEnabled(boolean b) {
+		// TODO Auto-generated method stub
+		this.enabled = b;
+	}
 }
