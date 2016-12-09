@@ -85,7 +85,7 @@ public class BuildField extends JFrame {
  	private ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
 
 	public JPanel getContentPane() { return contentPane; }
-
+	public JComboBox<String> getLevelTypeCombo(){return levelTypeCombo;}
 	/**
 	 * Launch the application.
 	 */
@@ -186,7 +186,7 @@ public class BuildField extends JFrame {
 		levelTypeCombo.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);
-		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m, levelTypeCombo));
+		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m));
 
 		generateButton = new JButton("Generate");
 		generateButton.addActionListener(new GenerateController(m, this, tileArray));

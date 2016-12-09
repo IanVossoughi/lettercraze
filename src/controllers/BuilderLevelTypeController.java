@@ -19,10 +19,10 @@ public class BuilderLevelTypeController implements ActionListener {
 	private Model m;
 	private JComboBox<String> lt;
 
-	public BuilderLevelTypeController(BuildField buildField, Model m, JComboBox<String> lt) {
+	public BuilderLevelTypeController(BuildField buildField, Model m) {
 		this.buildField = buildField;
 		this.m = m;
-		this.lt = lt;
+		this.lt = buildField.getLevelTypeCombo();
 	}
 
 	@Override
