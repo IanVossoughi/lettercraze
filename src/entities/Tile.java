@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.Random;
+import general.LetterFrequency;
 
 public class Tile {
 	boolean enabled;
@@ -13,7 +14,7 @@ public class Tile {
 		this.enabled = false;
 		this.selected = false;
 		this.toBeReplaced = false;
-		this.letter = randomLetter();
+		this.letter = LetterFrequency.getInstance().getRandomLetter();
 		//this.points = points;
 	}
 	
@@ -23,7 +24,7 @@ public class Tile {
 			this.letter = '!'; // Sentinel value;
 		} else {
 			enabled = true;
-			this.letter = randomLetter();
+			this.letter = randomLetterFrequency();
 		}
 		return this;
 	}
@@ -32,6 +33,10 @@ public class Tile {
 		//TODO: Get Random letters according to scoring frequency
 		char letter = (char) (new Random().nextInt(26) + 65);
 		return letter;
+	}
+	
+	public char randomLetterFrequency() {
+		return LetterFrequency.getInstance().getRandomLetter();
 	}
 
 	public Tile toggleSelected(){

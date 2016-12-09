@@ -78,7 +78,7 @@ public class Board {
 				int i = x + 1;
 				while(this.getTile(x,y).isEnabled() && this.getTile(x, y).getReplacement()) {
 					if (i >= 6) {
-						this.getTile(x, y).setLetter(this.getTile(x,y).randomLetter());
+						this.getTile(x, y).setLetter(this.getTile(x,y).randomLetterFrequency());
 						this.getTile(x, y).setReplacement(false);
 						break;
 					}

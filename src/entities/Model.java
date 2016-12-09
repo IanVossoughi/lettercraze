@@ -1,6 +1,5 @@
 package entities;
 
-
 import javax.swing.DefaultListModel;
 
 public class Model {
@@ -22,7 +21,7 @@ public class Model {
 		this.selectedWord = new Word("", 0);
 		this.time = 0;
 	}
-	
+
 	public Board getBoard(){
 		return this.board;
 	}
