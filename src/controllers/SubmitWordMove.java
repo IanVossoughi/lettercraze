@@ -30,16 +30,19 @@ public class SubmitWordMove {
 					if (model.getBoard().getTile(x, y).isSelected()) {
 						model.getBoard().getTile(x, y).setSelection(false);
 						model.getBoard().getTile(x, y).toggleEnabled();
+						model.getBoard().getTile(x, y).setReplacement(true);
 					}
 				}
 			}
+			model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
+//			int score = selectedWord.getScore();
+			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			new DeselectButtonController(model, play).actionPerformed(null);
 			play.refreshBoard();
-			model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
-			int score = selectedWord.getScore();
-			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			return true;
 		}
+		new DeselectButtonController(model, play).actionPerformed(null);
+		play.refreshBoard();
 		return false;
 	}
 	public boolean isValid(){
@@ -49,6 +52,21 @@ public class SubmitWordMove {
 		}
 		else{
 			return false;
+		}
+	}
+	
+	public void floatUpTiles(){
+		for (int x = 0; x < 6; x++) {
+			for (int y = 0; y < 6; y++) {
+				while(model.getBoard().getTile(x,y).isEnabled() && model.getBoard().getTile(x, y).getReplacement()) {
+					int i = x + 1;
+					while(model.getBoard().getTile(i, y).isEnabled()) {
+						model.getBoard().getTile(i, y).setLetter(model.getBoard().getTile(i, y+1).getLetter());
+						
+						i++;
+					}
+				}
+			}
 		}
 	}
 

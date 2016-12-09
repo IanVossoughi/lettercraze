@@ -202,6 +202,7 @@ public class PlayField extends JFrame {
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
 		Random rng = new Random();
 		String word = new String();
+		
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				tileArray[i][j] = new JButton("");

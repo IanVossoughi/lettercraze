@@ -5,12 +5,14 @@ import java.util.Random;
 public class Tile {
 	boolean enabled;
 	boolean selected;
+	boolean toBeReplaced;
 	char letter; // Even though Q is Qu, just set this to Q - it can show Qu in the display
 	//int points; Shouldn't we evaluate points somewhere else?
 	
 	public Tile(char letter) {
 		this.enabled = false;
 		this.selected = false;
+		this.toBeReplaced = false;
 		this.letter = randomLetter();
 		//this.points = points;
 	}
@@ -55,6 +57,14 @@ public class Tile {
 
 	public boolean isSelected() {
 		return this.selected;
+	}
+	
+	public boolean getReplacement() {
+		return this.toBeReplaced;
+	}
+	
+	public void setReplacement(boolean replacement) {
+		this.toBeReplaced = replacement;
 	}
 	
 	public void setSelection(boolean selection) {
