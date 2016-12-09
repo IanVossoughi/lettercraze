@@ -46,31 +46,7 @@ public class Board {
 		}
 		return retStr;
 	}
- //TODO: DOESNT WORK AT ALL 
-	public boolean moveTilesUp(){
-		for (int x = 0; x < 6; x++) {
-			for (int y = 0; y < 6; y++) {
-				if (!this.getTile(x, y).isEnabled()) {
-					if(y + 1 > 5){
-						return false;
-					}
-					else{
-						Tile tileMovingUp = this.getTile(x, y+1);
-						Tile removedTile = this.getTile(x, y);
-						
-						removedTile = tileMovingUp;
-						removedTile.toggleEnabled();
-						if(!this.getTile(x+1, y).isEnabled() && !this.getTile(x-1, y).isEnabled() && !this.getTile(x, y+1).isEnabled() && !this.getTile(x, y-1).isEnabled()){
-							moveTilesUp();
-						}
-						return true;	
-					}
-
-				}
-			}
-		}
-		return false;
-	}
+ 
 	
 	public void floatUpTiles(){
 		for (int x = 0; x < 6; x++) {
