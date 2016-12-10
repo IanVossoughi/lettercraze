@@ -19,6 +19,7 @@ public class LetterFrequency {
 	}
 	
 	private String generateFrequencyString() {
+		LetterFrequencyFast.getInstance();
 		HashMap<Character, Integer> charFreq = new HashMap<Character, Integer>();
 		charFreq.put('E', 12702);
 		charFreq.put('T', 9056);
@@ -51,7 +52,7 @@ public class LetterFrequency {
 
 		for(char aChar = 'A'; aChar <= 'Z'; aChar++) {
 			int count = charFreq.get(aChar);
-			System.out.println("Number of characters in " + aChar + ": " + count);
+			//System.out.println("Number of characters in " + aChar + ": " + count);
 			for(int i = 0; i < count; i++) {
 				freq = freq + aChar;
 			}
