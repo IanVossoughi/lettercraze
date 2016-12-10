@@ -8,7 +8,6 @@ public class LetterFrequency {
 	String frequencyString;
 	
 	protected LetterFrequency() {
-		//test
 		this.frequencyString = generateFrequencyString();
 	}
 	

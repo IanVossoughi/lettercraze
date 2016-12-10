@@ -279,7 +279,7 @@ public class BuildField extends JFrame {
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
 				Tile tile = m.getBoard().tiles[i][j];
-				tile.setLetter('q');
+				//tile.setLetter('q');
 				if(tile.isEnabled()){
 					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + tile.getLetter() + ".png")));
 				} else {
