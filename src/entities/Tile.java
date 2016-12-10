@@ -2,19 +2,20 @@ package entities;
 
 import java.util.Random;
 import general.LetterFrequency;
+import general.LetterFrequencyFast;
 
 public class Tile {
 	boolean enabled;
 	boolean selected;
 	boolean toBeReplaced;
 	char letter; // Even though Q is Qu, just set this to Q - it can show Qu in the display
-	//int points; Shouldn't we evaluate points somewhere else?
+	int points; 
 	
 	public Tile(char letter) {
 		this.enabled = false;
 		this.selected = false;
 		this.toBeReplaced = false;
-		this.letter = LetterFrequency.getInstance().getRandomLetter();
+		this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
 		//this.points = points;
 	}
 	
@@ -36,7 +37,7 @@ public class Tile {
 	}
 	
 	public char randomLetterFrequency() {
-		return LetterFrequency.getInstance().getRandomLetter();
+		return LetterFrequencyFast.getInstance().getRandomLetter();
 	}
 
 	public Tile toggleSelected(){
