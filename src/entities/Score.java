@@ -11,6 +11,9 @@ public class Score {
 	public int getScoreValue() {
 		return this.score;
 	}
+	public int getStarScoreIndex(int n){
+		return this.starScores[n];
+	}
 	
 	public void setScoreValue(int score) {
 		this.score = score;
