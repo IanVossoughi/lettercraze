@@ -56,6 +56,7 @@ public class PlayField extends JFrame {
 	private IconMap iconMap;
 	private ImageIcon disabledIcon;
 	private JLabel timerLabel;
+	private JLabel timeLabel;
 	public JLabel getScoreLabel(){return scoreLabel;}
 
 	/**
@@ -172,7 +173,7 @@ public class PlayField extends JFrame {
 		flowLayout.setVgap(15);
 		bottomBarPanel.add(taskPanel);
 
-		JLabel timeLabel = new JLabel("Time:");
+		timeLabel = new JLabel("Time:");
 		taskPanel.add(timeLabel);
 
 		timerLabel = new JLabel(Integer.toString(m.getTime()));
@@ -264,7 +265,8 @@ public class PlayField extends JFrame {
 			}, 1000, 1000);
 		}
 		else{
-			
+			timerLabel.setVisible(false);
+			timeLabel.setVisible(false);
 		}
 	}
 	protected void gameOver() {
