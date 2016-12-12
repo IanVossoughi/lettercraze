@@ -252,10 +252,11 @@ public class PlayField extends JFrame {
 					m.setTime(m.getTime()-1);
 					int newTime = m.getTime();
 					timerLabel.setText(Integer.toString(newTime));
-					if(newTime < 1){
+					if(newTime == 0){
 						JOptionPane.showMessageDialog(new JFrame(), "Time's Up!");
 						gameOver();
 						this.cancel();
+						
 					}
 
 				}
