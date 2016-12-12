@@ -182,7 +182,7 @@ public class PlayField extends JFrame {
 		JButton resetButton = new JButton("Reset");
 		taskPanel.add(resetButton);
 		/* TODO add constructor to ResetButtonController if needed*/
-		resetButton.addActionListener(new ResetButtonController());
+		resetButton.addActionListener(new ResetButtonController(this, m));
 
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
