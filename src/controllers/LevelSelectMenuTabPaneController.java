@@ -23,9 +23,17 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 	}
 
 	public void stateChanged(ChangeEvent e){
+		
 		int tabIndex = tabPane.getSelectedIndex();
-		//System.out.println(tabIndex + " " + unlocked);
+		if(tabIndex % 3 == 0)
+			menu.getLevelTypeLabel().setText("PUZZLE");
+		if(tabIndex % 3 ==1)
+			menu.getLevelTypeLabel().setText("LIGHTNING");
+		if(tabIndex % 3 == 2)
+			menu.getLevelTypeLabel().setText("THEME");
+
 		play.setEnabled(tabIndex < unlocked);
+		System.out.print(menu.getLevelTypeLabel().getText() + "\n");
 	}
 	
 }

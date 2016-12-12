@@ -5,7 +5,7 @@ import javax.swing.DefaultListModel;
 public class Model {
 
 	String title;
-	int type; // 0 - puzzle, 1 - lightining, 2 - theme
+	int type; // 0 - puzzle, 1 - lightning, 2 - theme
 	Board board;
 	Score score;
 	DefaultListModel<String> wordListModel;
@@ -19,7 +19,9 @@ public class Model {
 		int[] defScore = {0, 0, 0};
 		this.score = new Score(defScore);
 		this.selectedWord = new Word("", 0);
-		this.time = 0;
+		this.time = 1;
+		System.out.print("TYPE Is" + this.type);
+		
 	}
 
 	public boolean hasWon(){

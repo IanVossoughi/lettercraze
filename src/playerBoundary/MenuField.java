@@ -35,7 +35,10 @@ public class MenuField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private Model m;
 	private JPanel contentPane;
-
+	private int unlocked;
+	private ProgressIO progress;
+	private String levelType;
+	private JLabel levelTypeLabel;
 	/**
 	 * Launch the application.
 	 */
@@ -52,14 +55,23 @@ public class MenuField extends JFrame {
 			}
 		});
 	}
-
+	
+	public int getUnlocked(){return this.unlocked;}
+	public String getLevelType(){return this.levelType;}
+	public JLabel getLevelTypeLabel(){return this.levelTypeLabel;}
 	/**
 	 * Create the frame.
 	 */
 	public MenuField() {
 		this.m = new Model();
+		progress = new ProgressIO();
 		
-		int unlocked = new ProgressIO().loadUnlockedNum();
+		levelTypeLabel = new JLabel("PUZZLE");
+		//change to test
+		progress.saveUnlockedNum(2);
+
+		unlocked = progress.loadUnlockedNum();
+		
 		System.out.println("Unlocked: " + unlocked);
 		
 		setTitle("LetterCraze Game");
@@ -128,6 +140,7 @@ public class MenuField extends JFrame {
 			if(i > unlocked) levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock.png")));
 			levelNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			
+			
 			// only add padlock if it is unlocked
 			levelNumPanel.add(levelNumLabel);
 
@@ -138,19 +151,21 @@ public class MenuField extends JFrame {
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 			
-			String levelType;
+			
 			switch (i % 3) {
 			case 0:
 				levelType = "THEME";
 				break;
 			case 1:
 				levelType = "PUZZLE";
+				
 				break;
 			default:
 				levelType = "LIGHTNING";
 				break;
 			}
-			JLabel levelTypeLabel = new JLabel("- " + levelType);
+		
+			levelTypeLabel = new JLabel("- " + levelType);
 			levelNamePanel.add(levelTypeLabel);
 
 			JPanel scorePanel = new JPanel();
@@ -174,6 +189,7 @@ public class MenuField extends JFrame {
 			JLabel star3Label = new JLabel("");
 			star3Label.setIcon(star);
 			scorePanel.add(star3Label);
+			
 			}
 
 	}

@@ -23,7 +23,14 @@ public class PlayButtonController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		new PlayField(m).setVisible(true);
 		menuField.setVisible(false);
-		menuField.dispose();		
+		menuField.dispose();	
+		String levelType = menuField.getLevelTypeLabel().getText();
+		if(levelType == "PUZZLE")
+			m.setType(0);
+		if(levelType == "LIGHTNING")
+			m.setType(1);
+		if(levelType == "THEME")
+			m.setType(2);
 	}
 
 }

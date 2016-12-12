@@ -13,9 +13,12 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import java.awt.GridLayout;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
@@ -34,8 +37,8 @@ import controllers.UndoButtonController;
 import entities.Model;
 
 public class PlayField extends JFrame {
-	
-	
+
+
 
 	/**
 	 * 
@@ -43,15 +46,14 @@ public class PlayField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Model m;
-	//private MenuField menuF;
-
+	private int levelType;
 	private JButton[][] tileArray;
 	private JLabel wordLabel;
 	private JLabel scoreLabel;
 	private JList<String> wordList;
 
 	public JLabel getScoreLabel(){return scoreLabel;}
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -75,7 +77,8 @@ public class PlayField extends JFrame {
 	 */
 	public PlayField(Model m) {
 		this.m = m;
-		
+		levelType = m.getType();
+		System.out.print(levelType);
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
@@ -83,68 +86,68 @@ public class PlayField extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
+
 		JPanel menuPanel = new JPanel();
 		contentPane.add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
-		
+
 		JButton backToMenuButton = new JButton("Exit Level");
 		menuPanel.add(backToMenuButton);
 		backToMenuButton.addActionListener(new BackToMenuButtonController(this));
-		
-		
+
+
 		JPanel levelStarPanel = new JPanel();
 		menuPanel.add(levelStarPanel);
 		levelStarPanel.setLayout(new BorderLayout(0, 0));
-		
+
 		JLabel levelNameLabel = new JLabel("Level Name/Theme");
 		levelNameLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		levelNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		levelStarPanel.add(levelNameLabel, BorderLayout.NORTH);
-		
+
 		JPanel starPanel = new JPanel();
 		levelStarPanel.add(starPanel, BorderLayout.SOUTH);
-		
+
 		JLabel scoreHeaderLabel = new JLabel("Score:");
 		starPanel.add(scoreHeaderLabel);
-		
+
 		scoreLabel = new JLabel("0");
 		starPanel.add(scoreLabel);
-		
+
 		JSeparator separator = new JSeparator();
 		starPanel.add(separator);
-		
+
 		JLabel star1Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(0)));
 		star1Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
 		starPanel.add(star1Label);
-		
+
 		JLabel star2Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(1)));
 		star2Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
 		starPanel.add(star2Label);
-		
+
 		JLabel star3Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(2)));
 		star3Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
 		starPanel.add(star3Label);
-		
+
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
 		bottomBarPanel.setLayout(new BoxLayout(bottomBarPanel, BoxLayout.X_AXIS));
-		
+
 		JPanel submissionPanel = new JPanel();
 		submissionPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		bottomBarPanel.add(submissionPanel);
 		submissionPanel.setLayout(new BoxLayout(submissionPanel, BoxLayout.Y_AXIS));
-		
+
 		JPanel wordPanel = new JPanel();
 		submissionPanel.add(wordPanel);
-		
+
 		wordLabel = new JLabel("WORD: _");
 		wordPanel.add(wordLabel);
 		wordLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		
+
 		JPanel submitWordPanel = new JPanel();
 		submissionPanel.add(submitWordPanel);
-		
+
 		JButton submitButton = new JButton("Submit");
 		submitWordPanel.add(submitButton);
 		submitButton.setHorizontalAlignment(SwingConstants.LEADING);
@@ -155,25 +158,25 @@ public class PlayField extends JFrame {
 		submitWordPanel.add(btnDeselectWord);
 		/*TODO: change constructor to SubmitButtonController if needed*/
 		btnDeselectWord.addActionListener(new DeselectButtonController(m,this));
-		
+
 		JPanel taskPanel = new JPanel();
 		taskPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		FlowLayout flowLayout = (FlowLayout) taskPanel.getLayout();
 		flowLayout.setAlignOnBaseline(true);
 		flowLayout.setVgap(15);
 		bottomBarPanel.add(taskPanel);
-		
+
 		JLabel timeLabel = new JLabel("Time:");
 		taskPanel.add(timeLabel);
-		
-		JLabel timerLabel = new JLabel("99");
+
+		JLabel timerLabel = new JLabel(Integer.toString(m.getTime()));
 		taskPanel.add(timerLabel);
-		
+
 		JButton undoButton = new JButton("Undo");
 		taskPanel.add(undoButton);
 		/* TODO add constructor to UndoButtonController if needed*/
 		undoButton.addActionListener(new UndoButtonController(m, this));
-		
+
 		JButton resetButton = new JButton("Reset");
 		taskPanel.add(resetButton);
 		/* TODO add constructor to ResetButtonController if needed*/
@@ -183,22 +186,22 @@ public class PlayField extends JFrame {
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
 		contentPane.add(sidebarPanel, BorderLayout.EAST);
 		sidebarPanel.setLayout(new BorderLayout(0, 0));
-		
+
 		JScrollPane wordListScrollPane = new JScrollPane();
 		sidebarPanel.add(wordListScrollPane, BorderLayout.CENTER);
-		
+
 		wordList = new JList<String>();
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		wordList.setPrototypeCellValue("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDE");
 		wordListScrollPane.setViewportView(wordList);
-		
-		
-		
+
+
+
 		JLabel wordListLabel = new JLabel("Word List");
 		wordListLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		wordListScrollPane.setColumnHeaderView(wordListLabel);
-		
+
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.CENTER);
@@ -206,7 +209,7 @@ public class PlayField extends JFrame {
 		boardPanel.setLayout(new GridLayout(6, 6, 0, 0));
 		Random rng = new Random();
 		String word = new String();
-		
+
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				tileArray[i][j] = new JButton("");
@@ -217,7 +220,7 @@ public class PlayField extends JFrame {
 				tileArray[i][j].addActionListener(new PlayerClickTileController(m, this, i, j));
 				char letter = m.getBoard().getTile(i,j).getLetter();
 				//char letter = (char) (rng.nextInt(26) + 65);
-				System.out.println(letter);
+				//System.out.println(letter);
 				if (m.getBoard().getTile(i, j).isEnabled()) {
 					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
 				}
@@ -229,12 +232,37 @@ public class PlayField extends JFrame {
 		}
 		wordLabel.setText("WORD: " + word);
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
+		if(m.getType() == 1){
+			Timer timer = new Timer();
+			timer.scheduleAtFixedRate(new TimerTask() {
+				@Override
+				public void run() {
+
+					m.setTime(m.getTime()-1);
+					int newTime = m.getTime();
+					timerLabel.setText(Integer.toString(newTime));
+					if(newTime < 1){
+						JOptionPane.showMessageDialog(new JFrame(), "Time's Up!");
+						gameOver();
+						this.cancel();
+					}
+
+				}
+
+			}, 1000, 1000);
+		}
+	}
+
+	protected void gameOver() {
+		this.setVisible(false);
+		this.dispose();
+		new MenuField().setVisible(true);
+
 	}
 
 	public void refreshBoard() {
-		// TODO Auto-generated method stub
 		wordList.setModel(m.getWordListModel());
-		
+
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
 		//System.out.println(m.getSelectedWord().getWordString());
 		m.setSelectedWord(m.getSelectedWord());
@@ -256,6 +284,6 @@ public class PlayField extends JFrame {
 				tileArray[x][y].setEnabled(m.getBoard().getTile(x, y).isEnabled());
 			}
 		}
-		
+
 	}
 }
