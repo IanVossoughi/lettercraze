@@ -190,6 +190,7 @@ public class MenuField extends JFrame {
 			star3Label.setIcon(star);
 			scorePanel.add(star3Label);
 			
+			
 			}
 
 	}

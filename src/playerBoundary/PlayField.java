@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import javax.swing.AbstractButton;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -54,7 +55,7 @@ public class PlayField extends JFrame {
 	private JList<String> wordList;
 	private IconMap iconMap;
 	private ImageIcon disabledIcon;
-
+	private JLabel timerLabel;
 	public JLabel getScoreLabel(){return scoreLabel;}
 
 	/**
@@ -174,7 +175,7 @@ public class PlayField extends JFrame {
 		JLabel timeLabel = new JLabel("Time:");
 		taskPanel.add(timeLabel);
 
-		JLabel timerLabel = new JLabel(Integer.toString(m.getTime()));
+		timerLabel = new JLabel(Integer.toString(m.getTime()));
 		taskPanel.add(timerLabel);
 
 		JButton undoButton = new JButton("Undo");
@@ -237,9 +238,14 @@ public class PlayField extends JFrame {
 		}
 		wordLabel.setText("WORD: " + word);
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
+		
+	}
+	public void hasTimer(){
+		System.out.print("Play field understand that the level type is " + m.getType());
 		if(m.getType() == 1){
 			Timer timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {
+
 				@Override
 				public void run() {
 
@@ -257,7 +263,6 @@ public class PlayField extends JFrame {
 			}, 1000, 1000);
 		}
 	}
-
 	protected void gameOver() {
 		this.setVisible(false);
 		this.dispose();

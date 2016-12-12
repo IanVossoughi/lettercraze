@@ -11,6 +11,7 @@ public class PlayButtonController implements ActionListener{
 
 	private MenuField menuField;
 	private Model m;
+	String levelType;
 	//private int unlocked;
 
 	public PlayButtonController(MenuField menuField, Model m) {
@@ -21,16 +22,27 @@ public class PlayButtonController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		new PlayField(m).setVisible(true);
+		PlayField pf = new PlayField(m);
+		pf.setVisible(true);
+
 		menuField.setVisible(false);
 		menuField.dispose();	
-		String levelType = menuField.getLevelTypeLabel().getText();
-		if(levelType == "PUZZLE")
+		levelType = menuField.getLevelTypeLabel().getText();
+
+		System.out.print("levelType var is " + levelType);
+		if(levelType == "PUZZLE"){
 			m.setType(0);
-		if(levelType == "LIGHTNING")
+			System.out.print("levelType is set to 0");	
+		}
+		else if(levelType == "LIGHTNING"){
 			m.setType(1);
-		if(levelType == "THEME")
+			System.out.print("levelType is set to 1");	
+		}
+		else{
 			m.setType(2);
+			System.out.print("levelType is set to 2");	
+		}
+		pf.hasTimer();
 	}
 
 }
