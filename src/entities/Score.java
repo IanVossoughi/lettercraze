@@ -26,9 +26,4 @@ public class Score {
 	public String serialize() {
 		return "" + starScores[0] + " " + starScores[1] + " " + starScores[2];
 	}
-	
-
-	/*public void setScores(int a, int b, int c){
-		this.starScores = new 
-	}*/
 }
