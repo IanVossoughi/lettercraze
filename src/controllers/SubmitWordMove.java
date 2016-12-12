@@ -34,14 +34,14 @@ public class SubmitWordMove {
 //			int score = selectedWord.getScore();
 			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			new DeselectButtonController(model, play).actionPerformed(null);
-			play.refreshBoard();
+//			play.refreshBoard();
 			System.out.println("Word is" + selectedWord.getWordString());
 			selectedWord.setScore(0); //Andrew, resets word
 			selectedWord.setWordString(""); //Andrew
 			return true;
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
-		play.refreshBoard();
+//		play.refreshBoard();
 		return false;
 	}
 	public boolean isValid(){
