@@ -19,7 +19,7 @@ public class Model {
 		int[] defScore = {0, 0, 0};
 		this.score = new Score(defScore);
 		this.selectedWord = new Word("", 0);
-		this.time = 1;
+		this.time = 120;
 		System.out.print("TYPE Is" + this.type);
 		
 	}
