@@ -51,7 +51,7 @@ public class SubmitWordMove {
 	}
 	private void updateScore() {
 		if(model.getType() == 0){ //Do complex word score math only for puzzle, rest have just +1 by word for score
-			System.out.println("\n Type is" + model.getType());
+			System.out.println("\n Type is " + model.getType());
 			model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
 		}
 		else {

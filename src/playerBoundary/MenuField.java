@@ -161,7 +161,7 @@ public class MenuField extends JFrame {
 				levelType = "LIGHTNING";
 				break;
 			}
-		
+			
 			levelTypeLabel = new JLabel("- " + levelType);
 			levelNamePanel.add(levelTypeLabel);
 
@@ -189,7 +189,8 @@ public class MenuField extends JFrame {
 			
 			
 			}
-
+			//default level type
+			levelTypeLabel.setText("PUZZLE");
 	}
 	
 }
