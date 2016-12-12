@@ -137,7 +137,7 @@ public class MenuField extends JFrame {
 
 			JLabel levelNumLabel = new JLabel(Integer.toString(i));
 			if(i > unlocked) levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_locked.png")));
-			else levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock.png")));
+			else levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_unlocked.png")));
 			levelNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			
