@@ -35,6 +35,7 @@ import controllers.ResetButtonController;
 import controllers.SubmitButtonController;
 import controllers.UndoButtonController;
 import entities.Model;
+import general.IconMap;
 
 public class PlayField extends JFrame {
 
@@ -51,6 +52,8 @@ public class PlayField extends JFrame {
 	private JLabel wordLabel;
 	private JLabel scoreLabel;
 	private JList<String> wordList;
+	private IconMap iconMap;
+	private ImageIcon disabledIcon;
 
 	public JLabel getScoreLabel(){return scoreLabel;}
 
@@ -77,6 +80,8 @@ public class PlayField extends JFrame {
 	 */
 	public PlayField(Model m) {
 		this.m = m;
+		this.iconMap = new IconMap();
+		this.disabledIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
 		levelType = m.getType();
 		System.out.print(levelType);
 		setTitle("LetterCraze Game");
@@ -180,7 +185,7 @@ public class PlayField extends JFrame {
 		JButton resetButton = new JButton("Reset");
 		taskPanel.add(resetButton);
 		/* TODO add constructor to ResetButtonController if needed*/
-		resetButton.addActionListener(new ResetButtonController());
+		resetButton.addActionListener(new ResetButtonController(this, m));
 
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
@@ -222,10 +227,10 @@ public class PlayField extends JFrame {
 				//char letter = (char) (rng.nextInt(26) + 65);
 				//System.out.println(letter);
 				if (m.getBoard().getTile(i, j).isEnabled()) {
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+					tileArray[i][j].setIcon(iconMap.getIcon(letter));
 				}
 				else {
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/white-square.png")));
+					tileArray[i][j].setIcon(disabledIcon);
 				}
 				boardPanel.add(tileArray[i][j]);
 			}
@@ -272,14 +277,14 @@ public class PlayField extends JFrame {
 					char letter = m.getBoard().getTile(x, y).getLetter();
 
 					if (!m.getBoard().getTile(x, y).isSelected()) {
-						tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+						tileArray[x][y].setIcon(iconMap.getIcon(letter));
 					}
 					else {
-						tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/pressedTiles/" + letter + ".png")));
+						tileArray[x][y].setIcon(iconMap.getPressedIcon(letter));
 					}
 				}
 				else {
-					tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/white-square.png")));
+					tileArray[x][y].setIcon(disabledIcon);
 				}
 				tileArray[x][y].setEnabled(m.getBoard().getTile(x, y).isEnabled());
 			}

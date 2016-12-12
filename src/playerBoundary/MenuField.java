@@ -42,7 +42,6 @@ public class MenuField extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -137,11 +136,12 @@ public class MenuField extends JFrame {
 			levelListPanel.add(levelNumPanel);
 
 			JLabel levelNumLabel = new JLabel(Integer.toString(i));
-			if(i > unlocked) levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock.png")));
+			if(i > unlocked) levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_locked.png")));
+			else levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock.png")));
 			levelNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			
-			// only add padlock if it is unlocked
+			// Only add padlock if it is unlocked
 			levelNumPanel.add(levelNumLabel);
 
 			JPanel levelNamePanel = new JPanel();
@@ -174,7 +174,7 @@ public class MenuField extends JFrame {
 			JLabel highScoreLabel = new JLabel("High Score - ");
 			scorePanel.add(highScoreLabel);
 
-			JLabel highScoreNumLabel = new JLabel("999");
+			JLabel highScoreNumLabel = new JLabel("0");
 			scorePanel.add(highScoreNumLabel);
 
 			ImageIcon star = new ImageIcon(MenuField.class.getResource("/general/star.png"));
