@@ -17,6 +17,7 @@ public class PlayButtonController implements ActionListener{
 	public PlayButtonController(MenuField menuField, Model m) {
 		this.menuField = menuField;
 		this.m = m;
+		this.levelType = menuField.getLevelType();
 		//this.unlocked = unlocked;
 	}
 
@@ -29,7 +30,7 @@ public class PlayButtonController implements ActionListener{
 		menuField.dispose();	
 		levelType = menuField.getLevelTypeLabel().getText();
 
-		System.out.print("levelType var is " + levelType);
+		System.out.print("\n levelType var is " + levelType + "\n");
 		if(levelType == "PUZZLE"){
 			m.setType(0);
 			System.out.print("levelType is set to 0");	

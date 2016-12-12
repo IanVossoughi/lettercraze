@@ -141,9 +141,6 @@ public class MenuField extends JFrame {
 			if(i > unlocked) levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_locked.png")));
 			else levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_unlocked.png")));
 			levelNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			
-			
-			// Only add padlock if it is unlocked
 			levelNumPanel.add(levelNumLabel);
 
 			JPanel levelNamePanel = new JPanel();
@@ -166,7 +163,7 @@ public class MenuField extends JFrame {
 				levelType = "LIGHTNING";
 				break;
 			}
-		
+			
 			levelTypeLabel = new JLabel("- " + levelType);
 			levelNamePanel.add(levelTypeLabel);
 
@@ -194,7 +191,8 @@ public class MenuField extends JFrame {
 			
 			
 			}
-
+			//default level type
+			levelTypeLabel.setText("PUZZLE");
 	}
 	
 }
