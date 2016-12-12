@@ -7,6 +7,7 @@ import entities.Model;
 import entities.Tile;
 import entities.Word;
 import general.WordTable;
+import playerBoundary.MenuField;
 import playerBoundary.PlayField;
 
 public class SubmitWordMove {
@@ -15,6 +16,7 @@ public class SubmitWordMove {
 	private Model model;
 	private PlayField play;
 	private WordTable wordTable = new WordTable();
+	private MenuField menu;
 	
 	public SubmitWordMove(Model model, PlayField play) {
 		this.selectedWord = model.getSelectedWord();
@@ -29,8 +31,8 @@ public class SubmitWordMove {
 			selectedWord.addScore(); //Andrew, gets score
 			tilesGoAway();
 			model.getBoard().floatUpTiles();
-			//model.getBoard().moveTilesUp(); // TODO: doesn't work, if you want play without things getting messed up, comment out. 
-			model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
+			updateScore();
+			
 //			int score = selectedWord.getScore();
 			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			new DeselectButtonController(model, play).actionPerformed(null);
@@ -38,11 +40,19 @@ public class SubmitWordMove {
 			System.out.println("Word is" + selectedWord.getWordString());
 			selectedWord.setScore(0); //Andrew, resets word
 			selectedWord.setWordString(""); //Andrew
+			if(model.hasWon()){
+				//unlock next level
+				
+			}
 			return true;
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
 //		play.refreshBoard();
 		return false;
+	}
+	private void updateScore() {
+		model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
+		
 	}
 	public boolean isValid(){
 		

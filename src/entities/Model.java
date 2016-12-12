@@ -22,6 +22,9 @@ public class Model {
 		this.time = 0;
 	}
 
+	public boolean hasWon(){
+		return getScore().score == getScore().getStarScoreIndex(0);
+	}
 	public Board getBoard(){
 		return this.board;
 	}
