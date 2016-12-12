@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import entities.Model;
 import entities.Word;
+import playerBoundary.MenuField;
 import playerBoundary.PlayField;
 
 public class SubmitButtonController implements ActionListener {
@@ -13,9 +14,11 @@ public class SubmitButtonController implements ActionListener {
 	//doMove
 	Model model;
 	PlayField play;
+	
 	public SubmitButtonController(Model m, PlayField p) {
 		this.model = m;
 		this.play = p;
+		
 		
 		}
 

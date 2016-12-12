@@ -43,6 +43,7 @@ public class PlayField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Model m;
+	//private MenuField menuF;
 
 	private JButton[][] tileArray;
 	private JLabel wordLabel;
@@ -50,6 +51,7 @@ public class PlayField extends JFrame {
 	private JList<String> wordList;
 
 	public JLabel getScoreLabel(){return scoreLabel;}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +60,7 @@ public class PlayField extends JFrame {
 			public void run() {
 				try {
 					Model model = new Model();
+					//MenuField menu = MenuField.frame;
 					PlayField frame = new PlayField(model);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -72,6 +75,7 @@ public class PlayField extends JFrame {
 	 */
 	public PlayField(Model m) {
 		this.m = m;
+		
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
