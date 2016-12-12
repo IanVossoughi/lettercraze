@@ -63,6 +63,8 @@ public class MenuField extends JFrame {
 	 */
 	public MenuField() {
 		this.m = new Model();
+		m.writeHighScore();
+		m.readHighScore(0);
 		progress = new ProgressIO();
 		
 		levelTypeLabel = new JLabel("PUZZLE");
