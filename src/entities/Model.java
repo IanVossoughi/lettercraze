@@ -11,7 +11,7 @@ public class Model {
 	DefaultListModel<String> wordListModel;
 	Word selectedWord;
 	int time;
-	
+	/*TODO: Batu - Highscore stuff - make an array, save 15 highscores, read in and out from file */
 	public Model() {
 		this.board = new Board();
 		this.wordListModel = new DefaultListModel<String>();

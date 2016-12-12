@@ -263,6 +263,9 @@ public class PlayField extends JFrame {
 
 			}, 1000, 1000);
 		}
+		else{
+			
+		}
 	}
 	protected void gameOver() {
 		this.setVisible(false);
