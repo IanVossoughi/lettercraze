@@ -23,6 +23,9 @@ public class PlayButtonController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// Before we open the PlayField, load the level into the model.
+		this.loadLevel();
+		
 		PlayField pf = new PlayField(m);
 		pf.setVisible(true);
 
@@ -44,6 +47,15 @@ public class PlayButtonController implements ActionListener{
 			System.out.print("levelType is set to 2");	
 		}
 		pf.hasTimer();
+	}
+
+	private void loadLevel() {
+		// Get the selected index, convert to string
+		int levelNum = (m.getSelectedIndex() + 1);
+		String filePath = "levels/" + levelNum;
+		new OpenLevelButtonController(m, null, null).loadLevel(filePath);
+		// The last two parameters are null because we are not in the builder.
+		// Shouldn't be a problem because the loadLevel method doesn't actually use them.
 	}
 
 }

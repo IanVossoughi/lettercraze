@@ -41,7 +41,7 @@ public class OpenLevelButtonController implements ActionListener {
 	/*
 	 * Loads the level file with the given name into the Model.
 	 */
-	private void loadLevel(String filename) {
+	public void loadLevel(String filename) {
 		//Board newBoard = new Board();
 		//Model m = new Model();
 		m.setBoard(new Board());
@@ -81,17 +81,20 @@ public class OpenLevelButtonController implements ActionListener {
 			String title = nextField(in);
 			//System.out.println(title);
 			m.setTitle(title);
-			b.getlevelNameField().setText(title);
+			if(b != null)
+				b.getlevelNameField().setText(title);
 			
 			
 			//System.out.println(nextField(in)); // level type
 			int levelIndex = Integer.parseInt(nextField(in));
-			b.getlevelTypeCombo().setSelectedIndex(levelIndex);
+			if(b != null)
+				b.getlevelTypeCombo().setSelectedIndex(levelIndex);
 			
 			//System.out.println(nextField(in)); // Timer amount
 			int timeLeft = Integer.parseInt(nextField(in));
 			m.setTime(timeLeft);
-			b.getTimeField().setText(timeLeft + "");
+			if(b != null)
+				b.getTimeField().setText(timeLeft + "");
 			
 			
 			in.close();

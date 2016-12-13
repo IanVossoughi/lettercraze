@@ -157,4 +157,7 @@ public class Model {
 		this.selectedTab = tabIndex;
 	
 	}
+	public int getSelectedIndex() {
+		return selectedTab;
+	}
 }
