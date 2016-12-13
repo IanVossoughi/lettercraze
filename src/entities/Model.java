@@ -21,6 +21,7 @@ public class Model {
 	int time;
 	/*TODO: Batu - Highscore stuff - make an array, save 15 highscores, read in and out from file */
 	int[] highScore = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	int selectedTab; // Used only by player
 
 	public Model() {
 		this.board = new Board();
@@ -42,114 +43,118 @@ public class Model {
 			
 		}
 
-	 catch (IOException e){
-		e.printStackTrace();
+	catch (IOException e){
+		 e.printStackTrace();
+	 }
 	}
-}
-public int readHighScore(int index){
-	FileInputStream in;
-	int num = -1; // Error if this returns
-	try {
-		in = new FileInputStream("highscores.txt");
-		num = in.read();
-		in.close();
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	System.out.print("HighScores = " + num  +"\n");
-
-	return num;
-}
-
-public int[] getHighScores(){
-	return this.highScore;
-}
-
-public int setHighScore(){
-	//do the filePicker stuff
-	return -1;
-}
-public boolean hasWon(){
-	return getScore().score == getScore().getStarScoreIndex(0);
-}
-public Board getBoard(){
-	return this.board;
-}
-
-public int getType(){
-	return this.type;
-}
-
-public void setBoard(Board board2) {
-	// TODO Auto-generated method stub
-	this.board = board2;
-}
-
-public void setTitle(String title) {
-	this.title = title;
-}
-
-public DefaultListModel<String> getWordListModel() {
-	return wordListModel;
-}
-
-public void addWordListModel(String word) {
-	wordListModel.addElement(word);
-}
-
-public String getTitle(){
-	return this.title;
-}
-
-public int removeWordListModel(int index) {
-	wordListModel.remove(index);
-	int size = wordListModel.getSize();
-
-	if (size == 0) {
-		return -1;
-
-	} else {
-		if (index == wordListModel.getSize()) {
-			index--;
+	
+	public int readHighScore(int index){
+		FileInputStream in;
+		int num = -1; // Error if this returns
+		try {
+			in = new FileInputStream("highscores.txt");
+			num = in.read();
+			in.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		System.out.print("HighScores = " + num  +"\n");
+
+		return num;
 	}
-	return index;
-}
 
-public Score getScore(){
-	return this.score;
-}
+	public int[] getHighScores(){
+		return this.highScore;
+	}
 
-public void setScore(Score score) {
-	this.score = score;
-}
+	public int setHighScore(){
+		//do the filePicker stuff
+		return -1;
+	}
+	
+	public boolean hasWon(){
+		return getScore().score == getScore().getStarScoreIndex(0);
+	}
+	
+	public Board getBoard(){
+		return this.board;
+	}
 
-public void setScoreValue(int score) {
-	this.score.setScoreValue(score);
-}
+	public int getType(){
+		return this.type;
+	}
 
-public Word getSelectedWord() {
-	return this.selectedWord;
-}
+	public void setBoard(Board board2) {
+		this.board = board2;
+	}
 
-public void setSelectedWord(Word selectedWord) {
-	this.selectedWord = selectedWord;
-}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-public void setType(int index) {
-	this.type = index;
-}
+	public DefaultListModel<String> getWordListModel() {
+		return wordListModel;
+	}
 
-public void setTime(int time) {
-	// TODO Auto-generated method stub
-	this.time = time;
-}
+	public void addWordListModel(String word) {
+		wordListModel.addElement(word);
+	}
 
-public int getTime() {
-	return this.time;
-}
+	public String getTitle(){
+		return this.title;
+	}
+
+	public int removeWordListModel(int index) {
+		wordListModel.remove(index);
+		int size = wordListModel.getSize();
+
+		if (size == 0) {
+			return -1;
+
+		} else {
+			if (index == wordListModel.getSize()) {
+				index--;
+			}
+		}
+		return index;
+	}
+
+	public Score getScore(){
+		return this.score;
+	}
+
+	public void setScore(Score score) {
+		this.score = score;
+	}
+
+	public void setScoreValue(int score) {
+		this.score.setScoreValue(score);
+	}
+
+	public Word getSelectedWord() {
+		return this.selectedWord;
+	}	
+
+	public void setSelectedWord(Word selectedWord) {
+		this.selectedWord = selectedWord;
+	}
+
+	public void setType(int index) {
+		this.type = index;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	public int getTime() {
+		return this.time;
+	}
+
+	public void setSelectedTab(int tabIndex) {
+		this.selectedTab = tabIndex;
+	
+	}
 }

@@ -124,7 +124,7 @@ public class MenuField extends JFrame {
 			
 			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			boardPanel.add(tabbedPane);
-			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked));
+			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked, m));
 
 			int i;
 			for (i = 1; i < 16; i++) {
