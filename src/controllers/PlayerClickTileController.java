@@ -29,18 +29,20 @@ public class PlayerClickTileController implements ActionListener {
 		//System.out.println(x + " " + y);
 		Tile clickedTile = this.m.getBoard().getTile(x, y);
 
-		Coordinate currentTile = m.getBoard().getSelectedTileCoords();
-		boolean firstTile = false;
-		if (currentTile.x < 0) {
-			firstTile = true;
-		}
-		if(firstTile || ((Math.abs(x - currentTile.x) < 2) && (Math.abs(y - currentTile.y) < 2) && (!clickedTile.isSelected()))) {
-			clickedTile.setSelection(true);
-			if (clickedTile.isSelected()) {
-				m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + clickedTile.getLetter());
-				m.getBoard().setSelectedTileCoords(new Coordinate(x,y));
+		if (clickedTile.isEnabled()) {
+			Coordinate currentTile = m.getBoard().getSelectedTileCoords();
+			boolean firstTile = false;
+			if (currentTile.x < 0) {
+				firstTile = true;
 			}
+			if(firstTile || ((Math.abs(x - currentTile.x) < 2) && (Math.abs(y - currentTile.y) < 2) && (!clickedTile.isSelected()))) {
+				clickedTile.setSelection(true);
+				if (clickedTile.isSelected()) {
+					m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + clickedTile.getLetter());
+					m.getBoard().setSelectedTileCoords(new Coordinate(x,y));
+				}
+			}
+			p.refreshBoard();
 		}
-		p.refreshBoard();
 	}
 }
