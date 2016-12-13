@@ -17,15 +17,18 @@ public class SubmitWordMove {
 	private PlayField play;
 	private WordTable wordTable = new WordTable();
 	private MenuField menu;
+	private Model lastModel;
 	
 	public SubmitWordMove(Model model, PlayField play) {
 		this.selectedWord = model.getSelectedWord();
 		this.wordList = model.getWordListModel();
 		this.model = model;
 		this.play = play;
+		this.lastModel = null;
 	}
 	public boolean doMove(){
 		if(isValid()){
+			lastModel = new Model();
 			wordList.addElement(selectedWord.getWordString());
 			System.out.println("Word is" + selectedWord.getWordString()); //Andrew, checking
 			selectedWord.addScore(); //Andrew, gets score
@@ -62,6 +65,10 @@ public class SubmitWordMove {
 		else{
 			return false;
 		}
+	}
+	
+	public boolean undoMove() {
+		return true;
 	}
 	
 	public void tilesGoAway(){
