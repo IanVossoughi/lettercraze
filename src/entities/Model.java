@@ -160,4 +160,7 @@ public class Model {
 	public int getSelectedIndex() {
 		return selectedTab;
 	}
+	public boolean hasTitle() {
+		return this.title != null;
+	}
 }

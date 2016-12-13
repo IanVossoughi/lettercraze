@@ -21,6 +21,7 @@ import javax.swing.border.LineBorder;
 
 import controllers.ExitButtonController;
 import controllers.LevelSelectMenuTabPaneController;
+import controllers.OpenLevelButtonController;
 import controllers.PlayButtonController;
 import entities.Model;
 
@@ -39,6 +40,7 @@ public class MenuField extends JFrame {
 	private ProgressIO progress;
 	private String levelType;
 	private JLabel levelTypeLabel;
+	private JLabel lblLevelName;
 	/**
 	 * Launch the application.
 	 */
@@ -124,7 +126,8 @@ public class MenuField extends JFrame {
 			
 			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			boardPanel.add(tabbedPane);
-			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked, m));
+			
+			//tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked, m, lblLevelName));
 
 			int i;
 			for (i = 1; i < 16; i++) {
@@ -146,10 +149,12 @@ public class MenuField extends JFrame {
 			JPanel levelNamePanel = new JPanel();
 			levelListPanel.add(levelNamePanel);
 
-			JLabel lblLevelName = new JLabel("Name");
+			// I put lblLevelName definition above tabbedPane listener
+			lblLevelName = new JLabel("First Level");
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 			
+			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked, m, lblLevelName));
 			
 			switch (i % 3) {
 			case 0:
@@ -193,6 +198,10 @@ public class MenuField extends JFrame {
 			}
 			//default level type
 			levelTypeLabel.setText("PUZZLE");
+	}
+
+	public void setLevelNameLabel(String string) {
+		this.lblLevelName.setText(string);
 	}
 	
 }

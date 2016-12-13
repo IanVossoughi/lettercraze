@@ -53,7 +53,7 @@ public class PlayButtonController implements ActionListener{
 		// Get the selected index, convert to string
 		int levelNum = (m.getSelectedIndex() + 1);
 		String filePath = "levels/" + levelNum;
-		new OpenLevelButtonController(m, null, null).loadLevel(filePath);
+		new OpenLevelButtonController(m, null, null).loadLevel(filePath, m, null);
 		// The last two parameters are null because we are not in the builder.
 		// Shouldn't be a problem because the loadLevel method doesn't actually use them.
 	}

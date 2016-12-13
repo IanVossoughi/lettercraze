@@ -33,7 +33,7 @@ public class OpenLevelButtonController implements ActionListener {
 		if (openFile != null) {
 			String name = openFile.getAbsolutePath();
 			System.out.println("Opening level " + name);
-			loadLevel(name);
+			loadLevel(name, m, b);
 			b.refreshBoard();
 		}
 	}
@@ -41,7 +41,7 @@ public class OpenLevelButtonController implements ActionListener {
 	/*
 	 * Loads the level file with the given name into the Model.
 	 */
-	public void loadLevel(String filename) {
+	public static void loadLevel(String filename, Model m, BuildField b) {
 		//Board newBoard = new Board();
 		//Model m = new Model();
 		m.setBoard(new Board());
@@ -99,10 +99,9 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			in.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("Level not found - " + filename + " D:");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -110,7 +109,7 @@ public class OpenLevelButtonController implements ActionListener {
 	}
 	
 	// Returns the string in the file up until we see a '\n'
-	protected String nextField(FileInputStream in) throws IOException{
+	protected static String nextField(FileInputStream in) throws IOException{
 		char c = 0;
 		String curr = "";
 		while((c = (char) in.read()) != '\n'){
