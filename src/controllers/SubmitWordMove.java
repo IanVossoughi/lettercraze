@@ -9,6 +9,7 @@ import entities.Word;
 import general.WordTable;
 import playerBoundary.MenuField;
 import playerBoundary.PlayField;
+import playerBoundary.ProgressIO;
 
 public class SubmitWordMove {
 	private Word selectedWord;
@@ -40,8 +41,12 @@ public class SubmitWordMove {
 			selectedWord.setScore(0); //Andrew, resets word
 			selectedWord.setWordString(""); //Andrew
 			if(model.hasWon()){
-				//unlock next level
-				
+				// Update the progress
+				int currentProg = ProgressIO.loadUnlockedNum();
+				int playingLevel = model.getSelectedIndex();
+				if(currentProg == playingLevel){
+					ProgressIO.saveUnlockedNum(currentProg + 1);
+				}
 			}
 			return true;
 		}

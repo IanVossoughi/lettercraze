@@ -36,7 +36,7 @@ public class MenuField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private Model m;
 	private JPanel contentPane;
-	private int unlocked;
+	//private int unlocked;
 	private ProgressIO progress;
 	private String levelType;
 	private JLabel levelTypeLabel;
@@ -57,7 +57,7 @@ public class MenuField extends JFrame {
 		});
 	}
 	
-	public int getUnlocked(){return this.unlocked;}
+	//public int getUnlocked(){return this.unlocked;}
 	public String getLevelType(){return this.levelType;}
 	public JLabel getLevelTypeLabel(){return this.levelTypeLabel;}
 	/**
@@ -71,11 +71,11 @@ public class MenuField extends JFrame {
 		
 		levelTypeLabel = new JLabel("PUZZLE");
 		//change to test
-		progress.saveUnlockedNum(2);
+		//progress.saveUnlockedNum(2);
 
-		unlocked = progress.loadUnlockedNum();
+		m.setUnlocked(progress.loadUnlockedNum());
 		
-		System.out.println("Unlocked: " + unlocked);
+		System.out.println("Unlocked: " + m.getUnlocked());
 		
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,7 +141,7 @@ public class MenuField extends JFrame {
 			levelListPanel.add(levelNumPanel);
 
 			JLabel levelNumLabel = new JLabel(Integer.toString(i));
-			if(i > unlocked) levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_locked.png")));
+			if(i > m.getUnlocked()) levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_locked.png")));
 			else levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_unlocked.png")));
 			levelNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			levelNumPanel.add(levelNumLabel);
@@ -154,7 +154,7 @@ public class MenuField extends JFrame {
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 			
-			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked, m, lblLevelName));
+			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, m.getUnlocked(), m, lblLevelName));
 			
 			switch (i % 3) {
 			case 0:

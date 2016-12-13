@@ -22,6 +22,7 @@ public class Model {
 	/*TODO: Batu - Highscore stuff - make an array, save 15 highscores, read in and out from file */
 	int[] highScore = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	int selectedTab; // Used only by player
+	int unlockedLevels = 0;
 
 	public Model() {
 		this.board = new Board();
@@ -75,7 +76,7 @@ public class Model {
 	}
 	
 	public boolean hasWon(){
-		return getScore().score == getScore().getStarScoreIndex(0);
+		return getScore().score > getScore().getStarScoreIndex(0);
 	}
 	
 	public Board getBoard(){
@@ -162,5 +163,12 @@ public class Model {
 	}
 	public boolean hasTitle() {
 		return this.title != null;
+	}
+	public void setUnlocked(int loadUnlockedNum) {
+		this.unlockedLevels = loadUnlockedNum;
+		
+	}
+	public int getUnlocked() {
+		return this.unlockedLevels;
 	}
 }

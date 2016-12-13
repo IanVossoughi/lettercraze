@@ -10,7 +10,7 @@ public class ProgressIO {
 	
 	public ProgressIO(){}
 	
-	public void saveUnlockedNum(int num){
+	public static void saveUnlockedNum(int num){
 		try{
 		File outFile = new File("progress.txt");
 		outFile.createNewFile();
@@ -22,7 +22,7 @@ public class ProgressIO {
 		}
 	}
 	
-	public int loadUnlockedNum(){
+	public static int loadUnlockedNum(){
 		FileInputStream in;
 		int num = -1; // Error if this returns
 		try {

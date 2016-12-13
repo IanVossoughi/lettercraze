@@ -8,6 +8,7 @@ import javax.swing.event.ChangeListener;
 
 import entities.Model;
 import playerBoundary.MenuField;
+import playerBoundary.ProgressIO;
 
 public class LevelSelectMenuTabPaneController implements ChangeListener{
 
@@ -36,6 +37,7 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 		//System.out.println(m.getTitle());
 		title.setText(m.getTitle());
 		//title.setText("sdfsdfwegef");
+		System.out.println(ProgressIO.loadUnlockedNum() + "");
 		//menu.setLevelNameLabel("dfsdfds");
 		
 		if(tabIndex % 3 == 0)
