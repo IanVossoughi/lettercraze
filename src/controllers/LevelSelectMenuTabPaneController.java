@@ -34,11 +34,8 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 		// Update the model with the selected index
 		this.m.setSelectedTab(tabIndex);
 		OpenLevelButtonController.loadLevel("levels/" + (m.getSelectedIndex()+1), m, null);
-		//System.out.println(m.getTitle());
 		title.setText(m.getTitle());
-		//title.setText("sdfsdfwegef");
-		System.out.println(ProgressIO.loadUnlockedNum() + "");
-		//menu.setLevelNameLabel("dfsdfds");
+		//System.out.println(ProgressIO.loadUnlockedNum() + "");
 		
 		if(tabIndex % 3 == 0)
 			menu.getLevelTypeLabel().setText("PUZZLE");

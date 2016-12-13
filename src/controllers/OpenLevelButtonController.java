@@ -52,15 +52,16 @@ public class OpenLevelButtonController implements ActionListener {
 					char nextChar = (char) in.read();
 					Tile newTile = new Tile(nextChar);
 					if(nextChar == '!'){
-						
+						newTile.setLetter('q');
 					} else {
-						newTile.toggleEnabled();
+						newTile.setEnabled(true);
 					}
-					//System.out.print(nextChar);
+					newTile.setEnabled(true);
+					System.out.print(nextChar);
 					//newBoard.tiles[x][y] = newTile;
 					m.getBoard().tiles[x][y] = newTile;
 				}
-				//System.out.print("\n");
+				System.out.print("\n");
 			}
 			
 			// Next get the title;
@@ -106,6 +107,7 @@ public class OpenLevelButtonController implements ActionListener {
 		}
 		
 		//m.board = newBoard;
+		m.getBoard().printBoard();
 	}
 	
 	// Returns the string in the file up until we see a '\n'

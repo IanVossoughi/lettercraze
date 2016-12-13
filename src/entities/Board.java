@@ -9,6 +9,15 @@ public class Board {
 		this.fillBoard();
 		this.currentTile = new Coordinate(-1, -1);
 	}
+	
+	public void printBoard(){
+		for(int x = 0; x < 6; x++){
+			for(int y = 0; y < 6; y++){
+				System.out.print(tiles[x][y].getLetter());
+			}
+			System.out.println();
+		}
+	}
 
 	public void setTiles(Tile[][] tiles){
 		this.tiles = tiles;

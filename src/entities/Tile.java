@@ -15,7 +15,11 @@ public class Tile {
 		this.enabled = false;
 		this.selected = false;
 		this.toBeReplaced = false;
-		this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
+		//this.letter = LetterFrequencyFast.getInstance().getRandomLetter();\
+		this.letter = letter;
+		if(letter == '_'){
+			this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
+		}
 		//this.points = points;
 	}
 	
@@ -25,7 +29,7 @@ public class Tile {
 			this.letter = '!'; // Sentinel value;
 		} else {
 			enabled = true;
-			this.letter = randomLetterFrequency();
+			//this.letter = randomLetterFrequency();
 		}
 		return this;
 	}
