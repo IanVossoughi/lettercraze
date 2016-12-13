@@ -20,7 +20,7 @@ public class Model {
 	Word selectedWord;
 	int time;
 	/*TODO: Batu - Highscore stuff - make an array, save 15 highscores, read in and out from file */
-	int[] highScore = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	byte[] highScore = {15,30,40,50,60,0,0,0,0,0,0,0,0,0,0};
 	int selectedTab; // Used only by player
 	int unlockedLevels = 0;
 
@@ -37,13 +37,17 @@ public class Model {
 	}
 	//DOESNT't work, will fix it later
 	public void writeHighScore(){
-
-		try(FileOutputStream f = new FileOutputStream("highscores.txt");
-				ObjectOutput s = new ObjectOutputStream(f)) {
-			s.writeObject(this.getHighScores());
-			
+		try{
+		File outFile = new File("highscores.txt");
+		outFile.createNewFile();
+		FileOutputStream out = new FileOutputStream(outFile, false);
+		for(int i = 0; i < 15; i++){
+		out.write(this.highScore, 0, 15);
+		System.out.print(Integer.toString(this.highScore[i]));
 		}
-
+		out.close();
+	
+		}
 	catch (IOException e){
 		 e.printStackTrace();
 	 }
@@ -65,8 +69,7 @@ public class Model {
 
 		return num;
 	}
-
-	public int[] getHighScores(){
+	public byte[] getHighScores(){
 		return this.highScore;
 	}
 
