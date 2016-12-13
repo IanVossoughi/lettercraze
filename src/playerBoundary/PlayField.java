@@ -58,7 +58,7 @@ public class PlayField extends JFrame {
 	private JLabel timerLabel;
 	private JLabel timeLabel;
 	public JLabel getScoreLabel(){return scoreLabel;}
-
+	public Timer timer;
 	/**
 	 * Launch the application.
 	 */
@@ -244,7 +244,7 @@ public class PlayField extends JFrame {
 	public void hasTimer(){
 		System.out.print("Play field understand that the level type is " + m.getType());
 		if(m.getType() == 1){
-			Timer timer = new Timer();
+			timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {
 
 				@Override
@@ -268,6 +268,9 @@ public class PlayField extends JFrame {
 			timerLabel.setVisible(false);
 			timeLabel.setVisible(false);
 		}
+	}
+	public void stopTimer(){
+		this.timer.cancel();
 	}
 	protected void gameOver() {
 		this.setVisible(false);

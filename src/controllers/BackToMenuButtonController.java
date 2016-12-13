@@ -18,6 +18,7 @@ public class BackToMenuButtonController implements ActionListener {
 		new MenuField().setVisible(true);
 		playField.setVisible(false);
 		playField.dispose();
+		playField.stopTimer();
 	}
 
 }
