@@ -9,6 +9,7 @@ import entities.Word;
 import general.WordTable;
 import playerBoundary.MenuField;
 import playerBoundary.PlayField;
+import playerBoundary.ProgressIO;
 
 public class SubmitWordMove {
 	private Word selectedWord;
@@ -30,7 +31,7 @@ public class SubmitWordMove {
 		if(isValid()){
 			lastModel = new Model();
 			wordList.addElement(selectedWord.getWordString());
-			System.out.println("Word is" + selectedWord.getWordString()); //Andrew, checking
+			System.out.println("\n Word is" + selectedWord.getWordString()); //Andrew, checking
 			selectedWord.addScore(); //Andrew, gets score
 			tilesGoAway();
 			model.getBoard().floatUpTiles();
@@ -40,12 +41,15 @@ public class SubmitWordMove {
 			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			new DeselectButtonController(model, play).actionPerformed(null);
 			play.refreshBoard();
-			System.out.println("Word is" + selectedWord.getWordString());
 			selectedWord.setScore(0); //Andrew, resets word
 			selectedWord.setWordString(""); //Andrew
 			if(model.hasWon()){
-				//unlock next level
-				
+				// Update the progress
+				int currentProg = ProgressIO.loadUnlockedNum();
+				int playingLevel = model.getSelectedIndex();
+				if(currentProg == playingLevel){
+					ProgressIO.saveUnlockedNum(currentProg + 1);
+				}
 			}
 			return true;
 		}
@@ -54,7 +58,13 @@ public class SubmitWordMove {
 		return false;
 	}
 	private void updateScore() {
-		model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
+		if(model.getType() == 0){ //Do complex word score math only for puzzle, rest have just +1 by word for score
+			System.out.println("\n Type is " + model.getType());
+			model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
+		}
+		else {
+			model.setScoreValue(model.getScore().getScoreValue() + 1);
+		}
 		
 	}
 	public boolean isValid(){

@@ -33,7 +33,7 @@ public class OpenLevelButtonController implements ActionListener {
 		if (openFile != null) {
 			String name = openFile.getAbsolutePath();
 			System.out.println("Opening level " + name);
-			loadLevel(name);
+			loadLevel(name, m, b);
 			b.refreshBoard();
 		}
 	}
@@ -41,7 +41,7 @@ public class OpenLevelButtonController implements ActionListener {
 	/*
 	 * Loads the level file with the given name into the Model.
 	 */
-	private void loadLevel(String filename) {
+	public static void loadLevel(String filename, Model m, BuildField b) {
 		//Board newBoard = new Board();
 		//Model m = new Model();
 		m.setBoard(new Board());
@@ -52,15 +52,16 @@ public class OpenLevelButtonController implements ActionListener {
 					char nextChar = (char) in.read();
 					Tile newTile = new Tile(nextChar);
 					if(nextChar == '!'){
-						
+						newTile.setLetter('q');
 					} else {
-						newTile.toggleEnabled();
+						newTile.setEnabled(true);
 					}
-					//System.out.print(nextChar);
+					newTile.setEnabled(true);
+					System.out.print(nextChar);
 					//newBoard.tiles[x][y] = newTile;
 					m.getBoard().tiles[x][y] = newTile;
 				}
-				//System.out.print("\n");
+				System.out.print("\n");
 			}
 			
 			// Next get the title;
@@ -81,33 +82,36 @@ public class OpenLevelButtonController implements ActionListener {
 			String title = nextField(in);
 			//System.out.println(title);
 			m.setTitle(title);
-			b.getlevelNameField().setText(title);
+			if(b != null)
+				b.getlevelNameField().setText(title);
 			
 			
 			//System.out.println(nextField(in)); // level type
 			int levelIndex = Integer.parseInt(nextField(in));
-			b.getlevelTypeCombo().setSelectedIndex(levelIndex);
+			if(b != null)
+				b.getlevelTypeCombo().setSelectedIndex(levelIndex);
 			
 			//System.out.println(nextField(in)); // Timer amount
 			int timeLeft = Integer.parseInt(nextField(in));
 			m.setTime(timeLeft);
-			b.getTimeField().setText(timeLeft + "");
+			if(b != null)
+				b.getTimeField().setText(timeLeft + "");
 			
 			
 			in.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("Level not found - " + filename + " D:");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		//m.board = newBoard;
+		m.getBoard().printBoard();
 	}
 	
 	// Returns the string in the file up until we see a '\n'
-	protected String nextField(FileInputStream in) throws IOException{
+	protected static String nextField(FileInputStream in) throws IOException{
 		char c = 0;
 		String curr = "";
 		while((c = (char) in.read()) != '\n'){

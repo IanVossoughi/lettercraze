@@ -56,6 +56,7 @@ public class PlayField extends JFrame {
 	private IconMap iconMap;
 	private ImageIcon disabledIcon;
 	private JLabel timerLabel;
+	private JLabel timeLabel;
 	public JLabel getScoreLabel(){return scoreLabel;}
 
 	/**
@@ -106,7 +107,7 @@ public class PlayField extends JFrame {
 		menuPanel.add(levelStarPanel);
 		levelStarPanel.setLayout(new BorderLayout(0, 0));
 
-		JLabel levelNameLabel = new JLabel("Level Name/Theme");
+		JLabel levelNameLabel = new JLabel(m.getTitle());
 		levelNameLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		levelNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		levelStarPanel.add(levelNameLabel, BorderLayout.NORTH);
@@ -172,7 +173,7 @@ public class PlayField extends JFrame {
 		flowLayout.setVgap(15);
 		bottomBarPanel.add(taskPanel);
 
-		JLabel timeLabel = new JLabel("Time:");
+		timeLabel = new JLabel("Time:");
 		taskPanel.add(timeLabel);
 
 		timerLabel = new JLabel(Integer.toString(m.getTime()));
@@ -262,6 +263,10 @@ public class PlayField extends JFrame {
 				}
 
 			}, 1000, 1000);
+		}
+		else{
+			timerLabel.setVisible(false);
+			timeLabel.setVisible(false);
 		}
 	}
 	protected void gameOver() {

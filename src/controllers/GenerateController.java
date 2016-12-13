@@ -45,6 +45,7 @@ public class GenerateController implements ActionListener {
 					//tileArray[x][y].setEnabled(true);
 					//tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + level[x][y] + ".png")));
 				} else {
+					m.getBoard().tiles[x][y].setLetter('_');
 					m.getBoard().tiles[x][y].setEnabled(false);
 					//tileArray[x][y].setEnabled(false);
 				}

@@ -17,11 +17,15 @@ public class PlayButtonController implements ActionListener{
 	public PlayButtonController(MenuField menuField, Model m) {
 		this.menuField = menuField;
 		this.m = m;
+		this.levelType = menuField.getLevelType();
 		//this.unlocked = unlocked;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// Before we open the PlayField, load the level into the model.
+		this.loadLevel();
+		
 		PlayField pf = new PlayField(m);
 		pf.setVisible(true);
 
@@ -29,7 +33,7 @@ public class PlayButtonController implements ActionListener{
 		menuField.dispose();	
 		levelType = menuField.getLevelTypeLabel().getText();
 
-		System.out.print("levelType var is " + levelType);
+		System.out.print("\n levelType var is " + levelType + "\n");
 		if(levelType == "PUZZLE"){
 			m.setType(0);
 			System.out.print("levelType is set to 0");	
@@ -43,6 +47,15 @@ public class PlayButtonController implements ActionListener{
 			System.out.print("levelType is set to 2");	
 		}
 		pf.hasTimer();
+	}
+
+	private void loadLevel() {
+		// Get the selected index, convert to string
+		int levelNum = (m.getSelectedIndex() + 1);
+		String filePath = "levels/" + levelNum;
+		new OpenLevelButtonController(m, null, null).loadLevel(filePath, m, null);
+		// The last two parameters are null because we are not in the builder.
+		// Shouldn't be a problem because the loadLevel method doesn't actually use them.
 	}
 
 }

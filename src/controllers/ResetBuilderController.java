@@ -29,7 +29,6 @@ public class ResetBuilderController implements ActionListener {
 				options,
 				options[0]);
 		if(n == 0){
-			/* TODO INSERT ACTUAL RESET CODE */
 			buildField.setVisible(false);
 			buildField.dispose();
 			new BuildField().setVisible(true);

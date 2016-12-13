@@ -21,6 +21,7 @@ import javax.swing.border.LineBorder;
 
 import controllers.ExitButtonController;
 import controllers.LevelSelectMenuTabPaneController;
+import controllers.OpenLevelButtonController;
 import controllers.PlayButtonController;
 import entities.Model;
 
@@ -35,10 +36,11 @@ public class MenuField extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private Model m;
 	private JPanel contentPane;
-	private int unlocked;
+	//private int unlocked;
 	private ProgressIO progress;
 	private String levelType;
 	private JLabel levelTypeLabel;
+	private JLabel lblLevelName;
 	/**
 	 * Launch the application.
 	 */
@@ -55,7 +57,7 @@ public class MenuField extends JFrame {
 		});
 	}
 	
-	public int getUnlocked(){return this.unlocked;}
+	//public int getUnlocked(){return this.unlocked;}
 	public String getLevelType(){return this.levelType;}
 	public JLabel getLevelTypeLabel(){return this.levelTypeLabel;}
 	/**
@@ -63,15 +65,18 @@ public class MenuField extends JFrame {
 	 */
 	public MenuField() {
 		this.m = new Model();
+		m.writeHighScore();
+		m.readHighScore(0);
 		progress = new ProgressIO();
+		ProgressIO.saveUnlockedNum(15);
 		
 		levelTypeLabel = new JLabel("PUZZLE");
 		//change to test
-		progress.saveUnlockedNum(2);
+		//progress.saveUnlockedNum(2);
 
-		unlocked = progress.loadUnlockedNum();
+		m.setUnlocked(progress.loadUnlockedNum());
 		
-		System.out.println("Unlocked: " + unlocked);
+		System.out.println("Unlocked: " + m.getUnlocked());
 		
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -122,7 +127,8 @@ public class MenuField extends JFrame {
 			
 			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			boardPanel.add(tabbedPane);
-			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked));
+			
+			//tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked, m, lblLevelName));
 
 			int i;
 			for (i = 1; i < 16; i++) {
@@ -136,21 +142,20 @@ public class MenuField extends JFrame {
 			levelListPanel.add(levelNumPanel);
 
 			JLabel levelNumLabel = new JLabel(Integer.toString(i));
-			if(i > unlocked) levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_locked.png")));
-			else levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock.png")));
+			if(i > m.getUnlocked()) levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_locked.png")));
+			else levelNumLabel.setIcon(new ImageIcon(MenuField.class.getResource("/general/padlock_unlocked.png")));
 			levelNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			
-			
-			// Only add padlock if it is unlocked
 			levelNumPanel.add(levelNumLabel);
 
 			JPanel levelNamePanel = new JPanel();
 			levelListPanel.add(levelNamePanel);
 
-			JLabel lblLevelName = new JLabel("Name");
+			// I put lblLevelName definition above tabbedPane listener
+			lblLevelName = new JLabel("First Level");
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 			
+			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, m.getUnlocked(), m, lblLevelName));
 			
 			switch (i % 3) {
 			case 0:
@@ -164,7 +169,7 @@ public class MenuField extends JFrame {
 				levelType = "LIGHTNING";
 				break;
 			}
-		
+			
 			levelTypeLabel = new JLabel("- " + levelType);
 			levelNamePanel.add(levelTypeLabel);
 
@@ -192,7 +197,12 @@ public class MenuField extends JFrame {
 			
 			
 			}
+			//default level type
+			levelTypeLabel.setText("PUZZLE");
+	}
 
+	public void setLevelNameLabel(String string) {
+		this.lblLevelName.setText(string);
 	}
 	
 }
