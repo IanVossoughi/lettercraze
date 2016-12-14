@@ -22,10 +22,8 @@ public class TestSubmitWordMove extends TestCase {
 		SubmitWordMove swm = new SubmitWordMove(model, playField);
 		assertTrue(swm.isValid());
 		assertTrue(swm.doMove());
-		//System.out.println(model.getWordListModel().getElementAt(0));
-		//doesn't work because when the move happens, model resets the selectedWord somehow
-		//assertEquals(sW.toString(),model.getWordListModel().getElementAt(0).toString());
-		sW2 = new Word("asdasd",6);
+		
+		sW2 = new Word("asdasd", 6);
 		model.setSelectedWord(sW2);
 		SubmitWordMove swm2 = new SubmitWordMove(model, playField);
 		assertFalse(swm.isValid());
