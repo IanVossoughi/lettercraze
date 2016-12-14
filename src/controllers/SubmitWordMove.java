@@ -18,18 +18,16 @@ public class SubmitWordMove {
 	private PlayField play;
 	private WordTable wordTable = new WordTable();
 	private MenuField menu;
-	private Model lastModel;
 	
 	public SubmitWordMove(Model model, PlayField play) {
 		this.selectedWord = model.getSelectedWord();
 		this.wordList = model.getWordListModel();
 		this.model = model;
 		this.play = play;
-		this.lastModel = null;
 	}
 	public boolean doMove(){
 		if(isValid()){
-			lastModel = new Model();
+			play.undoArray.addUndoModel(model);
 			//wordList.addElement(selectedWord.getWordString());
 			model.addWordListModel(selectedWord.getWordString());
 			System.out.println("\n Word is" + selectedWord.getWordString()); //Andrew, checking
@@ -55,6 +53,7 @@ public class SubmitWordMove {
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
 			}*/
+			model.setLastMove(this);
 			return true;
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
@@ -82,18 +81,19 @@ public class SubmitWordMove {
 	}
 	
 	public Model undoMove() {
-		if (model.getLastModel() == null) {return model;}
+		if (play.undoArray.getLatestModel() == null) {return model;}
 		else {
 			for (int x = 0; x < 6; x++) {
 				for (int y = 0; y < 6; y++) {
-					model.getBoard().setTile(x,y,model.getLastModel().getBoard().getTile(x, y));
+					model.getBoard().setTile(x,y,play.undoArray.getLatestModel().getBoard().getTile(x, y));
 				}
 			}
-			model.setSelectedWord(model.getLastModel().getSelectedWord());
-			model.setLastMove(model.getLastModel().getLastMove());
-			model = model.getLastModel();
+			model.setSelectedWord(play.undoArray.getLatestModel().getSelectedWord());
+			model.setLastMove(play.undoArray.getLatestModel().getLastMove());
+			Model oldModel = play.undoArray.getLatestModel();
+			play.undoArray.removeUndoModel();
 			play.refreshBoard();
-			return model;
+			return oldModel;
 		}
 	}
 
