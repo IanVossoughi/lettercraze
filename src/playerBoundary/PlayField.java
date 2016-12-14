@@ -130,15 +130,15 @@ public class PlayField extends JFrame {
 		starPanel.add(separator);
 
 		JLabel star1Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(2)));
-		star1Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
+		star1Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star_gray.png")));
 		starPanel.add(star1Label);
 
 		JLabel star2Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(0)));
-		star2Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
+		star2Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star_gray.png")));
 		starPanel.add(star2Label);
 
 		JLabel star3Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(1)));
-		star3Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
+		star3Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star_gray.png")));
 		starPanel.add(star3Label);
 
 		JPanel bottomBarPanel = new JPanel();

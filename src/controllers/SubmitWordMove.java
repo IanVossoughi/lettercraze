@@ -25,7 +25,7 @@ public class SubmitWordMove {
 	// These three are for star icons
 	private SubmitButtonController submitButtonController;
 	private Icon goldStarIcon = new ImageIcon(PlayField.class.getResource("/general/star.png"));
-	private Icon blackStarIcon = new ImageIcon(PlayField.class.getResource("/general/padlock_locked.png"));
+	private Icon blackStarIcon = new ImageIcon(PlayField.class.getResource("/general/star_gray.png"));
 	
 	public SubmitWordMove(Model model, PlayField play, SubmitButtonController submitButtonController) {
 		this.selectedWord = model.getSelectedWord();
@@ -65,13 +65,16 @@ public class SubmitWordMove {
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
 			}
+			
+			updateStars();
+			
 			model.setLastMove(this);
 			return true;
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
 		play.refreshBoard();
 		
-		updateStars();
+		
 		
 		return false;
 	}
