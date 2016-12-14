@@ -50,11 +50,11 @@ public class OpenLevelButtonController implements ActionListener {
 					char nextChar = (char) in.read();
 					Tile newTile = new Tile(Character.toString(nextChar));
 					if(nextChar == 'Q') {
-						newTile.setLetter("QU");
+//						newTile.setLetter("QU");
 					}
 					if(nextChar == '!'){
 						newTile.setEnabled(false);
-						newTile.setLetter("QU");
+//						newTile.setLetter("QU");
 					} else {
 						newTile.setEnabled(true);
 					}
