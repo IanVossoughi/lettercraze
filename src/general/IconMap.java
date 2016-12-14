@@ -17,7 +17,7 @@ public class IconMap {
 	
 	private HashMap<Character, ImageIcon> generateIconMap() {
 		HashMap<Character, ImageIcon> iconMap = new HashMap<Character, ImageIcon>();
-		for (char letter = 'A'; letter < 'Z'; letter++) {
+		for (char letter = 'A'; letter <= 'Z'; letter++) {
 			iconMap.put(letter, new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
 		}
 		return iconMap;
@@ -25,7 +25,7 @@ public class IconMap {
 	
 	private HashMap<Character, ImageIcon> generatePressedIconMap() {
 		HashMap<Character, ImageIcon> iconMap = new HashMap<Character, ImageIcon>();
-		for (char letter = 'A'; letter < 'Z'; letter++) {
+		for (char letter = 'A'; letter <= 'Z'; letter++) {
 			iconMap.put(letter, new ImageIcon(PlayField.class.getResource("/images/pressedTiles/" + letter + ".png")));
 		}
 		return iconMap;
