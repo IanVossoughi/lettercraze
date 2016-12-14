@@ -275,6 +275,10 @@ public void setUnlocked(int loadUnlockedNum) {
 	public void addThemeWord(String word) {
 		this.themeWords.add(word);
 	}
+	
+	public ArrayList<String> getThemeWords(){
+		return this.themeWords;
+	}
 
 	public void setWordListModel(DefaultListModel<String> wordListModel) {
 		this.wordListModel = wordListModel;
