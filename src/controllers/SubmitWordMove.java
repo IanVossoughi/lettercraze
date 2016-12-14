@@ -83,13 +83,11 @@ public class SubmitWordMove {
 	public Model undoMove() {
 		if (play.undoArray.getLatestModel() == null) {return model;}
 		else {
-			for (int x = 0; x < 6; x++) {
-				for (int y = 0; y < 6; y++) {
-					model.getBoard().setTile(x,y,play.undoArray.getLatestModel().getBoard().getTile(x, y));
-				}
-			}
+			model.setBoard(play.undoArray.getLatestModel().getBoard());
 			model.setSelectedWord(play.undoArray.getLatestModel().getSelectedWord());
 			model.setLastMove(play.undoArray.getLatestModel().getLastMove());
+			model.setScore(play.undoArray.getLatestModel().getScore());
+			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			model.getBoard().setSelectedTileCoords(play.undoArray.getLatestModel().getBoard().getSelectedTileCoords());
 			play.undoArray.removeUndoModel();
 			play.refreshBoard();
