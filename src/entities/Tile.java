@@ -8,39 +8,46 @@ public class Tile {
 	boolean enabled;
 	boolean selected;
 	boolean toBeReplaced;
-	char letter; // Even though Q is Qu, just set this to Q - it can show Qu in the display
+	String letter; // Even though Q is Qu, just set this to Q - it can show Qu in the display
 	int points; 
-	
-	public Tile(char letter) {
+
+	public Tile(String letter) {
 		this.enabled = false;
 		this.selected = false;
 		this.toBeReplaced = false;
 		//this.letter = LetterFrequencyFast.getInstance().getRandomLetter();\
 		this.letter = letter;
-		if(letter == '_'){
-			this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
+		if(letter == "_"){
+			if((this.letter = LetterFrequencyFast.getInstance().getRandomLetter()) == "Q"){
+				this.letter = "Qu";
+
+			}
+			else
+				this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
+
+			System.out.print(this.letter);
 		}
 		//this.points = points;
 	}
-	
+
 	public Tile toggleEnabled(){
 		if(enabled){
 			enabled = false;
-			this.letter = '!'; // Sentinel value;
+			this.letter = "!"; // Sentinel value;
 		} else {
 			enabled = true;
 			this.letter = randomLetterFrequency();
 		}
 		return this;
 	}
-	
-	public char randomLetter() {
+	/*
+	public String randomLetter() {
 		//TODO: Get Random letters according to scoring frequency
-		char letter = (char) (new Random().nextInt(26) + 65);
+		String letter =  (new Random().nextInt(26) + 65);
 		return letter;
-	}
-	
-	public char randomLetterFrequency() {
+	}*/
+
+	public String randomLetterFrequency() {
 		return LetterFrequencyFast.getInstance().getRandomLetter();
 	}
 
@@ -52,31 +59,31 @@ public class Tile {
 		}
 		return this;
 	}
-	
+
 	public boolean isEnabled(){
 		return this.enabled;
 	}
-	
-	public char getLetter(){
+
+	public String getLetter(){
 		return this.letter;
 	}
-	
-	public void setLetter(char c) {
+
+	public void setLetter(String c) {
 		this.letter = c;
 	}
 
 	public boolean isSelected() {
 		return this.selected;
 	}
-	
+
 	public boolean getReplacement() {
 		return this.toBeReplaced;
 	}
-	
+
 	public void setReplacement(boolean replacement) {
 		this.toBeReplaced = replacement;
 	}
-	
+
 	public void setSelection(boolean selection) {
 		this.selected = selection;
 	}

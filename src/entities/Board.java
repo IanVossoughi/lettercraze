@@ -26,7 +26,7 @@ public class Board {
 	public void fillBoard(){
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
-				this.tiles[x][y] = new Tile('_').toggleEnabled();
+				this.tiles[x][y] = new Tile("_").toggleEnabled();
 				this.tiles[x][y].setLetter(tiles[x][y].randomLetterFrequency());
 			}
 		}

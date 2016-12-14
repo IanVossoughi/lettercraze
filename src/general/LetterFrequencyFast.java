@@ -47,7 +47,7 @@ public class LetterFrequencyFast {
 		charFreq.put('K', 772);
 		charFreq.put('J', 153);
 		charFreq.put('X', 150);
-		charFreq.put('Q', 95);
+		charFreq.put('Q', 95);//was 95
 		charFreq.put('Z', 74);
 
 		HashMap<Character, Integer> newCharFreq = new HashMap<Character, Integer>();
@@ -62,15 +62,15 @@ public class LetterFrequencyFast {
 		getRandomLetter();
 	}
 
-	public char getRandomLetter() {
+	public String getRandomLetter() {
 		int rand = new Random().nextInt(100000);
 		for(char key : charFreq.keySet()){
 			if(rand <= charFreq.get(key)){
 				//System.out.println(key + " : " + rand + " < " + charFreq.get(key));
-				return key; 
+				return Character.toString(key); 
 			}
 		}
-		return (Character) null;
+		return (String) null;
 	}
 
 }

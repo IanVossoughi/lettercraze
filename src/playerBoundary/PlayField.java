@@ -239,7 +239,7 @@ public class PlayField extends JFrame {
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
 				tileArray[i][j].addActionListener(new PlayerClickTileController(m, this, i, j));
-				char letter = m.getBoard().getTile(i,j).getLetter();
+				String letter = m.getBoard().getTile(i,j).getLetter();
 				//char letter = (char) (rng.nextInt(26) + 65);
 				//System.out.println(letter);
 				Tile tile = m.getBoard().getTile(i,  j);
@@ -251,8 +251,9 @@ public class PlayField extends JFrame {
 				}
 				
 				if (tile.isEnabled()) {
-					tile.setLetter((tile.getLetter() + "").toUpperCase().charAt(0)); //hack - letters had to be uppercase.
-					tileArray[i][j].setIcon(iconMap.getIcon(letter));
+					//.charAt(0)
+					tile.setLetter(Character.toString((tile.getLetter() + "").toUpperCase().charAt(0))); //hack - letters had to be uppercase.
+					tileArray[i][j].setIcon(iconMap.getIcon((char)letter.charAt(0)));
 				}
 				else {
 					tileArray[i][j].setIcon(disabledIcon);
@@ -333,13 +334,13 @@ public class PlayField extends JFrame {
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				if (m.getBoard().getTile(x, y).isEnabled()) {
-					char letter = m.getBoard().getTile(x, y).getLetter();
+					String letter = m.getBoard().getTile(x, y).getLetter();
 
 					if (!m.getBoard().getTile(x, y).isSelected()) {
-						tileArray[x][y].setIcon(iconMap.getIcon(letter));
+						tileArray[x][y].setIcon(iconMap.getIcon((char)letter.charAt(0)));
 					}
 					else {
-						tileArray[x][y].setIcon(iconMap.getPressedIcon(letter));
+						tileArray[x][y].setIcon(iconMap.getPressedIcon((char)letter.charAt(0)));
 					}
 				}
 				else {
@@ -360,13 +361,13 @@ public class PlayField extends JFrame {
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				if (newModel.getBoard().getTile(x, y).isEnabled()) {
-					char letter = newModel.getBoard().getTile(x, y).getLetter();
+					String letter = newModel.getBoard().getTile(x, y).getLetter();
 
 					if (!newModel.getBoard().getTile(x, y).isSelected()) {
-						tileArray[x][y].setIcon(iconMap.getIcon(letter));
+						tileArray[x][y].setIcon(iconMap.getIcon((char)letter.charAt(0)));
 					}
 					else {
-						tileArray[x][y].setIcon(iconMap.getPressedIcon(letter));
+						tileArray[x][y].setIcon(iconMap.getPressedIcon((char)letter.charAt(0)));
 					}
 				}
 				else {

@@ -31,16 +31,16 @@ public class GenerateController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("Generating level with words:" + m.getWordListModel().toString());
-		char[][] level = generate(m.getWordListModel());
+		String[][] level = generate(m.getWordListModel());
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				//System.out.print(level[x][y]);
 				
-				if(level[x][y] == '!'){
+				if(level[x][y] == "!"){
 					Tile tile = m.getBoard().tiles[x][y];
-					tile.setLetter('!');
+					tile.setLetter("!");
 					tile.setEnabled(false);
-				} else if(level[x][y] != '_'){
+				} else if(level[x][y] != "_"){
 					Tile tile = m.getBoard().tiles[x][y];
 					tile.setLetter(level[x][y]);
 					tile.setEnabled(true);
@@ -49,7 +49,7 @@ public class GenerateController implements ActionListener {
 					//tileArray[x][y].setEnabled(true);
 					//tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + level[x][y] + ".png")));
 				} else {
-					m.getBoard().tiles[x][y].setLetter('_');
+					m.getBoard().tiles[x][y].setLetter("_");
 					m.getBoard().tiles[x][y].setEnabled(true);
 					//tileArray[x][y].setEnabled(false);
 				}
@@ -59,15 +59,15 @@ public class GenerateController implements ActionListener {
 		builder.refreshBoard();
 	}
 
-	private char[][] generate(DefaultListModel<String> wordListModel) {
-		char[][] level = new char[6][6];
+	private String[][] generate(DefaultListModel<String> wordListModel) {
+		String[][] level = new String[6][6];
 		
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				if(m.getBoard().tiles[x][y].isEnabled()){
-					level[x][y] = '_';
+					level[x][y] = "_";
 				} else {
-					level[x][y] = '!';
+					level[x][y] = "!";
 				}
 				System.out.print(level[x][y]);
 			}
@@ -76,7 +76,7 @@ public class GenerateController implements ActionListener {
 		
 		
 		try {
-			char[][] levelAdded = level;
+			String[][] levelAdded = level;
 			for(Object word : wordListModel.toArray()){
 				String word1 = (String) word;
 				word1 = word1.toUpperCase();
@@ -90,18 +90,18 @@ public class GenerateController implements ActionListener {
 		return level;
 	}
 
-	private char[][] addWord(char[][] level, String string) throws Exception {
+	private String[][] addWord(String[][] level, String string) throws Exception {
 		
-		int[] pos = addRandomLetter(level, string.toCharArray()[0]);
+		int[] pos = addRandomLetter(level, string);
 		for(int i = 1; i<string.length(); i++){
-			char c = string.charAt(i);
+			String c = Character.toString(string.charAt(i));
 			pos = addLetterAroundPosition(pos, level, c);
 		}
 		
 		return level;
 	}
 	
-	private int[] addLetterAroundPosition(int[] pos, char[][] level, char c) throws Exception{
+	private int[] addLetterAroundPosition(int[] pos, String[][] level, String c) throws Exception{
 		for(int i = 0; i<200; i++){
 			// Start at a random tile
 			int x = rng.nextInt(3)-1;
@@ -114,7 +114,7 @@ public class GenerateController implements ActionListener {
 				continue;
 			}
 		
-			if(level[newx][newy] == '_'){
+			if(level[newx][newy] == "_"){
 				// If blank, just put in the char
 				level[newx][newy] = c;
 				int[] ret = {newx,newy};
@@ -125,14 +125,14 @@ public class GenerateController implements ActionListener {
 	}
 
 	// Returns an array with the position of the new tile added.
-	private int[] addRandomLetter(char[][] level, char l) throws Exception{
+	private int[] addRandomLetter(String[][] level, String l) throws Exception{
 		
 		for(int i = 0; i<300; i++){
 			// Start at a random tile
 			int x = rng.nextInt(6);
 			int y = rng.nextInt(6);
 		
-			if(level[x][y] == '_'){
+			if(level[x][y] == "_"){
 				// If blank, just put in the char
 				level[x][y] = l;
 				int[] ret = {x,y};
