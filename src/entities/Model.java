@@ -54,9 +54,10 @@ public class Model {
 			String s = "";
 			for(int i = 0; i < 15; i++){
 				s = s + this.highScore[i] +"\n";
-			
+				
 			}
 			out.write(s.getBytes());
+			
 			out.close();
 	}
 	catch (IOException e){
@@ -67,12 +68,12 @@ public class Model {
 public int readHighScore(){
 	FileInputStream in;
 	int num = -1; // Error if this returns
-	byte[] bA = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	byte[] bA = new byte[40];
 	String s = "";
 	try {
 		in = new FileInputStream("highscores.txt");
 		for(int i = 0; i < 15;i++){
-		bA[i] = (byte) in.read();
+			in.read(bA);
 		//bA[i].getBytes();
 		}
 		
@@ -97,7 +98,12 @@ public int readHighScore(){
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
-	System.out.print("HighScores = " + s );
+	//System.out.print("HighScores = " + s );
+	String[] scores = s.split("\n");
+	for(int i = 0; i < 15; i++){
+		this.highScore[i] = Integer.parseInt(scores[i]);
+		System.out.println(i + ":" + scores[i]);
+	}
 
 	return num;
 }
