@@ -15,11 +15,12 @@ public class BackToMenuButtonController implements ActionListener {
 	public BackToMenuButtonController(PlayField playField) {
 		this.playField = playField;	
 		
-		m = new MenuField();
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		m = new MenuField();
 		m.setVisible(true);
 		playField.stopTimer();
 		playField.checkIfWon();
