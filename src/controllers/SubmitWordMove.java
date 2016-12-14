@@ -48,7 +48,7 @@ public class SubmitWordMove {
 				// Update the progress
 				int currentProg = ProgressIO.loadUnlockedNum();
 				int playingLevel = model.getSelectedIndex();
-				if(currentProg == playingLevel){
+				if(currentProg == playingLevel +1){
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
 			}

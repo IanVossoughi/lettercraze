@@ -1,5 +1,6 @@
 package controllers;
 
+import playerBoundary.MenuField;
 import playerBoundary.PlayField;
 import entities.Model;
 import junit.framework.TestCase;
@@ -7,7 +8,6 @@ import junit.framework.TestCase;
 public class TestSubmitButtonController extends TestCase {
 	PlayField playField;
 	Model model;
-	
 	@Override
 	protected void setUp() {
 		model = new Model();
