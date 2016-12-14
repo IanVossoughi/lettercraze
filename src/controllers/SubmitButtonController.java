@@ -3,7 +3,9 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import entities.Model;
 import entities.Word;
@@ -37,7 +39,10 @@ public class SubmitButtonController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		SubmitWordMove move = new SubmitWordMove(model, play, this);
 		move.doMove();
-
+		if (model.getLimit() <= 0) {
+			JOptionPane.showMessageDialog(new JFrame(), "That was your final move. Ever!");
+			play.gameOver();
+		}
 	}
 
 	public JLabel[] getStarLabels() {

@@ -317,7 +317,7 @@ public class PlayField extends JFrame {
 		}
 	}
 	
-	protected void gameOver() {
+	public void gameOver() {
 		this.setVisible(false);
 		this.dispose();
 		new MenuField().setVisible(true);
@@ -326,6 +326,7 @@ public class PlayField extends JFrame {
 
 	public void refreshBoard() {
 		wordList.setModel(m.getWordListModel());
+		limitLabel.setText("" + m.getLimit());
 
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
 		//System.out.println(m.getSelectedWord().getWordString());
