@@ -42,12 +42,12 @@ public class SaveLevelButtonController implements ActionListener {
 		try {
 			out = new FileOutputStream(filename);
 			
-			
+			//Letters of boards
 			out.write(m.getBoard().serialize().getBytes());
 			out.write('\n');
 			
 			
-		
+			//Stars
 			out.write(m.getScore().serialize().getBytes());
 			out.write('\n');
 			
