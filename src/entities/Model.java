@@ -29,6 +29,7 @@ public class Model {
 	SubmitWordMove lastMove;
 	Model lastModel;
 	ArrayList<String> themeWords = new ArrayList<String>();
+	int wordLimit;
 
 	public Model() {
 		this.board = new Board();
