@@ -87,7 +87,9 @@ public class SubmitWordMove {
 			model.setSelectedWord(play.undoArray.getLatestModel().getSelectedWord());
 			model.setLastMove(play.undoArray.getLatestModel().getLastMove());
 			model.setScore(play.undoArray.getLatestModel().getScore());
+			model.setWordListModel(play.undoArray.getLatestModel().getWordListModel());
 			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
+			model.getBoard().setSelectedTileCoords(play.undoArray.getLatestModel().getBoard().getSelectedTileCoords());
 			model.getBoard().setSelectedTileCoords(play.undoArray.getLatestModel().getBoard().getSelectedTileCoords());
 			play.undoArray.removeUndoModel();
 			play.refreshBoard();

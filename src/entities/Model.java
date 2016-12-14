@@ -61,7 +61,12 @@ public class Model {
 		
 		model.score = new Score(this.getScore().getStarScores());
 		model.score.setScoreValue(this.getScore().getScoreValue());
-		model.wordListModel = this.wordListModel;
+		model.wordListModel = new DefaultListModel<String>();
+		for (int x = 0; x < this.wordListModel.size(); x++) {
+			model.wordListModel.addElement(this.wordListModel.get(x));
+		}
+		
+		model.getBoard().setSelectedTileCoords(new Coordinate(this.getBoard().getSelectedTileCoords().x, this.getBoard().getSelectedTileCoords().y));
 		model.selectedWord = new Word(this.selectedWord.getWordString(),new Integer(this.selectedWord.getScore()));
 		model.time = this.time;
 		model.highScore = this.highScore;
@@ -269,5 +274,11 @@ public void setUnlocked(int loadUnlockedNum) {
 
 	public void addThemeWord(String word) {
 		this.themeWords.add(word);
+	}
+
+	public void setWordListModel(DefaultListModel<String> wordListModel) {
+		this.wordListModel = wordListModel;
+		// TODO Auto-generated method stub
+		
 	}
 }
