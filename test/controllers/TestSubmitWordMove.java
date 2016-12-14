@@ -32,21 +32,20 @@ public class TestSubmitWordMove extends TestCase {
 		model1.setSelectedWord(word1);
 		SubmitWordMove swm = new SubmitWordMove(model1, pf1, null);
 		assertTrue(swm.isValid());
-		//assertFalse(swm.doMove());
 		
 		// Testing word that is not in theme
 		word2 = new Word("bake", 3);
 		model1.setSelectedWord(word2);
 		SubmitWordMove swm2 = new SubmitWordMove(model1, pf1, null);
 		assertFalse(swm2.isValid());
-		//assertFalse(swm2.doMove());
 		
 		// Testing puzzle level
 		word3 = new Word("test", 5);
-		model2.setType(0);
+		model2.setType(1);
 		model2.setSelectedWord(word3);
 		SubmitWordMove swm3 = new SubmitWordMove(model2, pf2, null);
-		//assertTrue(swm3.isValid());
-		//assertTrue(swm3.doMove());	
+		assertTrue(swm3.isValid());	
+		
+		//swm3.undoMove();
 	}
 }

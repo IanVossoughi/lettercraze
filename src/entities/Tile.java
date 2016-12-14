@@ -23,7 +23,7 @@ public class Tile {
 					this.letter = "QU";
 				}
 
-			System.out.print(this.letter);
+			//System.out.print(this.letter);
 		}
 		if(this.letter.equals("Q")) {
 			this.letter = "QU";
