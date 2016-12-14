@@ -81,20 +81,14 @@ public class SubmitWordMove {
 
 	private void updateStars() {
 		// Check if star if its score has been reached
-		JLabel[] starLabels = this.submitButtonController.getStarLabels();
+		JLabel[] starLabels1 = this.submitButtonController.getStarLabels();
 		// God why do I have to do this
-		JLabel temp;
-		temp = starLabels[0];
-		starLabels[0] = starLabels[2];
-		starLabels[2] = starLabels[1];
-		starLabels[1] = temp;
-		temp = starLabels[2];
+		JLabel[] starLabels = new JLabel[3];
+		starLabels[0] = starLabels1[1];
+		starLabels[1] = starLabels1[2];
 		
-		starLabels[0] = starLabels[2];
-		starLabels[2] = temp;
 		
-		temp = starLabels[1];
-		
+		starLabels[2] = starLabels1[0];
 		// end switcharoo
 
 		for(int i = 0; i < 3; i++){
