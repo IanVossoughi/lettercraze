@@ -19,7 +19,7 @@ public class Tile {
 		this.letter = letter;
 		if(letter == "_"){
 			if((this.letter = LetterFrequencyFast.getInstance().getRandomLetter()) == "Q"){
-				this.letter = "Qu";
+				this.letter = "QU";
 
 			}
 			else
