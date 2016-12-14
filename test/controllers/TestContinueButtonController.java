@@ -4,7 +4,6 @@ import playerBoundary.Main;
 import junit.framework.TestCase;
 
 public class TestContinueButtonController extends TestCase {
-
 	Main main;
 	
 	@Override

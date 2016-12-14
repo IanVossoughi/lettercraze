@@ -40,15 +40,18 @@ public class BuilderLevelTypeController implements ActionListener {
 			buildField.setTimeField(tempField);
 		}
 		
-		//Handles worldlist
+		//Handles wordlist
 		if(index != 2) {
 			JTextField tempWordField = buildField.getWordEntryField();
 			tempWordField.setEnabled(false);
 			buildField.setWordEntryField(tempWordField);
 			int size = m.getWordListModel().getSize();
+			
 			//Clears list
 			for (int i = 0; i < size; i++) {
-			m.removeWordListModel(0); }
+				m.removeWordListModel(0); 
+			}
+			
 			JButton tempButton = buildField.getRemoveButton();
 			tempButton.setEnabled(false);
 	        buildField.setRemoveButton(tempButton);
