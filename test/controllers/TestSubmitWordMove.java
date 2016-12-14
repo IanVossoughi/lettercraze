@@ -45,5 +45,7 @@ public class TestSubmitWordMove extends TestCase {
 		model2.setSelectedWord(word3);
 		SubmitWordMove swm3 = new SubmitWordMove(model2, pf2, null);
 		assertTrue(swm3.isValid());	
+		
+		//swm3.undoMove();
 	}
 }
