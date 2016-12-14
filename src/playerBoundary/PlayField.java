@@ -243,7 +243,7 @@ public class PlayField extends JFrame {
 		}
 		wordLabel.setText("WORD: " + word);
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
-		
+
 	}
 	public void hasTimer(){
 		System.out.print("Play field understand that the level type is " + m.getType());
@@ -261,7 +261,7 @@ public class PlayField extends JFrame {
 						JOptionPane.showMessageDialog(new JFrame(), "Time's Up!");
 						gameOver();
 						this.cancel();
-						
+
 					}
 
 				}
@@ -274,7 +274,9 @@ public class PlayField extends JFrame {
 		}
 	}
 	public void stopTimer(){
-		this.timer.cancel();
+		if(timerLabel.isVisible()){
+			this.timer.cancel();
+		}
 	}
 	protected void gameOver() {
 		this.setVisible(false);
@@ -309,7 +311,7 @@ public class PlayField extends JFrame {
 		}
 
 	}
-	
+
 	public void refreshBoardUndo(Model newModel) {
 		wordList.setModel(newModel.getWordListModel());
 
