@@ -66,6 +66,7 @@ public class PlayField extends JFrame {
 	public JLabel getScoreLabel(){return scoreLabel;}
 	public Timer timer;
 	public UndoArray undoArray;
+	private JButton backToMenuButton;
 	/**
 	 * Launch the application.
 	 */
@@ -106,7 +107,7 @@ public class PlayField extends JFrame {
 		contentPane.add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
 
-		JButton backToMenuButton = new JButton("Exit Level");
+		backToMenuButton = new JButton("Exit Level");
 		menuPanel.add(backToMenuButton);
 		backToMenuButton.addActionListener(new BackToMenuButtonController(this));
 
@@ -320,7 +321,9 @@ public class PlayField extends JFrame {
 	public void gameOver() {
 		this.setVisible(false);
 		this.dispose();
-		new MenuField().setVisible(true);
+		if (this.getDefaultCloseOperation() != JFrame.DISPOSE_ON_CLOSE) {
+			new MenuField().setVisible(true);		
+		}
 
 	}
 
@@ -381,5 +384,11 @@ public class PlayField extends JFrame {
 	
 	public void setModel(Model model) {
 		m = model;
+	}
+
+	public JButton getBackToMenuButton() {
+		return this.backToMenuButton;
+		// TODO Auto-generated method stub
+		
 	}
 }
