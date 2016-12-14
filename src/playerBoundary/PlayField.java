@@ -39,6 +39,7 @@ import controllers.UndoButtonController;
 import entities.Model;
 import entities.Tile;
 import general.IconMap;
+import general.LetterFrequencyFast;
 import general.UndoArray;
 
 public class PlayField extends JFrame {
@@ -60,6 +61,8 @@ public class PlayField extends JFrame {
 	private ImageIcon disabledIcon;
 	private JLabel timerLabel;
 	private JLabel timeLabel;
+	private JLabel limitLabel;
+	private JLabel wordLimitLabel;
 	public JLabel getScoreLabel(){return scoreLabel;}
 	public Timer timer;
 	public UndoArray undoArray;
@@ -177,6 +180,12 @@ public class PlayField extends JFrame {
 		flowLayout.setAlignOnBaseline(true);
 		flowLayout.setVgap(15);
 		bottomBarPanel.add(taskPanel);
+		
+		wordLimitLabel = new JLabel("Words Remaining:");
+		taskPanel.add(wordLimitLabel);
+		
+		limitLabel = new JLabel("0");
+		taskPanel.add(limitLabel);
 
 		timeLabel = new JLabel("Time:");
 		taskPanel.add(timeLabel);
@@ -234,6 +243,13 @@ public class PlayField extends JFrame {
 				//char letter = (char) (rng.nextInt(26) + 65);
 				//System.out.println(letter);
 				Tile tile = m.getBoard().getTile(i,  j);
+				
+				// Check if we're on a theme level, otherwise generate random letters
+				if(m.getSelectedIndex() % 3 != 2){
+					//System.out.println("dklfslkdflksd");
+					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
+				}
+				
 				if (tile.isEnabled()) {
 					tile.setLetter((tile.getLetter() + "").toUpperCase().charAt(0)); //hack - letters had to be uppercase.
 					tileArray[i][j].setIcon(iconMap.getIcon(letter));
@@ -246,6 +262,8 @@ public class PlayField extends JFrame {
 		}
 		wordLabel.setText("WORD: " + word);
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
+			
+		
 		this.refreshBoard();
 
 	}
@@ -266,6 +284,10 @@ public class PlayField extends JFrame {
 	}
 	public void hasTimer(){
 		System.out.print("Play field understand that the level type is " + m.getType());
+		if (m.getType() != 0) {
+			wordLimitLabel.setVisible(false);
+			limitLabel.setVisible(false);
+		}
 		if(m.getType() == 1){
 			timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {
