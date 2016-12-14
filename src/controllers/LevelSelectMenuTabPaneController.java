@@ -18,14 +18,16 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 	private JButton play;
 	private Model m;
 	private JLabel title;
+	private JLabel highScoreNumLabel;
 	
-	public LevelSelectMenuTabPaneController(MenuField menu, JButton play, JTabbedPane tabPane, int unlocked, Model m, JLabel title){
+	public LevelSelectMenuTabPaneController(MenuField menu, JButton play, JTabbedPane tabPane, int unlocked, Model m, JLabel title, JLabel highScoreNumLabel){
 		this.menu = menu;
 		this.tabPane = tabPane;
 		this.unlocked = unlocked;
 		this.play = play;
 		this.m = m;
 		this.title = title;
+		this.highScoreNumLabel = highScoreNumLabel;
 		
 	}
 
@@ -46,6 +48,8 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 
 		play.setEnabled(tabIndex < unlocked);
 		System.out.print(menu.getLevelTypeLabel().getText() + "\n");
+		
+		highScoreNumLabel.setText(m.getHighScores()[tabIndex] + "");
 	}
 	
 }

@@ -155,7 +155,7 @@ public class MenuField extends JFrame {
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 			
-			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, m.getUnlocked(), m, lblLevelName));
+			
 			
 			switch (i % 3) {
 			case 0:
@@ -179,9 +179,12 @@ public class MenuField extends JFrame {
 			JLabel highScoreLabel = new JLabel("High Score - ");
 			scorePanel.add(highScoreLabel);
 
-			JLabel highScoreNumLabel = new JLabel("0");
+			JLabel highScoreNumLabel = new JLabel(m.getHighScores()[0] + "");
 			scorePanel.add(highScoreNumLabel);
 
+			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, 
+					playButton, tabbedPane, m.getUnlocked(), m, lblLevelName, highScoreNumLabel));
+			
 			ImageIcon star = new ImageIcon(MenuField.class.getResource("/general/star.png"));
 			JLabel star1Label = new JLabel("");
 			scorePanel.add(star1Label);
