@@ -22,7 +22,6 @@ public class Model {
 	DefaultListModel<String> wordListModel;
 	Word selectedWord;
 	int time;
-	/*TODO: Batu - Highscore stuff - make an array, save 15 highscores, read in and out from file */
 	int[] highScore = {15,30,40,50,60,0,0,0,0,0,0,0,0,0,0};
 	int selectedTab; // Used only by player
 	int unlockedLevels = 0;
@@ -83,16 +82,6 @@ public class Model {
 	//DOESNT't work, will fix it later
 	public void writeHighScore(){
 		try{
-			/*File outFile = new File("highscores.txt");
-			outFile.createNewFile();
-			FileOutputStream out = new FileOutputStream(outFile, false);
-			String str = ""; 
-			str = Integer.toString(this.highScore[0]);
-			for(int i = 1; i < 15; i++){
-				str = str + Integer.toString(this.highScore[i]);
-			}			
-		out.write(str.getBytes());
-		out.close();*/
 			File outFile = new File("highscores.txt");
 			outFile.createNewFile();
 			FileOutputStream out = new FileOutputStream(outFile, false);
@@ -119,25 +108,9 @@ public int readHighScore(){
 		in = new FileInputStream("highscores.txt");
 		for(int i = 0; i < 15;i++){
 			in.read(bA);
-		//bA[i].getBytes();
 		}
-		
 		s = new String(bA);
 		in.close();
-		/*in = new FileInputStream("highscores.txt");
-		byte[] b = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,};
- 		num = in.read();
- 		System.out.print("\n BYTE = " + Integer.toString(num));
- 		String s ="";
- 		for (int i = 0; i < b.length; i++) {
- 	        b[i] += '0';
- 	        s= s + Byte.toString(b[i]);
- 	    }
- 		System.out.print("\n STRING = " + s);
- 	    int n = Integer.parseInt(s);
-		
-		System.out.print("\n the byte form of highscores" + n + "\n");*/
-		//in.close();
 	} catch (FileNotFoundException e) {
 		e.printStackTrace();
 	} catch (IOException e) {
