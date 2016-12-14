@@ -34,8 +34,16 @@ public class GenerateController implements ActionListener {
 		String[][] level = generate(m.getWordListModel());
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
+				System.out.println("Tile " + x + y + " is " + level[x][y] + " before loop");
+			}
+		}
+		//Issue is before this loop as seen above. Full words going into tiles. Check generate
+		for(int x = 0; x < 6; x++){
+			for(int y = 0; y < 6; y++){
 				//System.out.print(level[x][y]);
-				
+				//TODO
+				System.out.println("Board in loop is size " + m.getBoard().serialize().length());
+				System.out.println("Tile " + x + y + " is " + level[x][y]);
 				if(level[x][y] == "!"){
 					Tile tile = m.getBoard().tiles[x][y];
 					tile.setLetter("!");
@@ -57,11 +65,14 @@ public class GenerateController implements ActionListener {
 			//System.out.println("");
 		}
 		builder.refreshBoard();
+		//TODO Board always too big at this point
+		System.out.println("Board after refresh size " + m.getBoard().serialize().length());
 	}
 
 	private String[][] generate(DefaultListModel<String> wordListModel) {
 		String[][] level = new String[6][6];
 		
+		//Andrew says this for loop is fine, makes correct size of 36
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				if(m.getBoard().tiles[x][y].isEnabled()){
@@ -98,9 +109,9 @@ public class GenerateController implements ActionListener {
 	}
 
 	private String[][] addWord(String[][] level, String string) throws Exception {
-		
+		//Andrew thinks this is good, if disabled just repeats first letter of word which is bad
 		int[] pos = addRandomLetter(level, string);
-		for(int i = 1; i<string.length(); i++){
+		for(int i = 1; i<string.length(); i++){ 
 			String c = Character.toString(string.charAt(i));
 			pos = addLetterAroundPosition(pos, level, c);
 		}

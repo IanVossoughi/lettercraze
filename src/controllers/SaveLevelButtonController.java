@@ -43,6 +43,7 @@ public class SaveLevelButtonController implements ActionListener {
 			out = new FileOutputStream(filename);
 			
 			//Letters of boards
+			//Board is too big at this point
 			out.write(m.getBoard().serialize().getBytes());
 			out.write('\n');
 			
