@@ -96,6 +96,13 @@ public class GenerateController implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		for (int x = 0; x < 6; x++) { // Ian trying to get this to work
+			for (int y = 0; y < 6; y++) {
+				if (level[x][y] == "_") {
+					
+				}
+			}
+		}
 		
 		return level;
 	}
