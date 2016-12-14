@@ -46,7 +46,7 @@ public class Main extends JFrame{
 		contentPane.add(teamName);
 		
 		JLabel chromiumIcon = new JLabel("");
-		chromiumIcon.setIcon(new ImageIcon(PlayField.class.getResource("/general/LCSplashScreen.png")));
+		chromiumIcon.setIcon(new ImageIcon(PlayField.class.getResource("/general/lettercraze_logo.png")));
 		contentPane.add(chromiumIcon);
 		
 		JButton openLevelSelect = new JButton("Continue");
