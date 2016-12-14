@@ -50,7 +50,7 @@ public class Model {
 	public Model copyModel() {
 		Model model = new Model();
 		model.setTitle(this.title);
-		model.type = this.type;
+		model.type = new Integer(this.getType());
 		model.board = new Board();
 		for (int x = 0; x < 6; x++) {
 			for (int y = 0; y < 6; y++) {
@@ -70,8 +70,11 @@ public class Model {
 		
 		model.getBoard().setSelectedTileCoords(new Coordinate(this.getBoard().getSelectedTileCoords().x, this.getBoard().getSelectedTileCoords().y));
 		model.selectedWord = new Word(this.selectedWord.getWordString(),new Integer(this.selectedWord.getScore()));
-		model.time = this.time;
-		model.highScore = this.highScore;
+		model.time = new Integer(this.getTime());
+		for (int i = 0; i < this.getHighScores().length; i++) {
+			model.highScore[i] = new Integer(this.getHighScores()[i]);
+		}
+		model.wordLimit = new Integer(this.getLimit());
 		model.selectedTab = this.selectedTab;
 		model.unlockedLevels = this.unlockedLevels;
 		model.lastModel = this.getLastModel();
