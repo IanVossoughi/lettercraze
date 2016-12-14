@@ -29,7 +29,7 @@ public class Tile {
 			this.letter = '!'; // Sentinel value;
 		} else {
 			enabled = true;
-			//this.letter = randomLetterFrequency();
+			this.letter = randomLetterFrequency();
 		}
 		return this;
 	}

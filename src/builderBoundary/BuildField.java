@@ -281,6 +281,7 @@ public class BuildField extends JFrame {
 				Tile tile = m.getBoard().tiles[i][j];
 				//tile.setLetter('q');
 				if(tile.isEnabled()){
+					tile.setLetter((char)(tile.getLetter()+32));
 					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + tile.getLetter() + ".png")));
 				} else {
 					tileArray[i][j].setIcon(greenIcon);

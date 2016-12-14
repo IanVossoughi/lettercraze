@@ -71,7 +71,9 @@ public class GenerateController implements ActionListener {
 		try {
 			char[][] levelAdded = level;
 			for(Object word : wordListModel.toArray()){
-				levelAdded = addWord(levelAdded, (String) word);
+				String word1 = (String) word;
+				word1 = word1.toUpperCase();
+				levelAdded = addWord(levelAdded, word1);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

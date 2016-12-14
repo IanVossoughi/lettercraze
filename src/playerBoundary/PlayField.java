@@ -37,6 +37,7 @@ import controllers.SubmitButtonController;
 import controllers.SubmitWordMove;
 import controllers.UndoButtonController;
 import entities.Model;
+import entities.Tile;
 import general.IconMap;
 
 public class PlayField extends JFrame {
@@ -125,15 +126,15 @@ public class PlayField extends JFrame {
 		JSeparator separator = new JSeparator();
 		starPanel.add(separator);
 
-		JLabel star1Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(0)));
+		JLabel star1Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(2)));
 		star1Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
 		starPanel.add(star1Label);
 
-		JLabel star2Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(1)));
+		JLabel star2Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(0)));
 		star2Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
 		starPanel.add(star2Label);
 
-		JLabel star3Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(2)));
+		JLabel star3Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(1)));
 		star3Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
 		starPanel.add(star3Label);
 
@@ -229,7 +230,9 @@ public class PlayField extends JFrame {
 				char letter = m.getBoard().getTile(i,j).getLetter();
 				//char letter = (char) (rng.nextInt(26) + 65);
 				//System.out.println(letter);
-				if (m.getBoard().getTile(i, j).isEnabled()) {
+				Tile tile = m.getBoard().getTile(i,  j);
+				if (tile.isEnabled()) {
+					tile.setLetter((tile.getLetter() + "").toUpperCase().charAt(0)); // this doesn't do anything, please delete.
 					tileArray[i][j].setIcon(iconMap.getIcon(letter));
 				}
 				else {
