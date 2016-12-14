@@ -68,7 +68,7 @@ public class Model {
 		model.lastModel = this.getLastModel();
 		model.setLastMove(this.lastMove);
 		this.setLastModel(model);
-		return this;
+		return model;
 	}
 	
 	//DOESNT't work, will fix it later

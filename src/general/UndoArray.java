@@ -16,7 +16,7 @@ public class UndoArray {
 	
 	protected UndoArray() {
 		this.undoArray = new ArrayList<Model>();
-		this.index = 0;
+		this.index = -1;
 	}
 	
 	public static UndoArray getInstance() {
@@ -27,19 +27,25 @@ public class UndoArray {
 	}
 
 	public boolean addUndoModel(Model m) {
-		undoArray.add(m);
+		Model newModel = m.copyModel();
+		undoArray.add(newModel);
 		index++;
 		return true;
 	}
 	
 	public boolean removeUndoModel() {
-		undoArray.set(index, null);
+		undoArray.remove(index);
 		index--;
 		return true;
 	}
 	
 	public Model getLatestModel() {
 		return undoArray.get(index);
+	}
+
+	public int getIndex() {
+		// TODO Auto-generated method stub
+		return index;
 	}
 
 }

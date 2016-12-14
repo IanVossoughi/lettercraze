@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.Model;
+import general.UndoArray;
 import junit.framework.TestCase;
 import playerBoundary.PlayField;
 
@@ -16,7 +17,7 @@ public class TestUndoButtonController extends TestCase {
 	}
 
 	public void testUndoButton() {
-		UndoButtonController ubc = new UndoButtonController(model, playField);
+		UndoButtonController ubc = new UndoButtonController(model, playField, UndoArray.getInstance());
 		ubc.actionPerformed(null);
 		int size = model.getWordListModel().getSize();
 		assertEquals(0, size);	

@@ -90,10 +90,10 @@ public class SubmitWordMove {
 			}
 			model.setSelectedWord(play.undoArray.getLatestModel().getSelectedWord());
 			model.setLastMove(play.undoArray.getLatestModel().getLastMove());
-			Model oldModel = play.undoArray.getLatestModel();
+			model.getBoard().setSelectedTileCoords(play.undoArray.getLatestModel().getBoard().getSelectedTileCoords());
 			play.undoArray.removeUndoModel();
 			play.refreshBoard();
-			return oldModel;
+			return model;
 		}
 	}
 
