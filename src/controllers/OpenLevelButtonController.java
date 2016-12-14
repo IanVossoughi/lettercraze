@@ -75,7 +75,8 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			//System.out.println(nextField(in)); // Word list 
 			for(String word : nextField(in).split(" ")){
-				m.addWordListModel(word);
+				//m.addWordListModel(word);
+				m.addThemeWord(word);
 			}
 			
 			//System.out.println(nextField(in)); // Title

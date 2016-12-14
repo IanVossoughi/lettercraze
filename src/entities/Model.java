@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
@@ -27,6 +28,7 @@ public class Model {
 	int unlockedLevels = 0;
 	SubmitWordMove lastMove;
 	Model lastModel;
+	ArrayList<String> themeWords = new ArrayList<String>();
 
 	public Model() {
 		this.board = new Board();
@@ -176,6 +178,7 @@ public DefaultListModel<String> getWordListModel() {
 
 public void addWordListModel(String word) {
 	wordListModel.addElement(word);
+	System.out.println("sdfsdfsdfwgergergergerger");
 }
 
 public String getTitle(){
@@ -259,7 +262,11 @@ public void setUnlocked(int loadUnlockedNum) {
 		this.lastModel = model;
 	}
 
-public int getUnlocked() {
-	return this.unlockedLevels;
-}
+	public int getUnlocked() {
+		return this.unlockedLevels;
+	}
+
+	public void addThemeWord(String word) {
+		this.themeWords.add(word);
+	}
 }
