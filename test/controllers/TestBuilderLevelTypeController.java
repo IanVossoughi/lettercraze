@@ -15,6 +15,7 @@ public class TestBuilderLevelTypeController extends TestCase {
 	JTextField timeField;
 	JTextField wordEntryField;
 	JButton generateButton;
+	
 	@Override
 	public void setUp(){
 		model = new Model();

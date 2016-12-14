@@ -12,6 +12,7 @@ public class ContinueBuilderController implements ActionListener {
 
 	public ContinueBuilderController(BuildMain buildMain) {
 		this.buildMain = buildMain;	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		new BuildField().setVisible(true);
