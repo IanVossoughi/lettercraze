@@ -160,7 +160,7 @@ public int setHighScore(){
 }
 
 public boolean hasWon(){
-	return getScore().score >= getScore().getStarScoreIndex(0);
+	return getScore().score >= getScore().getStarScoreIndex(2);
 }
 
 public Board getBoard(){
