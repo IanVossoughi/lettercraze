@@ -12,7 +12,7 @@ public class UndoButtonController implements ActionListener {
 
 	public UndoButtonController(Model m, PlayField playField) {
 		this.model = m;
-		this.pf =playField;
+		this.pf = playField;
 	}
 
 	@Override
