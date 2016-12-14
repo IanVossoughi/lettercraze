@@ -35,6 +35,7 @@ import controllers.TimerEditController;
 import controllers.NewLevelBuilderController;
 import controllers.OpenLevelButtonController;
 import controllers.OpenStarWindowController;
+import controllers.PreviewButtonController;
 import controllers.RemoveButtonController;
 import controllers.ResetBuilderController;
 import entities.Model;
@@ -242,6 +243,7 @@ public class BuildField extends JFrame {
 		bottomBarPanel.add(resetButton);
 		
 		JButton previewButton = new JButton("Preview");
+		previewButton.addActionListener(new PreviewButtonController(m));
 		bottomBarPanel.add(previewButton);
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
