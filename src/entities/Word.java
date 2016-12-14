@@ -44,7 +44,7 @@ public class Word {
 				//System.out.println(letterScore);
 			}
 			else if ((letter == 'Q') || (letter == 'Z')){
-				letterScore = 9;
+				letterScore = 8;
 				//System.out.println(letterScore);
 			}
 			wordScore = wordScore + letterScore; //Adds score up for every letter for the word
