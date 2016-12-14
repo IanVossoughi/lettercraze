@@ -33,30 +33,20 @@ public class Model {
 		this.selectedWord = new Word("", 0);
 		this.time = 120;
 		System.out.print("TYPE Is" + this.type);
-
+		this.highScore = new int[15];
 	}
 	//DOESNT't work, will fix it later
 	public void writeHighScore(){
 		try{
-			/*File outFile = new File("highscores.txt");
-			outFile.createNewFile();
-			FileOutputStream out = new FileOutputStream(outFile, false);
-			String str = ""; 
-			str = Integer.toString(this.highScore[0]);
-			for(int i = 1; i < 15; i++){
-				str = str + Integer.toString(this.highScore[i]);
-			}			
-		out.write(str.getBytes());
-		out.close();*/
 			File outFile = new File("highscores.txt");
 			outFile.createNewFile();
 			FileOutputStream out = new FileOutputStream(outFile, false);
 			String s = "";
 			for(int i = 0; i < 15; i++){
 				s = s + this.highScore[i] +"\n";
-			
 			}
 			out.write(s.getBytes());
+			out.flush();
 			out.close();
 	}
 	catch (IOException e){
@@ -69,15 +59,19 @@ public int readHighScore(){
 	int num = -1; // Error if this returns
 	byte[] bA = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	String s = "";
+	int m = 0;
 	try {
 		in = new FileInputStream("highscores.txt");
 		for(int i = 0; i < 15;i++){
-		bA[i] = (byte) in.read();
-		//bA[i].getBytes();
+			num = in.read(bA, i, 15);
+			//cha r nm = (char) m;
+			//bA[i]=nm;
 		}
 		
 		s = new String(bA);
 		in.close();
+		System.out.print("\n the byte form of highscores" + num + "\n");
+
 		/*in = new FileInputStream("highscores.txt");
 		byte[] b = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,};
  		num = in.read();
