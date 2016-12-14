@@ -34,6 +34,7 @@ public class SubmitWordMove {
 		this.play = play;
 		this.submitButtonController = submitButtonController;
 	}
+	
 	public boolean doMove(){
 		if(isValid()){
 			play.undoArray.addUndoModel(model);
@@ -73,8 +74,6 @@ public class SubmitWordMove {
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
 		play.refreshBoard();
-
-
 
 		return false;
 	}
@@ -124,7 +123,7 @@ public class SubmitWordMove {
 			boolean isTheme = false;
 			for (int i = 0; i < model.getThemeWords().size(); i++){
 				if(model.getThemeWords().get(i).equalsIgnoreCase(selectedWord.getWordString())) {
-					System.out.println("Checking " + model.getThemeWords().get(i) + "against " + selectedWord.getWordString());
+					System.out.println("Checking " + model.getThemeWords().get(i) + " against " + selectedWord.getWordString());
 					isTheme = true;
 					break;
 				}
