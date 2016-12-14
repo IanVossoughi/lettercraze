@@ -41,6 +41,24 @@ public class BuilderLevelTypeController implements ActionListener {
 		}
 		
 		//Handles wordlist
+		if (index == 0) {
+			buildField.getTimeField().setVisible(false);
+			buildField.getTimeLabel().setVisible(false);
+			buildField.getWordLimitField().setVisible(true);
+			buildField.getWordLimitLabel().setVisible(true);
+		}
+		else if (index == 1) {
+			buildField.getTimeField().setVisible(true);
+			buildField.getTimeLabel().setVisible(true);
+			buildField.getWordLimitField().setVisible(false);
+			buildField.getWordLimitLabel().setVisible(false);				
+		}
+		else {
+			buildField.getTimeField().setVisible(false);
+			buildField.getTimeLabel().setVisible(false);
+			buildField.getWordLimitField().setVisible(false);
+			buildField.getWordLimitLabel().setVisible(false);	
+		}
 		if(index != 2) {
 			JTextField tempWordField = buildField.getWordEntryField();
 			tempWordField.setEnabled(false);

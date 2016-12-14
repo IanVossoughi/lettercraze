@@ -41,6 +41,7 @@ import entities.Tile;
 import playerBoundary.PlayField;
 
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JTextField;
@@ -83,6 +84,9 @@ public class BuildField extends JFrame {
 	
 	private ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
  	private ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
+ 	private JTextField wordLimitField;
+	private JComponent timeLabel;
+	private JComponent wordLimitLabel;
 
 	public JPanel getContentPane() { return contentPane; }
 	public JComboBox<String> getLevelTypeCombo(){return levelTypeCombo;}
@@ -209,19 +213,34 @@ public class BuildField extends JFrame {
 
 		/*JButton undoButton = new JButton("Undo");
 		bottomBarPanel.add(undoButton);*/
+		
+		wordLimitLabel = new JLabel("Word Limit:");
+		bottomBarPanel.add(wordLimitLabel);
+		wordLimitLabel.setVisible(false);
+		
+		wordLimitField = new JTextField();
+		wordLimitField.setEnabled(true);
+		wordLimitField.setColumns(5);
+		bottomBarPanel.add(wordLimitField);
+		wordLimitField.setVisible(false);
 
-		JLabel timeLabel = new JLabel("Time:");
+		timeLabel = new JLabel("Time:");
 		bottomBarPanel.add(timeLabel);
+		timeLabel.setVisible(false);
 
 		timeField = new JTextField();
 		timeField.setEnabled(false);
 		bottomBarPanel.add(timeField);
 		timeField.setColumns(5);
 		timeField.addKeyListener(new TimerEditController(timeField, m));
+		timeField.setVisible(false);
 
 		JButton resetButton = new JButton("Reset");
 		resetButton.addActionListener(new ResetBuilderController(this));
 		bottomBarPanel.add(resetButton);
+		
+		JButton previewButton = new JButton("Preview");
+		bottomBarPanel.add(previewButton);
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
 
@@ -381,6 +400,16 @@ public class BuildField extends JFrame {
 	
 	public void setGenerateButton (JButton genButt) {
 		this.generateButton = genButt;
+	}
+	public JComponent getTimeLabel() {
+		return this.timeLabel;
+	}
+	public JComponent getWordLimitField() {
+		return this.wordLimitField;
+	}
+	public JComponent getWordLimitLabel() {
+		// TODO Auto-generated method stub
+		return this.wordLimitLabel;
 	}
 
 }
