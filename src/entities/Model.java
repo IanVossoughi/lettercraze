@@ -10,6 +10,8 @@ import java.io.ObjectOutputStream;
 
 import javax.swing.DefaultListModel;
 
+import controllers.SubmitWordMove;
+
 public class Model {
 
 	String title;

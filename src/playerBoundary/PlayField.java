@@ -34,6 +34,7 @@ import controllers.DeselectButtonController;
 import controllers.PlayerClickTileController;
 import controllers.ResetButtonController;
 import controllers.SubmitButtonController;
+import controllers.SubmitWordMove;
 import controllers.UndoButtonController;
 import entities.Model;
 import general.IconMap;
@@ -301,6 +302,33 @@ public class PlayField extends JFrame {
 					tileArray[x][y].setIcon(disabledIcon);
 				}
 				tileArray[x][y].setEnabled(m.getBoard().getTile(x, y).isEnabled());
+			}
+		}
+
+	}
+	
+	public void refreshBoardUndo(Model newModel) {
+		wordList.setModel(newModel.getWordListModel());
+
+		wordLabel.setText("WORD: " + newModel.getSelectedWord().getWordString());
+		//System.out.println(m.getSelectedWord().getWordString());
+		newModel.setSelectedWord(newModel.getSelectedWord());
+		for(int x = 0; x < 6; x++){
+			for(int y = 0; y < 6; y++){
+				if (newModel.getBoard().getTile(x, y).isEnabled()) {
+					char letter = newModel.getBoard().getTile(x, y).getLetter();
+
+					if (!newModel.getBoard().getTile(x, y).isSelected()) {
+						tileArray[x][y].setIcon(iconMap.getIcon(letter));
+					}
+					else {
+						tileArray[x][y].setIcon(iconMap.getPressedIcon(letter));
+					}
+				}
+				else {
+					tileArray[x][y].setIcon(disabledIcon);
+				}
+				tileArray[x][y].setEnabled(newModel.getBoard().getTile(x, y).isEnabled());
 			}
 		}
 
