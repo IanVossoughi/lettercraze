@@ -77,10 +77,22 @@ public class SubmitWordMove {
 		}
 	}
 	
-	public boolean undoMove() {
-		return true;
+	public Model undoMove() {
+		if (model.getLastModel() == null) {return model;}
+		else {
+			for (int x = 0; x < 6; x++) {
+				for (int y = 0; y < 6; y++) {
+					model.getBoard().setTile(x,y,model.getLastModel().getBoard().getTile(x, y));
+				}
+			}
+			model.setSelectedWord(model.getLastModel().getSelectedWord());
+			model.setLastMove(model.getLastModel().getLastMove());
+			model = model.getLastModel();
+			play.refreshBoard();
+			return model;
+		}
 	}
-	
+
 	public void tilesGoAway(){
 		for (int x = 0; x < 6; x++) {
 			for (int y = 0; y < 6; y++) {
