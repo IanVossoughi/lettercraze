@@ -38,6 +38,7 @@ import controllers.SubmitWordMove;
 import controllers.UndoButtonController;
 import entities.Model;
 import general.IconMap;
+import general.UndoArray;
 
 public class PlayField extends JFrame {
 
@@ -60,6 +61,7 @@ public class PlayField extends JFrame {
 	private JLabel timeLabel;
 	public JLabel getScoreLabel(){return scoreLabel;}
 	public Timer timer;
+	public UndoArray undoArray;
 	/**
 	 * Launch the application.
 	 */
@@ -94,6 +96,7 @@ public class PlayField extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		this.undoArray = UndoArray.getInstance();
 
 		JPanel menuPanel = new JPanel();
 		contentPane.add(menuPanel, BorderLayout.NORTH);
@@ -183,7 +186,7 @@ public class PlayField extends JFrame {
 		JButton undoButton = new JButton("Undo");
 		taskPanel.add(undoButton);
 		/* TODO add constructor to UndoButtonController if needed*/
-		undoButton.addActionListener(new UndoButtonController(m, this));
+		undoButton.addActionListener(new UndoButtonController(m, this, undoArray));
 
 		JButton resetButton = new JButton("Reset");
 		taskPanel.add(resetButton);
@@ -332,5 +335,9 @@ public class PlayField extends JFrame {
 			}
 		}
 
+	}
+	
+	public void setModel(Model model) {
+		m = model;
 	}
 }
