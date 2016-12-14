@@ -41,6 +41,10 @@ public class MenuField extends JFrame {
 	private String levelType;
 	private JLabel levelTypeLabel;
 	private JLabel lblLevelName;
+	private JLabel highScoreNumLabel;
+
+	public JLabel getHighScoreLabel(){return highScoreNumLabel;}
+
 	/**
 	 * Launch the application.
 	 */
@@ -56,7 +60,7 @@ public class MenuField extends JFrame {
 			}
 		});
 	}
-	
+
 	//public int getUnlocked(){return this.unlocked;}
 	public String getLevelType(){return this.levelType;}
 	public JLabel getLevelTypeLabel(){return this.levelTypeLabel;}
@@ -69,72 +73,72 @@ public class MenuField extends JFrame {
 		System.out.print(Integer.toString(m.readHighScore()));
 		progress = new ProgressIO();
 		ProgressIO.saveUnlockedNum(8);
-		
+
 		levelTypeLabel = new JLabel("PUZZLE");
 		//change to test
 		//progress.saveUnlockedNum(2);
 
 		m.setUnlocked(progress.loadUnlockedNum());
-		
+
 		//System.out.println("Unlocked: " + m.getUnlocked());
-		
+
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
-		
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setPreferredSize(getMaximumSize());
-		
+
 		JPanel menuPanel = new JPanel();
 		contentPane.add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
-		
+
 		JPanel levelStarPanel = new JPanel();
 		menuPanel.add(levelStarPanel);
 		levelStarPanel.setLayout(new BorderLayout(0, 0));
-		
+
 		JLabel letterCrazeLabel = new JLabel("LetterCraze");
 		letterCrazeLabel.setFont(new Font("Lucida Handwriting", Font.PLAIN, 16));
 		letterCrazeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		levelStarPanel.add(letterCrazeLabel, BorderLayout.NORTH);
-		
+
 		JPanel starPanel = new JPanel();
 		levelStarPanel.add(starPanel, BorderLayout.SOUTH);
-		
+
 		JLabel selectLabel = new JLabel("Please select a level to play using the tabs below.");
 		starPanel.add(selectLabel);
-		
+
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
-		
+
 		JButton playButton = new JButton("Play");
 		bottomBarPanel.add(playButton);
 		playButton.addActionListener(new PlayButtonController(this, m));
-		
-		
+
+
 		JButton exitButton = new JButton("Exit");
 		bottomBarPanel.add(exitButton);
 		exitButton.addActionListener(new ExitButtonController(this));
-		
-		
+
+
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(boardPanel, BorderLayout.CENTER);
 		boardPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-			
-			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-			boardPanel.add(tabbedPane);
-			
-			//tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked, m, lblLevelName));
 
-			int i;
-			for (i = 1; i < 16; i++) {
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		boardPanel.add(tabbedPane);
+
+		//tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked, m, lblLevelName));
+
+		int i;
+		for (i = 1; i < 16; i++) {
 			JPanel levelListPanel = new JPanel();
 			tabbedPane.addTab(Integer.toString(i), null, levelListPanel, null);
-			
+
 			levelListPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 			levelListPanel.setLayout(new BoxLayout(levelListPanel, BoxLayout.Y_AXIS));
 
@@ -154,22 +158,22 @@ public class MenuField extends JFrame {
 			lblLevelName = new JLabel("First Level");
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
-			
-			
-			
+
+
+
 			switch (i % 3) {
 			case 0:
 				levelType = "THEME";
 				break;
 			case 1:
 				levelType = "PUZZLE";
-				
+
 				break;
 			default:
 				levelType = "LIGHTNING";
 				break;
 			}
-			
+
 			levelTypeLabel = new JLabel("- " + levelType);
 			levelNamePanel.add(levelTypeLabel);
 
@@ -179,12 +183,12 @@ public class MenuField extends JFrame {
 			JLabel highScoreLabel = new JLabel("High Score - ");
 			scorePanel.add(highScoreLabel);
 
-			JLabel highScoreNumLabel = new JLabel(m.getHighScores()[0] + "");
+			highScoreNumLabel = new JLabel("0");
 			scorePanel.add(highScoreNumLabel);
 
 			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, 
 					playButton, tabbedPane, m.getUnlocked(), m, lblLevelName, highScoreNumLabel));
-			
+
 			ImageIcon star = new ImageIcon(MenuField.class.getResource("/general/star.png"));
 			JLabel star1Label = new JLabel("");
 			scorePanel.add(star1Label);
@@ -197,15 +201,18 @@ public class MenuField extends JFrame {
 			JLabel star3Label = new JLabel("");
 			star3Label.setIcon(star);
 			scorePanel.add(star3Label);
-			
-			
-			}
-			//default level type
-			levelTypeLabel.setText("PUZZLE");
+
+
+		}
+		//default level type
+		levelTypeLabel.setText("PUZZLE");
 	}
 
 	public void setLevelNameLabel(String string) {
 		this.lblLevelName.setText(string);
 	}
-	
+
+
 }
+
+

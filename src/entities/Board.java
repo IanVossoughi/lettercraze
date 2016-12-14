@@ -51,12 +51,7 @@ public class Board {
 		String retStr = "";
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
-				if (this.getTile(x, y).letter.equals("QU")) {
-					System.out.println("Changed the QU to Q in serialization");
-					retStr = retStr + "Q";
-				} else {
-					retStr = retStr + this.getTile(x, y).letter;
-				}
+				retStr = retStr + this.getTile(x, y).letter;
 			}
 		}
 		return retStr;

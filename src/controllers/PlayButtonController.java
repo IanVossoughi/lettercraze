@@ -12,12 +12,14 @@ public class PlayButtonController implements ActionListener{
 	private MenuField menuField;
 	private Model m;
 	String levelType;
+	int whichLevel;
 	//private int unlocked;
 
 	public PlayButtonController(MenuField menuField, Model m) {
 		this.menuField = menuField;
 		this.m = m;
 		this.levelType = menuField.getLevelType();
+		this.whichLevel = m.getSelectedIndex();
 		//this.unlocked = unlocked;
 	}
 
@@ -25,7 +27,7 @@ public class PlayButtonController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// Before we open the PlayField, load the level into the model.
 		this.loadLevel();
-		
+
 		PlayField pf = new PlayField(m);
 		pf.setVisible(true);
 
@@ -46,6 +48,8 @@ public class PlayButtonController implements ActionListener{
 			m.setType(2);
 			System.out.print("levelType is set to 2");	
 		}
+		m.setSelectedTab(whichLevel);
+		System.out.print("\n Selected Tab is =" + whichLevel + "\n");
 		pf.hasTimer();
 	}
 

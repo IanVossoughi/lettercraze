@@ -27,13 +27,7 @@ public class PlayerClickTileController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		//System.out.println(x + " " + y);
-
 		Tile clickedTile = this.m.getBoard().getTile(x, y);
-		System.out.println("This is a " + clickedTile.getLetter());
-		if (clickedTile.getLetter().equals("Q")) {
-			clickedTile.setLetter("QU");
-			System.out.println("Now it's a " + clickedTile.getLetter());
-		}
 
 		if (clickedTile.isEnabled()) {
 			Coordinate currentTile = m.getBoard().getSelectedTileCoords();
@@ -44,15 +38,11 @@ public class PlayerClickTileController implements ActionListener {
 			if(firstTile || ((Math.abs(x - currentTile.x) < 2) && (Math.abs(y - currentTile.y) < 2) && (!clickedTile.isSelected()))) {
 				clickedTile.setSelection(true);
 				if (clickedTile.isSelected()) {
-//					if (clickedTile.getLetter() == "Q") {
-//						m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + "QU");				
-//					}
-//					else {
-						if (clickedTile.getLetter() == "QU"){
-							System.out.println("This is a QU, and Tile knows it!");
-						}
+					if (clickedTile.getLetter() == "Q") {
+						m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + "QU");				
+					}
+					else {
 						m.getSelectedWord().setWordString(m.getSelectedWord().getWordString() + clickedTile.getLetter());
-						
 					}
 					m.getBoard().setSelectedTileCoords(new Coordinate(x,y));
 				}
@@ -60,4 +50,4 @@ public class PlayerClickTileController implements ActionListener {
 			p.refreshBoard();
 		}
 	}
-//}
+}
