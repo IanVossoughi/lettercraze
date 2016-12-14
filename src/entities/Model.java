@@ -37,6 +37,7 @@ public class Model {
 		this.selectedWord = new Word("", 0);
 		this.time = 120;
 		System.out.print("TYPE Is" + this.type);
+		this.highScore = new int[15];
 		this.lastMove = null;
 		this.lastModel = null;
 

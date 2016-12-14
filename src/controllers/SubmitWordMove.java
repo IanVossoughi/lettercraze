@@ -18,17 +18,18 @@ public class SubmitWordMove {
 	private PlayField play;
 	private WordTable wordTable = new WordTable();
 	private MenuField menu;
+	private Model lastModel;
 	
 	public SubmitWordMove(Model model, PlayField play) {
 		this.selectedWord = model.getSelectedWord();
 		this.wordList = model.getWordListModel();
 		this.model = model;
 		this.play = play;
+		this.lastModel = null;
 	}
 	public boolean doMove(){
 		if(isValid()){
-			model = model.copyModel();
-
+			lastModel = new Model();
 			wordList.addElement(selectedWord.getWordString());
 			System.out.println("\n Word is" + selectedWord.getWordString()); //Andrew, checking
 			selectedWord.addScore(); //Andrew, gets score
@@ -50,7 +51,6 @@ public class SubmitWordMove {
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
 			}
-			model.setLastMove(this);
 			return true;
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
@@ -77,20 +77,8 @@ public class SubmitWordMove {
 		}
 	}
 	
-	public Model undoMove() {
-		if (model.getLastModel() == null) {return model;}
-		else {
-			for (int x = 0; x < 6; x++) {
-				for (int y = 0; y < 6; y++) {
-					model.getBoard().setTile(x,y,model.getLastModel().getBoard().getTile(x, y));
-				}
-			}
-			model.setSelectedWord(model.getLastModel().getSelectedWord());
-			model.setLastMove(model.getLastModel().getLastMove());
-			model = model.getLastModel();
-			play.refreshBoard();
-			return model;
-		}
+	public boolean undoMove() {
+		return true;
 	}
 	
 	public void tilesGoAway(){
