@@ -39,6 +39,7 @@ import controllers.UndoButtonController;
 import entities.Model;
 import entities.Tile;
 import general.IconMap;
+import general.LetterFrequencyFast;
 import general.UndoArray;
 
 public class PlayField extends JFrame {
@@ -234,6 +235,13 @@ public class PlayField extends JFrame {
 				//char letter = (char) (rng.nextInt(26) + 65);
 				//System.out.println(letter);
 				Tile tile = m.getBoard().getTile(i,  j);
+				
+				// Check if we're on a theme level, otherwise generate random letters
+				if(m.getSelectedIndex() % 3 != 2){
+					System.out.println("dklfslkdflksd");
+					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
+				}
+				
 				if (tile.isEnabled()) {
 					tile.setLetter((tile.getLetter() + "").toUpperCase().charAt(0)); //hack - letters had to be uppercase.
 					tileArray[i][j].setIcon(iconMap.getIcon(letter));
