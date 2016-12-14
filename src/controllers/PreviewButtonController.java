@@ -28,6 +28,7 @@ public class PreviewButtonController implements ActionListener{
 		saveLevel();
 		loadLevel();
 		PlayField pf = new PlayField(mCopy);
+		pf.hasTimer();
 		pf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		pf.getBackToMenuButton().setEnabled(false);
 		pf.setVisible(true);
