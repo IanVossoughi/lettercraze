@@ -27,7 +27,7 @@ public class TestBackToMenuButtonController extends TestCase {
 	
 	public void testBackToMenuButton(){
 		assertTrue(pf.isVisible());
-		BackToMenuButtonController btmb = new BackToMenuButtonController(pf);
+		BackToMenuButtonController btmb = new BackToMenuButtonController(pf,m);
 		
 		btmb.actionPerformed(null);
 		assertFalse(pf.isVisible());

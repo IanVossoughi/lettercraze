@@ -84,6 +84,7 @@ public class PlayField extends JFrame {
 			}
 		});
 	}
+public Model getModel(){return this.getModel();}
 
 	/**
 	 * Create the frame.
@@ -109,7 +110,7 @@ public class PlayField extends JFrame {
 
 		backToMenuButton = new JButton("Exit Level");
 		menuPanel.add(backToMenuButton);
-		backToMenuButton.addActionListener(new BackToMenuButtonController(this));
+		backToMenuButton.addActionListener(new BackToMenuButtonController(this, m));
 
 
 		JPanel levelStarPanel = new JPanel();

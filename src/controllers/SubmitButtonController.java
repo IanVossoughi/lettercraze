@@ -20,6 +20,7 @@ public class SubmitButtonController implements ActionListener {
 	Model model;
 	PlayField play;
 	private JLabel[] starLabels = new JLabel[3];
+	private int whichLevel;
 	/*private JLabel star1Label;
 	private JLabel star2Label;
 	private JLabel star3Label;*/
@@ -33,6 +34,7 @@ public class SubmitButtonController implements ActionListener {
 		starLabels[0] = star1Label;
 		starLabels[1] = star2Label;
 		starLabels[2] = star3Label;
+		this.whichLevel = model.getSelectedIndex();
 	}
 
 	@Override
@@ -43,6 +45,9 @@ public class SubmitButtonController implements ActionListener {
 			JOptionPane.showMessageDialog(new JFrame(), "That was your final move. Ever!");
 			play.gameOver();
 		}
+		System.out.print("\n Selected Tab is =" + whichLevel + " - submitButton\n");
+		System.out.print("\n Score is =" + model.getScore().getScoreValue() + " - submitButton\n");
+
 	}
 
 	public JLabel[] getStarLabels() {
