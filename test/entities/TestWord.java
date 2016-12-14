@@ -34,6 +34,6 @@ public class TestWord extends TestCase {
 		// Testing all letterScores work correctly
 		Word test3 = new Word("EADFVJQ", score);
 		test3.addScore();
-		assertEquals(155, test3.getScore());
+		assertEquals(150, test3.getScore());
 	}
 }
