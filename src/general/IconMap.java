@@ -19,7 +19,12 @@ public class IconMap {
 		HashMap<Character, ImageIcon> iconMap = new HashMap<Character, ImageIcon>();
 		for (char letter = 'A'; letter <= 'Z'; letter++) {
 			//String str = Character.toString(letter);
-			iconMap.put(letter, new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+			if(letter == 'Q'){
+				iconMap.put(letter, new ImageIcon(PlayField.class.getResource("/images/" + "QU" + ".png")));	
+			}
+			else {
+				iconMap.put(letter, new ImageIcon(PlayField.class.getResource("/images/" + letter + ".png")));
+			}
 		}
 		return iconMap;
 	}
@@ -28,7 +33,12 @@ public class IconMap {
 		HashMap<Character, ImageIcon> iconMap = new HashMap<Character, ImageIcon>();
 		for (char letter = 'A'; letter <= 'Z'; letter++) {
 			//String str = Character.toString(letter);
-			iconMap.put(letter, new ImageIcon(PlayField.class.getResource("/images/pressedTiles/"+ letter + ".png")));
+			if(letter == 'Q'){
+				iconMap.put(letter, new ImageIcon(PlayField.class.getResource("/images/pressedTiles/"+ "QU" + ".png")));	
+			}
+			else{
+				iconMap.put(letter, new ImageIcon(PlayField.class.getResource("/images/pressedTiles/"+ letter + ".png")));
+			}
 		}
 		return iconMap;
 	}
