@@ -58,7 +58,9 @@ public class Model {
 				model.board.setTile(x, y, newTile);
 			}
 		}
-		model.score = this.score;
+		
+		model.score = new Score(this.getScore().getStarScores());
+		model.score.setScoreValue(this.getScore().getScoreValue());
 		model.wordListModel = this.wordListModel;
 		model.selectedWord = new Word(this.selectedWord.getWordString(),new Integer(this.selectedWord.getScore()));
 		model.time = this.time;
