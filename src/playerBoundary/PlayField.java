@@ -245,6 +245,21 @@ public class PlayField extends JFrame {
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
 
 	}
+	
+	public void checkIfWon(){
+		if(this.m.hasWon()){
+			// Update the progress
+			
+			int currentProg = ProgressIO.loadUnlockedNum();
+			int playingLevel = m.getSelectedIndex() + 1;
+			//System.out.println("new level unlocked" + currentProg + " " + playingLevel);
+			if(currentProg == playingLevel){
+				
+				ProgressIO.saveUnlockedNum(currentProg + 1);
+				m.setUnlocked(currentProg + 1 );
+			}
+		}
+	}
 	public void hasTimer(){
 		System.out.print("Play field understand that the level type is " + m.getType());
 		if(m.getType() == 1){

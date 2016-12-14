@@ -44,7 +44,7 @@ public class SubmitWordMove {
 			//play.refreshBoard();
 			selectedWord.setScore(0); //Andrew, resets word
 			selectedWord.setWordString(""); //Andrew
-			if(model.hasWon()){
+			/*if(model.hasWon()){
 				// Update the progress
 				
 				int currentProg = ProgressIO.loadUnlockedNum();
@@ -54,7 +54,7 @@ public class SubmitWordMove {
 					
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
-			}
+			}*/
 			return true;
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
