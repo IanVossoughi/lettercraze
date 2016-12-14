@@ -79,4 +79,9 @@ public class Board {
 			}
 		}
 	}
+
+	public void setTile(int x, int y, Tile newTile) {
+		this.tiles[x][y] = newTile;
+		
+	}
 }
