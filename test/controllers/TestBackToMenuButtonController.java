@@ -18,23 +18,17 @@ public class TestBackToMenuButtonController extends TestCase {
 		pf.setVisible(true);
 
 	}
+	
 	@Override
 	protected void tearDown() {
 		pf.dispose();
 	}
 	
 	
-	public void testBTMC(){
-		//setUp();
+	public void testBTMBC(){
 		assertTrue(pf.isVisible());
 		BackToMenuButtonController btmb = new BackToMenuButtonController(pf);
-		//JButton eButton = new JButton("Exit Level");
-		//eButton.addActionListener(btmb);
-		
-		// simulates the click on the button
 		btmb.actionPerformed(null);
-
-		//eButton.doClick();
 		assertFalse(pf.isVisible());
 	}
 }
