@@ -33,22 +33,20 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 
 	public void stateChanged(ChangeEvent e){
 		int tabIndex = tabPane.getSelectedIndex();
+		
 		// Update the model with the selected index
 		this.m.setSelectedTab(tabIndex);
 		OpenLevelButtonController.loadLevel("levels/" + (m.getSelectedIndex()+1), m, null);
 		title.setText(m.getTitle());
-		//System.out.println(ProgressIO.loadUnlockedNum() + "");
 		
 		if(tabIndex % 3 == 0)
 			menu.getLevelTypeLabel().setText("PUZZLE");
-		if(tabIndex % 3 ==1)
+		if(tabIndex % 3 == 1)
 			menu.getLevelTypeLabel().setText("LIGHTNING");
 		if(tabIndex % 3 == 2)
 			menu.getLevelTypeLabel().setText("THEME");
 
 		play.setEnabled(tabIndex < unlocked);
-		//System.out.print(menu.getLevelTypeLabel().getText() + "\n");
-		
 		highScoreNumLabel.setText(m.getHighScores()[tabIndex] + "");
 	}
 	
