@@ -1,6 +1,9 @@
 package controllers;
 
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 import entities.Board;
 import entities.Model;
@@ -19,11 +22,17 @@ public class SubmitWordMove {
 	private WordTable wordTable = new WordTable();
 	private MenuField menu;
 	
-	public SubmitWordMove(Model model, PlayField play) {
+	// These three are for star icons
+	private SubmitButtonController submitButtonController;
+	private Icon goldStarIcon = new ImageIcon(PlayField.class.getResource("/general/star.png"));
+	private Icon blackStarIcon = new ImageIcon(PlayField.class.getResource("/general/star_gray.png"));
+	
+	public SubmitWordMove(Model model, PlayField play, SubmitButtonController submitButtonController) {
 		this.selectedWord = model.getSelectedWord();
 		this.wordList = model.getWordListModel();
 		this.model = model;
 		this.play = play;
+		this.submitButtonController = submitButtonController;
 	}
 	public boolean doMove(){
 		if(isValid()){
@@ -56,13 +65,36 @@ public class SubmitWordMove {
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
 			}
+			
+			updateStars();
+			
 			model.setLastMove(this);
 			return true;
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
 		play.refreshBoard();
+		
+		
+		
 		return false;
 	}
+	
+	private void updateStars() {
+		// Check if star if its score has been reached
+		JLabel[] starLabels = this.submitButtonController.getStarLabels();
+		for(int i = 0; i < 3; i++){
+			int scoreNeeded = model.getScore().getStarScoreIndex(0);
+			int score = model.getScore().getScoreValue();
+			if(score >= scoreNeeded){
+				// Yellow star icon
+				starLabels[i].setIcon(goldStarIcon);
+			} else {
+				// Black star icon
+				starLabels[i].setIcon(blackStarIcon);
+			}
+		}
+	}
+	
 	private void updateScore() {
 		if(model.getType() == 0){ //Do complex word score math only for puzzle, rest have just +1 by word for score
 			System.out.println("\n Type is " + model.getType());

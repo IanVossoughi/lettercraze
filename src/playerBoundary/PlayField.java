@@ -130,15 +130,15 @@ public class PlayField extends JFrame {
 		starPanel.add(separator);
 
 		JLabel star1Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(2)));
-		star1Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
+		star1Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star_gray.png")));
 		starPanel.add(star1Label);
 
 		JLabel star2Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(0)));
-		star2Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
+		star2Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star_gray.png")));
 		starPanel.add(star2Label);
 
 		JLabel star3Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(1)));
-		star3Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
+		star3Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star_gray.png")));
 		starPanel.add(star3Label);
 
 		JPanel bottomBarPanel = new JPanel();
@@ -164,7 +164,7 @@ public class PlayField extends JFrame {
 		submitWordPanel.add(submitButton);
 		submitButton.setHorizontalAlignment(SwingConstants.LEADING);
 		/*TODO: change constructor to SubmitButtonController if needed*/
-		submitButton.addActionListener(new SubmitButtonController(m, this));
+		submitButton.addActionListener(new SubmitButtonController(m, this, star1Label, star2Label, star3Label));
 
 		JButton btnDeselectWord = new JButton("Deselect");
 		submitWordPanel.add(btnDeselectWord);
@@ -235,7 +235,7 @@ public class PlayField extends JFrame {
 				//System.out.println(letter);
 				Tile tile = m.getBoard().getTile(i,  j);
 				if (tile.isEnabled()) {
-					tile.setLetter((tile.getLetter() + "").toUpperCase().charAt(0)); // this doesn't do anything, please delete.
+					tile.setLetter((tile.getLetter() + "").toUpperCase().charAt(0)); //hack - letters had to be uppercase.
 					tileArray[i][j].setIcon(iconMap.getIcon(letter));
 				}
 				else {
@@ -246,6 +246,7 @@ public class PlayField extends JFrame {
 		}
 		wordLabel.setText("WORD: " + word);
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
+		this.refreshBoard();
 
 	}
 	

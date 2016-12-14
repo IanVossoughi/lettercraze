@@ -17,7 +17,7 @@ public class TestSubmitButtonController extends TestCase {
 	}
 	
 	public void testSubmitButton() {
-		SubmitButtonController abc = new SubmitButtonController(model, playField);
+		SubmitButtonController abc = new SubmitButtonController(model, playField, null, null, null);
 		abc.actionPerformed(null);
 		int size = model.getWordListModel().getSize();
 		assertEquals(0, size);	
