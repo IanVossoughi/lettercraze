@@ -43,6 +43,7 @@ public class Model {
 		this.highScore = new int[15];
 		this.lastMove = null;
 		this.lastModel = null;
+		this.wordLimit = 0;
 
 	}
 	
@@ -285,5 +286,13 @@ public void setUnlocked(int loadUnlockedNum) {
 		this.wordListModel = wordListModel;
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void setLimit(int limit) {
+		this.wordLimit = limit;
+	}
+
+	public int getLimit() {
+		return this.wordLimit;
 	}
 }
