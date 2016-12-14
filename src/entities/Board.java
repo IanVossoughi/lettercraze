@@ -51,7 +51,11 @@ public class Board {
 		String retStr = "";
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
-				retStr = retStr + this.getTile(x, y).letter;
+				if (this.getTile(x, y).letter.equals("QU")) {
+					retStr = retStr + "Q";
+				} else {
+					retStr = retStr + this.getTile(x, y).letter;
+				}
 			}
 		}
 		return retStr;
