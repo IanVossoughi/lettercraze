@@ -3,7 +3,9 @@ package controllers;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import entities.Board;
 import entities.Model;
@@ -34,8 +36,10 @@ public class SubmitWordMove {
 		this.play = play;
 		this.submitButtonController = submitButtonController;
 	}
+	
 	public boolean doMove(){
 		if(isValid()){
+			model.setLimit(model.getLimit() - 1);
 			play.undoArray.addUndoModel(model);
 			//wordList.addElement(selectedWord.getWordString());
 			model.addWordListModel(selectedWord.getWordString());
@@ -73,8 +77,6 @@ public class SubmitWordMove {
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
 		play.refreshBoard();
-
-
 
 		return false;
 	}
@@ -124,12 +126,15 @@ public class SubmitWordMove {
 			boolean isTheme = false;
 			for (int i = 0; i < model.getThemeWords().size(); i++){
 				if(model.getThemeWords().get(i).equalsIgnoreCase(selectedWord.getWordString())) {
-					System.out.println("Checking " + model.getThemeWords().get(i) + "against " + selectedWord.getWordString());
+					System.out.println("Checking " + model.getThemeWords().get(i) + " against " + selectedWord.getWordString());
 					isTheme = true;
 					break;
 				}
 			}
 			return isTheme;
+		}
+		if ((model.getType() == 0) && (model.getLimit() < 1)) {
+			return false;
 		}
 		else if(selectedWord.getWordString().length() >2 && wordTable.isWord(selectedWord.getWordString())){
 			return true;

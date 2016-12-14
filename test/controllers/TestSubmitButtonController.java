@@ -14,6 +14,8 @@ public class TestSubmitButtonController extends TestCase {
 		model = new Model();
 		playField = new PlayField(model);
 		playField.setVisible(true);
+		
+		model.setType(2);
 	}
 	
 	public void testSubmitButton() {
