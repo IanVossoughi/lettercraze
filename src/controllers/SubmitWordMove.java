@@ -43,16 +43,16 @@ public class SubmitWordMove {
 			selectedWord.setScore(0); //Andrew, resets word
 			selectedWord.setWordString(""); //Andrew
 			
-			System.out.println("Score: " + model.getScore().getScoreValue());
-			System.out.println("Score needed: " + model.getScore().getStarScoreIndex(2));
+			//System.out.println("Score: " + model.getScore().getScoreValue());
+			//System.out.println("Score needed: " + model.getScore().getStarScoreIndex(2));
 			if(model.hasWon()){
 				// Update the progress
 				
 				int currentProg = ProgressIO.loadUnlockedNum();
 				int playingLevel = model.getSelectedIndex() + 1;
-				System.out.println("new level unlocked" + currentProg + " " + playingLevel);
+				//System.out.println("new level unlocked" + currentProg + " " + playingLevel);
 				if(currentProg == playingLevel){
-					System.out.println("Level actually unlocked");
+					//System.out.println("Level actually unlocked");
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
 			}
