@@ -29,6 +29,7 @@ import controllers.ExitBuilderController;
 import controllers.FilePicker;
 import controllers.GenerateController;
 import controllers.LevelNameListener;
+import controllers.LimitEditController;
 import controllers.SaveLevelButtonController;
 import controllers.TimerEditController;
 import controllers.NewLevelBuilderController;
@@ -223,6 +224,7 @@ public class BuildField extends JFrame {
 		wordLimitField.setColumns(5);
 		bottomBarPanel.add(wordLimitField);
 		wordLimitField.setVisible(false);
+		wordLimitField.addKeyListener(new LimitEditController(wordLimitField, m));
 
 		timeLabel = new JLabel("Time:");
 		bottomBarPanel.add(timeLabel);
@@ -404,7 +406,7 @@ public class BuildField extends JFrame {
 	public JComponent getTimeLabel() {
 		return this.timeLabel;
 	}
-	public JComponent getWordLimitField() {
+	public JTextField getWordLimitField() {
 		return this.wordLimitField;
 	}
 	public JComponent getWordLimitLabel() {

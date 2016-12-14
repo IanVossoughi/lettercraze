@@ -184,7 +184,7 @@ public class PlayField extends JFrame {
 		wordLimitLabel = new JLabel("Words Remaining:");
 		taskPanel.add(wordLimitLabel);
 		
-		limitLabel = new JLabel("0");
+		limitLabel = new JLabel(Integer.toString(m.getLimit()));
 		taskPanel.add(limitLabel);
 
 		timeLabel = new JLabel("Time:");

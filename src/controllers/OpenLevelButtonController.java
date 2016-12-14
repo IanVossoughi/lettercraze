@@ -96,6 +96,11 @@ public class OpenLevelButtonController implements ActionListener {
 			if(b != null)
 				b.getTimeField().setText(timeLeft + "");
 			
+			int limit = Integer.parseInt(nextField(in));
+			m.setLimit(limit);
+			if(b != null)
+				b.getWordLimitField().setText(limit + "");
+			
 			
 			in.close();
 		} catch (FileNotFoundException e) {
