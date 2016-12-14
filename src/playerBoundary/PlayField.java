@@ -37,6 +37,7 @@ import controllers.SubmitButtonController;
 import controllers.SubmitWordMove;
 import controllers.UndoButtonController;
 import entities.Model;
+import entities.Tile;
 import general.IconMap;
 import general.UndoArray;
 
@@ -128,15 +129,15 @@ public class PlayField extends JFrame {
 		JSeparator separator = new JSeparator();
 		starPanel.add(separator);
 
-		JLabel star1Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(0)));
+		JLabel star1Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(2)));
 		star1Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
 		starPanel.add(star1Label);
 
-		JLabel star2Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(1)));
+		JLabel star2Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(0)));
 		star2Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
 		starPanel.add(star2Label);
 
-		JLabel star3Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(2)));
+		JLabel star3Label = new JLabel(Integer.toString(m.getScore().getStarScoreIndex(1)));
 		star3Label.setIcon(new ImageIcon(PlayField.class.getResource("/general/star.png")));
 		starPanel.add(star3Label);
 
@@ -232,7 +233,9 @@ public class PlayField extends JFrame {
 				char letter = m.getBoard().getTile(i,j).getLetter();
 				//char letter = (char) (rng.nextInt(26) + 65);
 				//System.out.println(letter);
-				if (m.getBoard().getTile(i, j).isEnabled()) {
+				Tile tile = m.getBoard().getTile(i,  j);
+				if (tile.isEnabled()) {
+					tile.setLetter((tile.getLetter() + "").toUpperCase().charAt(0)); // this doesn't do anything, please delete.
 					tileArray[i][j].setIcon(iconMap.getIcon(letter));
 				}
 				else {
@@ -243,7 +246,22 @@ public class PlayField extends JFrame {
 		}
 		wordLabel.setText("WORD: " + word);
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
-		
+
+	}
+	
+	public void checkIfWon(){
+		if(this.m.hasWon()){
+			// Update the progress
+			
+			int currentProg = ProgressIO.loadUnlockedNum();
+			int playingLevel = m.getSelectedIndex() + 1;
+			//System.out.println("new level unlocked" + currentProg + " " + playingLevel);
+			if(currentProg == playingLevel){
+				
+				ProgressIO.saveUnlockedNum(currentProg + 1);
+				m.setUnlocked(currentProg + 1 );
+			}
+		}
 	}
 	public void hasTimer(){
 		System.out.print("Play field understand that the level type is " + m.getType());
@@ -261,7 +279,7 @@ public class PlayField extends JFrame {
 						JOptionPane.showMessageDialog(new JFrame(), "Time's Up!");
 						gameOver();
 						this.cancel();
-						
+
 					}
 
 				}
@@ -274,7 +292,9 @@ public class PlayField extends JFrame {
 		}
 	}
 	public void stopTimer(){
-		this.timer.cancel();
+		if(timerLabel.isVisible()){
+			this.timer.cancel();
+		}
 	}
 	protected void gameOver() {
 		this.setVisible(false);
@@ -309,7 +329,7 @@ public class PlayField extends JFrame {
 		}
 
 	}
-	
+
 	public void refreshBoardUndo(Model newModel) {
 		wordList.setModel(newModel.getWordListModel());
 

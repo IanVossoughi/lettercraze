@@ -36,7 +36,11 @@ public class GenerateController implements ActionListener {
 			for(int y = 0; y < 6; y++){
 				//System.out.print(level[x][y]);
 				
-				if(level[x][y] != '_'){
+				if(level[x][y] == '!'){
+					Tile tile = m.getBoard().tiles[x][y];
+					tile.setLetter('!');
+					tile.setEnabled(false);
+				} else if(level[x][y] != '_'){
 					Tile tile = m.getBoard().tiles[x][y];
 					tile.setLetter(level[x][y]);
 					tile.setEnabled(true);
@@ -46,32 +50,37 @@ public class GenerateController implements ActionListener {
 					//tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + level[x][y] + ".png")));
 				} else {
 					m.getBoard().tiles[x][y].setLetter('_');
-					m.getBoard().tiles[x][y].setEnabled(false);
+					m.getBoard().tiles[x][y].setEnabled(true);
 					//tileArray[x][y].setEnabled(false);
 				}
 			}
 			//System.out.println("");
 		}
 		builder.refreshBoard();
-		
-		// Now update the model
-		
-		
 	}
 
 	private char[][] generate(DefaultListModel<String> wordListModel) {
 		char[][] level = new char[6][6];
+		
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
-				level[x][y] = '_';
+				if(m.getBoard().tiles[x][y].isEnabled()){
+					level[x][y] = '_';
+				} else {
+					level[x][y] = '!';
+				}
+				System.out.print(level[x][y]);
 			}
+			System.out.println();
 		}
 		
 		
 		try {
 			char[][] levelAdded = level;
 			for(Object word : wordListModel.toArray()){
-				levelAdded = addWord(levelAdded, (String) word);
+				String word1 = (String) word;
+				word1 = word1.toUpperCase();
+				levelAdded = addWord(levelAdded, word1);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

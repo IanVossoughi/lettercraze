@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
@@ -27,6 +28,7 @@ public class Model {
 	int unlockedLevels = 0;
 	SubmitWordMove lastMove;
 	Model lastModel;
+	ArrayList<String> themeWords = new ArrayList<String>();
 
 	public Model() {
 		this.board = new Board();
@@ -36,7 +38,7 @@ public class Model {
 		this.score = new Score(defScore);
 		this.selectedWord = new Word("", 0);
 		this.time = 120;
-		System.out.print("TYPE Is" + this.type);
+		//System.out.print("TYPE Is" + this.type);
 		this.highScore = new int[15];
 		this.lastMove = null;
 		this.lastModel = null;
@@ -136,7 +138,7 @@ public int readHighScore(){
 	String[] scores = s.split("\n");
 	for(int i = 0; i < 15; i++){
 		this.highScore[i] = Integer.parseInt(scores[i]);
-		System.out.println(i + ":" + scores[i]);
+		//System.out.println(i + ":" + scores[i]);
 	}
 
 	return num;
@@ -151,7 +153,7 @@ public int setHighScore(){
 }
 
 public boolean hasWon(){
-	return getScore().score > getScore().getStarScoreIndex(0);
+	return getScore().score >= getScore().getStarScoreIndex(0);
 }
 
 public Board getBoard(){
@@ -259,7 +261,11 @@ public void setUnlocked(int loadUnlockedNum) {
 		this.lastModel = model;
 	}
 
-public int getUnlocked() {
-	return this.unlockedLevels;
-}
+	public int getUnlocked() {
+		return this.unlockedLevels;
+	}
+
+	public void addThemeWord(String word) {
+		this.themeWords.add(word);
+	}
 }

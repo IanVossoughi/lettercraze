@@ -189,7 +189,7 @@ public class BuildField extends JFrame {
 		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m));
 
 		generateButton = new JButton("Generate");
-		generateButton.addActionListener(new GenerateController(m, this, tileArray));
+		// controller linked below
 		starPanel.add(generateButton);
 		
 
@@ -281,6 +281,7 @@ public class BuildField extends JFrame {
 				Tile tile = m.getBoard().tiles[i][j];
 				//tile.setLetter('q');
 				if(tile.isEnabled()){
+					tile.setLetter((char)(tile.getLetter()+32));
 					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + tile.getLetter() + ".png")));
 				} else {
 					tileArray[i][j].setIcon(greenIcon);
@@ -301,6 +302,8 @@ public class BuildField extends JFrame {
 				boardPanel.add(tileArray[i][j]);
 			}
 		}
+		
+		generateButton.addActionListener(new GenerateController(m, this, tileArray));
 	}
 
 	public void refreshBoard(){

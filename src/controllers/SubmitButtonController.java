@@ -7,6 +7,7 @@ import entities.Model;
 import entities.Word;
 import playerBoundary.MenuField;
 import playerBoundary.PlayField;
+import playerBoundary.ProgressIO;
 
 public class SubmitButtonController implements ActionListener {
 	//take in Word 
@@ -26,9 +27,6 @@ public class SubmitButtonController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		SubmitWordMove move = new SubmitWordMove(model, play);
 		move.doMove();
-		System.out.print(model.getWordListModel().getSize());
-		//TODO: reach tile and deselect tiles - refreshBoard
-		//model.getBoard().getTile(0, 0);
 
 	}
 

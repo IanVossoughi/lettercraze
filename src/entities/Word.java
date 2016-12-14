@@ -9,7 +9,7 @@ public class Word {
 		this.chars = chars;
 		this.score = score;
 	}
-	//Andrew. Score is good?
+	
 	public void addScore() {
 		int wordScore = 0;
 		int letterScore = 0;

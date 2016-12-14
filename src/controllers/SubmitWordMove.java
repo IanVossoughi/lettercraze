@@ -28,7 +28,8 @@ public class SubmitWordMove {
 	public boolean doMove(){
 		if(isValid()){
 			play.undoArray.addUndoModel(model);
-			wordList.addElement(selectedWord.getWordString());
+			//wordList.addElement(selectedWord.getWordString());
+			model.addWordListModel(selectedWord.getWordString());
 			System.out.println("\n Word is" + selectedWord.getWordString()); //Andrew, checking
 			selectedWord.addScore(); //Andrew, gets score
 			tilesGoAway();
@@ -38,17 +39,20 @@ public class SubmitWordMove {
 //			int score = selectedWord.getScore();
 			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			new DeselectButtonController(model, play).actionPerformed(null);
-			play.refreshBoard();
+			//play.refreshBoard();
 			selectedWord.setScore(0); //Andrew, resets word
 			selectedWord.setWordString(""); //Andrew
-			if(model.hasWon()){
+			/*if(model.hasWon()){
 				// Update the progress
+				
 				int currentProg = ProgressIO.loadUnlockedNum();
-				int playingLevel = model.getSelectedIndex();
+				int playingLevel = model.getSelectedIndex() + 1;
+				//System.out.println("new level unlocked" + currentProg + " " + playingLevel);
 				if(currentProg == playingLevel){
+					
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
-			}
+			}*/
 			model.setLastMove(this);
 			return true;
 		}
