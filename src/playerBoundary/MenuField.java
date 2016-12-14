@@ -72,7 +72,7 @@ public class MenuField extends JFrame {
 		m.writeHighScore();
 		System.out.print(Integer.toString(m.readHighScore()));
 		progress = new ProgressIO();
-		//ProgressIO.saveUnlockedNum(1);
+		ProgressIO.saveUnlockedNum(1);
 
 		levelTypeLabel = new JLabel("PUZZLE");
 		//change to test
