@@ -40,6 +40,7 @@ import controllers.RemoveButtonController;
 import controllers.ResetBuilderController;
 import entities.Model;
 import entities.Tile;
+import general.IconMap;
 import playerBoundary.PlayField;
 
 import javax.swing.JComboBox;
@@ -86,6 +87,7 @@ public class BuildField extends JFrame {
 	
 	private ImageIcon greenIcon = new ImageIcon(PlayField.class.getResource("/images/green-square.png"));
  	private ImageIcon whiteIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
+ 	private IconMap iconMap = new IconMap();
  	private JTextField wordLimitField;
 	private JComponent timeLabel;
 	private JComponent wordLimitLabel;
@@ -305,7 +307,8 @@ public class BuildField extends JFrame {
 				//tile.setLetter('q');
 				if(tile.isEnabled()){
 					//tile.setLetter(tile.getLetter()+32);
-					tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + tile.getLetter() + ".png")));
+					tileArray[i][j].setIcon(iconMap.getIcon((char)tile.getLetter().charAt(0)));
+					//tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + tile.getLetter() + ".png")));
 				} else {
 					tileArray[i][j].setIcon(greenIcon);
 				}
@@ -334,8 +337,9 @@ public class BuildField extends JFrame {
 			for(int y = 0; y < 6; y++){
 				JButton tile = tileArray[x][y];
 				if(m.getBoard().tiles[x][y].isEnabled()){
-					tile.setIcon(new ImageIcon(PlayField.class.getResource("/images/" + m.getBoard().tiles[x][y].getLetter() + ".png")));
-				} else {
+					tile.setIcon((iconMap.getIcon((char)m.getBoard().getTile(x, y).getLetter().charAt(0))));
+				} 
+				else {
 					tile.setIcon(whiteIcon);
 				}
 			}
