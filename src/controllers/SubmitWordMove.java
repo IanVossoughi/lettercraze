@@ -46,9 +46,12 @@ public class SubmitWordMove {
 			selectedWord.setWordString(""); //Andrew
 			if(model.hasWon()){
 				// Update the progress
+				
 				int currentProg = ProgressIO.loadUnlockedNum();
-				int playingLevel = model.getSelectedIndex();
+				int playingLevel = model.getSelectedIndex() + 1;
+				//System.out.println("new level unlocked" + currentProg + " " + playingLevel);
 				if(currentProg == playingLevel){
+					
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
 			}
