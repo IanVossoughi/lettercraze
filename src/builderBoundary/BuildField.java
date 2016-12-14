@@ -189,7 +189,7 @@ public class BuildField extends JFrame {
 		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m));
 
 		generateButton = new JButton("Generate");
-		generateButton.addActionListener(new GenerateController(m, this, tileArray));
+		// controller linked below
 		starPanel.add(generateButton);
 		
 
@@ -302,6 +302,8 @@ public class BuildField extends JFrame {
 				boardPanel.add(tileArray[i][j]);
 			}
 		}
+		
+		generateButton.addActionListener(new GenerateController(m, this, tileArray));
 	}
 
 	public void refreshBoard(){
