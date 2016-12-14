@@ -17,8 +17,9 @@ public class UndoButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		UndoMove move = new UndoMove(model, pf);
-		move.doMove();
+		if (model.getLastMove() != null) {
+			model = model.getLastMove().undoMove();
+		}
 	}
 
 }
