@@ -1,5 +1,6 @@
 package controllers;
 
+import java.awt.Menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,13 +10,17 @@ import playerBoundary.PlayField;
 public class BackToMenuButtonController implements ActionListener {
 
 	private PlayField playField;
+	private MenuField m;
 
 	public BackToMenuButtonController(PlayField playField) {
-		this.playField = playField;	}
+		this.playField = playField;	
+		
+		m = new MenuField();
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		new MenuField().setVisible(true);
+		m.setVisible(true);
 		playField.stopTimer();
 		playField.checkIfWon();
 		playField.setVisible(false);

@@ -8,6 +8,7 @@ import playerBoundary.PlayField;
 public class TestUndoButtonController extends TestCase {
 	PlayField playField;
 	Model model;
+	UndoArray undoArray;
 
 	@Override
 	protected void setUp() {
@@ -17,7 +18,7 @@ public class TestUndoButtonController extends TestCase {
 	}
 
 	public void testUndoButton() {
-		UndoButtonController ubc = new UndoButtonController(model, playField, UndoArray.getInstance());
+		UndoButtonController ubc = new UndoButtonController(model, playField, undoArray);
 		ubc.actionPerformed(null);
 		int size = model.getWordListModel().getSize();
 		assertEquals(0, size);	

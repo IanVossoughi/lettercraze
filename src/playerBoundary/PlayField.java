@@ -271,7 +271,6 @@ public class PlayField extends JFrame {
 
 				@Override
 				public void run() {
-
 					m.setTime(m.getTime()-1);
 					int newTime = m.getTime();
 					timerLabel.setText(Integer.toString(newTime));
@@ -279,11 +278,8 @@ public class PlayField extends JFrame {
 						JOptionPane.showMessageDialog(new JFrame(), "Time's Up!");
 						gameOver();
 						this.cancel();
-
 					}
-
 				}
-
 			}, 1000, 1000);
 		}
 		else{
@@ -291,11 +287,13 @@ public class PlayField extends JFrame {
 			timeLabel.setVisible(false);
 		}
 	}
+	
 	public void stopTimer(){
 		if(timerLabel.isVisible()){
 			this.timer.cancel();
 		}
 	}
+	
 	protected void gameOver() {
 		this.setVisible(false);
 		this.dispose();
