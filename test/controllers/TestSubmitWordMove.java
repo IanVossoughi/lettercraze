@@ -19,13 +19,13 @@ public class TestSubmitWordMove extends TestCase {
 	public void testSubmitWord(){
 		sW = new Word("computer", 8);
 		model.setSelectedWord(sW);
-		SubmitWordMove swm = new SubmitWordMove(model, playField);
+		SubmitWordMove swm = new SubmitWordMove(model, playField, null);
 		assertTrue(swm.isValid());
 		assertTrue(swm.doMove());
 		
 		sW2 = new Word("asdasd", 6);
 		model.setSelectedWord(sW2);
-		SubmitWordMove swm2 = new SubmitWordMove(model, playField);
+		SubmitWordMove swm2 = new SubmitWordMove(model, playField, null);
 		assertFalse(swm.isValid());
 		assertFalse(swm.doMove());
 	}

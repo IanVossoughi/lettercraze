@@ -164,7 +164,7 @@ public class PlayField extends JFrame {
 		submitWordPanel.add(submitButton);
 		submitButton.setHorizontalAlignment(SwingConstants.LEADING);
 		/*TODO: change constructor to SubmitButtonController if needed*/
-		submitButton.addActionListener(new SubmitButtonController(m, this));
+		submitButton.addActionListener(new SubmitButtonController(m, this, star1Label, star2Label, star3Label));
 
 		JButton btnDeselectWord = new JButton("Deselect");
 		submitWordPanel.add(btnDeselectWord);
@@ -235,7 +235,7 @@ public class PlayField extends JFrame {
 				//System.out.println(letter);
 				Tile tile = m.getBoard().getTile(i,  j);
 				if (tile.isEnabled()) {
-					tile.setLetter((tile.getLetter() + "").toUpperCase().charAt(0)); // this doesn't do anything, please delete.
+					tile.setLetter((tile.getLetter() + "").toUpperCase().charAt(0)); //hack - letters had to be uppercase.
 					tileArray[i][j].setIcon(iconMap.getIcon(letter));
 				}
 				else {
@@ -246,6 +246,7 @@ public class PlayField extends JFrame {
 		}
 		wordLabel.setText("WORD: " + word);
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
+		this.refreshBoard();
 
 	}
 	
