@@ -88,6 +88,13 @@ public class SubmitWordMove {
 		starLabels[0] = starLabels[2];
 		starLabels[2] = starLabels[1];
 		starLabels[1] = temp;
+		temp = starLabels[2];
+		
+		starLabels[0] = starLabels[2];
+		starLabels[2] = temp;
+		
+		temp = starLabels[1];
+		
 		// end switcharoo
 		
 		for(int i = 0; i < 3; i++){
@@ -96,8 +103,10 @@ public class SubmitWordMove {
 			System.out.println("Score: " + score + " | Score needed: " + scoreNeeded);
 			if(score >= scoreNeeded){
 				// Yellow star icon
+				System.out.println("Star with score: " + score + " activated.");
 				starLabels[i].setIcon(goldStarIcon);
 			} else {
+				System.out.println("Star with score: " + score + " deactivated.");
 				// Black star icon
 				starLabels[i].setIcon(blackStarIcon);
 			}
