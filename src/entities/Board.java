@@ -22,6 +22,10 @@ public class Board {
 	public void setTiles(Tile[][] tiles){
 		this.tiles = tiles;
 	}
+	
+	public void setTile(int x, int y, Tile tile){
+		this.tiles[x][y] = tile;
+	}
 
 	public void fillBoard(){
 		for(int x = 0; x < 6; x++){

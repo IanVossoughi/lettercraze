@@ -10,6 +10,8 @@ import java.io.ObjectOutputStream;
 
 import javax.swing.DefaultListModel;
 
+import controllers.SubmitWordMove;
+
 public class Model {
 
 	String title;
@@ -23,6 +25,8 @@ public class Model {
 	byte[] highScore = {15,30,40,50,60,0,0,0,0,0,0,0,0,0,0};
 	int selectedTab; // Used only by player
 	int unlockedLevels = 0;
+	SubmitWordMove lastMove;
+	Model lastModel;
 
 	public Model() {
 		this.board = new Board();
@@ -33,8 +37,37 @@ public class Model {
 		this.selectedWord = new Word("", 0);
 		this.time = 120;
 		System.out.print("TYPE Is" + this.type);
+		this.lastMove = null;
+		this.lastModel = null;
 
 	}
+	
+	public Model copyModel() {
+		Model model = new Model();
+		model.setTitle(this.title);
+		model.type = this.type;
+		model.board = new Board();
+		for (int x = 0; x < 6; x++) {
+			for (int y = 0; y < 6; y++) {
+				Tile newTile = new Tile(this.getBoard().getTile(x, y).getLetter());
+				newTile.setEnabled(this.getBoard().getTile(x, y).isEnabled());
+				newTile.setSelection((this.getBoard().getTile(x, y).isSelected()));
+				model.board.setTile(x, y, newTile);
+			}
+		}
+		model.score = this.score;
+		model.wordListModel = this.wordListModel;
+		model.selectedWord = new Word(this.selectedWord.getWordString(),new Integer(this.selectedWord.getScore()));
+		model.time = this.time;
+		model.highScore = this.highScore;
+		model.selectedTab = this.selectedTab;
+		model.unlockedLevels = this.unlockedLevels;
+		model.lastModel = this.getLastModel();
+		model.setLastMove(this.lastMove);
+		this.setLastModel(model);
+		return this;
+	}
+	
 	//DOESNT't work, will fix it later
 	public void writeHighScore(){
 		try{
@@ -173,5 +206,21 @@ public class Model {
 	}
 	public int getUnlocked() {
 		return this.unlockedLevels;
+	}
+	
+	public void setLastMove(SubmitWordMove move) {
+		this.lastMove = move;
+	}
+	
+	public SubmitWordMove getLastMove() {
+		return this.lastMove;
+	}
+	
+	public Model getLastModel() {
+		return this.lastModel;
+	}
+	
+	public void setLastModel(Model model) {
+		this.lastModel = model;
 	}
 }
