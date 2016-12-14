@@ -82,9 +82,18 @@ public class SubmitWordMove {
 	private void updateStars() {
 		// Check if star if its score has been reached
 		JLabel[] starLabels = this.submitButtonController.getStarLabels();
+		// God why do I have to do this
+		JLabel temp;
+		temp = starLabels[0];
+		starLabels[0] = starLabels[2];
+		starLabels[2] = starLabels[1];
+		starLabels[1] = temp;
+		// end switcharoo
+		
 		for(int i = 0; i < 3; i++){
-			int scoreNeeded = model.getScore().getStarScoreIndex(0);
+			int scoreNeeded = model.getScore().getStarScoreIndex(i);
 			int score = model.getScore().getScoreValue();
+			System.out.println("Score: " + score + " | Score needed: " + scoreNeeded);
 			if(score >= scoreNeeded){
 				// Yellow star icon
 				starLabels[i].setIcon(goldStarIcon);
