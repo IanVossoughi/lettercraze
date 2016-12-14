@@ -17,15 +17,16 @@ public class Tile {
 		this.toBeReplaced = false;
 		//this.letter = LetterFrequencyFast.getInstance().getRandomLetter();\
 		this.letter = letter;
-		if(letter == "_"){
-			if((this.letter = LetterFrequencyFast.getInstance().getRandomLetter()) == "Q"){
-				this.letter = "QU";
-
-			}
-			else
-				this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
+		if(this.letter == "_"){
+			this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
+				if(this.letter.equals("Q")) {
+					this.letter = "QU";
+				}
 
 			System.out.print(this.letter);
+		}
+		if(this.letter.equals("Q")) {
+			this.letter = "QU";
 		}
 		//this.points = points;
 	}
