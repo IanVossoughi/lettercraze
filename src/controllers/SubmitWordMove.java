@@ -50,7 +50,7 @@ public class SubmitWordMove {
 				int currentProg = ProgressIO.loadUnlockedNum();
 				int playingLevel = model.getSelectedIndex() + 1;
 				//System.out.println("new level unlocked" + currentProg + " " + playingLevel);
-				if(currentProg == playingLevel +1){
+				if(currentProg == playingLevel){
 					
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}

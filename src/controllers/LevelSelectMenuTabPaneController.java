@@ -47,7 +47,7 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 			menu.getLevelTypeLabel().setText("THEME");
 
 		play.setEnabled(tabIndex < unlocked);
-		System.out.print(menu.getLevelTypeLabel().getText() + "\n");
+		//System.out.print(menu.getLevelTypeLabel().getText() + "\n");
 		
 		highScoreNumLabel.setText(m.getHighScores()[tabIndex] + "");
 	}

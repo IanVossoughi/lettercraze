@@ -42,8 +42,6 @@ public class OpenLevelButtonController implements ActionListener {
 	 * Loads the level file with the given name into the Model.
 	 */
 	public static void loadLevel(String filename, Model m, BuildField b) {
-		//Board newBoard = new Board();
-		//Model m = new Model();
 		m.setBoard(new Board());
 		try {
 			FileInputStream in = new FileInputStream(filename);
@@ -57,11 +55,11 @@ public class OpenLevelButtonController implements ActionListener {
 					} else {
 						newTile.setEnabled(true);
 					}
-					System.out.print(nextChar);
+//					System.out.print(nextChar);
 					//newBoard.tiles[x][y] = newTile;
 					m.getBoard().tiles[x][y] = newTile;
 				}
-				System.out.print("\n");
+//				System.out.print("\n");
 			}
 			
 			// Next get the title;
@@ -107,8 +105,7 @@ public class OpenLevelButtonController implements ActionListener {
 			e.printStackTrace();
 		}
 		
-		//m.board = newBoard;
-		m.getBoard().printBoard();
+		//m.getBoard().printBoard();
 	}
 	
 	// Returns the string in the file up until we see a '\n'

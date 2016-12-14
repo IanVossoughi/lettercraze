@@ -57,10 +57,6 @@ public class GenerateController implements ActionListener {
 			//System.out.println("");
 		}
 		builder.refreshBoard();
-		
-		// Now update the model
-		
-		
 	}
 
 	private char[][] generate(DefaultListModel<String> wordListModel) {
