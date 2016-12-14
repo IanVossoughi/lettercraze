@@ -91,6 +91,10 @@ public class GenerateController implements ActionListener {
 			for(Object word : wordListModel.toArray()){
 				String word1 = (String) word;
 				word1 = word1.toUpperCase();
+				if (word1.contains("QU")) {
+					word1 = word1.replaceAll("QU", "Q");
+					System.out.println("QU has been replaced. The word is now " + word1);
+				}
 				levelAdded = addWord(levelAdded, word1);
 			}
 		} catch (Exception e) {
@@ -145,6 +149,7 @@ public class GenerateController implements ActionListener {
 	// Returns an array with the position of the new tile added.
 	private int[] addRandomLetter(String[][] level, String l) throws Exception{
 		
+		l = l.substring(0, 1); // FIX TO AVOID CRASHING
 		for(int i = 0; i<300; i++){
 			// Start at a random tile
 			int x = rng.nextInt(6);
