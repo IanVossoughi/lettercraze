@@ -38,7 +38,7 @@ public class Model {
 		this.score = new Score(defScore);
 		this.selectedWord = new Word("", 0);
 		this.time = 120;
-		System.out.print("TYPE Is" + this.type);
+		//System.out.print("TYPE Is" + this.type);
 		this.highScore = new int[15];
 		this.lastMove = null;
 		this.lastModel = null;
@@ -138,7 +138,7 @@ public int readHighScore(){
 	String[] scores = s.split("\n");
 	for(int i = 0; i < 15; i++){
 		this.highScore[i] = Integer.parseInt(scores[i]);
-		System.out.println(i + ":" + scores[i]);
+		//System.out.println(i + ":" + scores[i]);
 	}
 
 	return num;
@@ -178,7 +178,6 @@ public DefaultListModel<String> getWordListModel() {
 
 public void addWordListModel(String word) {
 	wordListModel.addElement(word);
-	System.out.println("sdfsdfsdfwgergergergerger");
 }
 
 public String getTitle(){
