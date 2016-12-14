@@ -238,7 +238,7 @@ public class PlayField extends JFrame {
 				
 				// Check if we're on a theme level, otherwise generate random letters
 				if(m.getSelectedIndex() % 3 != 2){
-					System.out.println("dklfslkdflksd");
+					//System.out.println("dklfslkdflksd");
 					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
 				}
 				
