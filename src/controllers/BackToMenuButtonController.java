@@ -68,10 +68,6 @@ public class BackToMenuButtonController implements ActionListener {
 		}
 		// --> end highscores
 
-		//update the "index"th of the array highscore
-		//System.out.print("\n Selected index =" + whichLevel);
-		//System.out.print("\n get score value =" + model.getScore().getScoreValue() + "SECOND");
-
 		model.setHighScore(model.getSelectedIndex(), model.getScore().getScoreValue());
 		
 
@@ -85,10 +81,6 @@ public class BackToMenuButtonController implements ActionListener {
 //			}
 //		}
 
-
-		
-
-		System.out.print(model.getHighScores());
 		playField.stopTimer();
 		playField.checkIfWon();
 		playField.setVisible(false);
