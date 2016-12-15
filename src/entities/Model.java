@@ -264,8 +264,6 @@ public class Model {
 
 	public void setWordListModel(DefaultListModel<String> wordListModel) {
 		this.wordListModel = wordListModel;
-		// TODO Auto-generated method stub
-
 	}
 
 	public void setLimit(int limit) {

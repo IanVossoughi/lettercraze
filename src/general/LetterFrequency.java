@@ -52,12 +52,10 @@ public class LetterFrequency {
 
 		for(char aChar = 'A'; aChar <= 'Z'; aChar++) {
 			int count = charFreq.get(aChar);
-			//System.out.println("Number of characters in " + aChar + ": " + count);
 			for(int i = 0; i < count; i++) {
 				freq = freq + aChar;
 			}
 		}
-		System.out.println("Character string length: " + freq.length());
 		return freq;
 	}
 	
