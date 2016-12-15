@@ -14,6 +14,7 @@ import entities.Board;
 import entities.Model;
 import entities.Score;
 import entities.Tile;
+import general.LetterFrequencyFast;
 
 public class OpenLevelButtonController implements ActionListener {
 	
@@ -52,7 +53,12 @@ public class OpenLevelButtonController implements ActionListener {
 					if(nextChar == '!'){
 						newTile.setEnabled(false);
 						newTile.setLetter("q");
-					} else {
+					}
+					else if (nextChar == '_'){
+						newTile.setEnabled(true);
+						newTile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter()); //Andrew
+					}
+					else {
 						newTile.setEnabled(true);
 					}
 //					System.out.print(nextChar);
