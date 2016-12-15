@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import builderBoundary.BuildField;
+import builderBoundary.BuildMain;
 
 public class ExitBuilderController implements ActionListener {
 
@@ -34,6 +35,8 @@ public class ExitBuilderController implements ActionListener {
 		}				
 		buildField.setVisible(false);
 		buildField.dispose();
+		
+		new BuildMain().setVisible(true);
 
 	}
 
