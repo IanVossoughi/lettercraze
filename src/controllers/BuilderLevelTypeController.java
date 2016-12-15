@@ -29,7 +29,9 @@ public class BuilderLevelTypeController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		//Handles timefield
 		int index = lt.getSelectedIndex();
+		System.out.println("type was " + m.getType());
 		m.setType(index);
+		System.out.println(index);
 		if ((index == 0) || (index == 2)){
 			JTextField tempField = buildField.getTimeField();
 			tempField.setEnabled(false);

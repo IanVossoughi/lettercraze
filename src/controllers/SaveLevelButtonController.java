@@ -7,38 +7,28 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import builderBoundary.SaveSelectionWindow;
 import entities.Model;
 import entities.Word;
 
 public class SaveLevelButtonController implements ActionListener {
 
 	private Model m;
-	private SaveSelectionWindow saveSelectionWindow;
+	private JPanel contentPane;
 	
-	public SaveLevelButtonController(Model m, SaveSelectionWindow saveSelectionWindow){
+	public SaveLevelButtonController(Model m, JPanel contentPane){
 		this.m = m;
-		this.saveSelectionWindow = saveSelectionWindow;
+		this.contentPane = contentPane;
 	}
 
 	// NOTE: Don't test this...
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		saveSelectionWindow.setVisible(false);
-		
-		int levelNum = (Integer)saveSelectionWindow.getCombo().getSelectedItem();
-		//System.out.println("Selected: " + levelNum);
-		
-		/*if (saveFile != null) {
-			String filename = "levels/" + saveFile.getName();
-					//getAbsolutePath(); 
+		File saveFile = new FilePicker(contentPane).save();
+		if (saveFile != null) {
+			String filename = saveFile.getAbsolutePath(); 
 			this.saveLevel(filename);
-		}*/
-		this.saveLevel("levels/" + levelNum);
-		JOptionPane.showMessageDialog(saveSelectionWindow, "Level Saved.");
+		}
 	}
 	
 	/*
@@ -47,6 +37,7 @@ public class SaveLevelButtonController implements ActionListener {
 	 * If a tile is inactive, it will store the sentinel value '!'.
 	 */
 	public void saveLevel(String filename){
+		System.out.println("Saving file: " + filename);
 		FileOutputStream out;
 		try {
 			out = new FileOutputStream(filename);
@@ -70,6 +61,8 @@ public class SaveLevelButtonController implements ActionListener {
 			out.write(m.getTitle().getBytes());
 			out.write('\n');
 			
+			//System.out.println(m.getTitle());
+			//System.out.println(m.getType());
 			out.write((m.getType() + "").getBytes());
 			out.write('\n');
 			

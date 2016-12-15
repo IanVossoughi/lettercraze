@@ -5,17 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import builderBoundary.BuildField;
-import builderBoundary.SaveSelectionWindow;
-import entities.Model;
 
 public class ExitBuilderController implements ActionListener {
 
 	private BuildField buildField;
-	private JPanel contentPane;
-	private Model m;
 
 	public ExitBuilderController(BuildField buildField) {
 		this.buildField = buildField;
@@ -27,32 +22,19 @@ public class ExitBuilderController implements ActionListener {
 		"No, thanks"};
 		int n = JOptionPane.showOptionDialog(new JFrame(),
 				"Do you wanna save?",
-				"Save or Cancel",
+				"save or nah",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.WARNING_MESSAGE,
 				null,
 				options,
 				options[0]);
 		if(n == 0){
-			userSelectsSave();
-			JOptionPane.showMessageDialog(new JFrame(),"Complete");
-
-		} else {
-			closingLogic();
-		}
-	}
-
-	/** This can be tested. */
-	void userSelectsSave() {
-		SaveSelectionWindow saver = new SaveSelectionWindow(m);
-		saver.setVisible(true);
-		new SaveLevelButtonController(m, saver).actionPerformed(null);
-		closingLogic();
-	}
-	
-	void closingLogic() {
+			JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
+			/* TODO INSERT ACTUALLY SAVING LEVEL CODE */
+		}				
 		buildField.setVisible(false);
 		buildField.dispose();
-		new BuildField().setVisible(true);
+
 	}
+
 }

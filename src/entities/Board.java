@@ -13,7 +13,9 @@ public class Board {
 	public void printBoard(){
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
+				System.out.print(tiles[x][y].getLetter());
 			}
+			System.out.println();
 		}
 	}
 
@@ -56,18 +58,13 @@ public class Board {
 	}
  
 	
-	public void floatUpTiles(int levelType){
+	public void floatUpTiles(){
 		for (int x = 0; x < 6; x++) {
 			for (int y = 0; y < 6; y++) {
 				int i = x + 1;
 				while(this.getTile(x,y).isEnabled() && this.getTile(x, y).getReplacement()) {
 					if (i >= 6) {
-						if (levelType != 2) {
-							this.getTile(x, y).setLetter(this.getTile(x,y).randomLetterFrequency());
-						}
-						else {
-							this.getTile(x,y).setEnabled(false);
-						}
+						this.getTile(x, y).setLetter(this.getTile(x,y).randomLetterFrequency());
 						this.getTile(x, y).setReplacement(false);
 						break;
 					}

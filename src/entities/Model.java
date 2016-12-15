@@ -29,6 +29,7 @@ public class Model {
 	Model lastModel;
 	ArrayList<String> themeWords = new ArrayList<String>();
 	int wordLimit;
+	int[] starStatus;
 
 	public Model() {
 		this.board = new Board();
@@ -38,12 +39,25 @@ public class Model {
 		this.score = new Score(defScore);
 		this.selectedWord = new Word("", 0);
 		this.time = 120;
+		//System.out.print("TYPE Is" + this.type);
 		this.highScore = new int[15];
 		this.lastMove = null;
 		this.lastModel = null;
 		this.wordLimit = 0;
+		this.starStatus = new int[15];
 	}
-
+	public int getStarStatus(int index){
+		return this.starStatus[index];
+	}
+	public boolean setStarStatus(int index, int status){
+		if(index <15){
+			this.starStatus[index] = status;
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	public Model copyModel() {
 		Model model = new Model();
 		model.setTitle(this.title);
@@ -79,7 +93,51 @@ public class Model {
 		this.setLastModel(model);
 		return model;
 	}
+	public void writeStars(){
+		try{
+			File outFile = new File("stars.txt");
+			outFile.createNewFile();
+			FileOutputStream out = new FileOutputStream(outFile, false);
+			String s = "";
 
+			for(int i = 0; i < 15; i++){
+				s = s + this.starStatus[i] +"\n";
+
+			}
+			out.write(s.getBytes());
+
+			out.close();
+		}
+		catch (IOException e){
+			e.printStackTrace();
+		}
+	}
+	public int readStars(){
+		FileInputStream in;
+		int num = -1; // Error if this returns
+		byte[] bA = new byte[40];
+		String s = "";
+		try {
+			in = new FileInputStream("stars.txt");
+			for(int i = 0; i < 15;i++){
+				in.read(bA);
+			}
+			s = new String(bA);
+			in.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//System.out.print("HighScores = " + s );
+		String[] stars = s.split("\n");
+		for(int i = 0; i < 15; i++){
+			this.starStatus[i] = Integer.parseInt(stars[i]);
+			//System.out.println(i + ":" + scores[i]);
+		}
+
+		return num;
+	}
 	public void writeHighScore(){
 		try{
 			File outFile = new File("highscores.txt");
@@ -117,10 +175,11 @@ public class Model {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		//System.out.print("HighScores = " + s );
 		String[] scores = s.split("\n");
 		for(int i = 0; i < 15; i++){
 			this.highScore[i] = Integer.parseInt(scores[i]);
+			//System.out.println(i + ":" + scores[i]);
 		}
 
 		return num;

@@ -31,14 +31,7 @@ public class ResetButtonController implements ActionListener {
 				options,
 				options[0]);
 		if(n == 0){
-			int size = playField.undoArray.getUndoSize();
-			for (int i = 0; i < size; i++){
-				new UndoButtonController(m, playField, playField.undoArray).actionPerformed(null);
-				if (i + 1 == size){
-					break;
-				}
-			}
-			new DeselectButtonController(m, playField).actionPerformed(null);
+			// INSERT CODE TO RESET EVERYTHING BUT TIMER
 			JOptionPane.showMessageDialog(new JFrame(),"Level reset.");
 		}
 	}

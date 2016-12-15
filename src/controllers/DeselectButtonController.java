@@ -16,7 +16,6 @@ public class DeselectButtonController implements ActionListener {
 		this.p = p;
 		this.m = m;
 	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		m.getBoard().setSelectedTileCoords(new Coordinate(-1,-1));
@@ -27,6 +26,7 @@ public class DeselectButtonController implements ActionListener {
 			}
 		}
 		p.refreshBoard();
+		// TODO Auto-generated method stub
 
 	}
 

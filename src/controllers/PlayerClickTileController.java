@@ -28,8 +28,10 @@ public class PlayerClickTileController implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		//System.out.println(x + " " + y);
 		Tile clickedTile = this.m.getBoard().getTile(x, y);
+		System.out.println("This is a " + clickedTile.getLetter());
 		 		if (clickedTile.getLetter().equals("Q")) {
 		 			clickedTile.setLetter("QU");
+		 			System.out.println("Now it's a " + clickedTile.getLetter());
 		 		}
 
 		if (clickedTile.isEnabled()) {

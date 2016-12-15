@@ -16,6 +16,14 @@ public class LevelNameListener implements KeyListener {
 		this.levelName = levelName;
 		this.m = m;
 	}
+	
+	//@Override
+	/*public void actionPerformed(ActionEvent ae) {
+		// Update the model's title field.\
+		String title = levelName.getText();
+		m.setTitle(title);
+		System.out.println("Level name updated: " + title);
+	}*/
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -27,7 +35,9 @@ public class LevelNameListener implements KeyListener {
 	public void keyReleased(KeyEvent arg0) {
 		// Update the model's title field.\
 		String title = levelName.getText();
-		m.setTitle(title);	
+		m.setTitle(title);
+		//System.out.println("Level name updated: " + title);
+		
 	}
 
 	@Override

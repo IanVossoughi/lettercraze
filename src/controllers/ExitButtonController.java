@@ -16,7 +16,6 @@ public class ExitButtonController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		menuField.setVisible(false);
-		menuField.setDefaultCloseOperation(menuField.EXIT_ON_CLOSE);
 		menuField.dispose();
 	}
 

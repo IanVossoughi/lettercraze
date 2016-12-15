@@ -16,7 +16,6 @@ public class PreviewButtonController implements ActionListener{
 
 	private Model m;
 	private Model mCopy;
-	private Model mSpareCopy;
 	
 
 	public PreviewButtonController(Model m) {
@@ -36,9 +35,10 @@ public class PreviewButtonController implements ActionListener{
 				  createPlay(e).toFront();
 			  }
 			}, 2);
+		
 	}
 	
-	public PlayField createPlay(ActionEvent e){
+	private PlayField createPlay(ActionEvent e){
 		mCopy = m.copyModel();
 		// Before we open the PlayField, load the level into the model.
 		m.setSelectedTab(m.getType());
@@ -52,17 +52,18 @@ public class PreviewButtonController implements ActionListener{
 		return pf;
 	}
 
-	public void loadLevel() {
+	private void loadLevel() {
 		// Get the selected index, convert to string
 		int levelNum = (mCopy.getSelectedIndex() + 1);
 		String filePath = "levels/temp";
 		new OpenLevelButtonController(mCopy, null, null).loadLevel(filePath, m, null);
 		m.setSelectedTab(m.getType());
+		System.out.println(m.getType() + " CURR TYPE LOADED");
 		// The last two parameters are null because we are not in the builder.
 		// Shouldn't be a problem because the loadLevel method doesn't actually use them.
 	}
 	
-	public void saveLevel() {
+	private void saveLevel() {
 		// Get the selected index, convert to string
 		String filePath = "levels/temp";
 		new SaveLevelButtonController(mCopy, null).saveLevel(filePath);

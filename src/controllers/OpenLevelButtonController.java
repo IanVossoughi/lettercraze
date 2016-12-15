@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 
 import builderBoundary.BuildField;
@@ -16,7 +15,6 @@ import entities.Model;
 import entities.Score;
 import entities.Tile;
 import general.LetterFrequencyFast;
-import general.UndoArray;
 
 public class OpenLevelButtonController implements ActionListener {
 	
@@ -35,6 +33,7 @@ public class OpenLevelButtonController implements ActionListener {
 		File openFile = new FilePicker(contentPane).open();
 		if (openFile != null) {
 			String name = openFile.getAbsolutePath();
+			System.out.println("Opening level " + name);
 			loadLevel(name, m, b);
 			b.refreshBoard();
 		}
@@ -45,9 +44,6 @@ public class OpenLevelButtonController implements ActionListener {
 	 */
 	public static void loadLevel(String filename, Model m, BuildField b) {
 		m.setBoard(new Board());
-		while(UndoArray.getInstance().getIndex() > -1) {
-			UndoArray.getInstance().removeUndoModel();
-		}
 		try {
 			FileInputStream in = new FileInputStream(filename);
 			for(int x = 0; x < 6; x++){
@@ -56,7 +52,7 @@ public class OpenLevelButtonController implements ActionListener {
 					Tile newTile = new Tile(Character.toString(nextChar));
 					if(nextChar == '!'){
 						newTile.setEnabled(false);
-						//newTile.setLetter("q");
+						newTile.setLetter("q");
 					}
 					else if (nextChar == '_'){
 						newTile.setEnabled(true);
@@ -65,44 +61,44 @@ public class OpenLevelButtonController implements ActionListener {
 					else {
 						newTile.setEnabled(true);
 					}
+//					System.out.print(nextChar);
+					//newBoard.tiles[x][y] = newTile;
 					m.getBoard().tiles[x][y] = newTile;
 				}
+//				System.out.print("\n");
 			}
 			
 			// Next get the title;
 			in.read();
 			
+			//System.out.println(nextField(in)); // Star points
 			String[] d = nextField(in).trim().split(" ");
+			//for(String k : d) System.out.println(k + "|");
 			int[] loadedScores = {Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2])};
 			m.setScore(new Score(loadedScores));
 			
-			//DefaultListModel<String> newModel = new DefaultListModel<String>();
-			//m.setWordListModel(newModel);
-			if(b != null) {
-				while(!m.getWordListModel().isEmpty()) {
-					m.removeWordListModel(0);
-				}
-			}
+			//System.out.println(nextField(in)); // Word list 
 			for(String word : nextField(in).split(" ")){
+				//m.addWordListModel(word);
 				m.addThemeWord(word);
-				if(b != null) {
-					m.addWordListModel(word);
-				}
 			}
-
 			
+			//System.out.println(nextField(in)); // Title
 			String title = nextField(in);
+			//System.out.println(title);
 			m.setTitle(title);
 			if(b != null)
 				b.getlevelNameField().setText(title);
 			
 			
+			//System.out.println(nextField(in)); // level type
 			int levelIndex = Integer.parseInt(nextField(in));
 			m.setSelectedTab(levelIndex);
 			m.setType(levelIndex);
 			if(b != null)
 				b.getlevelTypeCombo().setSelectedIndex(levelIndex);
 			
+			//System.out.println(nextField(in)); // Timer amount
 			int timeLeft = Integer.parseInt(nextField(in));
 			m.setTime(timeLeft);
 			if(b != null)
@@ -116,11 +112,13 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			in.close();
 		} catch (FileNotFoundException e) {
-			m.setTitle("File not found");
+			//e.printStackTrace();
+			System.out.println("Level not found - " + filename + " D:");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
+		//m.getBoard().printBoard();
 	}
 	
 	// Returns the string in the file up until we see a '\n'

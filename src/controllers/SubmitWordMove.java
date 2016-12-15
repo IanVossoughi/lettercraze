@@ -43,24 +43,29 @@ public class SubmitWordMove {
 			model.setLimit(model.getLimit() - 1);
 			//wordList.addElement(selectedWord.getWordString());
 			model.addWordListModel(selectedWord.getWordString());
-			selectedWord.addScore(); 
+			System.out.println("Word is" + selectedWord.getWordString()); //Andrew, checking
+			selectedWord.addScore(); //Andrew, gets score
 			tilesGoAway();
-			model.getBoard().floatUpTiles(model.getType());
+			model.getBoard().floatUpTiles();
 			updateScore();
 
-			//int score = selectedWord.getScore();
+			//			int score = selectedWord.getScore();
 			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			new DeselectButtonController(model, play).actionPerformed(null);
 			//play.refreshBoard();
-			selectedWord.setScore(0); 
-			selectedWord.setWordString(""); 
+			selectedWord.setScore(0); //Andrew, resets word
+			selectedWord.setWordString(""); //Andrew
 
+			//System.out.println("Score: " + model.getScore().getScoreValue());
+			//System.out.println("Score needed: " + model.getScore().getStarScoreIndex(2));
 			if(model.hasWon()){
-				
 				// Update the progress
+
 				int currentProg = ProgressIO.loadUnlockedNum();
 				int playingLevel = model.getSelectedIndex() + 1;
+				//System.out.println("new level unlocked" + currentProg + " " + playingLevel);
 				if(currentProg == playingLevel){
+					//System.out.println("Level actually unlocked");
 					ProgressIO.saveUnlockedNum(currentProg + 1);
 				}
 			}
@@ -70,9 +75,9 @@ public class SubmitWordMove {
 			model.setLastMove(this);
 			return true;
 		}
-		
 		new DeselectButtonController(model, play).actionPerformed(null);
 		play.refreshBoard();
+		System.out.println("" + model.getScore());
 
 		return false;
 	}
@@ -80,20 +85,25 @@ public class SubmitWordMove {
 	private void updateStars() {
 		// Check if star if its score has been reached
 		JLabel[] starLabels1 = this.submitButtonController.getStarLabels();
+		// God why do I have to do this
 		JLabel[] starLabels = new JLabel[3];
 		starLabels[0] = starLabels1[1];
 		starLabels[1] = starLabels1[2];
 		
 		
 		starLabels[2] = starLabels1[0];
+		// end switcharoo
 
 		for(int i = 0; i < 3; i++){
 			int scoreNeeded = model.getScore().getStarScoreIndex(i);
 			int score = model.getScore().getScoreValue();
+			System.out.println("Score: " + score + " | Score needed: " + scoreNeeded);
 			if(score >= scoreNeeded){
 				// Yellow star icon
+				System.out.println("Star with score: " + score + " activated.");
 				starLabels[i].setIcon(goldStarIcon);
 			} else {
+				System.out.println("Star with score: " + score + " deactivated.");
 				// Black star icon
 				starLabels[i].setIcon(blackStarIcon);
 			}
@@ -102,6 +112,7 @@ public class SubmitWordMove {
 
 	private void updateScore() {
 		if(model.getType() == 0){ //Do complex word score math only for puzzle, rest have just +1 by word for score
+			System.out.println("\n Type is " + model.getType());
 			model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
 		}
 		else {
@@ -111,9 +122,12 @@ public class SubmitWordMove {
 	}
 	public boolean isValid(){
 		if (model.getType() == 2) {
+			//Andrew, making theme words work
+			System.out.println("Word list is " + model.getThemeWords());
 			boolean isTheme = false;
 			for (int i = 0; i < model.getThemeWords().size(); i++){
 				if(model.getThemeWords().get(i).equalsIgnoreCase(selectedWord.getWordString())) {
+					System.out.println("Checking " + model.getThemeWords().get(i) + " against " + selectedWord.getWordString());
 					isTheme = true;
 					break;
 				}
@@ -144,6 +158,7 @@ public class SubmitWordMove {
 			model.getBoard().setSelectedTileCoords(play.undoArray.getLatestModel().getBoard().getSelectedTileCoords());
 			play.undoArray.removeUndoModel();
 			this.updateStars();
+			System.out.println("New score: " + model.getScore().getScoreValue());
 			play.refreshBoard();
 			return model;
 		}
