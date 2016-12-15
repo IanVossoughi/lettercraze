@@ -33,7 +33,7 @@ public class NewLevelBuilderController implements ActionListener {
 				options[0]);
 		if(n == 0) {
 			userSelectsSave();
-			JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
+			JOptionPane.showMessageDialog(new JFrame(),"Complete");
 
 		} else {				
 			closingLogic();
@@ -43,14 +43,6 @@ public class NewLevelBuilderController implements ActionListener {
 	/** This can be tested. */
 	void userSelectsSave() {
 		new SaveLevelButtonController(m, contentPane).actionPerformed(null);
-//		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
-//		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
-//		mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
-//
-//		for(ActionListener a: mntmSaveLevel.getActionListeners()){
-//			a.actionPerformed(new ActionEvent (this, ActionEvent.ACTION_PERFORMED, null));
-//		} 
-
 		
 		closingLogic();
 	}

@@ -5,15 +5,21 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import builderBoundary.BuildField;
+import entities.Model;
 
 public class ExitBuilderController implements ActionListener {
 
 	private BuildField buildField;
+	private JPanel contentPane;
+	private Model m;
 
 	public ExitBuilderController(BuildField buildField) {
 		this.buildField = buildField;
+		this.m = m;
+		this.contentPane = contentPane;
 	}
 
 	@Override
@@ -29,12 +35,23 @@ public class ExitBuilderController implements ActionListener {
 				options,
 				options[0]);
 		if(n == 0){
-			JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
-			/* TODO INSERT ACTUALLY SAVING LEVEL CODE */
-		}				
-		buildField.setVisible(false);
-		buildField.dispose();
+			userSelectsSave();
+			JOptionPane.showMessageDialog(new JFrame(),"Complete");
 
+		} else {
+			closingLogic();
+		}
 	}
 
+	/** This can be tested. */
+	void userSelectsSave() {
+		new SaveLevelButtonController(m, contentPane).actionPerformed(null);
+		closingLogic();
+	}
+	
+	void closingLogic() {
+		buildField.setVisible(false);
+		buildField.dispose();
+		new BuildField().setVisible(true);
+	}
 }
