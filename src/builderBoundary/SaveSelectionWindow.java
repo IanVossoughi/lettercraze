@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controllers.OpenLevelButtonController;
 import controllers.SaveLevelButtonController;
 import entities.Model;
 
@@ -22,7 +23,7 @@ public class SaveSelectionWindow extends JFrame {
 	private JComboBox<Integer> levelSelect;
 	private Model m;
 
-	public SaveSelectionWindow(Model m) {
+	public SaveSelectionWindow(Model m, String action, ActionListener listener) {
 		this.m = m;
 		setTitle("LetterCraze Builder");
 		//setDefaultCloseOperation(0);
@@ -32,7 +33,7 @@ public class SaveSelectionWindow extends JFrame {
 		//contentPane.setLayout();
 		setContentPane(contentPane);
 		
-		JLabel header = new JLabel("Select level number to save as:");
+		JLabel header = new JLabel("Select level number to " + action + ":");
 		contentPane.add(header);//, BorderLayout.NORTH);
 		
 		levelSelect = new JComboBox<Integer>();
@@ -41,8 +42,25 @@ public class SaveSelectionWindow extends JFrame {
 		contentPane.add(levelSelect);//, BorderLayout.CENTER);
 	
 		
-		JButton save = new JButton("Save");
-		save.addActionListener(new SaveLevelButtonController(m, this));
+		JButton save = new JButton(action);
+		save.addActionListener(listener);
+		save.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				m.setLevelSaverInt((Integer)levelSelect.getSelectedItem());
+				setVisible(false);
+				dispose();
+			}
+			
+		});
+		/*if(action.equals("save")){
+			save.addActionListener(new SaveLevelButtonController(m, this));
+		} */
+		/*else if(action.equals("open")){
+			save.addActionListener(new OpenLevelButtonController(m));
+		}*/
 		
 		contentPane.add(save);//, BorderLayout.SOUTH);
 	}

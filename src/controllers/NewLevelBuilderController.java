@@ -52,9 +52,8 @@ public class NewLevelBuilderController implements ActionListener {
 //			a.actionPerformed(new ActionEvent (this, ActionEvent.ACTION_PERFORMED, null));
 //		} 
 
-		SaveSelectionWindow saver = new SaveSelectionWindow(m);
+		SaveSelectionWindow saver = new SaveSelectionWindow(m, "Save", new SaveLevelButtonController(m));
 		saver.setVisible(true);
-		new SaveLevelButtonController(m, saver).actionPerformed(null);
 		closingLogic();
 	}
 	

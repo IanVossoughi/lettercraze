@@ -66,7 +66,7 @@ public class PreviewButtonController implements ActionListener{
 	private void saveLevel() {
 		// Get the selected index, convert to string
 		String filePath = "levels/temp";
-		new SaveLevelButtonController(mCopy, null).saveLevel(filePath);
+		new SaveLevelButtonController(mCopy).saveLevel(filePath);
 		// The last two parameters are null because we are not in the builder.
 		// Shouldn't be a problem because the loadLevel method doesn't actually use them.
 	}

@@ -18,27 +18,27 @@ public class SaveLevelButtonController implements ActionListener {
 
 	private Model m;
 	private JPanel contentPane;
-	private SaveSelectionWindow saveSelectionWindow;
+	//private SaveSelectionWindow saveSelectionWindow;
 	
-	public SaveLevelButtonController(Model m, SaveSelectionWindow saveSelectionWindow){
+	public SaveLevelButtonController(Model m){
 		this.m = m;
 		this.contentPane = contentPane;
-		this.saveSelectionWindow = saveSelectionWindow;
+		//this.saveSelectionWindow = saveSelectionWindow;
 	}
 
 	// NOTE: Don't test this...
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		saveSelectionWindow.setVisible(false);
 		
-		int levelNum = (Integer)saveSelectionWindow.getCombo().getSelectedItem();
+		//int levelNum = (Integer)saveSelectionWindow.getCombo().getSelectedItem();
 		/*File saveFile = new FilePicker(contentPane).save();
 		if (saveFile != null) {
 			String filename = saveFile.getAbsolutePath(); 
 			this.saveLevel(filename);
 		}*/
+		int levelNum = m.getLevelSaverInt();
 		this.saveLevel("levels/" + levelNum);
-		JOptionPane.showMessageDialog(saveSelectionWindow, "Level Saved.");
+		//JOptionPane.showMessageDialog(null, "Level Saved.");
 	}
 	
 	/*

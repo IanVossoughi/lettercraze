@@ -137,10 +137,20 @@ public class BuildField extends JFrame {
 		mnNewMenu.add(mntmResetLevel);
 		mntmResetLevel.addActionListener(new ResetBuilderController(this));
 
+		BuildField realThis = this;
+		
 		JMenuItem mntmOpenLevel = new JMenuItem("Open Level");
 		mntmOpenLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmOpenLevel);
-		mntmOpenLevel.addActionListener(new OpenLevelButtonController(m, contentPane, this));
+		mntmOpenLevel.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SaveSelectionWindow(m, "open", new OpenLevelButtonController(m, contentPane, realThis)).setVisible(true);;
+				
+			}
+			
+		});
 
 		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
 		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
@@ -150,12 +160,23 @@ public class BuildField extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SaveSelectionWindow saver = new SaveSelectionWindow(m);
-				saver.setVisible(true);
+				
+				new SaveSelectionWindow(m, "save", new SaveLevelButtonController(m)).setVisible(true);;
 				
 			}
 			
 		});
+				
+				/*new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SaveSelectionWindow saver = new SaveSelectionWindow(m, "save");
+				saver.setVisible(true);
+				
+			}
+			
+		});*/
 
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
