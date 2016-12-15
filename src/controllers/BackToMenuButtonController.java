@@ -70,8 +70,6 @@ public class BackToMenuButtonController implements ActionListener {
 		//update the "index"th of the array highscore
 		//System.out.print("\n Selected index =" + whichLevel);
 		//System.out.print("\n get score value =" + model.getScore().getScoreValue() + "SECOND");
-		m = new MenuField();
-		m.setVisible(true);
 
 		model.setHighScore(model.getSelectedIndex(), model.getScore().getScoreValue());
 
