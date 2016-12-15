@@ -34,7 +34,7 @@ public class NewLevelBuilderController implements ActionListener {
 				options[0]);
 		if(n == 0) {
 			userSelectsSave();
-			JOptionPane.showMessageDialog(new JFrame(),"SAVED!");
+			JOptionPane.showMessageDialog(new JFrame(),"Complete");
 
 		} else {				
 			closingLogic();
