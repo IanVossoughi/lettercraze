@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.swing.JPanel;
 
 import builderBoundary.BuildField;
+import builderBoundary.SaveSelectionWindow;
 import entities.Board;
 import entities.Model;
 import entities.Score;
@@ -31,13 +32,17 @@ public class OpenLevelButtonController implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		File openFile = new FilePicker(contentPane).open();
+		/*File openFile = new FilePicker(contentPane).open();
 		if (openFile != null) {
 			String name = openFile.getName();
-			System.out.println("Opening level " + name);
-			loadLevel("levels/" + name, m, b);
-			b.refreshBoard();
-		}
+			System.out.println("Opening level " + name);*/
+		//SaveSelectionWindow saveSelectionWindow = new SaveSelectionWindow(m, "open");
+		//saveSelectionWindow.setVisible(false);
+		
+		String name = m.getLevelSaverInt()  + "";
+		loadLevel("levels/" + name, m, b);
+		b.refreshBoard();
+		
 	}
 	
 	/*

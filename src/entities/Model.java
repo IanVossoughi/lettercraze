@@ -30,6 +30,7 @@ public class Model {
 	ArrayList<String> themeWords = new ArrayList<String>();
 	int wordLimit;
 	int[] starStatus;
+	private Integer levelSaverInt;
 
 	public Model() {
 		this.board = new Board();
@@ -332,5 +333,13 @@ public class Model {
 
 	public int getLimit() {
 		return this.wordLimit;
+	}
+	public void setLevelSaverInt(Integer selectedItem) {
+		this.levelSaverInt = selectedItem;
+		
+	}
+	public Integer getLevelSaverInt() {
+		// TODO Auto-generated method stub
+		return this.levelSaverInt;
 	}
 }
