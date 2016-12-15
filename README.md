@@ -8,12 +8,16 @@ Batu Sipka
 Andrew Vanner
 Ian Vossoughi
 
+The GitHub repository is at https://github.com/IanVossoughi/lettercraze/
+
 ** HOW TO PLAY **
 Run Main.java in src/playerBounday to begin.
 You will first be greeted by the splash screen, press continue.
 You are now at the main menu to select a level. Only level 1 can 
 be played right now. The level number is determined by the selected panel.
 Press "Play" to begin the level.
+When you return, your score and progressed will be saved.
+To reset all progress, exit the entire program and run Main.java again
 
 == Level Types ==
 
@@ -64,4 +68,3 @@ For theme levels, once the list of words is made, press "Generate" to create a b
 configuration. This will not be possible if the number of active tiles is less than 
 the number of letters in all the words. For star scores, it is recommended to make 
 the 3 Star score the total number of theme words.
-
