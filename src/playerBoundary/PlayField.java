@@ -91,11 +91,9 @@ public Model getModel(){return this.getModel();}
 	 */
 	public PlayField(Model m) {
 		this.m = m;
-		System.out.println("Level Type: " + m.getType());
 		this.iconMap = new IconMap();
 		this.disabledIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
 		levelType = m.getType();
-		System.out.print(levelType);
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
@@ -169,12 +167,10 @@ public Model getModel(){return this.getModel();}
 		JButton submitButton = new JButton("Submit");
 		submitWordPanel.add(submitButton);
 		submitButton.setHorizontalAlignment(SwingConstants.LEADING);
-		/*TODO: change constructor to SubmitButtonController if needed*/
 		submitButton.addActionListener(new SubmitButtonController(m, this, star1Label, star2Label, star3Label));
 
 		JButton btnDeselectWord = new JButton("Deselect");
 		submitWordPanel.add(btnDeselectWord);
-		/*TODO: change constructor to SubmitButtonController if needed*/
 		btnDeselectWord.addActionListener(new DeselectButtonController(m,this));
 
 		JPanel taskPanel = new JPanel();
@@ -198,12 +194,10 @@ public Model getModel(){return this.getModel();}
 
 		JButton undoButton = new JButton("Undo");
 		taskPanel.add(undoButton);
-		/* TODO add constructor to UndoButtonController if needed*/
 		undoButton.addActionListener(new UndoButtonController(m, this, undoArray));
 
 		JButton resetButton = new JButton("Reset");
 		taskPanel.add(resetButton);
-		/* TODO add constructor to ResetButtonController if needed*/
 		resetButton.addActionListener(new ResetButtonController(this, m));
 
 		JPanel sidebarPanel = new JPanel();
@@ -219,8 +213,6 @@ public Model getModel(){return this.getModel();}
 		wordList.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		wordList.setPrototypeCellValue("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDE");
 		wordListScrollPane.setViewportView(wordList);
-
-
 
 		JLabel wordListLabel = new JLabel("Word List");
 		wordListLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -243,13 +235,10 @@ public Model getModel(){return this.getModel();}
 				tileArray[i][j].setBorderPainted(false);
 				tileArray[i][j].addActionListener(new PlayerClickTileController(m, this, i, j));
 				String letter = m.getBoard().getTile(i,j).getLetter();
-				//char letter = (char) (rng.nextInt(26) + 65);
-				//System.out.println(letter);
 				Tile tile = m.getBoard().getTile(i,  j);
 				
 				// Check if we're on a theme level, otherwise generate random letters
 				if(m.getType() % 3 != 2){
-					//System.out.println("dklfslkdflksd");
 					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
 				} 
 				else if (tile.getLetter() == "_") {
@@ -257,7 +246,6 @@ public Model getModel(){return this.getModel();}
 				}
 				
 				if (tile.isEnabled()) {
-					//.charAt(0)
 					tile.setLetter(Character.toString((tile.getLetter() + "").toUpperCase().charAt(0))); //hack - letters had to be uppercase.
 					tileArray[i][j].setIcon(iconMap.getIcon((char)letter.charAt(0)));
 				}
@@ -281,7 +269,6 @@ public Model getModel(){return this.getModel();}
 			
 			int currentProg = ProgressIO.loadUnlockedNum();
 			int playingLevel = m.getSelectedIndex() + 1;
-			//System.out.println("new level unlocked" + currentProg + " " + playingLevel);
 			if(currentProg == playingLevel){
 				
 				ProgressIO.saveUnlockedNum(currentProg + 1);
@@ -290,7 +277,6 @@ public Model getModel(){return this.getModel();}
 		}
 	}
 	public void hasTimer(){
-		System.out.print("Play field understand that the level type is " + m.getType());
 		if (m.getType() != 0) {
 			wordLimitLabel.setVisible(false);
 			limitLabel.setVisible(false);
@@ -338,7 +324,6 @@ public Model getModel(){return this.getModel();}
 		limitLabel.setText("" + m.getLimit());
 
 		wordLabel.setText("WORD: " + m.getSelectedWord().getWordString());
-		//System.out.println(m.getSelectedWord().getWordString());
 		m.setSelectedWord(m.getSelectedWord());
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
@@ -365,7 +350,6 @@ public Model getModel(){return this.getModel();}
 		wordList.setModel(newModel.getWordListModel());
 
 		wordLabel.setText("WORD: " + newModel.getSelectedWord().getWordString());
-		//System.out.println(m.getSelectedWord().getWordString());
 		newModel.setSelectedWord(newModel.getSelectedWord());
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
@@ -394,7 +378,5 @@ public Model getModel(){return this.getModel();}
 
 	public JButton getBackToMenuButton() {
 		return this.backToMenuButton;
-		// TODO Auto-generated method stub
-		
 	}
 }
