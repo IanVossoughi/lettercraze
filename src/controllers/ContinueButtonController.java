@@ -17,6 +17,7 @@ public class ContinueButtonController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ProgressIO.saveUnlockedNum(1);
+		
 		new MenuField().setVisible(true);
 		main.setVisible(false);
 		main.dispose();

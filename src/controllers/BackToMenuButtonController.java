@@ -36,24 +36,27 @@ public class BackToMenuButtonController implements ActionListener {
 		int scoreNeeded1 = model.getScore().getStarScoreIndex(2);
 
 		int score = model.getScore().getScoreValue();
-
-		if(score >= scoreNeeded1 && score >= scoreNeeded2 && score >= scoreNeeded3){
-			model.setStarStatus(model.getSelectedIndex(), 3);
-		}
-		else if(score >= scoreNeeded1 && score >= scoreNeeded2){
-			model.setStarStatus(model.getSelectedIndex(), 2);
-
-		}
-		else if (score >= scoreNeeded1){
-			model.setStarStatus(model.getSelectedIndex(), 1);
-
-		}
-		else{
-			model.setStarStatus(model.getSelectedIndex(), 0);
-
-		}
-		model.writeStars();
 		
+		if(score > model.getHighScores()[model.getSelectedIndex()]){
+			
+		
+
+			if(score >= scoreNeeded1 && score >= scoreNeeded2 && score >= scoreNeeded3){
+				model.setStarStatus(model.getSelectedIndex(), 3);
+			}
+			else if(score >= scoreNeeded1 && score >= scoreNeeded2){
+				model.setStarStatus(model.getSelectedIndex(), 2);
+			}
+			else if (score >= scoreNeeded1){
+				model.setStarStatus(model.getSelectedIndex(), 1);
+
+			}
+			else{
+				model.setStarStatus(model.getSelectedIndex(), 0);
+
+			}
+			model.writeStars();
+		}
 		
 		m = new MenuField();
 		m.setVisible(true);
