@@ -43,7 +43,6 @@ public class Model {
 		this.lastMove = null;
 		this.lastModel = null;
 		this.wordLimit = 0;
-
 	}
 
 	public Model copyModel() {
