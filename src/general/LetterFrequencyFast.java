@@ -54,7 +54,6 @@ public class LetterFrequencyFast {
 		int total = 0;
 		for (char key : charFreq.keySet()) {
 			total += charFreq.get(key);
-			//System.out.println(key + " : " + total);
 			newCharFreq.put(key, total);
 		}
 		
@@ -66,7 +65,6 @@ public class LetterFrequencyFast {
 		int rand = new Random().nextInt(100000);
 		for(char key : charFreq.keySet()){
 			if(rand <= charFreq.get(key)){
-				//System.out.println(key + " : " + rand + " < " + charFreq.get(key));
 				return Character.toString(key); 
 			}
 		}
