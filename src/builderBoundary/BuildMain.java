@@ -36,7 +36,7 @@ public class BuildMain extends JFrame{
 		setTitle("LetterCraze LevelBuilder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		setBounds(100, 100, 700, 600);
+		setBounds(100, 100, 750, 400);
 	
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
