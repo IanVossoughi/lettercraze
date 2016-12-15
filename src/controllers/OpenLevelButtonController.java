@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 
 import builderBoundary.BuildField;
@@ -75,9 +76,20 @@ public class OpenLevelButtonController implements ActionListener {
 			int[] loadedScores = {Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2])};
 			m.setScore(new Score(loadedScores));
 			
+			//DefaultListModel<String> newModel = new DefaultListModel<String>();
+			//m.setWordListModel(newModel);
+			if(b != null) {
+				while(!m.getWordListModel().isEmpty()) {
+					m.removeWordListModel(0);
+				}
+			}
 			for(String word : nextField(in).split(" ")){
 				m.addThemeWord(word);
+				if(b != null) {
+					m.addWordListModel(word);
+				}
 			}
+
 			
 			String title = nextField(in);
 			m.setTitle(title);
