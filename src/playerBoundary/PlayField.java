@@ -240,7 +240,9 @@ public Model getModel(){return this.getModel();}
 				// Check if we're on a theme level, otherwise generate random letters
 				if(m.getType() % 3 != 2){
 					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
-				} 
+				} else if(tile.getLetter() == "!"){
+					//System.out.println("!!!!!!!"); // ! marks are working fine
+				}
 				else if (tile.getLetter() == "_") {
 					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
 				}
