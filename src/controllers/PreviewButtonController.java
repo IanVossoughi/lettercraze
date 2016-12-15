@@ -39,6 +39,8 @@ public class PreviewButtonController implements ActionListener{
 		int levelNum = (mCopy.getSelectedIndex() + 1);
 		String filePath = "levels/temp";
 		new OpenLevelButtonController(mCopy, null, null).loadLevel(filePath, m, null);
+		m.setSelectedTab(m.getType());
+		System.out.println(m.getType() + " CURR TYPE LOADED");
 		// The last two parameters are null because we are not in the builder.
 		// Shouldn't be a problem because the loadLevel method doesn't actually use them.
 	}
