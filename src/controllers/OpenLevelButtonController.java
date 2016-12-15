@@ -112,8 +112,8 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			in.close();
 		} catch (FileNotFoundException e) {
-			//e.printStackTrace();
-			System.out.println("Level not found - " + filename + " D:");
+			//System.out.println("Level not found - " + filename + " D:");
+			m.setTitle("File not found");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

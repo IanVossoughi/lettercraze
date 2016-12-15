@@ -156,7 +156,7 @@ public class MenuField extends JFrame {
 
 			// I put lblLevelName definition above tabbedPane listener
 			OpenLevelButtonController.loadLevel("levels/1", m, null);
-			System.out.println(m.getTitle());
+			//System.out.println(m.getTitle());
 			//setLevelNameLabel(m.getTitle());
 			lblLevelName = new JLabel(m.getTitle());
 			levelNamePanel.add(lblLevelName);
