@@ -116,7 +116,7 @@ public class BuildField extends JFrame {
 	public BuildField() {
 		// Initialize Model
 		this.m = new Model();
-		
+		m.setType(2);
 		setTitle("LetterCraze Builder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
@@ -195,6 +195,7 @@ public class BuildField extends JFrame {
 		levelTypeCombo.setSelectedIndex(2);
 		starPanel.add(levelTypeCombo);
 		levelTypeCombo.addActionListener(new BuilderLevelTypeController(this, m));
+		m.setType(levelTypeCombo.getSelectedIndex());
 
 		generateButton = new JButton("Generate");
 		// controller linked below
@@ -337,7 +338,12 @@ public class BuildField extends JFrame {
 			for(int y = 0; y < 6; y++){
 				JButton tile = tileArray[x][y];
 				if(m.getBoard().tiles[x][y].isEnabled()){
-					tile.setIcon((iconMap.getIcon((char)m.getBoard().getTile(x, y).getLetter().charAt(0))));
+					if(m.getType() != 2) {
+						tile.setIcon(greenIcon);
+					}
+					else {
+						tile.setIcon((iconMap.getIcon((char)m.getBoard().getTile(x, y).getLetter().charAt(0))));
+					}
 				} 
 				else {
 					tile.setIcon(whiteIcon);

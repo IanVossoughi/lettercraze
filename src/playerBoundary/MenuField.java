@@ -72,7 +72,7 @@ public class MenuField extends JFrame {
 		m.writeHighScore();
 		System.out.print(Integer.toString(m.readHighScore()));
 		progress = new ProgressIO();
-		ProgressIO.saveUnlockedNum(1);
+		//ProgressIO.saveUnlockedNum(1);
 
 		levelTypeLabel = new JLabel("PUZZLE");
 		//change to test
@@ -155,7 +155,10 @@ public class MenuField extends JFrame {
 			levelListPanel.add(levelNamePanel);
 
 			// I put lblLevelName definition above tabbedPane listener
-			lblLevelName = new JLabel("First Level");
+			OpenLevelButtonController.loadLevel("levels/1", m, null);
+			System.out.println(m.getTitle());
+			//setLevelNameLabel(m.getTitle());
+			lblLevelName = new JLabel(m.getTitle());
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -167,7 +170,6 @@ public class MenuField extends JFrame {
 				break;
 			case 1:
 				levelType = "PUZZLE";
-
 				break;
 			default:
 				levelType = "LIGHTNING";
@@ -206,6 +208,7 @@ public class MenuField extends JFrame {
 		}
 		//default level type
 		levelTypeLabel.setText("PUZZLE");
+		
 	}
 
 	public void setLevelNameLabel(String string) {
