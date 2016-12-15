@@ -47,6 +47,10 @@ public class UndoArray {
 		// TODO Auto-generated method stub
 		return index;
 	}
+	
+	public int getUndoSize() {
+		return undoArray.size();
+	}
 
 }
 
