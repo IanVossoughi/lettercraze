@@ -69,7 +69,8 @@ public class MenuField extends JFrame {
 	 */
 	public MenuField() {
 		this.m = new Model();
-		m.writeHighScore();
+		//m.writeHighScore();
+		m.readHighScore();
 		System.out.print(Integer.toString(m.readHighScore()));
 		progress = new ProgressIO();
 		//ProgressIO.saveUnlockedNum(1);
