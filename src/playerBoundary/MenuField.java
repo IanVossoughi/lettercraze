@@ -74,8 +74,6 @@ public class MenuField extends JFrame {
 		progress = new ProgressIO();
 
 		levelTypeLabel = new JLabel("PUZZLE");
-		//change to test
-		//progress.saveUnlockedNum(2);
 
 		m.setUnlocked(progress.loadUnlockedNum());
 
