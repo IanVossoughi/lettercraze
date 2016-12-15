@@ -76,10 +76,6 @@ public class MenuField extends JFrame {
 		levelTypeLabel = new JLabel("PUZZLE");
 
 		m.setUnlocked(progress.loadUnlockedNum());
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
 
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
