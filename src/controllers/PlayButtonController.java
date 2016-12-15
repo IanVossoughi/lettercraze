@@ -27,20 +27,6 @@ public class PlayButtonController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// Before we open the PlayField, load the level into the model.
 		this.loadLevel();
-		
-		System.out.print("\n levelType var is " + levelType + "\n");
-		if(levelType == "PUZZLE"){
-			//m.setType(0);
-			System.out.print("levelType is set to 0");	
-		}
-		else if(levelType == "LIGHTNING"){
-			//m.setType(1);
-			System.out.print("levelType is set to 1");	
-		}
-		else{
-			//m.setType(2);
-			System.out.print("levelType is set to 2");	
-		}
 
 		PlayField pf = new PlayField(m);
 		pf.setVisible(true);
