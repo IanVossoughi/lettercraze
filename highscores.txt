@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+6
+1
+=======
 20
 2
+>>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze
 0
 0
 0

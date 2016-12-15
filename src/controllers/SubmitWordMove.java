@@ -45,7 +45,7 @@ public class SubmitWordMove {
 			model.addWordListModel(selectedWord.getWordString());
 			selectedWord.addScore(); 
 			tilesGoAway();
-			model.getBoard().floatUpTiles();
+			model.getBoard().floatUpTiles(model.getType());
 			updateScore();
 
 			//int score = selectedWord.getScore();
