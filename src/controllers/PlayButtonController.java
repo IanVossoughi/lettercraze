@@ -41,8 +41,6 @@ public class PlayButtonController implements ActionListener{
 			//m.setType(2);
 			System.out.print("levelType is set to 2");	
 		}
-		//m.setSelectedTab(whichLevel);
-		System.out.print("\n Selected Tab is =" + whichLevel + "\n");
 
 		PlayField pf = new PlayField(m);
 		pf.setVisible(true);

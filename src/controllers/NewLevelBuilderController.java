@@ -25,7 +25,7 @@ public class NewLevelBuilderController implements ActionListener {
 		"No, thanks"};
 		int n = JOptionPane.showOptionDialog(new JFrame(),
 				"Do you wanna save?",
-				"save or nah",
+				"Yes or No",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.WARNING_MESSAGE,
 				null,

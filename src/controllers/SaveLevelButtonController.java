@@ -37,7 +37,6 @@ public class SaveLevelButtonController implements ActionListener {
 	 * If a tile is inactive, it will store the sentinel value '!'.
 	 */
 	public void saveLevel(String filename){
-		System.out.println("Saving file: " + filename);
 		FileOutputStream out;
 		try {
 			out = new FileOutputStream(filename);
@@ -61,8 +60,6 @@ public class SaveLevelButtonController implements ActionListener {
 			out.write(m.getTitle().getBytes());
 			out.write('\n');
 			
-			//System.out.println(m.getTitle());
-			//System.out.println(m.getType());
 			out.write((m.getType() + "").getBytes());
 			out.write('\n');
 			
