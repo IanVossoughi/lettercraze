@@ -42,8 +42,9 @@ public class MenuField extends JFrame {
 	private JLabel levelTypeLabel;
 	private JLabel lblLevelName;
 	private JLabel highScoreNumLabel;
-
-	public JLabel getHighScoreLabel(){return highScoreNumLabel;}
+	private JLabel star1Label;
+	private JLabel star2Label;
+	private JLabel star3Label;
 
 	/**
 	 * Launch the application.
@@ -62,8 +63,13 @@ public class MenuField extends JFrame {
 	}
 
 	//public int getUnlocked(){return this.unlocked;}
+	public JLabel getHighScoreLabel(){return highScoreNumLabel;}
 	public String getLevelType(){return this.levelType;}
 	public JLabel getLevelTypeLabel(){return this.levelTypeLabel;}
+	public JLabel getStar1Label(){return this.star1Label;}
+	public JLabel getStar2Label(){return this.star2Label;}
+	public JLabel getStar3Label(){return this.star3Label;}
+
 	/**
 	 * Create the frame.
 	 */
@@ -71,6 +77,8 @@ public class MenuField extends JFrame {
 		this.m = new Model();
 		//m.writeHighScore();
 		m.readHighScore();
+		//m.writeStars();
+		m.readStars();
 		System.out.print(Integer.toString(m.readHighScore()));
 		progress = new ProgressIO();
 
@@ -192,24 +200,46 @@ public class MenuField extends JFrame {
 			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, 
 					playButton, tabbedPane, m.getUnlocked(), m, lblLevelName, highScoreNumLabel));
 
+
 			ImageIcon star = new ImageIcon(MenuField.class.getResource("/general/star.png"));
-			JLabel star1Label = new JLabel("");
+			ImageIcon starGray = new ImageIcon(MenuField.class.getResource("/general/star_gray.png"));
+
+			star1Label = new JLabel("");
 			scorePanel.add(star1Label);
-			star1Label.setIcon(star);
 
-			JLabel star2Label = new JLabel("");
+			star2Label = new JLabel("");
 			scorePanel.add(star2Label);
-			star2Label.setIcon(star);
 
-			JLabel star3Label = new JLabel("");
-			star3Label.setIcon(star);
+			star3Label = new JLabel("");
 			scorePanel.add(star3Label);
+			
+			if(m.getStarStatus(i-1) == 0){
+				
+				star1Label.setIcon(starGray);
 
+				star2Label.setIcon(starGray);
+				star3Label.setIcon(starGray);
+			}
+			else if(m.getStarStatus(i-1) == 1){
+				star1Label.setIcon(star);
+				star2Label.setIcon(starGray);
+				star3Label.setIcon(starGray);
+			}
+			else if(m.getStarStatus(i-1) == 2){
+				star1Label.setIcon(star);
+				star2Label.setIcon(star);
+				star3Label.setIcon(starGray);
+			}
+			else{
+				star1Label.setIcon(star);
+				star2Label.setIcon(star);
+				star3Label.setIcon(star);
 
+			}
 		}
 		//default level type
 		levelTypeLabel.setText("PUZZLE");
-		
+
 	}
 
 	public void setLevelNameLabel(String string) {
