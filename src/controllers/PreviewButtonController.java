@@ -16,6 +16,7 @@ public class PreviewButtonController implements ActionListener{
 
 	private Model m;
 	private Model mCopy;
+	private Model mSpareCopy;
 	
 
 	public PreviewButtonController(Model m) {
@@ -35,7 +36,6 @@ public class PreviewButtonController implements ActionListener{
 				  createPlay(e).toFront();
 			  }
 			}, 2);
-		
 	}
 	
 	private PlayField createPlay(ActionEvent e){
