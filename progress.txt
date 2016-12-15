@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 
+>>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
+=======
+
 >>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
