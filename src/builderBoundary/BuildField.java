@@ -256,7 +256,7 @@ public class BuildField extends JFrame {
 		bottomBarPanel.add(resetButton);
 		
 		JButton previewButton = new JButton("Preview");
-		previewButton.addActionListener(new PreviewButtonController(m));
+		previewButton.addActionListener(new PreviewButtonController(m, this));
 		bottomBarPanel.add(previewButton);
 		JPanel sidebarPanel = new JPanel();
 		sidebarPanel.setBorder(new EmptyBorder(10,10,10,10));
