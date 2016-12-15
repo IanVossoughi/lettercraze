@@ -116,7 +116,7 @@ public class BuildField extends JFrame {
 	public BuildField() {
 		// Initialize Model
 		this.m = new Model();
-		
+		m.setType(2);
 		setTitle("LetterCraze Builder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
