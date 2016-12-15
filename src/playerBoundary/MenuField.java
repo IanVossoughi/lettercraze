@@ -77,12 +77,10 @@ public class MenuField extends JFrame {
 		this.m = new Model();
 		//m.writeHighScore();
 		m.readHighScore();
-<<<<<<< HEAD
 		//m.writeStars();
 		m.readStars();
 		System.out.print(Integer.toString(m.readHighScore()));
-=======
->>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
+		
 		progress = new ProgressIO();
 
 		levelTypeLabel = new JLabel("PUZZLE");

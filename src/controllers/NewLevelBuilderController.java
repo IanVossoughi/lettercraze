@@ -4,6 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import builderBoundary.BuildField;
+import builderBoundary.SaveSelectionWindow;
 import entities.Model;
 
 public class NewLevelBuilderController implements ActionListener {
@@ -42,7 +43,7 @@ public class NewLevelBuilderController implements ActionListener {
 
 	/** This can be tested. */
 	void userSelectsSave() {
-		new SaveLevelButtonController(m, contentPane).actionPerformed(null);
+		//new SaveLevelButtonController(m, contentPane).actionPerformed(null);
 //		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
 //		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 //		mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
@@ -51,7 +52,9 @@ public class NewLevelBuilderController implements ActionListener {
 //			a.actionPerformed(new ActionEvent (this, ActionEvent.ACTION_PERFORMED, null));
 //		} 
 
-		
+		SaveSelectionWindow saver = new SaveSelectionWindow(m);
+		saver.setVisible(true);
+		new SaveLevelButtonController(m, saver).actionPerformed(null);
 		closingLogic();
 	}
 	

@@ -145,7 +145,17 @@ public class BuildField extends JFrame {
 		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
 		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmSaveLevel);
-		mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
+		
+		mntmSaveLevel.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SaveSelectionWindow saver = new SaveSelectionWindow(m);
+				saver.setVisible(true);
+				
+			}
+			
+		});
 
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
