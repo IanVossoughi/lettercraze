@@ -13,9 +13,7 @@ public class Board {
 	public void printBoard(){
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
-				System.out.print(tiles[x][y].getLetter());
 			}
-			System.out.println();
 		}
 	}
 
