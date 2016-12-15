@@ -41,6 +41,10 @@ public class PlayButtonController implements ActionListener{
 
 	private void loadLevel() {
 		// Get the selected index, convert to string
+		int tabIndex = menuField.getTabbedPane().getSelectedIndex();
+		
+		// Update the model with the selected index
+		this.m.setSelectedTab(tabIndex);
 		int levelNum = (m.getSelectedIndex() + 1);
 		String filePath = "levels/" + levelNum;
 		new OpenLevelButtonController(m, null, null).loadLevel(filePath, m, null);

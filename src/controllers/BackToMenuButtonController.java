@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import entities.Model;
 import playerBoundary.MenuField;
 import playerBoundary.PlayField;
+import playerBoundary.ProgressIO;
 
 public class BackToMenuButtonController implements ActionListener {
 
@@ -72,6 +73,17 @@ public class BackToMenuButtonController implements ActionListener {
 		//System.out.print("\n get score value =" + model.getScore().getScoreValue() + "SECOND");
 
 		model.setHighScore(model.getSelectedIndex(), model.getScore().getScoreValue());
+		
+
+//		if (model.getHighScores()[model.getSelectedIndex()] < scoreNeeded1) {
+//			int currentProg = ProgressIO.loadUnlockedNum();
+//			int playingLevel = model.getSelectedIndex() + 1;
+//			//System.out.println("new level unlocked" + currentProg + " " + playingLevel);
+//			if((currentProg > playingLevel) && playingLevel > 0){
+//				//System.out.println("Level actually unlocked");
+//				ProgressIO.saveUnlockedNum(playingLevel);
+//			}
+//		}
 
 
 		
