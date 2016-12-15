@@ -65,24 +65,20 @@ public class OpenLevelButtonController implements ActionListener {
 					}
 					else if (nextChar == '_'){
 						newTile.setEnabled(true);
-						newTile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter()); //Andrew
+						newTile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter()); 
 					}
 					else {
 						newTile.setEnabled(true);
 					}
-//					System.out.print(nextChar);
 					//newBoard.tiles[x][y] = newTile;
 					m.getBoard().tiles[x][y] = newTile;
 				}
-//				System.out.print("\n");
 			}
 			
 			// Next get the title;
 			in.read();
 			
-			//System.out.println(nextField(in)); // Star points
 			String[] d = nextField(in).trim().split(" ");
-			//for(String k : d) System.out.println(k + "|");
 			int[] loadedScores = {Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2])};
 			m.setScore(new Score(loadedScores));
 			
@@ -93,7 +89,6 @@ public class OpenLevelButtonController implements ActionListener {
 			}
 		
 			
-			//System.out.println(nextField(in)); // Word list 
 			for(String word : nextField(in).split(" ")){
 				//m.addWordListModel(word);
 				m.addThemeWord(word);
@@ -102,22 +97,17 @@ public class OpenLevelButtonController implements ActionListener {
 				}
 			}
 			
-			//System.out.println(nextField(in)); // Title
 			String title = nextField(in);
-			//System.out.println(title);
 			m.setTitle(title);
 			if(b != null)
 				b.getlevelNameField().setText(title);
 			
-			
-			//System.out.println(nextField(in)); // level type
 			int levelIndex = Integer.parseInt(nextField(in));
 			m.setSelectedTab(levelIndex);
 			m.setType(levelIndex);
 			if(b != null)
 				b.getlevelTypeCombo().setSelectedIndex(levelIndex);
 			
-			//System.out.println(nextField(in)); // Timer amount
 			int timeLeft = Integer.parseInt(nextField(in));
 			m.setTime(timeLeft);
 			if(b != null)
@@ -132,12 +122,10 @@ public class OpenLevelButtonController implements ActionListener {
 			in.close();
 		} catch (FileNotFoundException e) {
 			//e.printStackTrace();
-			System.out.println("Level not found - " + filename + " D:");
+			System.out.println("Level not found - " + filename );
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		//m.getBoard().printBoard();
 	}
 	
 	// Returns the string in the file up until we see a '\n'
@@ -149,5 +137,4 @@ public class OpenLevelButtonController implements ActionListener {
 		}
 		return curr;
 	}
-
 }

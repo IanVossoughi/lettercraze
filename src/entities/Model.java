@@ -132,11 +132,10 @@ public class Model {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.out.print("HighScores = " + s );
+		
 		String[] stars = s.split("\n");
 		for(int i = 0; i < 15; i++){
 			this.starStatus[i] = Integer.parseInt(stars[i]);
-			//System.out.println(i + ":" + scores[i]);
 		}
 
 		return num;
@@ -178,11 +177,10 @@ public class Model {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.out.print("HighScores = " + s );
+		
 		String[] scores = s.split("\n");
 		for(int i = 0; i < 15; i++){
 			this.highScore[i] = Integer.parseInt(scores[i]);
-			//System.out.println(i + ":" + scores[i]);
 		}
 
 		return num;
