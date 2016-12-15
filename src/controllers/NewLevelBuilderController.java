@@ -4,6 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import builderBoundary.BuildField;
+import builderBoundary.SaveSelectionWindow;
 import entities.Model;
 
 public class NewLevelBuilderController implements ActionListener {
@@ -42,8 +43,9 @@ public class NewLevelBuilderController implements ActionListener {
 
 	/** This can be tested. */
 	void userSelectsSave() {
-		new SaveLevelButtonController(m, contentPane).actionPerformed(null);
-		
+		SaveSelectionWindow saver = new SaveSelectionWindow(m);
+		saver.setVisible(true);
+		new SaveLevelButtonController(m, saver).actionPerformed(null);
 		closingLogic();
 	}
 	

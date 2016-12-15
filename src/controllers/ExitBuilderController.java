@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import builderBoundary.BuildField;
+import builderBoundary.SaveSelectionWindow;
 import entities.Model;
 
 public class ExitBuilderController implements ActionListener {
@@ -43,7 +44,9 @@ public class ExitBuilderController implements ActionListener {
 
 	/** This can be tested. */
 	void userSelectsSave() {
-		new SaveLevelButtonController(m, contentPane).actionPerformed(null);
+		SaveSelectionWindow saver = new SaveSelectionWindow(m);
+		saver.setVisible(true);
+		new SaveLevelButtonController(m, saver).actionPerformed(null);
 		closingLogic();
 	}
 	

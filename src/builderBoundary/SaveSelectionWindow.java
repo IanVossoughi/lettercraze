@@ -13,12 +13,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controllers.SaveLevelButtonController;
+import entities.Model;
+
 public class SaveSelectionWindow extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private JComboBox<Integer> levelSelect;
+	private Model m;
 
-	public SaveSelectionWindow(File file) {
+	public SaveSelectionWindow(Model m) {
+		this.m = m;
 		setTitle("LetterCraze Builder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
@@ -34,24 +39,10 @@ public class SaveSelectionWindow extends JFrame {
 		for(int i = 1; i < 16; i++) levelSelect.addItem(i);
 		
 		contentPane.add(levelSelect, BorderLayout.CENTER);
-		
-		/*JButton save = new JButton(new AbstractAction("Save"){
-			public void actionPerformed(ActionEvent ae){
-				
-			}
-		});*/
+	
 		
 		JButton save = new JButton("Save");
-		save.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-			}
-			
-			
-		});
+		save.addActionListener(new SaveLevelButtonController(m, this));
 		
 		contentPane.add(save, BorderLayout.SOUTH);
 	}

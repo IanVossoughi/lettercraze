@@ -16,19 +16,17 @@ import entities.Word;
 public class SaveLevelButtonController implements ActionListener {
 
 	private Model m;
-	private JPanel contentPane;
+	private SaveSelectionWindow saveSelectionWindow;
 	
-	public SaveLevelButtonController(Model m, JPanel contentPane){
+	public SaveLevelButtonController(Model m, SaveSelectionWindow saveSelectionWindow){
 		this.m = m;
-		this.contentPane = contentPane;
+		this.saveSelectionWindow = saveSelectionWindow;
 	}
 
 	// NOTE: Don't test this...
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		File file = new File("dfsd");
-		SaveSelectionWindow filepicker = new SaveSelectionWindow(file);
-		filepicker.setVisible(true);
+		saveSelectionWindow.setVisible(false);
 		
 		//File saveFile = new FilePicker(contentPane).save();
 		File saveFile = new File("dfsd");
