@@ -114,7 +114,6 @@ public class SubmitWordMove {
 			boolean isTheme = false;
 			for (int i = 0; i < model.getThemeWords().size(); i++){
 				if(model.getThemeWords().get(i).equalsIgnoreCase(selectedWord.getWordString())) {
-					System.out.println("Checking " + model.getThemeWords().get(i) + " against " + selectedWord.getWordString());
 					isTheme = true;
 					break;
 				}

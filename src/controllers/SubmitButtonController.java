@@ -21,16 +21,10 @@ public class SubmitButtonController implements ActionListener {
 	PlayField play;
 	private JLabel[] starLabels = new JLabel[3];
 	private int whichLevel;
-	/*private JLabel star1Label;
-	private JLabel star2Label;
-	private JLabel star3Label;*/
 	
 	public SubmitButtonController(Model m, PlayField p, JLabel star1Label, JLabel star2Label, JLabel star3Label) {
 		this.model = m;
 		this.play = p;
-		/*this.star1Label = star1Label;
-		this.star2Label = star2Label;
-		this.star3Label = star3Label;*/
 		starLabels[0] = star1Label;
 		starLabels[1] = star2Label;
 		starLabels[2] = star3Label;
