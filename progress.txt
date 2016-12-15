@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-
-=======
-
->>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze
+
