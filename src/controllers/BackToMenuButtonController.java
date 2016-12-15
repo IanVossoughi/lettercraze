@@ -24,20 +24,25 @@ public class BackToMenuButtonController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		m = new MenuField();
-		m.setVisible(true);
+	
 		
 		// Update highscores
 		if(model.getHighScores()[model.getSelectedIndex()] < model.getScore().getScoreValue()){
+			model.setHighScore(model.getSelectedIndex(), model.getScore().getScoreValue());
 			model.writeHighScore();
+			System.out.println("WROTE HIGHSCORE:" + model.getScore().getScoreValue());
+			
 		}
 		// --> end highscores
+		
+		m = new MenuField();
+		m.setVisible(true);
 		
 		//update the "index"th of the array highscore
 		System.out.print("\n Selected index =" + whichLevel);
 		System.out.print("\n get score value =" + model.getScore().getScoreValue() + "SECOND");
 
-		model.setHighScore(model.getSelectedIndex(), model.getScore().getScoreValue());
+		
 		System.out.print(model.getHighScores());
 		playField.stopTimer();
 		playField.checkIfWon();
