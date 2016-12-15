@@ -22,7 +22,7 @@ public class ExitBuilderController implements ActionListener {
 		"No, thanks"};
 		int n = JOptionPane.showOptionDialog(new JFrame(),
 				"Do you wanna save?",
-				"save or nah",
+				"Save or Cancel",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.WARNING_MESSAGE,
 				null,
