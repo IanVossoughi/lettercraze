@@ -15,14 +15,14 @@ public class Tile {
 		this.selected = false;
 		this.toBeReplaced = false;
 		this.letter = letter;
-		if(letter == "_"){
+		if(letter.equals("_")){
 			if((this.letter = LetterFrequencyFast.getInstance().getRandomLetter()) == "Q"){
-				this.letter = "QU";
+				//this.letter = "QU";
 
 			}
 			else
 				this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
-		}
+		} 
 		//this.points = points;
 	}
 
