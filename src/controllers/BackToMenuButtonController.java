@@ -59,15 +59,18 @@ public class BackToMenuButtonController implements ActionListener {
 			model.writeStars();
 		}
 		
-		m = new MenuField();
-		m.setVisible(true);
+
 
 		// Update highscores
 		if(model.getHighScores()[model.getSelectedIndex()] < model.getScore().getScoreValue()){
+			model.setHighScore(model.getSelectedIndex(), model.getScore().getScoreValue());
 			model.writeHighScore();
 		}
 		// --> end highscores
 
+		m = new MenuField();
+		m.setVisible(true);
+		
 		model.setHighScore(model.getSelectedIndex(), model.getScore().getScoreValue());
 		
 

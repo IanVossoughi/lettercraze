@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import builderBoundary.BuildField;
 import entities.Model;
@@ -77,7 +78,8 @@ public class GenerateController implements ActionListener {
 				levelAdded = addWord(levelAdded, word1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Letter could not be placed around other tile");
+			JOptionPane.showMessageDialog(builder, "Not all of your words could be added to the board. \nPlease shorten your word list and/or its words to make room.");
 		}
 		for (int x = 0; x < 6; x++) { 
 			for (int y = 0; y < 6; y++) {
