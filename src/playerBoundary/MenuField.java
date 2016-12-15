@@ -71,13 +71,15 @@ public class MenuField extends JFrame {
 		this.m = new Model();
 		//m.writeHighScore();
 		m.readHighScore();
-		System.out.print(Integer.toString(m.readHighScore()));
 		progress = new ProgressIO();
 
 		levelTypeLabel = new JLabel("PUZZLE");
 
 		m.setUnlocked(progress.loadUnlockedNum());
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
 
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,8 +131,6 @@ public class MenuField extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		boardPanel.add(tabbedPane);
 
-		//tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, playButton, tabbedPane, unlocked, m, lblLevelName));
-
 		int i;
 		for (i = 1; i < 16; i++) {
 			JPanel levelListPanel = new JPanel();
@@ -158,7 +158,6 @@ public class MenuField extends JFrame {
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 
 
-
 			switch (i % 3) {
 			case 0:
 				levelType = "THEME";
@@ -181,7 +180,6 @@ public class MenuField extends JFrame {
 			scorePanel.add(highScoreLabel);
 
 			m.readHighScore();
-			System.out.println(m.getHighScores()[0] + "");
 			highScoreNumLabel = new JLabel(m.getHighScores()[0] + "");
 			scorePanel.add(highScoreNumLabel);
 
