@@ -45,8 +45,6 @@ public class SubmitButtonController implements ActionListener {
 			JOptionPane.showMessageDialog(new JFrame(), "That was your final move. Ever!");
 			play.gameOver();
 		}
-		System.out.print("\n Selected Tab is =" + whichLevel + " - submitButton\n");
-		System.out.print("\n Score is =" + model.getScore().getScoreValue() + " - submitButton\n");
 
 	}
 
