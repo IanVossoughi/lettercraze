@@ -13,18 +13,39 @@ import javax.swing.JTextField;
 import builderBoundary.BuildField;
 import entities.Model;
 
+/**
+ *  Controls all actions related to manipulating the Builder type Combo Box, 
+ *  changing the available type-specific widgets to the relevant ones.
+ * <p>
+ * Creation date: (12/15/16 6:18:30 PM)
+ * @author Ian Vossoughi
+ */
 public class BuilderLevelTypeController implements ActionListener {
 
+	/** The builder boundary that we are manipulating and using to begin the action. */
 	private BuildField buildField;
+	
+	/** The highest level entity model.*/
 	private Model m;
+	
+	/** The Combo Box that initiated the event. */
 	private JComboBox<String> lt;
 
+	/**
+	 * BuilderLevelTypeController constructor comment.
+	 */
 	public BuilderLevelTypeController(BuildField buildField, Model m) {
 		this.buildField = buildField;
 		this.m = m;
 		this.lt = buildField.getLevelTypeCombo();
 	}
 
+	/**
+	 * Coordinate reaction to changing the currently selected item of the Level Type Combo Box, 
+	 * manipulating the Builder widgets to display relevant and hide irrelevant ones.
+	 * <p>
+	 * @param e controllers.BuilderLevelTypeController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Handles timefield
