@@ -36,6 +36,7 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 		
 		// Update the model with the selected index
 		this.m.setSelectedTab(tabIndex);
+		m.readHighScore();
 		OpenLevelButtonController.loadLevel("levels/" + (m.getSelectedIndex()+1), m, null);
 		title.setText(m.getTitle());
 		

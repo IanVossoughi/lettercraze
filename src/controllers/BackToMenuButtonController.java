@@ -29,7 +29,7 @@ public class BackToMenuButtonController implements ActionListener {
 		
 		// Update highscores
 		if(model.getHighScores()[model.getSelectedIndex()] < model.getScore().getScoreValue()){
-			
+			model.writeHighScore();
 		}
 		// --> end highscores
 		
