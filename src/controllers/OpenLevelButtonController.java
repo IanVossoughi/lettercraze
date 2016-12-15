@@ -33,9 +33,9 @@ public class OpenLevelButtonController implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		File openFile = new FilePicker(contentPane).open();
 		if (openFile != null) {
-			String name = openFile.getAbsolutePath();
+			String name = openFile.getName();
 			System.out.println("Opening level " + name);
-			loadLevel(name, m, b);
+			loadLevel("levels/" + name, m, b);
 			b.refreshBoard();
 		}
 	}
