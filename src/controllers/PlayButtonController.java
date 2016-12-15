@@ -30,18 +30,18 @@ public class PlayButtonController implements ActionListener{
 		
 		System.out.print("\n levelType var is " + levelType + "\n");
 		if(levelType == "PUZZLE"){
-			m.setType(0);
+			//m.setType(0);
 			System.out.print("levelType is set to 0");	
 		}
 		else if(levelType == "LIGHTNING"){
-			m.setType(1);
+			//m.setType(1);
 			System.out.print("levelType is set to 1");	
 		}
 		else{
-			m.setType(2);
+			//m.setType(2);
 			System.out.print("levelType is set to 2");	
 		}
-		m.setSelectedTab(whichLevel);
+		//m.setSelectedTab(whichLevel);
 		System.out.print("\n Selected Tab is =" + whichLevel + "\n");
 
 		PlayField pf = new PlayField(m);

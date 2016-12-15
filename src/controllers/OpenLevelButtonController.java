@@ -93,6 +93,8 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			//System.out.println(nextField(in)); // level type
 			int levelIndex = Integer.parseInt(nextField(in));
+			m.setSelectedTab(levelIndex);
+			m.setType(levelIndex);
 			if(b != null)
 				b.getlevelTypeCombo().setSelectedIndex(levelIndex);
 			
