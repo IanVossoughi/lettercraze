@@ -80,7 +80,6 @@ public class MenuField extends JFrame {
 		m.readHighScore();
 		//m.writeStars();
 		m.readStars();
-		System.out.print(Integer.toString(m.readHighScore()));
 		
 		progress = new ProgressIO();
 
