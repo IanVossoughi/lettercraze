@@ -46,7 +46,7 @@ public class SubmitWordMove {
 			System.out.println("Word is" + selectedWord.getWordString()); //Andrew, checking
 			selectedWord.addScore(); //Andrew, gets score
 			tilesGoAway();
-			model.getBoard().floatUpTiles();
+			model.getBoard().floatUpTiles(model.getType());
 			updateScore();
 
 			//			int score = selectedWord.getScore();

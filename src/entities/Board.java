@@ -58,13 +58,18 @@ public class Board {
 	}
  
 	
-	public void floatUpTiles(){
+	public void floatUpTiles(int type){
 		for (int x = 0; x < 6; x++) {
 			for (int y = 0; y < 6; y++) {
 				int i = x + 1;
 				while(this.getTile(x,y).isEnabled() && this.getTile(x, y).getReplacement()) {
 					if (i >= 6) {
-						this.getTile(x, y).setLetter(this.getTile(x,y).randomLetterFrequency());
+						if (type == 2) {
+							this.getTile(x, y).setEnabled(false);
+						}
+						else {
+							this.getTile(x, y).setLetter(this.getTile(x,y).randomLetterFrequency());
+						}
 						this.getTile(x, y).setReplacement(false);
 						break;
 					}
