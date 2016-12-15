@@ -27,14 +27,7 @@ public class PlayButtonController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// Before we open the PlayField, load the level into the model.
 		this.loadLevel();
-
-		PlayField pf = new PlayField(m);
-		pf.setVisible(true);
-
-		menuField.setVisible(false);
-		menuField.dispose();	
-		levelType = menuField.getLevelTypeLabel().getText();
-
+		
 		System.out.print("\n levelType var is " + levelType + "\n");
 		if(levelType == "PUZZLE"){
 			m.setType(0);
@@ -50,6 +43,15 @@ public class PlayButtonController implements ActionListener{
 		}
 		m.setSelectedTab(whichLevel);
 		System.out.print("\n Selected Tab is =" + whichLevel + "\n");
+
+		PlayField pf = new PlayField(m);
+		pf.setVisible(true);
+
+		menuField.setVisible(false);
+		menuField.dispose();	
+		levelType = menuField.getLevelTypeLabel().getText();
+
+
 		pf.hasTimer();
 	}
 

@@ -91,6 +91,7 @@ public Model getModel(){return this.getModel();}
 	 */
 	public PlayField(Model m) {
 		this.m = m;
+		System.out.println("Level Type: " + m.getType());
 		this.iconMap = new IconMap();
 		this.disabledIcon = new ImageIcon(PlayField.class.getResource("/images/white-square.png"));
 		levelType = m.getType();
@@ -247,8 +248,11 @@ public Model getModel(){return this.getModel();}
 				Tile tile = m.getBoard().getTile(i,  j);
 				
 				// Check if we're on a theme level, otherwise generate random letters
-				if(m.getSelectedIndex() % 3 != 2){
+				if(m.getType() % 3 != 2){
 					//System.out.println("dklfslkdflksd");
+					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
+				} 
+				else if (tile.getLetter() == "_") {
 					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
 				}
 				

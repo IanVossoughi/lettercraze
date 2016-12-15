@@ -167,7 +167,6 @@ public class MenuField extends JFrame {
 				break;
 			case 1:
 				levelType = "PUZZLE";
-
 				break;
 			default:
 				levelType = "LIGHTNING";
