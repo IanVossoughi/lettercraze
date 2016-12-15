@@ -118,11 +118,10 @@ public class Model {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.out.print("HighScores = " + s );
+
 		String[] scores = s.split("\n");
 		for(int i = 0; i < 15; i++){
 			this.highScore[i] = Integer.parseInt(scores[i]);
-			//System.out.println(i + ":" + scores[i]);
 		}
 
 		return num;

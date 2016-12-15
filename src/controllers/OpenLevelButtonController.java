@@ -62,7 +62,6 @@ public class OpenLevelButtonController implements ActionListener {
 						newTile.setEnabled(true);
 					}
 //					System.out.print(nextChar);
-					//newBoard.tiles[x][y] = newTile;
 					m.getBoard().tiles[x][y] = newTile;
 				}
 //				System.out.print("\n");
@@ -73,7 +72,6 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			//System.out.println(nextField(in)); // Star points
 			String[] d = nextField(in).trim().split(" ");
-			//for(String k : d) System.out.println(k + "|");
 			int[] loadedScores = {Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2])};
 			m.setScore(new Score(loadedScores));
 			
@@ -85,7 +83,6 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			//System.out.println(nextField(in)); // Title
 			String title = nextField(in);
-			//System.out.println(title);
 			m.setTitle(title);
 			if(b != null)
 				b.getlevelNameField().setText(title);
@@ -118,7 +115,6 @@ public class OpenLevelButtonController implements ActionListener {
 			e.printStackTrace();
 		}
 		
-		//m.getBoard().printBoard();
 	}
 	
 	// Returns the string in the file up until we see a '\n'

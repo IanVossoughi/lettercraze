@@ -75,12 +75,9 @@ public class MenuField extends JFrame {
 		progress = new ProgressIO();
 
 		levelTypeLabel = new JLabel("PUZZLE");
-		//change to test
-		//progress.saveUnlockedNum(2);
 
 		m.setUnlocked(progress.loadUnlockedNum());
 
-		//System.out.println("Unlocked: " + m.getUnlocked());
 
 		setTitle("LetterCraze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -156,8 +153,6 @@ public class MenuField extends JFrame {
 
 			// I put lblLevelName definition above tabbedPane listener
 			OpenLevelButtonController.loadLevel("levels/1", m, null);
-			//System.out.println(m.getTitle());
-			//setLevelNameLabel(m.getTitle());
 			lblLevelName = new JLabel(m.getTitle());
 			levelNamePanel.add(lblLevelName);
 			lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
