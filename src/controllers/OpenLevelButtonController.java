@@ -52,6 +52,7 @@ public class OpenLevelButtonController implements ActionListener {
 		while(UndoArray.getInstance().getIndex() > -1) {
 			UndoArray.getInstance().removeUndoModel();
 		}
+
 		m.setBoard(new Board());
 		try {
 			FileInputStream in = new FileInputStream(filename);
@@ -103,7 +104,7 @@ public class OpenLevelButtonController implements ActionListener {
 				b.getlevelNameField().setText(title);
 			
 			int levelIndex = Integer.parseInt(nextField(in));
-			m.setSelectedTab(levelIndex);
+			m.setSelectedTab(Integer.parseInt(filename.substring(7))-1);
 			m.setType(levelIndex);
 			if(b != null)
 				b.getlevelTypeCombo().setSelectedIndex(levelIndex);
