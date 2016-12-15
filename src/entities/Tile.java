@@ -1,7 +1,6 @@
 package entities;
 
 import java.util.Random;
-import general.LetterFrequency;
 import general.LetterFrequencyFast;
 
 public class Tile {
@@ -15,7 +14,6 @@ public class Tile {
 		this.enabled = false;
 		this.selected = false;
 		this.toBeReplaced = false;
-		//this.letter = LetterFrequencyFast.getInstance().getRandomLetter();\
 		this.letter = letter;
 		if(letter == "_"){
 			if((this.letter = LetterFrequencyFast.getInstance().getRandomLetter()) == "Q"){
