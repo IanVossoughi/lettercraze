@@ -69,7 +69,8 @@ public class MenuField extends JFrame {
 	 */
 	public MenuField() {
 		this.m = new Model();
-		m.writeHighScore();
+		//m.writeHighScore();
+		m.readHighScore();
 		System.out.print(Integer.toString(m.readHighScore()));
 		progress = new ProgressIO();
 		//ProgressIO.saveUnlockedNum(1);
@@ -185,7 +186,7 @@ public class MenuField extends JFrame {
 			JLabel highScoreLabel = new JLabel("High Score - ");
 			scorePanel.add(highScoreLabel);
 
-			highScoreNumLabel = new JLabel("0");
+			highScoreNumLabel = new JLabel(m.getHighScores()[0] + "");
 			scorePanel.add(highScoreNumLabel);
 
 			tabbedPane.addChangeListener(new LevelSelectMenuTabPaneController(this, 

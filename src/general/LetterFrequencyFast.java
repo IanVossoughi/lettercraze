@@ -23,7 +23,7 @@ public class LetterFrequencyFast {
 	
 	private void generateCumulativeValues(){
 		charFreq = new HashMap<Character, Integer>();
-		charFreq.put('Q', 12702);
+		charFreq.put('E', 12702);
 		charFreq.put('T', 9056);
 		charFreq.put('A', 8167);
 		charFreq.put('O', 7507);
@@ -47,7 +47,7 @@ public class LetterFrequencyFast {
 		charFreq.put('K', 772);
 		charFreq.put('J', 153);
 		charFreq.put('X', 150);
-		charFreq.put('E', 95);
+		charFreq.put('Q', 95);
 		charFreq.put('Z', 74);
 
 		HashMap<Character, Integer> newCharFreq = new HashMap<Character, Integer>();
