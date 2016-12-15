@@ -15,6 +15,7 @@ import entities.Model;
 import entities.Score;
 import entities.Tile;
 import general.LetterFrequencyFast;
+import general.UndoArray;
 
 public class OpenLevelButtonController implements ActionListener {
 	
@@ -43,6 +44,9 @@ public class OpenLevelButtonController implements ActionListener {
 	 * Loads the level file with the given name into the Model.
 	 */
 	public static void loadLevel(String filename, Model m, BuildField b) {
+		while(UndoArray.getInstance().getIndex() > -1) {
+			UndoArray.getInstance().removeUndoModel();
+		}
 		m.setBoard(new Board());
 		try {
 			FileInputStream in = new FileInputStream(filename);
