@@ -41,9 +41,6 @@ public class GenerateController implements ActionListener {
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				//System.out.print(level[x][y]);
-				//TODO
-				System.out.println("Board in loop is size " + m.getBoard().serialize().length());
-				System.out.println("Tile " + x + y + " is " + level[x][y]);
 				if(level[x][y] == "!"){
 					Tile tile = m.getBoard().tiles[x][y];
 					tile.setLetter("!");
@@ -61,12 +58,13 @@ public class GenerateController implements ActionListener {
 					m.getBoard().tiles[x][y].setEnabled(true);
 					//tileArray[x][y].setEnabled(false);
 				}
+				System.out.println("Tile " + x + y + " is " + level[x][y]);
 			}
 			//System.out.println("");
 		}
 		builder.refreshBoard();
-		//TODO Board always too big at this point
-		System.out.println("Board after refresh size " + m.getBoard().serialize().length());
+		//TODO Board?
+		System.out.println("Board after is " + m.getBoard().serialize());
 	}
 
 	private String[][] generate(DefaultListModel<String> wordListModel) {
