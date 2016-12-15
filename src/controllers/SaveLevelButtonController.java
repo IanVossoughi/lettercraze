@@ -8,6 +8,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.swing.JPanel;
+
+import builderBoundary.SaveSelectionWindow;
 import entities.Model;
 import entities.Word;
 
@@ -24,9 +26,15 @@ public class SaveLevelButtonController implements ActionListener {
 	// NOTE: Don't test this...
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		File saveFile = new FilePicker(contentPane).save();
+		File file = new File("dfsd");
+		SaveSelectionWindow filepicker = new SaveSelectionWindow(file);
+		filepicker.setVisible(true);
+		
+		//File saveFile = new FilePicker(contentPane).save();
+		File saveFile = new File("dfsd");
 		if (saveFile != null) {
-			String filename = saveFile.getAbsolutePath(); 
+			String filename = "levels/" + saveFile.getName();
+					//getAbsolutePath(); 
 			this.saveLevel(filename);
 		}
 	}
