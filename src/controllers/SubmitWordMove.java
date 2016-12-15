@@ -39,8 +39,8 @@ public class SubmitWordMove {
 	
 	public boolean doMove(){
 		if(isValid()){
-			model.setLimit(model.getLimit() - 1);
 			play.undoArray.addUndoModel(model);
+			model.setLimit(model.getLimit() - 1);
 			//wordList.addElement(selectedWord.getWordString());
 			model.addWordListModel(selectedWord.getWordString());
 			System.out.println("Word is" + selectedWord.getWordString()); //Andrew, checking
@@ -77,6 +77,7 @@ public class SubmitWordMove {
 		}
 		new DeselectButtonController(model, play).actionPerformed(null);
 		play.refreshBoard();
+		System.out.println("" + model.getScore());
 
 		return false;
 	}
@@ -150,11 +151,14 @@ public class SubmitWordMove {
 			model.setSelectedWord(play.undoArray.getLatestModel().getSelectedWord());
 			model.setLastMove(play.undoArray.getLatestModel().getLastMove());
 			model.setScore(play.undoArray.getLatestModel().getScore());
+			model.setLimit(play.undoArray.getLatestModel().getLimit());
 			model.setWordListModel(play.undoArray.getLatestModel().getWordListModel());
 			play.getScoreLabel().setText(Integer.toString(model.getScore().getScoreValue()));
 			model.getBoard().setSelectedTileCoords(play.undoArray.getLatestModel().getBoard().getSelectedTileCoords());
 			model.getBoard().setSelectedTileCoords(play.undoArray.getLatestModel().getBoard().getSelectedTileCoords());
 			play.undoArray.removeUndoModel();
+			this.updateStars();
+			System.out.println("New score: " + model.getScore().getScoreValue());
 			play.refreshBoard();
 			return model;
 		}

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-8
-=======
 0
->>>>>>> branch 'master' of https://github.com/IanVossoughi/lettercraze.git
 0
 0
 0
