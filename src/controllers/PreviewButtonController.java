@@ -8,6 +8,7 @@ import java.util.TimerTask;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import builderBoundary.BuildField;
 import entities.Model;
 import playerBoundary.MenuField;
 import playerBoundary.PlayField;
@@ -16,11 +17,13 @@ public class PreviewButtonController implements ActionListener{
 
 	private Model m;
 	private Model mCopy;
+	private BuildField b;
 	
 
-	public PreviewButtonController(Model m) {
+	public PreviewButtonController(Model m, BuildField b) {
 		this.m = m;
 		this.mCopy = m.copyModel();
+		this.b = b;
 	}
 
 	@Override
@@ -30,12 +33,12 @@ public class PreviewButtonController implements ActionListener{
 		p1.dispose();
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
-			  @Override
-			  public void run() {
-				  createPlay(e).toFront();
-			  }
-			}, 2);
-		
+			@Override
+			public void run() {
+				createPlay(e).toFront();
+			}
+		}, 2);
+		b.refreshBoard();
 	}
 	
 	private PlayField createPlay(ActionEvent e){

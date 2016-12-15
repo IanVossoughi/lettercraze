@@ -86,10 +86,20 @@ public class OpenLevelButtonController implements ActionListener {
 			int[] loadedScores = {Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2])};
 			m.setScore(new Score(loadedScores));
 			
+			if(b != null) {
+				while(!m.getWordListModel().isEmpty()) {
+					m.removeWordListModel(0);
+				}
+			}
+		
+			
 			//System.out.println(nextField(in)); // Word list 
 			for(String word : nextField(in).split(" ")){
 				//m.addWordListModel(word);
 				m.addThemeWord(word);
+				if (b != null) {
+					m.addWordListModel(word);
+				}
 			}
 			
 			//System.out.println(nextField(in)); // Title
