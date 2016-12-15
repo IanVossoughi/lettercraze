@@ -186,6 +186,7 @@ public class MenuField extends JFrame {
 			scorePanel.add(highScoreLabel);
 
 			m.readHighScore();
+			System.out.println(m.getHighScores()[0] + "");
 			highScoreNumLabel = new JLabel(m.getHighScores()[0] + "");
 			scorePanel.add(highScoreNumLabel);
 
