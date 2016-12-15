@@ -18,8 +18,6 @@ public class ExitBuilderController implements ActionListener {
 
 	public ExitBuilderController(BuildField buildField) {
 		this.buildField = buildField;
-		this.m = m;
-		this.contentPane = contentPane;
 	}
 
 	@Override
