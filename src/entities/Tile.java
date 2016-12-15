@@ -25,7 +25,7 @@ public class Tile {
 			else
 				this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
 
-			System.out.print(this.letter);
+			//System.out.print(this.letter);
 		}
 		//this.points = points;
 	}
