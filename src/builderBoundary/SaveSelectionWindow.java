@@ -47,4 +47,8 @@ public class SaveSelectionWindow extends JFrame {
 		contentPane.add(save, BorderLayout.SOUTH);
 	}
 
+	public JComboBox<Integer> getCombo() {
+		return this.levelSelect;
+	}
+
 }

@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import builderBoundary.SaveSelectionWindow;
@@ -28,13 +29,16 @@ public class SaveLevelButtonController implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		saveSelectionWindow.setVisible(false);
 		
-		//File saveFile = new FilePicker(contentPane).save();
-		File saveFile = new File("dfsd");
-		if (saveFile != null) {
+		int levelNum = (Integer)saveSelectionWindow.getCombo().getSelectedItem();
+		//System.out.println("Selected: " + levelNum);
+		
+		/*if (saveFile != null) {
 			String filename = "levels/" + saveFile.getName();
 					//getAbsolutePath(); 
 			this.saveLevel(filename);
-		}
+		}*/
+		this.saveLevel("levels/" + levelNum);
+		JOptionPane.showMessageDialog(saveSelectionWindow, "Level Saved.");
 	}
 	
 	/*
