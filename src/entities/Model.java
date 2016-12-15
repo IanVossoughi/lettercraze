@@ -78,6 +78,8 @@ public class Model {
 		for (int x = 0; x < this.wordListModel.size(); x++) {
 			model.wordListModel.addElement(this.wordListModel.get(x));
 		}
+		model.themeWords = new ArrayList<String>();
+		model.themeWords.addAll(this.themeWords);
 
 		model.getBoard().setSelectedTileCoords(new Coordinate(this.getBoard().getSelectedTileCoords().x, this.getBoard().getSelectedTileCoords().y));
 		model.selectedWord = new Word(this.selectedWord.getWordString(),new Integer(this.selectedWord.getScore()));
