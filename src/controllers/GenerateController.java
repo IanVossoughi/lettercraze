@@ -123,11 +123,12 @@ public class GenerateController implements ActionListener {
 	}
 
 	/**
-	 * 
-	 * @param level
-	 * @param string
-	 * @return
-	 * @throws Exception
+	 * Take the letters of a single word and draw them into a random sequence across a 6 by 6 grid of "tile" Strings, as long
+	 * as there is sufficient room to fit the new word.
+	 * @param level The 6-by-6 array of Strings, each of which will contain one character from the words added into them
+	 * @param string The word to be split into one-character substrings and distributed in a contiguous sequence across the board
+	 * @return An updated version of the level array that contains the letters of the passed words (if there is room to add them)
+	 * @throws Exception If the builder's word is too large for the board or their are insufficient empty tiles to fit the new word
 	 */
 	private String[][] addWord(String[][] level, String string) throws Exception {
 		int[] pos = addRandomLetter(level, string);
@@ -139,6 +140,14 @@ public class GenerateController implements ActionListener {
 		return level;
 	}
 	
+	/**
+	 * 
+	 * @param pos
+	 * @param level
+	 * @param c
+	 * @return
+	 * @throws Exception
+	 */
 	private int[] addLetterAroundPosition(int[] pos, String[][] level, String c) throws Exception{
 		for(int i = 0; i<200; i++){
 			// Start at a random tile
@@ -163,6 +172,13 @@ public class GenerateController implements ActionListener {
 	}
 
 	// Returns an array with the position of the new tile added.
+	/**
+	 * 
+	 * @param level
+	 * @param l
+	 * @return
+	 * @throws Exception
+	 */
 	private int[] addRandomLetter(String[][] level, String l) throws Exception{
 		
 		l = l.substring(0, 1); // FIX TO AVOID CRASHING
