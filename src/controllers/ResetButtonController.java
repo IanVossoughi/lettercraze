@@ -18,8 +18,9 @@ import playerBoundary.PlayField;
 
 public class ResetButtonController implements ActionListener {
 
-	/** The builder boundary and that we are manipulating and using to begin the action. */
+	/** The player boundary and that we are manipulating and using to begin the action. */
 	private PlayField playField;
+	
 	/** Highest level entity model*/
 	private Model m;
 

@@ -28,16 +28,32 @@ import general.UndoArray;
  */
 public class OpenLevelButtonController implements ActionListener {
 	
+	/** The builder boundary that we are manipulating and using to begin the action. */
 	protected JPanel contentPane;
-	protected Model m;
-	protected BuildField b;
 	
+	/** The highest level entity model.*/
+	protected Model m;
+	
+	/** The builder boundary that we are manipulating and using to begin the action. */
+	protected BuildField b;
+
+	/**
+	 * OpenLevelButtonController constructor comment.
+	 */
 	// This class is for the builder's open level dialog
 	public OpenLevelButtonController(Model m, JPanel contentPane, BuildField buildField){
 		this.contentPane = contentPane;
 		this.m = m;
 		this.b = buildField;
 	}
+	
+
+	/**
+	 * Coordinate reaction to clicking the Open Level menu item, prompting the user to 
+	 * open 1 of 15 level options to edit.
+	 * <p>
+	 * @param e controllers.OpenLevelButtonController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		String name = m.getLevelSaverInt()  + "";
@@ -46,7 +62,7 @@ public class OpenLevelButtonController implements ActionListener {
 		
 	}
 	
-	/*
+	/**
 	 * Loads the level file with the given name into the Model.
 	 */
 	public static void loadLevel(String filename, Model m, BuildField b) {
@@ -132,6 +148,9 @@ public class OpenLevelButtonController implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Returns the string in the file until a \n appears.
+	 */
 	// Returns the string in the file up until we see a '\n'
 	protected static String nextField(FileInputStream in) throws IOException{
 		char c = 0;

@@ -24,6 +24,7 @@ public class SaveLevelButtonController implements ActionListener {
 
 	/** The highest level entity model.*/
 	private Model m;
+	
 	/** The builder boundary that we are manipulating and using to begin the action. */
 	private JPanel contentPane;
 	

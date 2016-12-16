@@ -58,7 +58,7 @@ public class NewLevelBuilderController implements ActionListener {
 	}
 
 	/**
-	 * Save the open level after the user has selected to save it
+	 * Save the open level after the user has selected to save it.
 	 */
 	void userSelectsSave() {
 		SaveSelectionWindow saver = new SaveSelectionWindow(m, "Save", new SaveLevelButtonController(m));
@@ -68,7 +68,7 @@ public class NewLevelBuilderController implements ActionListener {
 	}
 	
 	/**
-	 * Closes the open level in the Builder and opens up a Builder window with blank information
+	 * Closes the open level in the Builder and opens up a Builder window with blank information.
 	 */
 	void closingLogic() {
 		buildField.setVisible(false);
