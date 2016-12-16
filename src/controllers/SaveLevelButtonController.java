@@ -40,7 +40,7 @@ public class SaveLevelButtonController implements ActionListener {
 	 * Coordinate reaction to clicking the Save Level Menu item
 	 * Gives the user a list of level names to save into
 	 * <p>
-	 * @param e controllers.SaveLevelButtonController.actionPerformed(ActionEvent)
+	 * @param ae controllers.SaveLevelButtonController.actionPerformed(ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent ae) {

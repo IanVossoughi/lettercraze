@@ -52,7 +52,7 @@ public class OpenLevelButtonController implements ActionListener {
 	 * Coordinate reaction to clicking the Open Level menu item, prompting the user to 
 	 * open 1 of 15 level options to edit.
 	 * <p>
-	 * @param e controllers.OpenLevelButtonController.actionPerformed(ActionEvent)
+	 * @param arg0 controllers.OpenLevelButtonController.actionPerformed(ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

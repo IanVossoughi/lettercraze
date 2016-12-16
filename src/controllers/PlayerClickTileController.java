@@ -40,7 +40,7 @@ public class PlayerClickTileController implements ActionListener {
 	/**
 	 * Coordinate reaction to clicking a tile
 	 * <p>
-	 * @param e controllers.PlayerClickTileController.actionPerformed(ActionEvent)
+	 * @param ae controllers.PlayerClickTileController.actionPerformed(ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent ae) {

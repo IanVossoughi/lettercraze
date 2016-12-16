@@ -43,7 +43,7 @@ public class TimerEditController implements KeyListener {
 	/**
 	 * Coordinate reaction to the end of a Key Event. In this case,
 	 * the model's timer is updated as soon as the user finishes pressing a key inside the timer field.
-	 * @param arg0 controllers.TimerEditController.keyReleased(KeyEvent)
+	 * @param e controllers.TimerEditController.keyReleased(KeyEvent)
 	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
