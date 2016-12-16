@@ -44,7 +44,6 @@ public class UndoArray {
 	}
 
 	public int getIndex() {
-		// TODO Auto-generated method stub
 		return index;
 	}
 	

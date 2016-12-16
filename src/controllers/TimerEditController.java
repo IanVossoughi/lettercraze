@@ -27,7 +27,6 @@ public class TimerEditController implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -37,7 +36,6 @@ public class TimerEditController implements KeyListener {
 			// Update the model's title field.\
 			int timeLeft = Integer.parseInt(timer.getText());
 			m.setTime(timeLeft);
-			//System.out.println(timeLeft);
 		} else {
 			timer.setText("");
 		}

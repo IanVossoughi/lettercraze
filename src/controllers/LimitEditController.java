@@ -52,7 +52,6 @@ public class LimitEditController implements KeyListener {
 			// Update the model's title field.\
 			int moveLimit = Integer.parseInt(limit.getText());
 			m.setLimit(moveLimit);
-			//System.out.println(timeLeft);
 		} else {
 			limit.setText("");
 		}

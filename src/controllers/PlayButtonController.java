@@ -13,14 +13,12 @@ public class PlayButtonController implements ActionListener{
 	private Model m;
 	String levelType;
 	int whichLevel;
-	//private int unlocked;
 
 	public PlayButtonController(MenuField menuField, Model m) {
 		this.menuField = menuField;
 		this.m = m;
 		this.levelType = menuField.getLevelType();
 		this.whichLevel = m.getSelectedIndex();
-		//this.unlocked = unlocked;
 	}
 
 	@Override

@@ -63,7 +63,6 @@ public class MenuField extends JFrame {
 		});
 	}
 
-	//public int getUnlocked(){return this.unlocked;}
 	public JLabel getHighScoreLabel(){return highScoreNumLabel;}
 	public String getLevelType(){return this.levelType;}
 	public JLabel getLevelTypeLabel(){return this.levelTypeLabel;}
@@ -76,9 +75,7 @@ public class MenuField extends JFrame {
 	 */
 	public MenuField() {
 		this.m = new Model();
-		//m.writeHighScore();
 		m.readHighScore();
-		//m.writeStars();
 		m.readStars();
 		
 		progress = new ProgressIO();

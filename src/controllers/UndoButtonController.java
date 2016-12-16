@@ -20,11 +20,7 @@ public class UndoButtonController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (pf.undoArray.getIndex() > -1) {
 			model = model.getLastMove().undoMove();
-			//pf.setModel(model);
-			//pf = new PlayField(model);
 		}
-		//UndoMove move = new UndoMove(model, pf);
-		//move.doMove();
 	}
 
 }

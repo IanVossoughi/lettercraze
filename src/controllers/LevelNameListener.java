@@ -38,7 +38,6 @@ public class LevelNameListener implements KeyListener {
 	 */
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -52,7 +51,6 @@ public class LevelNameListener implements KeyListener {
 		// Update the model's title field.\
 		String title = levelName.getText();
 		m.setTitle(title);
-		//System.out.println("Level name updated: " + title);
 		
 	}
 	

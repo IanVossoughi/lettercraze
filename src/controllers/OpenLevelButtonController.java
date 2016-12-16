@@ -63,7 +63,6 @@ public class OpenLevelButtonController implements ActionListener {
 					Tile newTile = new Tile(Character.toString(nextChar));
 					if(nextChar == '!'){
 						newTile.setEnabled(false);
-						//newTile.setLetter("q");
 					}
 					else if (nextChar == '_'){
 						newTile.setEnabled(true);
@@ -72,7 +71,6 @@ public class OpenLevelButtonController implements ActionListener {
 					else {
 						newTile.setEnabled(true);
 					}
-					//newBoard.tiles[x][y] = newTile;
 					m.getBoard().tiles[x][y] = newTile;
 				}
 			}
@@ -128,7 +126,6 @@ public class OpenLevelButtonController implements ActionListener {
 			
 			in.close();
 		} catch (FileNotFoundException e) {
-			//e.printStackTrace();
 			System.out.println("Level not found - " + filename );
 		} catch (IOException e) {
 			e.printStackTrace();

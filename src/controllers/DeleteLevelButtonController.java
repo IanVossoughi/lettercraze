@@ -39,10 +39,8 @@ public class DeleteLevelButtonController implements ActionListener {
 	public DeleteLevelButtonController(Model m, BuildField b){
 		this.m = m;
 		this.b = b;
-		//this.saveSelectionWindow = saveSelectionWindow;
 	}
 
-	// NOTE: Don't test this...
 	/**
 	 * Coordinate reaction to clicking the Delete level window's Delete button, removing the respective level from disk.
 	 * <p>

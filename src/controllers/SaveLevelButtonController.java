@@ -18,24 +18,15 @@ public class SaveLevelButtonController implements ActionListener {
 
 	private Model m;
 	private JPanel contentPane;
-	//private SaveSelectionWindow saveSelectionWindow;
 	
 	public SaveLevelButtonController(Model m){
 		this.m = m;
 		this.contentPane = contentPane;
-		//this.saveSelectionWindow = saveSelectionWindow;
 	}
 
 	// NOTE: Don't test this...
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		
-		//int levelNum = (Integer)saveSelectionWindow.getCombo().getSelectedItem();
-		/*File saveFile = new FilePicker(contentPane).save();
-		if (saveFile != null) {
-			String filename = saveFile.getAbsolutePath(); 
-			this.saveLevel(filename);
-		}*/
 		int levelNum = m.getLevelSaverInt();
 		this.saveLevel("levels/" + levelNum);
 		//JOptionPane.showMessageDialog(null, "Level Saved.");
@@ -83,10 +74,8 @@ public class SaveLevelButtonController implements ActionListener {
 			
 			out.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

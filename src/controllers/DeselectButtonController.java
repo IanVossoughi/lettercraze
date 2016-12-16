@@ -45,8 +45,6 @@ public class DeselectButtonController implements ActionListener {
 			}
 		}
 		p.refreshBoard();
-		// TODO Auto-generated method stub
-
 	}
 
 }

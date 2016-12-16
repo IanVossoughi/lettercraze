@@ -23,7 +23,6 @@ public class Tile {
 			else
 				this.letter = LetterFrequencyFast.getInstance().getRandomLetter();
 		} 
-		//this.points = points;
 	}
 
 	public Tile toggleEnabled(){
@@ -36,12 +35,6 @@ public class Tile {
 		}
 		return this;
 	}
-	/*
-	public String randomLetter() {
-		//TODO: Get Random letters according to scoring frequency
-		String letter =  (new Random().nextInt(26) + 65);
-		return letter;
-	}*/
 
 	public String randomLetterFrequency() {
 		return LetterFrequencyFast.getInstance().getRandomLetter();
@@ -85,7 +78,6 @@ public class Tile {
 	}
 
 	public void setEnabled(boolean b) {
-		// TODO Auto-generated method stub
 		this.enabled = b;
 	}
 }

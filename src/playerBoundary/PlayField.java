@@ -242,7 +242,6 @@ public Model getModel(){return this.getModel();}
 				if(m.getType() % 3 != 2){
 					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
 				} else if(tile.getLetter() == "!"){
-					//System.out.println("!!!!!!!"); // ! marks are working fine
 				}
 				else if (tile.getLetter() == "_") {
 					tile.setLetter(LetterFrequencyFast.getInstance().getRandomLetter());
