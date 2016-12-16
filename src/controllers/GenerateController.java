@@ -141,12 +141,17 @@ public class GenerateController implements ActionListener {
 	}
 	
 	/**
-	 * 
-	 * @param pos
-	 * @param level
-	 * @param c
-	 * @return
-	 * @throws Exception
+	 * Given a position on the board, attempt to place a letter around it. There are only four places the new letter
+	 * can go, and if there is no space available, this method will fail and throw and exception.
+	 * @param pos An array of integers containing the x and y position of the selected tile that the
+	 * new letter will go.
+	 * @param level The current array of tiles representing the board.
+	 * @param c The letter that will be added if this method finds a space for it.
+	 * @return Returns an integer array containing the position of the tile that the new letter was added to.
+	 * This position will make up the start to the next position.
+	 * @throws Exception Throws an exception if there are no spaces available around the tile.
+	 * Now that I think about it, this takes a very roundabout way of doing this, but ensures that
+	 * it completely random. So that's nice.
 	 */
 	private int[] addLetterAroundPosition(int[] pos, String[][] level, String c) throws Exception{
 		for(int i = 0; i<200; i++){
@@ -173,11 +178,16 @@ public class GenerateController implements ActionListener {
 
 	// Returns an array with the position of the new tile added.
 	/**
-	 * 
-	 * @param level
-	 * @param l
-	 * @return
-	 * @throws Exception
+	 *  While the previous level adds a random tile around a position, 
+	 *  this method generates that random position if we are starting a word.
+	 *  It generates the random position over and over until a spot is found
+	 *  that doesn't currently have a tile in it.
+	 * @param level An array representing the current board
+	 * @param l The letter that will be added, starting the new word.
+	 * @return Returns an integer of the random position that was selected, 
+	 * starting the new word.
+	 * @throws An exception is thrown if there is no space available to start the word,
+	 * (if after 300 random tries no tile has been found).
 	 */
 	private int[] addRandomLetter(String[][] level, String l) throws Exception{
 		
