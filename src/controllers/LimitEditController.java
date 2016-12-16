@@ -44,7 +44,7 @@ public class LimitEditController implements KeyListener {
 	/**
 	 * Coordinate reaction to the end of a Key Event. In this case,
 	 * the model's move limit is updated as soon as the user finishes pressing a key inside the limit field.
-	 * @param arg0 controllers.LimitEditController.keyReleased(KeyEvent)
+	 * @param e controllers.LimitEditController.keyReleased(KeyEvent)
 	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
