@@ -1,7 +1,7 @@
 package entities;
 
 /**
- *  The coordinate system to be used by the tiles and board
+ *  The coordinate system to be used by the tiles and board.
  * <p>
  * Creation date: (12/15/16)
  * @author Andrew Vanner

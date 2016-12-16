@@ -28,19 +28,34 @@ public class Model {
 	Board board;
 	/** Score of the level. */
 	Score score;
+	/** Word list of level. */
 	DefaultListModel<String> wordListModel;
+	/** Current selected word. */
 	Word selectedWord;
+	/** Time left to play level. */
 	int time;
+	/** Highscores of level. */
 	int[] highScore;// = {15,30,40,50,60,0,0,0,0,0,0,0,0,0,0};
+	/** Tab to access level. */
 	int selectedTab = 0; // Used only by player
+	/** Checks if level is unlocked. */
 	int unlockedLevels = 0;
+	/** The last move made in the model. */
 	SubmitWordMove lastMove;
+	/** The entire previous model. */
 	Model lastModel;
+	/** List of theme words, only used for theme levels. */
 	ArrayList<String> themeWords = new ArrayList<String>();
+	/** Turn limit for theme levels. */
 	int wordLimit;
+	/** Checks if star is unlocked or not. */
 	int[] starStatus;
+	/** When saving a level from builder. */
 	private Integer levelSaverInt;
 
+	/**
+	 * Board constructor comment.
+	 */
 	public Model() {
 		this.board = new Board();
 		this.wordListModel = new DefaultListModel<String>();
@@ -68,6 +83,7 @@ public class Model {
 			return false;
 		}
 	}
+	/** Makes copy of the model to allow moves to be undone. */
 	public Model copyModel() {
 		Model model = new Model();
 		model.setTitle(this.title);
@@ -105,6 +121,8 @@ public class Model {
 		this.setLastModel(model);
 		return model;
 	}
+	
+	/** Updates stars. */
 	public void writeStars(){
 		try{
 			File outFile = new File("stars.txt");
@@ -124,6 +142,7 @@ public class Model {
 			e.printStackTrace();
 		}
 	}
+	/** Checks start status. */
 	public int readStars(){
 		FileInputStream in;
 		int num = -1; // Error if this returns
@@ -149,6 +168,7 @@ public class Model {
 
 		return num;
 	}
+	/** Updates highscore if applicable. */
 	public void writeHighScore(){
 		try{
 			File outFile = new File("highscores.txt");
@@ -169,6 +189,7 @@ public class Model {
 		}
 	}
 
+	/** Checks the highscore. */
 	public int readHighScore(){
 		FileInputStream in;
 		int num = -1; // Error if this returns
@@ -209,6 +230,7 @@ public class Model {
 			return false;
 	}
 
+	/** Checks if player can unlock next level */
 	public boolean hasWon(){
 		return getScore().score >= getScore().getStarScoreIndex(2);
 	}

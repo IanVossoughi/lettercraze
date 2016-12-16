@@ -1,15 +1,27 @@
 package entities;
 
+/**
+ *  The word created from tiles in the level.
+ * <p>
+ * Creation date: (12/15/16)
+ * @author Andrew Vanner
+ */
 public class Word {
 
+	/** The letters of the word. */
 	String chars;
+	/** The score the word provides. */
 	int score;
 	
+	/**
+	 * Word constructor comment.
+	 */
 	public Word(String chars, int score) {
 		this.chars = chars;
 		this.score = score;
 	}
 	
+	/** Adds word score. Changes depending on level type. */
 	public void addScore() {
 		int wordScore = 0;
 		int letterScore = 0;

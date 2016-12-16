@@ -3,13 +3,27 @@ package entities;
 import java.util.Random;
 import general.LetterFrequencyFast;
 
+/**
+ *  A tile of a level.
+ * <p>
+ * Creation date: (12/15/16)
+ * @author Andrew Vanner
+ */
 public class Tile {
+	/** If tile is in play or not. */
 	boolean enabled;
+	/** Checks if tile has been selected */
 	boolean selected;
+	/** Checks if tile needs to be replaced. */
 	boolean toBeReplaced;
+	/** Letter in the tile. */
 	String letter; // Even though Q is Qu, just set this to Q - it can show Qu in the display
+	/** Points of tile. */
 	int points; 
 
+	/**
+	 * Tile constructor comment.
+	 */
 	public Tile(String letter) {
 		this.enabled = false;
 		this.selected = false;
@@ -25,6 +39,7 @@ public class Tile {
 		} 
 	}
 
+	/** Checks if tile is enabled or not. */
 	public Tile toggleEnabled(){
 		if(enabled){
 			enabled = false;
@@ -36,10 +51,11 @@ public class Tile {
 		return this;
 	}
 
+	/** Gives tile a random letter. */
 	public String randomLetterFrequency() {
 		return LetterFrequencyFast.getInstance().getRandomLetter();
 	}
-
+	/** Selects or deselects tile. */
 	public Tile toggleSelected(){
 		if(selected){
 			selected = false;
