@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Iterator;
 
+/**
+ * WordTable used to obtain and handle references to the dictionary for comparing against words.
+ *
+ */
 public class WordTable {
 	static Hashtable<String,Boolean> table;
 	

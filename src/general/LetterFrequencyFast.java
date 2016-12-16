@@ -3,11 +3,26 @@ package general;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * Generates a HashMap of every letter and its relative frequency in the English language,
+ * along with methods to quickly gain access to a random letter according to these frequencies.
+ * LetterFrequencyFast is a singleton class to provide global access to the HashMap and avoid wasting space
+ * with multiple tables.
+ * <p>
+ * Creation date: (12/15/16 10:34:12 PM)
+ * @author Ian Vossoughi
+ */
 public class LetterFrequencyFast {
+	/** The singleton instance of this class, to avoid storing multiple instances of the HashMap. */
 	private static LetterFrequencyFast instance = null;
 
+	/** The HashMap storing each character and its frequency. */
 	private HashMap<Character, Integer> charFreq;
 
+	/** 
+	 * Obtains the single existence of LetterFrequencyFast, or creates one through the protected constructor
+	 * if one does not already exist. 
+	 * */
 	public static LetterFrequencyFast getInstance() {
 		if (instance == null) {
 			instance = new LetterFrequencyFast();
@@ -15,12 +30,18 @@ public class LetterFrequencyFast {
 		return instance;
 	}
 
+	/**
+	 * The protected constructor of LetterFrequencyFast (can only be invoked once).
+	 */
 	protected LetterFrequencyFast() {
 		charFreq = new HashMap<Character, Integer>();
 		generateCumulativeValues();
 		
 	}
 	
+	/**
+	 * Add each letter and its relative cumulative frequency to the HashMap, then generate a new random character.
+	 */
 	private void generateCumulativeValues(){
 		charFreq = new HashMap<Character, Integer>();
 		charFreq.put('E', 12702);
@@ -61,6 +82,10 @@ public class LetterFrequencyFast {
 		getRandomLetter();
 	}
 
+	/**
+	 * Generates a random character based on its relative frequency, then returns it as a string.
+	 * @return A string representation of the randomly-selected letter
+	 */
 	public String getRandomLetter() {
 		int rand = new Random().nextInt(100000);
 		for(char key : charFreq.keySet()){
