@@ -8,7 +8,7 @@ import playerBoundary.MenuField;
 import playerBoundary.PlayField;
 
 /**
- *  Controls all actions related to the Player Play button
+ *  Controls all actions related to the Player Play button.
  *  to begin playing a game
  * <p>
  * Creation date: (12/15/16 8:12:25 PM)

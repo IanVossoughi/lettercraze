@@ -10,7 +10,7 @@ import entities.Model;
 import entities.Score;
 
 /**
- *  Controls all actions related to the Builder setting the star score values
+ *  Controls all actions related to the Builder setting the star score values.
  * <p>
  * Creation date: (12/15/16)
  * @author Andrew Vanner

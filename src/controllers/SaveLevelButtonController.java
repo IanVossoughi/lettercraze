@@ -15,7 +15,7 @@ import entities.Model;
 import entities.Word;
 
 /**
- *  Controls all actions related to the Builder Save Level Menu option
+ *  Controls all actions related to the Builder Save Level Menu option.
  * <p>
  * Creation date: (12/15/16)
  * @author Andrew Vanner

@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import entities.Model;
 
 /**
- *  Controls all actions related to the Timer
+ *  Controls all actions related to the Timer.
  * <p>
  * Creation date: (12/15/16 10:06:25 PM)
  * @author Gabrielle O'Dell

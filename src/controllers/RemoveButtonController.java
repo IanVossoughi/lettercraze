@@ -9,7 +9,7 @@ import builderBoundary.BuildField;
 import entities.Model;
 
 /**
- *  Controls all actions related to the Builder Remove Button
+ *  Controls all actions related to the Builder Remove Button.
  *  This removes a word from the word list
  * <p>
  * Creation date: (12/15/16)

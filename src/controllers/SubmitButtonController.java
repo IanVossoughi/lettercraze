@@ -14,7 +14,7 @@ import playerBoundary.PlayField;
 import playerBoundary.ProgressIO;
 
 /**
- *  Controls all actions related to the Player Submit Button 
+ *  Controls all actions related to the Player Submit Button .
  *  Used to submit words made in game
  * <p>
  * Creation date: (12/15/16)

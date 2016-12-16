@@ -11,7 +11,7 @@ import entities.Word;
 import playerBoundary.PlayField;
 
 /**
- *  Controls all actions related to the Player clicking a tile
+ *  Controls all actions related to the Player clicking a tile.
  * <p>
  * Creation date: (12/15/16)
  * @author Andrew Vanenr
