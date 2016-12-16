@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import builderBoundary.BuildField;
 
 /**
- *  Controls all actions related to the Builder Reset Button
+ *  Controls all actions related to the Builder Reset Button.
  *  Resets all building elements to the initial state
  * <p>
  * Creation date: (12/15/16)

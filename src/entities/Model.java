@@ -13,11 +13,20 @@ import javax.swing.DefaultListModel;
 
 import controllers.SubmitWordMove;
 
+/**
+ *  The highest level entity model.
+ * <p>
+ * Creation date: (12/15/16)
+ * @author Andrew Vanner
+ */
 public class Model {
-
+	/** Title of level. */
 	String title;
+	/** Type of level. */
 	int type; // 0 - puzzle, 1 - lightning, 2 - theme
+	/** Board of the level. */
 	Board board;
+	/** Score of the level. */
 	Score score;
 	DefaultListModel<String> wordListModel;
 	Word selectedWord;
