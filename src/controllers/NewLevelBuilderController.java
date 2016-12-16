@@ -7,26 +7,43 @@ import builderBoundary.BuildField;
 import builderBoundary.SaveSelectionWindow;
 import entities.Model;
 
+/**
+ *  Controls all actions related to the Builder New Level Menu item, 
+ *  specifically starting on a new level from the Builder after either saving or discarding changes on the currently open level.
+ * <p>
+ * Creation date: (12/15/16 8:12:25 PM)
+ * @author Ian Vossoughi
+ */
 public class NewLevelBuilderController implements ActionListener {
 
+	/** The builder boundary that we are manipulating and using to begin the action. */
 	private BuildField buildField;
+	
+	/** The highest level entity model.*/
 	private Model m;
-	private JPanel contentPane;
 
-
+	/**
+	 * LevelSelectMenuTabPaneController constructor comment.
+	 */
 	public NewLevelBuilderController(BuildField buildField, Model m) {
 		this.buildField = buildField;
 		this.m = m;
-		this.contentPane = buildField.getContentPane();
 	}
 
+	
+	/**
+	 * Coordinate reaction to clicking the New Level menu item, prompting the user to save before resetting the builder to its
+	 * initial state.
+	 * <p>
+	 * @param e controllers.NewLevelBuilderController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object[] options = {"Yes, please",
 		"No, thanks"};
 		int n = JOptionPane.showOptionDialog(new JFrame(),
 				"Do you wanna save?",
-				"save or nah",
+				"Save?",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.WARNING_MESSAGE,
 				null,
@@ -39,24 +56,19 @@ public class NewLevelBuilderController implements ActionListener {
 		}
 	}
 
-	/** This can be tested. */
+	/**
+	 * Save the open level after the user has selected to save it
+	 */
 	void userSelectsSave() {
-		//new SaveLevelButtonController(m, contentPane).actionPerformed(null);
-//		JMenuItem mntmSaveLevel = new JMenuItem("Save Level");
-//		mntmSaveLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
-//		mntmSaveLevel.addActionListener(new SaveLevelButtonController(m, contentPane));
-//
-//		for(ActionListener a: mntmSaveLevel.getActionListeners()){
-//			a.actionPerformed(new ActionEvent (this, ActionEvent.ACTION_PERFORMED, null));
-//		} 
-
 		SaveSelectionWindow saver = new SaveSelectionWindow(m, "Save", new SaveLevelButtonController(m));
 		saver.setVisible(true);
 		JOptionPane.showMessageDialog(new JFrame(),"Complete");
-		//new SaveLevelButtonController(m).actionPerformed(null);
 		
 	}
 	
+	/**
+	 * Closes the open level in the Builder and opens up a Builder window with blank information
+	 */
 	void closingLogic() {
 		buildField.setVisible(false);
 		buildField.dispose();

@@ -18,6 +18,14 @@ import entities.Tile;
 import general.LetterFrequencyFast;
 import general.UndoArray;
 
+/**
+ *  Controls all actions related to the Builder Open Level Menu item, 
+ *  specifically selecting one level from the fifteen listed on the Builder 
+ *  after either saving or discarding changes on the currently open level.
+ * <p>
+ * Creation date: (12/15/16 8:12:25 PM)
+ * @author Ian Vossoughi
+ */
 public class OpenLevelButtonController implements ActionListener {
 	
 	protected JPanel contentPane;
@@ -32,13 +40,6 @@ public class OpenLevelButtonController implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		/*File openFile = new FilePicker(contentPane).open();
-		if (openFile != null) {
-			String name = openFile.getName();
-			System.out.println("Opening level " + name);*/
-		//SaveSelectionWindow saveSelectionWindow = new SaveSelectionWindow(m, "open");
-		//saveSelectionWindow.setVisible(false);
-		
 		String name = m.getLevelSaverInt()  + "";
 		loadLevel("levels/" + name, m, b);
 		b.refreshBoard();
@@ -104,15 +105,12 @@ public class OpenLevelButtonController implements ActionListener {
 				b.getlevelNameField().setText(title);
 			
 			int levelIndex = Integer.parseInt(nextField(in));
-//			if (b == null) {
-//			m.setSelectedTab(Integer.parseInt(filename.substring(7))-1);
-//			}
-//			else {
+			
 			if (filename.equals("levels/temp")) {
 				m.setSelectedTab(0);
 			} else 
 				m.setSelectedTab(Integer.parseInt(filename.substring(7))-1);
-			//}
+			
 			m.setType(levelIndex);
 			if(b != null)
 				b.getlevelTypeCombo().setSelectedIndex(levelIndex);
