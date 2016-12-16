@@ -17,7 +17,8 @@ You are now at the main menu to select a level. Only level 1 can
 be played right now. The level number is determined by the selected panel.
 Press "Play" to begin the level.
 When you return, your score and progressed will be saved.
-To reset all progress, exit the entire program and run Main.java again
+To reset all progress, exit the entire program and run Main.java again.
+To return to the game and continue progress, run src/playerBoundary/MenuField.java
 
 == Level Types ==
 
