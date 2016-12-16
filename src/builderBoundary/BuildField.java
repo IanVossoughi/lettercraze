@@ -28,7 +28,7 @@ import controllers.BuilderLevelTypeController;
 import controllers.DeleteLevelButtonController;
 import controllers.ExitBuilderController;
 import controllers.ExitButtonController;
-import controllers.FilePicker;
+//import controllers.FilePicker;
 import controllers.GenerateController;
 import controllers.LevelNameListener;
 import controllers.LimitEditController;

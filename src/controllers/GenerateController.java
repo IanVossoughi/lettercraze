@@ -14,13 +14,31 @@ import entities.Model;
 import entities.Tile;
 import playerBoundary.PlayField;
 
+/**
+ *  Controls all actions related to the Builder Generate button, 
+ *  specifically transforming the words of the Word List into randomly-distributed shapes in the Tile Array
+ *  and filling the rest of the board with randomized Tiles.
+ * <p>
+ * Creation date: (12/15/16 7:03:21 PM)
+ * @author Ian Vossoughi
+ */
 public class GenerateController implements ActionListener {
 
+	/** Random number generator for determining where to place the next tile of a word.*/
 	private Random rng;
+	
+	/** The highest level entity model.*/
 	private Model m;
+	
+	/** The builder boundary that we are manipulating and using to begin the action. */
 	private BuildField builder;
+	
+	/** tileArray is unused and archaic, originally used to manipulate the Builder Tiles directly. */
 	private JButton[][] tileArray;
 	
+	/**
+	 * GenerateController constructor comment.
+	 */
 	public GenerateController(Model m, BuildField builder, JButton[][] tileArray){
 		this.m = m;
 		this.builder = builder;
@@ -28,11 +46,16 @@ public class GenerateController implements ActionListener {
 		this.rng = new Random();
 	}
 	
+	/**
+	 * Coordinate reaction to pressing the Generate button, manipulating the Builder Tile 
+	 * board to transform the Word List words into tile sequences that randomly stretch around the board.
+	 * <p>
+	 * @param e controllers.BuilderLevelTypeController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String[][] level = generate(m.getWordListModel());
 	
-		//Issue is before this loop as seen above. Full words going into tiles. Check generate
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				if(level[x][y] == "!"){
@@ -53,6 +76,13 @@ public class GenerateController implements ActionListener {
 		builder.refreshBoard();
 	}
 
+	/**
+	 * Add the letters from each word of the word list, one at a time, to the 2D Level string array through random
+	 * distribution. Notify the builder if their words have too many letters to fit in the board.
+	 * @param wordListModel The DefaultListModel containing all of the Theme words added to the Builder WordList.
+	 * @return A 6-by-6 array of Strings that represent what letter each tile of the board should have after generating
+	 * a formation that incorporates the theme words.
+	 */
 	private String[][] generate(DefaultListModel<String> wordListModel) {
 		String[][] level = new String[6][6];
 		
@@ -92,6 +122,13 @@ public class GenerateController implements ActionListener {
 		return level;
 	}
 
+	/**
+	 * 
+	 * @param level
+	 * @param string
+	 * @return
+	 * @throws Exception
+	 */
 	private String[][] addWord(String[][] level, String string) throws Exception {
 		int[] pos = addRandomLetter(level, string);
 		for(int i = 1; i<string.length(); i++){ 
