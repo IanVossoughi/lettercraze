@@ -27,7 +27,7 @@ public class ExitButtonController implements ActionListener {
 	/**
 	 * Coordinate reaction to clicking the LetterCraze menu screen Exit button, ending the application.
 	 * <p>
-	 * @param e controllers.ContinueButtonController.actionPerformed(ActionEvent)
+	 * @param e controllers.ExitButtonController.actionPerformed(ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

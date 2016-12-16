@@ -50,7 +50,7 @@ public class GenerateController implements ActionListener {
 	 * Coordinate reaction to pressing the Generate button, manipulating the Builder Tile 
 	 * board to transform the Word List words into tile sequences that randomly stretch around the board.
 	 * <p>
-	 * @param e controllers.BuilderLevelTypeController.actionPerformed(ActionEvent)
+	 * @param e controllers.GenerateController.actionPerformed(ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
