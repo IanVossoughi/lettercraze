@@ -109,14 +109,6 @@ public class StarThresholdWindow extends JFrame {
 		
 		JButton btnDone = new JButton("Done");
 		btnDone.addActionListener(new StarScoreController(m, this));
-				
-				
-				/*new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
-			}
-		});*/
 		panel_2.add(btnDone);
 		
 		if(m.getScore() != null){

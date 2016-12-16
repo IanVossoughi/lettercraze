@@ -26,11 +26,9 @@ public class SaveSelectionWindow extends JFrame {
 	public SaveSelectionWindow(Model m, String action, ActionListener listener) {
 		this.m = m;
 		setTitle("LetterCraze Builder");
-		//setDefaultCloseOperation(0);
 		setBounds(100, 100, 550, 100);
 		
 		JPanel contentPane = new JPanel();
-		//contentPane.setLayout();
 		setContentPane(contentPane);
 		
 		JLabel header = new JLabel("Select level number to " + action + ":");
@@ -48,19 +46,12 @@ public class SaveSelectionWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				m.setLevelSaverInt((Integer)levelSelect.getSelectedItem());
 				setVisible(false);
 				dispose();
 			}
 			
 		});
-		/*if(action.equals("save")){
-			save.addActionListener(new SaveLevelButtonController(m, this));
-		} */
-		/*else if(action.equals("open")){
-			save.addActionListener(new OpenLevelButtonController(m));
-		}*/
 		
 		contentPane.add(save);//, BorderLayout.SOUTH);
 	}

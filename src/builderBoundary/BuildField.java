@@ -246,19 +246,9 @@ public class BuildField extends JFrame {
 		JButton starThresholdButton = new JButton("Set Star Points");
 		starPanel.add(starThresholdButton);
 		starThresholdButton.addActionListener(new OpenStarWindowController(m));
-				
-				/*new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				StarThresholdWindow thresholdWindow = new StarThresholdWindow(m);
-				thresholdWindow.setVisible(true);
-			}
-		});*/
-
+		
 		JPanel bottomBarPanel = new JPanel();
 		contentPane.add(bottomBarPanel, BorderLayout.SOUTH);
-
-		/*JButton undoButton = new JButton("Undo");
-		bottomBarPanel.add(undoButton);*/
 		
 		wordLimitLabel = new JLabel("Word Limit:");
 		bottomBarPanel.add(wordLimitLabel);
@@ -339,9 +329,8 @@ public class BuildField extends JFrame {
 	
 	protected void exitBuilder(WindowEvent event) {
         new ExitBuilderController(this).actionPerformed(null);
-		// TODO Auto-generated method stub
-		
 	}
+	
 	private void populateBoardPanel() {
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
@@ -351,26 +340,14 @@ public class BuildField extends JFrame {
 				tileArray[i][j].setContentAreaFilled(false);
 				tileArray[i][j].setBorderPainted(false);
 				Tile tile = m.getBoard().tiles[i][j];
-				//tile.setLetter('q');
+	
 				if(tile.isEnabled()){
-					//tile.setLetter(tile.getLetter()+32);
 					tileArray[i][j].setIcon(iconMap.getIcon((char)tile.getLetter().charAt(0)));
-					//tileArray[i][j].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + tile.getLetter() + ".png")));
 				} else {
 					tileArray[i][j].setIcon(greenIcon);
 				}
 				tileArray[i][j].addActionListener(new BuilderClickTileController(m, this, i, j));
-						
-						
-						/*new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						if (tileArray[row][col].getIcon().equals(greenIcon))
-							tileArray[row][col].setIcon(whiteIcon);
-						else
-							tileArray[row][col].setIcon(greenIcon);
-					}
-				}*/
-
+					
 				tileArray[i][j].setPreferredSize(new Dimension(32, 32));
 				boardPanel.add(tileArray[i][j]);
 			}
@@ -445,12 +422,10 @@ public class BuildField extends JFrame {
 	}
 
 	public JComboBox<String> getlevelTypeCombo() {
-		// TODO Auto-generated method stub
 		return levelTypeCombo;
 	}
 
 	public JTextField getlevelNameField() {
-		// TODO Auto-generated method stub
 		return this.levelNameField;
 	}
 	
@@ -468,7 +443,6 @@ public class BuildField extends JFrame {
 		return this.wordLimitField;
 	}
 	public JComponent getWordLimitLabel() {
-		// TODO Auto-generated method stub
 		return this.wordLimitLabel;
 	}
 }
