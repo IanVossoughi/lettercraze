@@ -79,6 +79,8 @@ public class Model {
 		for (int x = 0; x < this.wordListModel.size(); x++) {
 			model.wordListModel.addElement(this.wordListModel.get(x));
 		}
+		model.themeWords = new ArrayList<String>();
+		model.themeWords.addAll(this.themeWords);
 
 		model.getBoard().setSelectedTileCoords(new Coordinate(this.getBoard().getSelectedTileCoords().x, this.getBoard().getSelectedTileCoords().y));
 		model.selectedWord = new Word(this.selectedWord.getWordString(),new Integer(this.selectedWord.getScore()));
@@ -130,11 +132,10 @@ public class Model {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.out.print("HighScores = " + s );
+		
 		String[] stars = s.split("\n");
 		for(int i = 0; i < 15; i++){
 			this.starStatus[i] = Integer.parseInt(stars[i]);
-			//System.out.println(i + ":" + scores[i]);
 		}
 
 		return num;
@@ -176,11 +177,10 @@ public class Model {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.out.print("HighScores = " + s );
+		
 		String[] scores = s.split("\n");
 		for(int i = 0; i < 15; i++){
 			this.highScore[i] = Integer.parseInt(scores[i]);
-			//System.out.println(i + ":" + scores[i]);
 		}
 
 		return num;

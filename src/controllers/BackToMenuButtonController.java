@@ -10,25 +10,43 @@ import javax.swing.JLabel;
 import entities.Model;
 import playerBoundary.MenuField;
 import playerBoundary.PlayField;
+import playerBoundary.ProgressIO;
 
+/**
+ *  Controls all actions related to returning from the player to the game menu: manually exiting the level or running out of time.
+ * <p>
+ * Creation date: (12/15/16 5:53:26 PM)
+ * @author Ian Vossoughi
+ */
 public class BackToMenuButtonController implements ActionListener {
 
+	/** The game boundary that we are manipulating and using to begin the action. */
 	private PlayField playField;
+	
+	/** The menu boundary that we are manipulating and using to begin the action. */
 	private MenuField m;
+	
+	/** The highest level entity model.*/
 	private Model model;
+	
+	/** The number of the level being played.*/
 	private int whichLevel;
-	private ImageIcon star	= new ImageIcon(MenuField.class.getResource("/general/star.png"));
-	private ImageIcon starGray	= new ImageIcon(MenuField.class.getResource("/general/star_gray.png"));
 
-	;
-
-
+	/**
+	 * BackToMenuButtonController constructor comment.
+	 */
 	public BackToMenuButtonController(PlayField playField, Model model) {
 		this.playField = playField;	
 		this.model = model;
 		this.whichLevel = model.getSelectedIndex();
 	}
 
+	/**
+	 * Coordinate reaction to time running out or pressing the Exit Level button, 
+	 * preparing the menu to receive and display the results of the game (unlocking as necessary).
+	 * <p>
+	 * @param e controllers.BackToMenuButtonController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int scoreNeeded2 = model.getScore().getStarScoreIndex(0);
@@ -39,8 +57,6 @@ public class BackToMenuButtonController implements ActionListener {
 		
 		if(score > model.getHighScores()[model.getSelectedIndex()]){
 			
-		
-
 			if(score >= scoreNeeded1 && score >= scoreNeeded2 && score >= scoreNeeded3){
 				model.setStarStatus(model.getSelectedIndex(), 3);
 			}
@@ -58,25 +74,18 @@ public class BackToMenuButtonController implements ActionListener {
 			model.writeStars();
 		}
 		
-		m = new MenuField();
-		m.setVisible(true);
-
 		// Update highscores
 		if(model.getHighScores()[model.getSelectedIndex()] < model.getScore().getScoreValue()){
+			model.setHighScore(model.getSelectedIndex(), model.getScore().getScoreValue());
 			model.writeHighScore();
 		}
-		// --> end highscores
+		// end highscore updates
 
-		//update the "index"th of the array highscore
-		//System.out.print("\n Selected index =" + whichLevel);
-		//System.out.print("\n get score value =" + model.getScore().getScoreValue() + "SECOND");
-
+		m = new MenuField();
+		m.setVisible(true);
+		
 		model.setHighScore(model.getSelectedIndex(), model.getScore().getScoreValue());
 
-
-		
-
-		System.out.print(model.getHighScores());
 		playField.stopTimer();
 		playField.checkIfWon();
 		playField.setVisible(false);

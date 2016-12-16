@@ -49,6 +49,7 @@ public class PlayField extends JFrame {
 	/**
 	 * 
 	 */
+	private PlayField realThis;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Model m;
@@ -262,6 +263,7 @@ public Model getModel(){return this.getModel();}
 			
 		
 		this.refreshBoard();
+		realThis = this;
 
 	}
 	
@@ -294,7 +296,7 @@ public Model getModel(){return this.getModel();}
 					timerLabel.setText(Integer.toString(newTime));
 					if(newTime == 0){
 						JOptionPane.showMessageDialog(new JFrame(), "Time's Up!");
-						gameOver();
+						new BackToMenuButtonController(realThis, m).actionPerformed(null);
 						this.cancel();
 					}
 				}

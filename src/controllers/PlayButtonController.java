@@ -27,22 +27,6 @@ public class PlayButtonController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// Before we open the PlayField, load the level into the model.
 		this.loadLevel();
-		
-		System.out.print("\n levelType var is " + levelType + "\n");
-		if(levelType == "PUZZLE"){
-			//m.setType(0);
-			System.out.print("levelType is set to 0");	
-		}
-		else if(levelType == "LIGHTNING"){
-			//m.setType(1);
-			System.out.print("levelType is set to 1");	
-		}
-		else{
-			//m.setType(2);
-			System.out.print("levelType is set to 2");	
-		}
-		//m.setSelectedTab(whichLevel);
-		System.out.print("\n Selected Tab is =" + whichLevel + "\n");
 
 		PlayField pf = new PlayField(m);
 		pf.setVisible(true);
@@ -57,6 +41,10 @@ public class PlayButtonController implements ActionListener{
 
 	private void loadLevel() {
 		// Get the selected index, convert to string
+		int tabIndex = menuField.getTabbedPane().getSelectedIndex();
+		
+		// Update the model with the selected index
+		this.m.setSelectedTab(tabIndex);
 		int levelNum = (m.getSelectedIndex() + 1);
 		String filePath = "levels/" + levelNum;
 		new OpenLevelButtonController(m, null, null).loadLevel(filePath, m, null);

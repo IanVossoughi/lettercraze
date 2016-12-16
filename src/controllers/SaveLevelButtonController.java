@@ -71,8 +71,6 @@ public class SaveLevelButtonController implements ActionListener {
 			out.write(m.getTitle().getBytes());
 			out.write('\n');
 			
-			//System.out.println(m.getTitle());
-			//System.out.println(m.getType());
 			out.write((m.getType() + "").getBytes());
 			out.write('\n');
 			

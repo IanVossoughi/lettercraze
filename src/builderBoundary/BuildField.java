@@ -25,8 +25,10 @@ import javax.swing.text.JTextComponent;
 import controllers.AddButtonController;
 import controllers.BuilderClickTileController;
 import controllers.BuilderLevelTypeController;
+import controllers.DeleteLevelButtonController;
 import controllers.ExitBuilderController;
-import controllers.FilePicker;
+import controllers.ExitButtonController;
+//import controllers.FilePicker;
 import controllers.GenerateController;
 import controllers.LevelNameListener;
 import controllers.LimitEditController;
@@ -58,6 +60,9 @@ import javax.swing.KeyStroke;
 import javax.swing.ListModel;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.awt.event.InputEvent;
@@ -115,10 +120,11 @@ public class BuildField extends JFrame {
 	 */
 	public BuildField() {
 		// Initialize Model
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		this.m = new Model();
 		m.setType(2);
 		setTitle("LetterCraze Builder");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -166,17 +172,21 @@ public class BuildField extends JFrame {
 			}
 			
 		});
-				
-				/*new ActionListener(){
+		
+		JMenuItem mntmDeleteLevel = new JMenuItem("Delete Level");
+		mntmDeleteLevel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmDeleteLevel);
+		
+		mntmDeleteLevel.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SaveSelectionWindow saver = new SaveSelectionWindow(m, "save");
-				saver.setVisible(true);
+				
+				new SaveSelectionWindow(m, "Delete", new DeleteLevelButtonController(m,realThis)).setVisible(true);
 				
 			}
 			
-		});*/
+		});
 
 		JMenuItem mntmExitBuilder = new JMenuItem("Exit Builder");
 		mntmExitBuilder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
@@ -327,6 +337,11 @@ public class BuildField extends JFrame {
 		populateBoardPanel();
 	}
 	
+	protected void exitBuilder(WindowEvent event) {
+        new ExitBuilderController(this).actionPerformed(null);
+		// TODO Auto-generated method stub
+		
+	}
 	private void populateBoardPanel() {
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
@@ -456,5 +471,4 @@ public class BuildField extends JFrame {
 		// TODO Auto-generated method stub
 		return this.wordLimitLabel;
 	}
-
 }

@@ -7,19 +7,38 @@ import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import builderBoundary.BuildField;
 import entities.Model;
 import entities.Tile;
 import playerBoundary.PlayField;
 
+/**
+ *  Controls all actions related to the Builder Generate button, 
+ *  specifically transforming the words of the Word List into randomly-distributed shapes in the Tile Array
+ *  and filling the rest of the board with randomized Tiles.
+ * <p>
+ * Creation date: (12/15/16 7:03:21 PM)
+ * @author Ian Vossoughi
+ */
 public class GenerateController implements ActionListener {
 
+	/** Random number generator for determining where to place the next tile of a word.*/
 	private Random rng;
+	
+	/** The highest level entity model.*/
 	private Model m;
+	
+	/** The builder boundary that we are manipulating and using to begin the action. */
 	private BuildField builder;
+	
+	/** tileArray is unused and archaic, originally used to manipulate the Builder Tiles directly. */
 	private JButton[][] tileArray;
 	
+	/**
+	 * GenerateController constructor comment.
+	 */
 	public GenerateController(Model m, BuildField builder, JButton[][] tileArray){
 		this.m = m;
 		this.builder = builder;
@@ -27,20 +46,18 @@ public class GenerateController implements ActionListener {
 		this.rng = new Random();
 	}
 	
+	/**
+	 * Coordinate reaction to pressing the Generate button, manipulating the Builder Tile 
+	 * board to transform the Word List words into tile sequences that randomly stretch around the board.
+	 * <p>
+	 * @param e controllers.BuilderLevelTypeController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Generating level with words:" + m.getWordListModel().toString());
 		String[][] level = generate(m.getWordListModel());
+	
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
-				System.out.println("Tile " + x + y + " is " + level[x][y] + " before loop");
-			}
-		}
-		//Issue is before this loop as seen above. Full words going into tiles. Check generate
-		for(int x = 0; x < 6; x++){
-			for(int y = 0; y < 6; y++){
-				//System.out.print(level[x][y]);
 				if(level[x][y] == "!"){
 					Tile tile = m.getBoard().tiles[x][y];
 					tile.setLetter("!");
@@ -50,27 +67,25 @@ public class GenerateController implements ActionListener {
 					tile.setLetter(level[x][y]);
 					tile.setEnabled(true);
 					
-					// Also update the button
-					//tileArray[x][y].setEnabled(true);
-					//tileArray[x][y].setIcon(new ImageIcon(PlayField.class.getResource("/images/" + level[x][y] + ".png")));
 				} else {
 					m.getBoard().tiles[x][y].setLetter("_");
 					m.getBoard().tiles[x][y].setEnabled(true);
-					//tileArray[x][y].setEnabled(false);
 				}
-				System.out.println("Tile " + x + y + " is " + level[x][y]);
 			}
-			//System.out.println("");
 		}
 		builder.refreshBoard();
-		//TODO Board?
-		System.out.println("Board after is " + m.getBoard().serialize());
 	}
 
+	/**
+	 * Add the letters from each word of the word list, one at a time, to the 2D Level string array through random
+	 * distribution. Notify the builder if their words have too many letters to fit in the board.
+	 * @param wordListModel The DefaultListModel containing all of the Theme words added to the Builder WordList.
+	 * @return A 6-by-6 array of Strings that represent what letter each tile of the board should have after generating
+	 * a formation that incorporates the theme words.
+	 */
 	private String[][] generate(DefaultListModel<String> wordListModel) {
 		String[][] level = new String[6][6];
 		
-		//Andrew says this for loop is fine, makes correct size of 36
 		for(int x = 0; x < 6; x++){
 			for(int y = 0; y < 6; y++){
 				if(m.getBoard().tiles[x][y].isEnabled()){
@@ -78,9 +93,7 @@ public class GenerateController implements ActionListener {
 				} else {
 					level[x][y] = "!";
 				}
-				System.out.print(level[x][y]);
 			}
-			System.out.println();
 		}
 		
 		
@@ -91,15 +104,14 @@ public class GenerateController implements ActionListener {
 				word1 = word1.toUpperCase();
 				if (word1.contains("QU")) {
 					word1 = word1.replaceAll("QU", "Q");
-					System.out.println("QU has been replaced. The word is now " + word1);
 				}
 				levelAdded = addWord(levelAdded, word1);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Letter could not be placed around other tile");
+			JOptionPane.showMessageDialog(builder, "Not all of your words could be added to the board. \nPlease shorten your word list and/or its words to make room.");
 		}
-		for (int x = 0; x < 6; x++) { // Ian trying to get this to work
+		for (int x = 0; x < 6; x++) { 
 			for (int y = 0; y < 6; y++) {
 				if (level[x][y] == "_") {
 					
@@ -110,8 +122,14 @@ public class GenerateController implements ActionListener {
 		return level;
 	}
 
+	/**
+	 * 
+	 * @param level
+	 * @param string
+	 * @return
+	 * @throws Exception
+	 */
 	private String[][] addWord(String[][] level, String string) throws Exception {
-		//Andrew thinks this is good, if disabled just repeats first letter of word which is bad
 		int[] pos = addRandomLetter(level, string);
 		for(int i = 1; i<string.length(); i++){ 
 			String c = Character.toString(string.charAt(i));

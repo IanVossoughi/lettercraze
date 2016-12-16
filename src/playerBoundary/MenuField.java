@@ -45,6 +45,7 @@ public class MenuField extends JFrame {
 	private JLabel star1Label;
 	private JLabel star2Label;
 	private JLabel star3Label;
+	private JTabbedPane tabbedPane;
 
 	/**
 	 * Launch the application.
@@ -79,7 +80,6 @@ public class MenuField extends JFrame {
 		m.readHighScore();
 		//m.writeStars();
 		m.readStars();
-		System.out.print(Integer.toString(m.readHighScore()));
 		
 		progress = new ProgressIO();
 
@@ -134,7 +134,7 @@ public class MenuField extends JFrame {
 		contentPane.add(boardPanel, BorderLayout.CENTER);
 		boardPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		boardPanel.add(tabbedPane);
 
 		int i;
@@ -236,6 +236,10 @@ public class MenuField extends JFrame {
 
 	public void setLevelNameLabel(String string) {
 		this.lblLevelName.setText(string);
+	}
+	
+	public JTabbedPane getTabbedPane() {
+		return this.tabbedPane;
 	}
 
 
