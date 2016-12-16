@@ -34,6 +34,9 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 	/** The highest recorded score of the level currently viewed in the tab preview.*/
 	private JLabel highScoreNumLabel;
 	
+	/**
+	 * LevelSelectMenuTabPaneController constructor comment.
+	 */
 	public LevelSelectMenuTabPaneController(MenuField menu, JButton play, JTabbedPane tabPane, int unlocked, Model m, JLabel title, JLabel highScoreNumLabel){
 		this.menu = menu;
 		this.tabPane = tabPane;
@@ -45,6 +48,12 @@ public class LevelSelectMenuTabPaneController implements ChangeListener{
 		
 	}
 
+	/**
+	 * Coordinate reaction to changing the tab in the TabPane. In this case,
+	 * the information about the level in the TabPane will be updated after loading in the
+	 * respective level from disk and obtaining information from it
+	 * @param e controllers.LevelSelectMenuTabPaneController.stateChanged(ChangeEvent)
+	 */
 	public void stateChanged(ChangeEvent e){
 		int tabIndex = tabPane.getSelectedIndex();
 		
