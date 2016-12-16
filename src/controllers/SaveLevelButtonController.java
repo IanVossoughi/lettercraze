@@ -14,17 +14,33 @@ import builderBoundary.SaveSelectionWindow;
 import entities.Model;
 import entities.Word;
 
+/**
+ *  Controls all actions related to the Builder Save Level Menu option
+ * <p>
+ * Creation date: (12/15/16)
+ * @author Andrew Vanner
+ */
 public class SaveLevelButtonController implements ActionListener {
 
+	/** The highest level entity model.*/
 	private Model m;
+	/** The builder boundary that we are manipulating and using to begin the action. */
 	private JPanel contentPane;
 	
+	/**
+	 * SaveLevelButtonController constructor comment.
+	 */
 	public SaveLevelButtonController(Model m){
 		this.m = m;
 		this.contentPane = contentPane;
 	}
 
-	// NOTE: Don't test this...
+	/**
+	 * Coordinate reaction to clicking the Save Level Menu item
+	 * Gives the user a list of level names to save into
+	 * <p>
+	 * @param e controllers.SaveLevelButtonController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		int levelNum = m.getLevelSaverInt();
@@ -32,7 +48,7 @@ public class SaveLevelButtonController implements ActionListener {
 		//JOptionPane.showMessageDialog(null, "Level Saved.");
 	}
 	
-	/*
+	/**
 	 * Saves a textual representation of the game's board.
 	 * If a tile is active, it will store the tile's character.
 	 * If a tile is inactive, it will store the sentinel value '!'.
@@ -44,7 +60,6 @@ public class SaveLevelButtonController implements ActionListener {
 			out = new FileOutputStream(filename);
 			
 			//Letters of boards
-			//Board is too big at this point
 			out.write(m.getBoard().serialize().getBytes());
 			out.write('\n');
 			

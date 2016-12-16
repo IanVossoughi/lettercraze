@@ -13,15 +13,30 @@ import playerBoundary.MenuField;
 import playerBoundary.PlayField;
 import playerBoundary.ProgressIO;
 
+/**
+ *  Controls all actions related to the Player Submit Button 
+ *  Used to submit words made in game
+ * <p>
+ * Creation date: (12/15/16)
+ * @author Andrew Vanner
+ */
 public class SubmitButtonController implements ActionListener {
 	//take in Word 
 	//see if it's valid move
 	//doMove
+	
+	/** The highest level entity model.*/
 	Model model;
+	/** The player boundary that we are manipulating and using to begin the action. */
 	PlayField play;
+	/** The star labels that may be updated*/
 	private JLabel[] starLabels = new JLabel[3];
+	/** Checks level in game */
 	private int whichLevel;
 	
+	/**
+	 * SubmitButtonController constructor comment.
+	 */
 	public SubmitButtonController(Model m, PlayField p, JLabel star1Label, JLabel star2Label, JLabel star3Label) {
 		this.model = m;
 		this.play = p;
@@ -31,6 +46,12 @@ public class SubmitButtonController implements ActionListener {
 		this.whichLevel = model.getSelectedIndex();
 	}
 
+	/**
+	 * Coordinate reaction to clicking the Submit Button
+	 * Includes check for validity
+	 * <p>
+	 * @param e controllers.NewLevelBuilderController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		SubmitWordMove move = new SubmitWordMove(model, play, this);

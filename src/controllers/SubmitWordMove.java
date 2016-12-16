@@ -6,19 +6,36 @@ import entities.*;
 import general.WordTable;
 import playerBoundary.*;
 
+/**
+ *  Controls all actions related to the PLayer submitting words.
+ * <p>
+ * Creation date: (12/15/16)
+ * @author Andrew Vanner
+ */
 public class SubmitWordMove {
+	/** Word being submitted.*/
 	private Word selectedWord;
+	/**WordList to where word is going.*/
 	private DefaultListModel<String> wordList;
+	/** The highest level entity model.*/
 	private Model model;
+	/** The player boundary that we are manipulating and using to begin the action. */
 	private PlayField play;
+	/** Dictionary word table to check submitted word against. */
 	private WordTable wordTable = new WordTable();
+	/** Needed if word submission unlocks a level in the menu */
 	private MenuField menu;
 
-	// These three are for star icons
+	/** Button needs to be valid before word can submit */
 	private SubmitButtonController submitButtonController;
+	/** Star that is earned from move. */
 	private Icon goldStarIcon = new ImageIcon(PlayField.class.getResource("/general/star.png"));
+	/** Star that is not earned from move */
 	private Icon blackStarIcon = new ImageIcon(PlayField.class.getResource("/general/star_gray.png"));
 
+	/**
+	 * NewLevelBuilderController constructor comment.
+	 */
 	public SubmitWordMove(Model model, PlayField play, SubmitButtonController submitButtonController) {
 		this.selectedWord = model.getSelectedWord();
 		this.wordList = model.getWordListModel();
@@ -26,7 +43,8 @@ public class SubmitWordMove {
 		this.play = play;
 		this.submitButtonController = submitButtonController;
 	}
-	
+
+	/** If move is valid, update the model and playField t reflect that */
 	public boolean doMove(){
 		if(isValid()){
 			play.undoArray.addUndoModel(model);
@@ -63,9 +81,9 @@ public class SubmitWordMove {
 		return false;
 	}
 
+	/** Check if star if its score has been reached. */
 	private void updateStars() {
 		
-		// Check if star if its score has been reached
 		JLabel[] starLabels1 = this.submitButtonController.getStarLabels();
 		JLabel[] starLabels = new JLabel[3];
 		starLabels[0] = starLabels1[1];
@@ -88,6 +106,7 @@ public class SubmitWordMove {
 		}
 	}
 
+	/** Updates the score */
 	private void updateScore() {
 		if(model.getType() == 0){ //Do complex word score math only for puzzle, rest have just +1 by word for score
 			model.setScoreValue(model.getScore().getScoreValue() + selectedWord.getScore());
@@ -97,6 +116,8 @@ public class SubmitWordMove {
 		}
 
 	}
+	
+	/** Checks if word is a valid word for the level type */
 	public boolean isValid(){
 		if (model.getType() == 2) {
 			boolean isTheme = false;
@@ -118,6 +139,7 @@ public class SubmitWordMove {
 			return false; }
 	}
 
+	/** If undoing move, reverts changes from SubmitWordMove. */
 	public Model undoMove() {
 		if (play.undoArray.getLatestModel() == null) {return model;}
 		else {
@@ -137,6 +159,7 @@ public class SubmitWordMove {
 		}
 	}
 
+	/** Updates tiles. */
 	public void tilesGoAway(){
 		for (int x = 0; x < 6; x++) {
 			for (int y = 0; y < 6; y++) {

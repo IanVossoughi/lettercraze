@@ -8,14 +8,30 @@ import javax.swing.JOptionPane;
 
 import builderBoundary.BuildField;
 
+/**
+ *  Controls all actions related to the Builder Reset Button
+ *  Resets all building elements to the initial state
+ * <p>
+ * Creation date: (12/15/16)
+ * @author Andrew Vanner
+ */
 public class ResetBuilderController implements ActionListener {
-
+	/** The builder boundary that we are manipulating and using to begin the action. */
 	private BuildField buildField;
 
+	/**
+	 * ResetBuilderController constructor comment.
+	 */
 	public ResetBuilderController(BuildField buildField) {
 		this.buildField = buildField;
 	}
-
+	
+	/**
+	 * Coordinate reaction to clicking the Reset Button
+	 * Prompts user before resetting
+	 * <p>
+	 * @param e controllers.ResetBuilderController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object[] options = {"Reset Level",

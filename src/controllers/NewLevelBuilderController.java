@@ -23,7 +23,7 @@ public class NewLevelBuilderController implements ActionListener {
 	private Model m;
 
 	/**
-	 * LevelSelectMenuTabPaneController constructor comment.
+	 * NewLevelBuilderController constructor comment.
 	 */
 	public NewLevelBuilderController(BuildField buildField, Model m) {
 		this.buildField = buildField;
