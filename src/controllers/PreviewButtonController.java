@@ -13,19 +13,37 @@ import entities.Model;
 import playerBoundary.MenuField;
 import playerBoundary.PlayField;
 
+/**
+ *  Controls all actions related to the Builder Preview Level Button, 
+ *  This displays a preview of the level being built in its current form.
+ * <p>
+ * Creation date: (12/15/16)
+ * @author Andrew Vanner
+ */
 public class PreviewButtonController implements ActionListener{
 
+	/** The highest level entity model.*/
 	private Model m;
+	/** Copy of model to use for preview.*/
 	private Model mCopy;
+	/** The builder boundary that we are manipulating and using to begin the action. */
 	private BuildField b;
 	
-
+	/**
+	 * PreviewButtonController constructor comment.
+	 */
 	public PreviewButtonController(Model m, BuildField b) {
 		this.m = m;
 		this.mCopy = m.copyModel();
 		this.b = b;
 	}
 
+	
+	/**
+	 * Coordinate reaction to clicking the Preview Level button on the Builder
+	 * <p>
+	 * @param e controllers.PreviewButtonController.actionPerformed(ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		PlayField p1 = createPlay(e);
